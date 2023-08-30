@@ -20,8 +20,8 @@ and install it together with [cert-manager](https://github.com/cert-manager/cert
 helm install capi-operator capi-operator/cluster-api-operator
 	--create-namespace -n capi-operator-system
 	--set infrastructure=docker
-	—-set cert-manager.enabled=true
-	—-timeout 90s --wait # core Cluster API with kubeadm bootstrap and control plane providers will also be installed 
+	--set cert-manager.enabled=true
+	--timeout 90s --wait # core Cluster API with kubeadm bootstrap and control plane providers will also be installed 
 ```
 *Note: `cert-manager` is a hard requirement for CAPI and Cluster API Operator*
 
@@ -30,10 +30,10 @@ For any scenarios when you need to provide additional environment variables, to 
 helm install capi-operator capi-operator/cluster-api-operator
 	--create-namespace -n capi-operator-system 
 	--set infrastructure=docker
-	—-set cert-manager.enabled=true
-	—-timeout 90s
-	—-secret-name <secret_name>
-	—-secret-namespace <secret_namespace>
+	--set cert-manager.enabled=true
+	--timeout 90s
+	--secret-name <secret_name>
+	--secret-namespace <secret_namespace>
 	--wait
 ```
 
@@ -52,7 +52,7 @@ stringData:
 
 You can select providers to install together with Cluster API Operator. To do so, specify one or more providers in `—-infrastructure` flag when starting with helm. You can pass a specific version, if needed:
 ```bash
-helm install … infrastructure=docker:v1.5.0,azure # For azure assumed latest version
+helm install ... infrastructure=docker:v1.5.0,azure # For azure assumed latest version
 ```
 
 ### Clusterctl path
