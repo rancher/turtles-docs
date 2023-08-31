@@ -16,3 +16,20 @@ helm install rancher rancher-stable/rancher
 	--namespace cattle-system
 	--create-namespace --wait
 ```
+
+## Existing rancher installation
+
+To allow Rancher Turtles to be installed in the existing rancher cluster, `embedded-cluster-api` feature should be created from the manifest first:
+```yaml title="feature.yaml"
+apiVersion: management.cattle.io/v3
+kind: Feature
+metadata:
+  name: embedded-cluster-api
+spec:
+  value: false
+```
+
+To apply it in the cluster:
+```bash
+kubectl apply -f feature.yaml
+```
