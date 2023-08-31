@@ -4,16 +4,17 @@ sidebar_position: 2
 
 # Add Infrastructure Provider
 
-This section describes how you can add an infrastructure provider such as Azure using Cluster API Operator.
+This section describes how an infrastructure provider such as Azure could be added using Cluster API Operator.
 
 ## Basic Cluster API Provider Installation
 
-In this section, we will walk you through the basic process of installing Cluster API providers using the operator. The Cluster API operator manages four types of objects:
+This section describes the basic process of installing Cluster API providers using the operator. The Cluster API operator manages five types of objects:
 
 - CoreProvider
 - BootstrapProvider
 - ControlPlaneProvider
 - InfrastructureProvider
+- AddonProvider
 
 Please note that this example provides a basic configuration of Azure Infrastructure provider for getting started. More detailed examples and CRD descriptions will be provided in subsequent sections of this document.
 
@@ -21,7 +22,7 @@ Please note that this example provides a basic configuration of Azure Infrastruc
 
 The first step is to install the CoreProvider, which is responsible for managing the Cluster API CRDs and the Cluster API controller.
 
-You can utilize any existing namespace for providers in your Kubernetes operator. However, before creating a provider object, make sure the specified namespace has been created. In the example below, we use the `capi-system` namespace. You can create this namespace through either the Command Line Interface (CLI) by running `kubectl create namespace capi-system`, or by using the declarative approach described in the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/namespaces-walkthrough/#create-new-namespaces).
+Any existing namespace could be utilized for providers in the Kubernetes cluster. However, before creating a provider object, make sure the specified namespace has been created. In the example below, we use the `capi-system` namespace. To create this namespace through either the Command Line Interface (CLI) by running `kubectl create namespace capi-system`, or the declarative approach described in the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/namespaces-walkthrough/#create-new-namespaces) could be used.
 
 *Example:*
 
@@ -32,7 +33,7 @@ metadata:
   name: cluster-api
   namespace: capi-system
 spec:
-  version: v1.4.3
+  version: v1.4.4
 ```
 
 **Note:** Only one CoreProvider can be installed at the same time on a single cluster.
