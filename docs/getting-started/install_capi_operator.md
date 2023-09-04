@@ -2,30 +2,41 @@
 sidebar_position: 3
 ---
 
-# Install CAPI Operator
+# Install Cluster API Operator
+
+This section describes how to install `Cluster API Operator` in the kubernetes cluster.
 
 ## Installing CAPI and providers
 
-CAPI and desired CAPI providers could be installed using helm based installation for [`Cluster API Operator`](https://github.com/kubernetes-sigs/cluster-api-operator).
+`CAPI` and desired `CAPI` providers could be installed using helm based installation for [`Cluster API Operator`](https://github.com/kubernetes-sigs/cluster-api-operator) or as a helm dependency for the `Rancher Turtles`.
 
-### Cluster API operator path
+### Install as a `Rancher Turtles` dependency
 
-For example, to install latest version of CAPI + docker provider, first, the helm repo should be added with:
+See the `Rancher Turtles` section for installing operator as a Helm [dependency](./install_turtles_operator.md#install-cluster-api-operator-as-a-helm-dependency)
+
+### Install with Helm
+To install `Cluster API Operator` with version `1.4.4` of the `CAPI` + `Docker` provider using helm, follow these steps:
+
+1. Add the Helm repository for the `Cluster API Operator` by running the following command:
 ```bash
 helm repo add capi-operator https://kubernetes-sigs.github.io/cluster-api-operator
+```
+2. Update the Helm repository by running the following command:
+```bash
 helm repo update
 ```
-and installed together with [cert-manager](https://github.com/cert-manager/cert-manager) using:
+3. Install the `Cluster API Operator` using the following command, which will also install `cert-manager`:
 ```bash
 helm install capi-operator capi-operator/cluster-api-operator
 	--create-namespace -n capi-operator-system
-	--set infrastructure=docker
+	--set infrastructure=docker:v1.4.4
 	--set cert-manager.enabled=true
-	--timeout 90s --wait # core Cluster API with kubeadm bootstrap and control plane providers will also be installed
+	--timeout 90s --wait # Core Cluster API with kubeadm bootstrap and control plane providers will also be installed
 ```
 *Note: `cert-manager` is a hard requirement for CAPI and `Cluster API Operator`*
 
-For any scenarios when there is a need to provide additional environment variables, to choose some feature gates or provide cloud credentials, similar to `clusterctl` common provider [initialization options](https://cluster-api.sigs.k8s.io/user/quick-start#initialization-for-common-providers), in `Cluster API Operator` a variables secret could be used. A `name` and a `namespace` of the secret could be specified for the `Cluster API Operator`:
+To provide additional environment variables, choose some feature gates, or provide cloud credentials, similar to `clusterctl` [common provider](https://cluster-api.sigs.k8s.io/user/quick-start#initialization-for-common-providers), in `Cluster API Operator`, a variables secret could be used. A `name` and a `namespace` of the secret could be specified for the `Cluster API Operator`.
+
 ```bash
 helm install capi-operator capi-operator/cluster-api-operator
 	--create-namespace -n capi-operator-system
@@ -50,9 +61,12 @@ stringData:
   EXP_CLUSTER_RESOURCE_SET: "true"
 ```
 
-To select more then one desired providers to be installed together with `Cluster API Operator`, `--infrastructure` flag could be specified with multiple provider names separated by `,`. Also a specific version could be specified like so:
+To select more than one desired provider to be installed together with the `Cluster API Operator`, the `--infrastructure` flag can be specified with multiple provider names separated by a comma. For example:
+
 ```bash
-helm install ... infrastructure=docker:v1.4.4,azure:v1.4.4
+helm install ... infrastructure="docker:v1.4.4;azure:v1.4.4"
 ```
 
-For more fine-grained control on the providers and other components installed with CAPI see the [Add infrastructure provider](../tasks/capi-operator/add_infrastructure_provider.md) section.
+The `infrastructure` flag is set to `docker:v1.4.4;azure:v1.4.4`, representing the desired provider names. This means that the `Cluster API Operator` will install and manage multiple provider systems, `Docker` and `Azure` respectively, with versions `1.4.4` specified.
+
+For more fine-grained control on the providers and other components installed with CAPI, see the [Add infrastructure provider](../tasks/capi-operator/add_infrastructure_provider.md) section.
