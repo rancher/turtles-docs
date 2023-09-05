@@ -52,7 +52,8 @@ const sidebars = {
       items: [
         'tasks/intro',
       ]
-    }
+    },
+    'CONTRIBUTING'
   ]
 
   // But you can create a sidebar manually
