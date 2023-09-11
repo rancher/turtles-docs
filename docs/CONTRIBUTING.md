@@ -27,7 +27,7 @@ right at the top: **Always be kind!**
 
 Looking forward to seeing your contributions in the repo! :sparkles:
 
-# How to get involved?
+## How to get involved?
 
 We'd love to accept your patches in pretty much all areas of projects development!
 
@@ -57,8 +57,8 @@ If you’re a new to the project and want to help, but don’t know where to sta
   - maybe, user-docs? :nerd_face: Then, jump straight into [`open` issues](https://github.com/rancher-sandbox/rancher-turtles-docs/issues) in the docs repository.
 
 
-# Submitting PRs
-## Choosing something to work on
+## Submitting PRs
+### Choosing something to work on
 
 If you are here to ask for help or request some new behaviour, this
 is the section for you. We have curated a set of issues for anyone who simply
@@ -87,11 +87,11 @@ wants to build up their open-source cred :muscle:.
 - All other issues labelled `kind/<x>` or `area/<x>` are also up for grabs, but
   are likely to require a fair amount of context.
 
-## Developing rancher-turtles
+### Developing rancher-turtles
 
 Check out a dedicated [notes](https://github.com/rancher-sandbox/rancher-turtles#development-setup) section in the rancher-turtles repository.
 
-## Asking for help
+### Asking for help
 
 If you need help at any stage of your work, please don't hesitate to ask!
 
@@ -102,7 +102,7 @@ If you need help at any stage of your work, please don't hesitate to ask!
   sure of your approach, you can open a [draft](https://github.blog/2019-02-14-introducing-draft-pull-requests/)
   (prefix the title with `WIP: `) and explain what you are thinking.
 
-## PR submission guidelines
+### PR submission guidelines
 
 1. Fork the desired repo, develop and test your code changes.
 1. Push your changes to the branch on your fork and submit a pull request to the original repository
@@ -132,7 +132,7 @@ In general, we will merge a PR once a maintainer has reviewed and approved it.
 Trivial changes (e.g., corrections to spelling) may get waved through.
 For substantial changes, more people may become involved, and you might get asked to resubmit the PR or divide the changes into more than one PR.
 
-### Commit message formatting
+#### Commit message formatting
 
 _For more on how to write great commit messages, and why you should, check out
 [this excellent blog post](https://chris.beams.io/posts/git-commit/)._
@@ -162,7 +162,7 @@ This allows the message to be easier to read on GitHub as well as in various git
 
 There is a template recommend for use [here](https://gist.github.com/yitsushi/656e68c7db141743e81b7dcd23362f1a).
 
-# Opening Issues
+## Opening Issues
 
 These guides aim to help you write issues in a way which will ensure that they are processed
 as quickly as possible.
@@ -191,9 +191,9 @@ _See below for [how issues are prioritized](#prioritizing-issues)_.
   someone who is not... the worst. Remember that conversing via text exacerbates
   everyone's negativity bias, so throw in some emoji when in doubt :+1: :smiley: :rocket: :tada:.
 
-# ADRs (Architectural Decision Records)
+## ADRs (Architectural Decision Records)
 
-**Note:** please feel free to skip [this]((#adrs-architectural-decision-records)) and [sub-section](#process) below, since they are only relevant to the [rancher-turtles](https://github.com/rancher-sandbox/rancher-turtles) repository.
+**Note:** please feel free to skip [this](#adrs-architectural-decision-records) and [sub-section](#process) below, since they are only relevant to the [rancher-turtles](https://github.com/rancher-sandbox/rancher-turtles) repository.
 
 Any impactful decisions to the architecture, design, development and behaviour
 of rancher-turtles must be recorded in the form of an [ADR](https://engineering.atspotify.com/2020/04/14/when-should-i-write-an-architecture-decision-record/).
@@ -203,7 +203,7 @@ with numerous examples of completed records in the same directory.
 
 Contributors are also welcome to backfill ADRs if they are found to be missing.
 
-## Process
+### Process
 
 1. Start a new [discussion](https://github.com/rancher-sandbox/rancher-turtles/discussions/new?category=adr) using the `ADR` category.
 
