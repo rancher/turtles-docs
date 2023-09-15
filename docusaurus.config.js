@@ -11,16 +11,16 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://rancher-sandbox.github.io',
+  url: 'https://docs.rancher-turtles.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/rancher-turtles-docs/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'rancher-sandbox', // Usually your GitHub org/user name.
   projectName: 'rancher-turtles-docs', // Usually your repo name.
-  scripts: [{src: 'https://plausible.io/js/plausible.js', async: true, defer: true, 'data-domain': 'rancher-sandbox.github.io'}],
+  scripts: [{ src: 'https://plausible.io/js/plausible.js', async: true, defer: true, 'data-domain': 'rancher-sandbox.github.io' }],
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
