@@ -6,17 +6,15 @@ sidebar_position: 3
 
 This section will guide you through creating your first cluster and importing it into Rancher Manager using a GitOps workflow with Fleet.
 
-## Prerequistites
-
-The following will be needed for this:
+## Prerequisites
 
 - Rancher Manager cluster with Rancher Turtles installed
 - Cluster API providers installed for your scenario - we'll be using the Docker infrastructure and Kubeadm bootstrap/controlplane providers in these instructions
-- **clusterctl** cli - see the [releases](https://github.com/kubernetes-sigs/cluster-api/releases)
+- **clusterctl** CLI - see the [releases](https://github.com/kubernetes-sigs/cluster-api/releases)
 
 ## Create your cluster definition
 
-The **clusterctl** cli can be used to generate the YAML for a cluster. When you run `clusterctl generate cluster` command it will connect to your management cluster to see what infrastructure providers you have installed. It will take care of replacing any tokens in the chosen template (a.k.a flavour) with values from environment variables.
+The **clusterctl** CLI can be used to generate the YAML for a cluster. When you run `clusterctl generate cluster` command is run, it will connect to the management cluster to see what infrastructure providers have been installed. Also, it will take care of replacing any tokens in the chosen template (a.k.a flavour) with values from environment variables.
 
 Alternatively, you can craft the YAML for your cluster manually. If you decide to do this then you can use the **templates** that infrastructure providers publish as part of their releases. For example, the AWS provider [publishes files](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v2.2.1) prefixed with **cluster-template** that can be used as a base. You will need to replace any tokens yourself or by using clusterctl (e.g. `clusterctl generate cluster test1 --from https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/download/v2.2.1/cluster-template-eks.yaml > cluster.yaml`).
 
@@ -54,13 +52,15 @@ namespace: default
 5. Commit the changes
 
 > The **fleet.yaml** is used to specify configuration options for fleet (see [docs](https://fleet.rancher.io/ref-fleet-yaml) for further details). In this instance its declaring that the cluster definitions should be added to the **default** namespace
-After the described steps there will be a repository created structure similar to the example: https://github.com/rancher-sandbox/rancher-turtles-fleet-example
+
+After the described steps there will be a repository created structure similar to the example: <https://github.com/rancher-sandbox/rancher-turtles-fleet-example>
+
 ## Mark Namespace for auto-import
 
 To automatically import a CAPI cluster into Rancher Manager there are 2 options:
 
 1. label a namespace so all clusters contained in it are imported.
-1. label an individual cluster definition so that its imported.
+1. label an individual cluster definition so that it's imported.
 
 In both cases the label is `cluster-api.cattle.io/rancher-auto-import`.
 
