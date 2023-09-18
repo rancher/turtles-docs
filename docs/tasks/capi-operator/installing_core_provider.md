@@ -17,7 +17,7 @@ metadata:
   name: cluster-api
   namespace: capi-system
 spec:
-  version: v1.4.4
+  version: v1.4.6
 ```
 
 **Note:** Only one CoreProvider can be installed at the same time on a single cluster.
