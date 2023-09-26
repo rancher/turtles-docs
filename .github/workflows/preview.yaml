@@ -1,0 +1,38 @@
+name: Deploy PR previews
+concurrency: preview-${{ github.ref }}
+on:
+  pull_request_target:
+    types:
+      - labeled
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+    branches:
+      - "*"
+
+permissions:
+  contents: write
+
+env:
+  BASE_URL: ${{ github.event.repository.name }}/pr-preview/pr-${{ github.event.number }}
+  URL: https://${{ github.repository_owner }}.github.io/
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'deploy preview')
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+      - run: yarn install --frozen-lockfile && yarn build
+      - uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: build
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: auto
