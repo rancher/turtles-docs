@@ -17,17 +17,40 @@ helm repo add turtles https://rancher-sandbox.github.io/rancher-turtles/
 helm repo update
 ```
 
-To install `Cluster API Operator` as a dependency to the `Rancher Turtles`, a set of additional helm flags should be specified:
+To install `Cluster API Operator` as a dependency to the `Rancher Turtles`, a minimum set of additional helm flags should be specified:
 
 ```bash
 helm install rancher-turtles turtles/rancher-turtles
     -n rancher-turtles-system
     --dependency-update
-    # Passing secret name and namespace for additional environment variables to be used when deploying CAPI provider
-    --set cluster-api-operator.cluster-api.configSecret.name=<secret_name>
-    --set cluster-api-operator.cluster-api.configSecret.namespace=<secret_namespace>
     --create-namespace --wait
     --timeout 180s
+```
+
+This is the basic, recommended configuration, which manages the creation of a secret containing the required feature flags (`CLUSTER_TOPOLOGY` and `EXP_CLUSTER_RESOURCE_SET` enabled) in the core provider namespace.
+
+If you need to override the default behavior and use an existing secret (or add custom environment variables), you can pass the secret name and namespace helm flags. In this case, as a user, you are in charge of managing the secret creation and its content, including the minimum required features: `CLUSTER_TOPOLOGY` and `EXP_CLUSTER_RESOURCE_SET` enabled.
+
+```bash
+helm install ...
+    # Passing secret name and namespace for additional environment variables
+    --set cluster-api-operator.cluster-api.configSecret.name=<secret_name>
+    --set cluster-api-operator.cluster-api.configSecret.namespace=<secret_namespace>
+```
+
+The following is an example of a user-managed secret `cluster-api-operator.cluster-api.configSecret.name=variables`, `cluster-api-operator.cluster-api.configSecret.namespace=default` with `CLUSTER_TOPOLOGY` and `EXP_CLUSTER_RESOURCE_SET` feature flags set and an extra custom variable:
+
+```yaml title="secret.yaml"
+apiVersion: v1
+kind: Secret
+metadata:
+  name: variables
+  namespace: default
+type: Opaque
+stringData:
+  CLUSTER_TOPOLOGY: "true"
+  EXP_CLUSTER_RESOURCE_SET: "true"
+  CUSTOM_ENV_VAR: "false"
 ```
 
 Any values passed to `helm` with the `cluster-api-operator` key will be passed along to the `Cluster API Operator` project. A full set of available values for the `Cluster API Operator` can be found in the operator [values.yaml](https://github.com/kubernetes-sigs/cluster-api-operator/blob/main/hack/charts/cluster-api-operator/values.yaml).
@@ -43,8 +66,9 @@ cluster-api-operator:
     enabled: true # indicates if core CAPI controllers should be installed (default: true)
     version: v1.4.6 # version of CAPI to install (default: v1.4.6)
     configSecret:
-      name: "" # name of the config secret to use for core CAPI controllers, used by the CAPI operator. See [CAPI operator](https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#installing-azure-infrastructure-provider) docs for more details.
-      namespace: "" # namespace of the config secret to use for core CAPI controllers, used by the CAPI operator.
+      name: "" # (provide only if using a user-managed secret) name of the config secret to use for core CAPI controllers, used by the CAPI operator. See [CAPI operator](https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#installing-azure-infrastructure-provider) docs for more details.
+      namespace: "" # (provide only if using a user-managed secret) namespace of the config secret to use for core CAPI controllers, used by the CAPI operator.
+      defaultName: "capi-env-variables" # default name for the automatically created secret.
     core:
       namespace: capi-system
       fetchConfig: # (only required for airgapped environments)
@@ -60,28 +84,6 @@ cluster-api-operator:
       fetchConfig:
         url: ""
         selector: ""
-```
-
-A `secret` with a set of environment variables should be passed to the `Cluster API Operator` installation.
-
-Example `variables/default` `secret` configuration with `CLUSTER_TOPOLOGY` and `EXP_CLUSTER_RESOURCE_SET` feature flags set:
-
-```sh title="helm install flags"
-helm install ...
---set cluster-api-operator.cluster-api.configSecret.name=variables
---set cluster-api-operator.cluster-api.configSecret.namespace=default
-```
-
-```yaml title="secret.yaml"
-apiVersion: v1
-kind: Secret
-metadata:
-  name: variables
-  namespace: default
-type: Opaque
-stringData:
-  CLUSTER_TOPOLOGY: "true"
-  EXP_CLUSTER_RESOURCE_SET: "true"
 ```
 
 ### Install Rancher Turtles Operator without `Cluster API Operator` as a Helm dependency
