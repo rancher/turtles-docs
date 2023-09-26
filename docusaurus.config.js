@@ -19,7 +19,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'rancher-sandbox', // Usually your GitHub org/user name.
-  projectName: 'rancher-turtles-docs', // Usually your repo name.
+  projectName: 'rancher-turtles-docs', // Usuaqglly your repo name.
   scripts: [{ src: 'https://plausible.io/js/plausible.js', async: true, defer: true, 'data-domain': 'rancher-sandbox.github.io' }],
 
   onBrokenLinks: 'throw',
