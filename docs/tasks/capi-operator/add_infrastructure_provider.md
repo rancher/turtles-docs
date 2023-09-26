@@ -40,7 +40,7 @@ spec:
 
 ### Deleting providers
 
-To remove the installed providers and all related kubernetes objects just delete the following CRs:
+To remove the installed providers and all related Kubernetes objectsm just delete the following CRs:
 
 ```bash
 kubectl delete coreprovider cluster-api

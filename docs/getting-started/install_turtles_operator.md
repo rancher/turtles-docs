@@ -2,36 +2,15 @@
 sidebar_position: 4
 ---
 
-# Install Rancher Turtles Operator without `Cluster API Operator` as a Helm dependency
+# Install Rancher Turtles Operator
 
-A `Rancher Turtles` requires a connection to the `Rancher Manager` cluster. This can be achieved by:
-
-1. Installing it in the same cluster as the `Rancher Manager`.
-
-*Note: In the future, we will support different deployment topologies*
-
-The recommended path of installation for the operator is by using `Helm`. To install it in the cluster, a repository should be added first:
-
-```bash
-helm repo add turtles https://rancher-sandbox.github.io/rancher-turtles/
-helm repo update
-```
-and then it can be installed into the `rancher-turtles-system` namespace with:
-
-```bash
-helm install rancher-turtles turtles/rancher-turtles
-    -n rancher-turtles-system
-    --set cluster-api-operator.enabled=false
-    --set cluster-api-operator.cluster-api.enabled=false
-    --create-namespace --wait
-    --dependency-update
-```
+This section walks through different installation options for the Rancher Turtles Operator.
 
 ### Install Rancher Turtles Operator with `Cluster API Operator` as a Helm dependency
 
 *Note: this section will be extended with additional details later*
 
-A `rancher-turtles` repository should be added first:
+A `rancher-turtles` chart repository should be added first:
 
 ```bash
 helm repo add turtles https://rancher-sandbox.github.io/rancher-turtles/
@@ -45,8 +24,8 @@ helm install rancher-turtles turtles/rancher-turtles
     -n rancher-turtles-system
     --dependency-update
     # Passing secret name and namespace for additional environment variables to be used when deploying CAPI provider
-	--set cluster-api-operator.cluster-api.configSecret.name=<secret_name>
-	--set cluster-api-operator.cluster-api.configSecret.namespace=<secret_namespace>
+    --set cluster-api-operator.cluster-api.configSecret.name=<secret_name>
+    --set cluster-api-operator.cluster-api.configSecret.namespace=<secret_namespace>
     --create-namespace --wait
     --timeout 180s
 ```
@@ -103,4 +82,29 @@ type: Opaque
 stringData:
   CLUSTER_TOPOLOGY: "true"
   EXP_CLUSTER_RESOURCE_SET: "true"
+```
+
+### Install Rancher Turtles Operator without `Cluster API Operator` as a Helm dependency
+
+A `Rancher Turtles` requires a connection to the `Rancher Manager` cluster. This can be achieved by:
+
+1. Installing it in the same cluster as the `Rancher Manager`.
+
+*Note: In the future, we will support different deployment topologies*
+
+The recommended path of installation for the operator is by using `Helm`. To install it in the cluster, a chart repository should be added first:
+
+```bash
+helm repo add turtles https://rancher-sandbox.github.io/rancher-turtles/
+helm repo update
+```
+and then it can be installed into the `rancher-turtles-system` namespace with:
+
+```bash
+helm install rancher-turtles turtles/rancher-turtles
+    -n rancher-turtles-system
+    --set cluster-api-operator.enabled=false
+    --set cluster-api-operator.cluster-api.enabled=false
+    --create-namespace --wait
+    --dependency-update
 ```
