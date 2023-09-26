@@ -44,6 +44,23 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Reference Guides',
+      collapsed: true,
+      items: [
+        {
+          type: 'category',
+          label: 'Architecture',
+          collapsed: true,
+          items: [
+            'reference-guides/architecture/intro',
+            'reference-guides/architecture/components',
+            'reference-guides/architecture/deployment',
+          ]
+        },
+      ],
+    },
+    {
+      type: 'category',
       label: 'Tasks',
       link: {
         type: 'generated-index',
