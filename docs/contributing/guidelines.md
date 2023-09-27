@@ -1,4 +1,7 @@
-# Contributing Guidelines
+---
+sidebar_position: 1
+---
+# Guidelines
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
@@ -10,6 +13,9 @@
   - [PR submission guidelines](#pr-submission-guidelines)
     - [Commit message formatting](#commit-message-formatting)
 - [Opening Issues](#opening-issues)
+- [How the Maintainers process contributions](#how-the-maintainers-process-contributions)
+  - [Prioritizing issues](#prioritizing-issues)
+  - [Reviewing PRs](#reviewing-prs)
 - [ADRs (Architectural Decision Records)](#adrs-architectural-decision-records)
   - [Process](#process)
 
@@ -49,15 +55,45 @@ If you’re a new to the project and want to help, but don’t know where to sta
     We have 2 forms of issues: bug reports and feature requests. If you are not sure which category you need, just make the best guess and provide as much information as possible.
 
 1. Interested in helping to improve:
-  - Rancher CAPI extension backend? Chime in on [`bugs`](https://github.com/rancher-sandbox/rancher-turtles/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+) or
-    [`help wanted` issues](https://github.com/rancher-sandbox/rancher-turtles/labels/help-wanted). 
-    If you are seeking to take on a bigger challenge or a more experienced contributor, check out [`feature requests`](https://github.com/rancher-sandbox/rancher-turtles/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Ffeature).
-  - extension UI? Take a look at [`open`](https://github.com/rancher-sandbox/rancher-turtles-ui/issues) or
-    [`help wanted` issues](https://github.com/rancher-sandbox/rancher-turtles-ui/labels/help-wanted).
-  - maybe, user-docs? :nerd_face: Then, jump straight into [`open` issues](https://github.com/rancher-sandbox/rancher-turtles-docs/issues) in the docs repository.
 
+- Rancher CAPI extension backend? Chime in on [`bugs`](https://github.com/rancher-sandbox/rancher-turtles/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+) or
+    [`help wanted` issues](https://github.com/rancher-sandbox/rancher-turtles/labels/help-wanted).
+    If you are seeking to take on a bigger challenge or a more experienced contributor, check out [`feature requests`](https://github.com/rancher-sandbox/rancher-turtles/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Ffeature).
+- extension UI? Take a look at [`open`](https://github.com/rancher-sandbox/rancher-turtles-ui/issues) or
+    [`help wanted` issues](https://github.com/rancher-sandbox/rancher-turtles-ui/labels/help-wanted).
+- maybe, user-docs? :nerd_face: Then, jump straight into [`open` issues](https://github.com/rancher-sandbox/rancher-turtles-docs/issues) in the docs repository.
+
+## Opening Issues
+
+These guides aim to help you write issues in a way which will ensure that they are processed
+as quickly as possible.
+
+_See below for [how issues are prioritized](#prioritizing-issues)_.
+
+**General rules**:
+
+1. Before opening anything, take a good look through existing issues.
+
+1. More is more: give as much information as it is humanly possible to give.
+  Highly detailed issues are more likely to be picked up because they can be prioritized and
+  scheduled for work faster. They are also more accessible
+  to the community, meaning that you may not have to wait for the core team to get to it.
+
+1. Please do not open an issue with a description that is **just** a link to another issue,
+  a link to a slack conversation, a quote from either one of those, or anything else
+  equally opaque. This raises the bar for entry and makes it hard for the community
+  to get involved. Take the time to write a proper description and summarise key points.
+
+1. Take care with formatting. Ensure the [markdown is tidy](https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/getting-started-with-writing-and-formatting-on-github),
+  use [code blocks](https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/creating-and-highlighting-code-blocks) etc etc.
+  The faster something can be read, the faster it can be dealt with.
+
+1. Keep it civil. Yes, it is annoying when things don't work, but it is way more fun helping out
+  someone who is not... the worst. Remember that conversing via text exacerbates
+  everyone's negativity bias, so throw in some emoji when in doubt :+1: :smiley: :rocket: :tada:.
 
 ## Submitting PRs
+
 ### Choosing something to work on
 
 If you are here to ask for help or request some new behaviour, this
@@ -89,7 +125,7 @@ wants to build up their open-source cred :muscle:.
 
 ### Developing rancher-turtles
 
-Check out a dedicated [notes](https://github.com/rancher-sandbox/rancher-turtles#development-setup) section in the rancher-turtles repository.
+Check out the dedicated [notes](./development.md) on getting started with development.
 
 ### Asking for help
 
@@ -100,7 +136,7 @@ If you need help at any stage of your work, please don't hesitate to ask!
 
 - If you are struggling with something while working on your PR, or aren't quite
   sure of your approach, you can open a [draft](https://github.blog/2019-02-14-introducing-draft-pull-requests/)
-  (prefix the title with `WIP: `) and explain what you are thinking.
+  (prefix the title with `WIP:`) and explain what you are thinking.
 
 ### PR submission guidelines
 
@@ -111,6 +147,7 @@ against the `main` branch.
 ```bash
 git push <remote-name> <feature-name>
 ```
+
 1. Submit a pull request.
     1. All code PR must be labeled with one of
         - ⚠️ (`:warning:`, major or breaking changes)
@@ -162,34 +199,57 @@ This allows the message to be easier to read on GitHub as well as in various git
 
 There is a template recommend for use [here](https://gist.github.com/yitsushi/656e68c7db141743e81b7dcd23362f1a).
 
-## Opening Issues
+## How the Maintainers process contributions
 
-These guides aim to help you write issues in a way which will ensure that they are processed
-as quickly as possible.
+### Prioritizing issues
 
-_See below for [how issues are prioritized](#prioritizing-issues)_.
+The core team regularly processes incoming issues. There may be some delay over holiday periods.
 
-**General rules**:
+Every issue will be assigned a `priority/<x>` label. The levels of priorities are:
 
-1. Before opening anything, take a good look through existing issues.
+- [`critical-urgent`](https://github.com/rancher-sandbox/rancher-turtles/labels/priority%2Fcritical-urgent): These are time sensitive issues which should be picked up immediately.
+  If an issue labelled `critical` is not assigned or being actively worked on,
+  someone is expected to drop what they're doing immediately to work on it.
+  This usually means the core team, but community members are welcome to claim
+  issues at any priority level if they get there first. _However, given the pressing
+  timeframe, should a non-core contributor request to be assigned to a `critical` issue,
+  they will be paired with a core team-member to manage the tracking, communication and release of any fix
+  as well as to assume responsibility of all progess._
 
-1. More is more: give as much information as it is humanly possible to give.
-  Highly detailed issues are more likely to be picked up because they can be prioritized and
-  scheduled for work faster. They are also more accessible
-  to the community, meaning that you may not have to wait for the core team to get to it.
+- [`important-soon`](https://github.com/rancher-sandbox/rancher-turtles/labels/priority%2Fimportant-soon): Must be assigned as soon as capacity becomes available.
+  Ideally something should be delivered in time for the next release.
 
-1. Please do not open an issue with a description that is **just** a link to another issue,
-  a link to a slack conversation, a quote from either one of those, or anything else
-  equally opaque. This raises the bar for entry and makes it hard for the community
-  to get involved. Take the time to write a proper description and summarise key points.
+- [`important-longterm`](https://github.com/rancher-sandbox/rancher-turtles/labels/priority%2Fimportant-longterm): Important over the long term, but may not be currently
+  staffed and/or may require multiple releases to complete.
 
-1. Take care with formatting. Ensure the [markdown is tidy](https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/getting-started-with-writing-and-formatting-on-github),
-  use [code blocks](https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/creating-and-highlighting-code-blocks) etc etc.
-  The faster something can be read, the faster it can be dealt with.
+- [`backlog`](https://github.com/rancher-sandbox/rancher-turtles/labels/priority%2Fbacklog): There appears to be general agreement that this would be good to have,
+  but we may not have anyone available to work on it right now or in the immediate future.
+  PRs are still very welcome, although it might take a while to get them reviewed if
+  reviewers are fully occupied with higher priority issues, for example immediately before a release.
 
-1. Keep it civil. Yes, it is annoying when things don't work, but it is way more fun helping out
-  someone who is not... the worst. Remember that conversing via text exacerbates
-  everyone's negativity bias, so throw in some emoji when in doubt :+1: :smiley: :rocket: :tada:.
+These priority categories have been inspired by [the Kubernetes contributing guide](https://github.com/kubernetes/community/blob/master/contributors/guide/issue-triage.md).
+
+Other labels include:
+
+- [`adr-required`](https://github.com/rancher-sandbox/rancher-turtles/labels/adr-required):
+  Indicates that the issue or PR contains a decision that needs to be documented in a [ADR](#adrs-architectural-decision-records) _before_
+  it can be worked on.
+
+- [`needs-investigation`](https://github.com/rancher-sandbox/rancher-turtles/labels/needs-investigation):  There is currently insufficient information to either categorize properly,
+  or to understand and implement a solution. This could be because the issue opener did
+  not provide enough relevant information, or because more in-depth research is required
+  before work can begin.
+
+### Reviewing PRs
+
+The core team aims to clear the PR queue as quickly as possible. Community members
+should also feel free to keep an eye on things and provide their own thoughts and expertise.
+
+High-value and/or high priority contributions will be processed as quickly as possible,
+while lower priority or nice-to-have things may take a little longer to get approved.
+
+To help facilitate a smoother and faster review, follow the guidelines [above](#pr-submission-guidelines).
+Submissions which do not meet standards will be de-prioritised for review.
 
 ## ADRs (Architectural Decision Records)
 

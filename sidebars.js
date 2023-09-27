@@ -84,7 +84,16 @@ const sidebars = {
         },
       ]
     },
-    'CONTRIBUTING'
+    {
+      type: 'category',
+      label: 'Contributing',
+      collapsed: true,
+      items: [
+        'contributing/intro',
+        'contributing/guidelines',
+        'contributing/development',
+      ],
+    }
   ]
 
   // But you can create a sidebar manually
