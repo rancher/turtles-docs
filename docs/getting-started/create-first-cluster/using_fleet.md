@@ -14,11 +14,13 @@ This section will guide you through creating your first cluster and importing it
 
 ## Create your cluster definition
 
-The **clusterctl** CLI can be used to generate the YAML for a cluster. When you run `clusterctl generate cluster` command is run, it will connect to the management cluster to see what infrastructure providers have been installed. Also, it will take care of replacing any tokens in the chosen template (a.k.a flavour) with values from environment variables.
+The **clusterctl** CLI can be used to generate the YAML for a cluster. When you run `clusterctl generate cluster`, it will connect to the management cluster to see what infrastructure providers have been installed. Also, it will take care of replacing any tokens in the chosen template (a.k.a flavour) with values from environment variables.
 
 Alternatively, you can craft the YAML for your cluster manually. If you decide to do this then you can use the **templates** that infrastructure providers publish as part of their releases. For example, the AWS provider [publishes files](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v2.2.1) prefixed with **cluster-template** that can be used as a base. You will need to replace any tokens yourself or by using clusterctl (e.g. `clusterctl generate cluster test1 --from https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/download/v2.2.1/cluster-template-eks.yaml > cluster.yaml`).
 
-> This guide does not use ClusterClass. Templates that use ClusterClass will require that the experimental feature be enabled.
+:::note
+This guide does not use ClusterClass. Templates that use ClusterClass will require that the experimental feature be enabled.
+:::
 
 To generate the YAML for the cluster do the following (assuming the Docker infrastructure provider is being used):
 
@@ -36,7 +38,9 @@ clusterctl generate cluster cluster1 \
 
 2. View **cluster1.yaml** to ensure there are no tokens. You can make any changes you want as well.
 
-> The Cluster API quickstart guide contains more detail. Read the steps related to this section [here](https://cluster-api.sigs.k8s.io/user/quick-start.html#required-configuration-for-common-providers).
+:::tip
+The Cluster API quickstart guide contains more detail. Read the steps related to this section [here](https://cluster-api.sigs.k8s.io/user/quick-start.html#required-configuration-for-common-providers).
+:::
 
 ## Create your repo for Fleet
 
@@ -51,7 +55,9 @@ namespace: default
 
 5. Commit the changes
 
-> The **fleet.yaml** is used to specify configuration options for fleet (see [docs](https://fleet.rancher.io/ref-fleet-yaml) for further details). In this instance its declaring that the cluster definitions should be added to the **default** namespace
+:::note
+The **fleet.yaml** is used to specify configuration options for fleet (see [docs](https://fleet.rancher.io/ref-fleet-yaml) for further details). In this instance its declaring that the cluster definitions should be added to the **default** namespace
+:::
 
 After the described steps there will be a repository created structure similar to the example: <https://github.com/rancher-sandbox/rancher-turtles-fleet-example>
 

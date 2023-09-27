@@ -108,9 +108,9 @@ If you need help at any stage of your work, please don't hesitate to ask!
 1. Push your changes to the branch on your fork and submit a pull request to the original repository
 against the `main` branch.
 
-    ```bash
-    git push <remote-name> <feature-name>
-    ```
+```bash
+git push <remote-name> <feature-name>
+```
 1. Submit a pull request.
     1. All code PR must be labeled with one of
         - ⚠️ (`:warning:`, major or breaking changes)
@@ -193,7 +193,9 @@ _See below for [how issues are prioritized](#prioritizing-issues)_.
 
 ## ADRs (Architectural Decision Records)
 
-**Note:** please feel free to skip [this](#adrs-architectural-decision-records) and [sub-section](#process) below, since they are only relevant to the [rancher-turtles](https://github.com/rancher-sandbox/rancher-turtles) repository.
+:::note
+Please feel free to skip [this](#adrs-architectural-decision-records) and [sub-section](#process) below, since they are only relevant to the [rancher-turtles](https://github.com/rancher-sandbox/rancher-turtles) repository.
+:::
 
 Any impactful decisions to the architecture, design, development and behaviour
 of rancher-turtles must be recorded in the form of an [ADR](https://engineering.atspotify.com/2020/04/14/when-should-i-write-an-architecture-decision-record/).
