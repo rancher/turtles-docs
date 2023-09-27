@@ -34,7 +34,10 @@ helm install capi-operator capi-operator/cluster-api-operator
 	--set cert-manager.enabled=true
 	--timeout 90s --wait # Core Cluster API with kubeadm bootstrap and control plane providers will also be installed
 ```
-*Note: `cert-manager` is a hard requirement for `CAPI` and `Cluster API Operator`*
+
+:::note
+`cert-manager` is a hard requirement for `CAPI` and `Cluster API Operator`*
+:::
 
 To provide additional environment variables, enable feature gates, or supply cloud credentials, similar to `clusterctl` [common provider](https://cluster-api.sigs.k8s.io/user/quick-start#initialization-for-common-providers), variables secret with `name` and a `namespace` of the secret could be specified for the `Cluster API Operator` as shown below.
 
@@ -71,4 +74,6 @@ helm install ... --set infrastructure="docker:v1.4.6;azure:v1.4.6"
 
 The `infrastructure` flag is set to `docker:v1.4.6;azure:v1.4.6`, representing the desired provider names. This means that the `Cluster API Operator` will install and manage multiple providers, `Docker` and `Azure` respectively, with versions `v1.4.6` specified in this example.
 
+:::tip
 For more fine-grained control of the providers and other components installed with CAPI, see the [Add the infrastructure provider](../tasks/capi-operator/add_infrastructure_provider.md) section.
+:::

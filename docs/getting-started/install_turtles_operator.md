@@ -8,8 +8,6 @@ This section walks through different installation options for the Rancher Turtle
 
 ### Install Rancher Turtles Operator with `Cluster API Operator` as a Helm dependency
 
-*Note: this section will be extended with additional details later*
-
 A `rancher-turtles` chart repository should be added first:
 
 ```bash
@@ -90,7 +88,9 @@ A `Rancher Turtles` requires a connection to the `Rancher Manager` cluster. This
 
 1. Installing it in the same cluster as the `Rancher Manager`.
 
-*Note: In the future, we will support different deployment topologies*
+:::tip
+For information on deployment options, refer to [Deployment Scenarios](../reference-guides/architecture/deployment)
+:::
 
 The recommended path of installation for the operator is by using `Helm`. To install it in the cluster, a chart repository should be added first:
 
