@@ -25,9 +25,9 @@ helm install rancher-turtles turtles/rancher-turtles
     --timeout 180s
 ```
 
-This is the basic, recommended configuration, which manages the creation of a secret containing the required feature flags (`CLUSTER_TOPOLOGY` and `EXP_CLUSTER_RESOURCE_SET` enabled) in the core provider namespace.
+This is the basic, recommended configuration, which manages the creation of a secret containing the required feature flags (`CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled) in the core provider namespace.
 
-If you need to override the default behavior and use an existing secret (or add custom environment variables), you can pass the secret name and namespace helm flags. In this case, as a user, you are in charge of managing the secret creation and its content, including the minimum required features: `CLUSTER_TOPOLOGY` and `EXP_CLUSTER_RESOURCE_SET` enabled.
+If you need to override the default behavior and use an existing secret (or add custom environment variables), you can pass the secret name and namespace helm flags. In this case, as a user, you are in charge of managing the secret creation and its content, including the minimum required features: `CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled.
 
 ```bash
 helm install ...
@@ -36,7 +36,7 @@ helm install ...
     --set cluster-api-operator.cluster-api.configSecret.namespace=<secret_namespace>
 ```
 
-The following is an example of a user-managed secret `cluster-api-operator.cluster-api.configSecret.name=variables`, `cluster-api-operator.cluster-api.configSecret.namespace=default` with `CLUSTER_TOPOLOGY` and `EXP_CLUSTER_RESOURCE_SET` feature flags set and an extra custom variable:
+The following is an example of a user-managed secret `cluster-api-operator.cluster-api.configSecret.name=variables`, `cluster-api-operator.cluster-api.configSecret.namespace=default` with `CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` feature flags set and an extra custom variable:
 
 ```yaml title="secret.yaml"
 apiVersion: v1
@@ -48,6 +48,7 @@ type: Opaque
 stringData:
   CLUSTER_TOPOLOGY: "true"
   EXP_CLUSTER_RESOURCE_SET: "true"
+  EXP_MACHINE_POOL: "true"
   CUSTOM_ENV_VAR: "false"
 ```
 
