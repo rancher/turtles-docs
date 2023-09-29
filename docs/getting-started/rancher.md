@@ -6,23 +6,32 @@ sidebar_position: 2
 
 ## Installing Rancher
 
-To install `Rancher` in an existing or new Kubernetes cluster, you can use the following steps:
+*If you're already running Rancher, you can skip this section and jump to [Setting up Rancher for Rancher Turtles](#setting-up-rancher-for-rancher-turtles).*
 
-1. First, make sure to follow one of the official [installation guides](https://ranchermanager.docs.rancher.com/pages-for-subheaders/installation-and-upgrade) for `Rancher`.
-2. When installing `Rancher` using the `helm` command, use the `--set` option to specify the `features` parameter. For the `embedded-cluster-api` feature, set the value to `false` to disable it.
-3. Use the `--version` option to specify the version of `Rancher` you want to install. In this case, use the [recommended](../getting-started/intro.md#prerequisites) `Rancher` version for `Rancher Turtles`.
+Helm is the recommended way to install `Rancher` in an existing or new Kubernetes cluster.
 
-Here's the complete command to install `Rancher` with the `embedded-cluster-api` feature disabled. Replace `<rancher-hostname>` with the actual hostname of your `Rancher` server:
+:::tip
+Make sure to follow one of the official [installation guides](https://ranchermanager.docs.rancher.com/pages-for-subheaders/installation-and-upgrade) for Rancher.
+:::
+
+Here's a minimal configuration example of a command to install `Rancher`:
 
 ```bash
-helm install rancher rancher-stable/rancher --set features=embedded-cluster-api=false --set hostname=<rancher-hostname> --set version=<rancher-version> --set namespace=cattle-system --create-namespace --wait
+helm install rancher rancher-stable/rancher
+    --namespace cattle-system
+    --create-namespace
+    --set hostname=<rancher-hostname>
+    --version <rancher-version>
+    --wait
 ```
 
-## Existing Rancher installation
+Replace `<rancher-hostname>` with the actual hostname of your `Rancher` server and use the `--version` option to specify the version of `Rancher` you want to install. In this case, use the [recommended](../getting-started/intro.md#prerequisites) `Rancher` version for `Rancher Turtles`.
 
-To install `Rancher Turtles` in an existing `Rancher` cluster, follow these steps:
+## Setting up Rancher for Rancher Turtles
 
-1. Create a `feature.yaml` file, with `embedded-cluster-api` feature disabled:
+Before installing Rancher Turtles in your Rancher environment, the `embedded-cluster-api` functionality must be disabled:
+
+1. Create a `feature.yaml` file, with `embedded-cluster-api` set to false:
 ```yaml title="feature.yaml"
 apiVersion: management.cattle.io/v3
 kind: Feature
@@ -35,3 +44,5 @@ spec:
 ```bash
 kubectl apply -f feature.yaml
 ```
+
+Your Rancher installation is now ready to install and use Rancher Turtles! 🎉
