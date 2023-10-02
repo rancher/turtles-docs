@@ -50,7 +50,7 @@ If you’re a new to the project and want to help, but don’t know where to sta
       - Adding a new UI functionality!
 
    (See also [Choosing something to work on](#choosing-something-to-work-on) below.)
-1. Open an [issue](#opening-issues). :interrobang:
+1. Open an [issue](#opening-issues) :interrobang:
 
     We have 2 forms of issues: bug reports and feature requests. If you are not sure which category you need, just make the best guess and provide as much information as possible.
 
@@ -154,7 +154,7 @@ git push <remote-name> <feature-name>
         - ✨ (`:sparkles:`, feature additions)
         - 🐛 (`:bug:`, patch and bugfixes)
         - 📖 (`:book:`, documentation or proposals)
-        - 🌱 (`:seedling:`, minor or othe
+        - 🌱 (`:seedling:`, minor or other)
 
 Where possible, please squash your commits to ensure a tidy and descriptive history.
 
