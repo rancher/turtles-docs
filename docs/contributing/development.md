@@ -4,21 +4,24 @@ sidebar_position: 2
 
 # Development setup
 
-Prerequisites:
+## Prerequisites:
 
 - [kind](https://kind.sigs.k8s.io/)
 - [helm](https://helm.sh/)
 - [clusterctl](https://cluster-api.sigs.k8s.io/user/quick-start.html#install-clusterctl)
 - [tilt](https://tilt.dev/)
 
-To create a local development environment:
 
-1. Create **tilt-settings.yaml** like this:
+## Create a local development environment
+
+1. Clone the [Rancher Turtles](https://github.com/rancher-sandbox/rancher-turtles) repository locally
+
+2. Create **tilt-settings.yaml**:
 
 ```yaml
 {
     "k8s_context": "k3d-rancher-test",
-    "default_registry": "ghcr.io/richardcase",
+    "default_registry": "ghcr.io/rancher-turtles-dev",
     "debug": {
         "turtles": {
             "continue": true,
@@ -28,8 +31,8 @@ To create a local development environment:
 }
 ```
 
-2. Open a terminal in the root of the repo
-3. Run the following
+3. Open a terminal in the root of the Rancher Turtles repository
+4. Run the following:
 
 ```bash
 make dev-env
@@ -38,17 +41,17 @@ make dev-env
 RANCHER_HOSTNAME=my.customhost.dev make dev-env
 ```
 
-4. When tilt has started then start ngrok or inlets
+5. When tilt has started, open a new terminal and start ngrok or inlets
 
 ```bash
 kubectl port-forward --namespace cattle-system svc/rancher 10000:443
 ngrok http https://localhost:10000
 ```
 
-What happens when you run `make dev-env`?
+## What happens when you run `make dev-env`?
 
-1. A [kind](https://kind.sigs.k8s.io/) cluster is created with the following [configuration](https://github.com/rancher-sandbox/rancher-turtles/blob/main/scripts/kind-cluster-with-extramounts.yaml)
-2. [Cert manager](https://cert-manager.io/) is installed on the cluster, we require it for running `Rancher turtes` extension.
-3. `clusterctl` is used to bootstrap CAPI components onto the cluster, we use a default configuraion that includes: core Cluster API controller, Kubeadm bootstrap and control plane providers, Docker infrastructure provider.
-4. `Rancher manager` is installed using helm.
-5. Run `tilt up` to start the development environment.
+1. A [kind](https://kind.sigs.k8s.io/) cluster is created with the following [configuration](https://github.com/rancher-sandbox/rancher-turtles/blob/main/scripts/kind-cluster-with-extramounts.yaml).
+1. [Cert manager](https://cert-manager.io/) is installed on the cluster, which is a requirement for running `Rancher turtes` extension.
+1. `clusterctl` is used to bootstrap CAPI components onto the cluster, and a default configuration includes: core Cluster API controller, Kubeadm bootstrap and control plane providers, Docker infrastructure provider.
+1. `Rancher manager` is installed using helm.
+1. `tilt up` is run to start the development environment.

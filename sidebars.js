@@ -36,8 +36,8 @@ const sidebars = {
           collapsed: false,
           items: [
             'getting-started/create-first-cluster/intro',
-            'getting-started/create-first-cluster/using_kubectl',
             'getting-started/create-first-cluster/using_fleet',
+            'getting-started/create-first-cluster/using_kubectl',
           ]
         },
       ],
