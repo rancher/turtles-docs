@@ -18,12 +18,18 @@ helm repo update
 To install `Cluster API Operator` as a dependency to the `Rancher Turtles`, a minimum set of additional helm flags should be specified:
 
 ```bash
-helm install rancher-turtles turtles/rancher-turtles
+helm install rancher-turtles turtles/rancher-turtles --version <chart-version>
     -n rancher-turtles-system
     --dependency-update
     --create-namespace --wait
     --timeout 180s
 ```
+
+:::note
+- If `cert-manager` is already available in the cluster, you can disable its installation as a Rancher Turtles dependency to avoid conflicts:
+`--set cluster-api-operator.cert-manager.enabled=false`
+- For a list of Rancher Turtles versions, refer to [Releases page](https://github.com/rancher-sandbox/rancher-turtles/releases).
+:::
 
 This is the basic, recommended configuration, which manages the creation of a secret containing the required feature flags (`CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled) in the core provider namespace.
 
@@ -104,7 +110,7 @@ helm repo update
 and then it can be installed into the `rancher-turtles-system` namespace with:
 
 ```bash
-helm install rancher-turtles turtles/rancher-turtles
+helm install rancher-turtles turtles/rancher-turtles --version <chart-version>
     -n rancher-turtles-system
     --set cluster-api-operator.enabled=false
     --set cluster-api-operator.cluster-api.enabled=false
