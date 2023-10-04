@@ -9,7 +9,7 @@ This section will guide you through creating your first cluster and importing it
 ## Prerequisites
 
 - Rancher Manager cluster with Rancher Turtles installed
-- Cluster API providers installed for your scenario - we'll be using the Docker infrastructure and Kubeadm bootstrap/controlplane providers in these instructions
+- Cluster API providers installed for your scenario - we'll be using the Docker infrastructure and Kubeadm bootstrap/control plane providers in these instructions - see [Initialization for common providers](https://cluster-api.sigs.k8s.io/user/quick-start.html#initialization-for-common-providers)
 - **clusterctl** CLI - see the [releases](https://github.com/kubernetes-sigs/cluster-api/releases)
 
 ## Create your cluster definition

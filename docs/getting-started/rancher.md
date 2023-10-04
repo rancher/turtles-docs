@@ -29,7 +29,11 @@ Replace `<rancher-hostname>` with the actual hostname of your `Rancher` server a
 
 ## Setting up Rancher for Rancher Turtles
 
-Before installing Rancher Turtles in your Rancher environment, the `embedded-cluster-api` functionality must be disabled:
+Before installing Rancher Turtles in your Rancher environment, Rancher's `embedded-cluster-api` functionality must be disabled. This includes also cleaning up Rancher specific webhooks that otherwise would conflict with CAPI ones.
+
+:::note**Caution!**
+Follow these instructions in the order below. Altering the execution sequence may cause errors due to inconsistent resource configuration.
+:::
 
 1. Create a `feature.yaml` file, with `embedded-cluster-api` set to false:
 ```yaml title="feature.yaml"
@@ -43,6 +47,11 @@ spec:
 2. Use `kubectl` to apply the `feature.yaml` file to the cluster:
 ```bash
 kubectl apply -f feature.yaml
+```
+3. Delete the remaining Rancher webhooks to avoid conflicts with CAPI.
+```bash
+kubectl delete mutatingwebhookconfigurations.admissionregistration.k8s.io mutating-webhook-configuration
+kubectl delete validatingwebhookconfigurations.admissionregistration.k8s.io validating-webhook-configuration
 ```
 
 Your Rancher installation is now ready to install and use Rancher Turtles! 🎉
