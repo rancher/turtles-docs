@@ -14,3 +14,8 @@ Please checkout out [getting started guide](./getting-started/intro).
 
 This section focuses on implementation details, including 
 [architecture](./reference-guides/architecture/intro) and how Rancher Turtles integrates with Rancher.
+
+## Security
+
+This section focuses on security-related topics:
+- [SLSA](./security/slsa.md) 
