@@ -1,0 +1,34 @@
+name: Publish new docs version
+
+on:
+  push:
+    tags:
+    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+env:
+  TAG: ${{ github.ref_name }}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Prepare the tag
+        run: echo "TAG=${TAG#v}" >> $GITHUB_ENV
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Create a new version
+        run: yarn docusaurus docs:version ${{ env.TAG }}
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Add docs version ${{ env.TAG }}'
+          push: false
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
