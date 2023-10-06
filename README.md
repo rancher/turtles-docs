@@ -24,6 +24,10 @@ $ yarn build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+### Versioning
+
+This project follows docusaurus [versioning](https://docusaurus.io/docs/versioning#configuring-versioning-behavior) guidelines, including the process of [archiving](https://docusaurus.io/docs/versioning#keep-the-number-of-versions-small) the old versions.
+
 ### Deployment
 
 Using SSH:
