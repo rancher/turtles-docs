@@ -93,6 +93,14 @@ const sidebars = {
         'contributing/guidelines',
         'contributing/development',
       ],
+    },
+    {
+      type: 'category',
+      label: 'Security',
+      collapsed: true,
+      items: [
+        'security/slsa',
+      ],
     }
   ]
 
