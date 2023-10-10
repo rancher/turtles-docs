@@ -40,6 +40,12 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          versions: {
+            current: {
+              label: 'Next 🚧',
+              badge: false,
+            },
+          },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -79,7 +85,12 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/rancher-sandbox/rancher-turtles-docs',
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownActiveClassDisabled: true,
+          },
+          {
+            href: 'https://github.com/rancher-sandbox/rancher-turtles-doc',
             label: 'GitHub',
             position: 'right',
           },
