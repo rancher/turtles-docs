@@ -90,7 +90,7 @@ const config = {
             dropdownActiveClassDisabled: true,
           },
           {
-            href: 'https://github.com/rancher-sandbox/rancher-turtles-doc',
+            href: 'https://github.com/rancher-sandbox/rancher-turtles-docs',
             label: 'GitHub',
             position: 'right',
           },
