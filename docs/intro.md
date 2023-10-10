@@ -12,7 +12,7 @@ Please checkout out [getting started guide](./getting-started/intro).
 
 ## Demo
 
-![demo](./early-access-demo.gif)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lGsr7KfBjgU?si=ORkzuAJjcdXUXMxh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Reference Guides
 
@@ -22,4 +22,5 @@ This section focuses on implementation details, including
 ## Security
 
 This section focuses on security-related topics:
-- [SLSA](./security/slsa.md) 
+
+- [SLSA](./security/slsa.md)
