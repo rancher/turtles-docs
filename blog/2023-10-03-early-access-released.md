@@ -13,4 +13,4 @@ Rancher Turtles is released as an Extension for Rancher, allowing traditional Ra
 
 Rancher's Cluster API Extension is initially released as part of our early adopter program, enabling close collaboration with our customers, shaping jointly a mature solution that is battle proven. We are aiming to bring early Q1 Cluster API into GA and production support. If you are interested in joining our Early Adopter Program for Cluster API, don't hesitate to reach out.
 
-If you want to get your hands wet, take a look at our documentation and give it a try. If you are stuck, have question or feedback, please ping us in the [Rancher Users #general slack channel](https://rancher-users.slack.com/archives/C3ASABBD1).
+If you want to get your hands wet, take a look at our documentation and give it a try. If you are stuck, have question or feedback, please ping us in the [Rancher Users #cluster-api slack channel](https://rancher-users.slack.com/archives/C060L985ZGC).
