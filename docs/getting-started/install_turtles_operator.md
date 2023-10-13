@@ -6,6 +6,14 @@ sidebar_position: 4
 
 This section walks through different installation options for the Rancher Turtles Operator.
 
+:::info
+Before [installing Rancher Turtles](#install-rancher-turtles-operator-with-cluster-api-operator-as-a-helm-dependency) in your Rancher environment, Rancher's `embedded-cluster-api` functionality must be disabled. This includes also cleaning up Rancher-specific webhooks that otherwise would conflict with CAPI ones.
+
+To simplify setting up Rancher for installing Rancher Turtles, the official Rancher Turtles Helm chart includes a `pre-install` hook that applies these changes, making it transparent to the end user:
+- Disable the `embedded-cluster-api` feature in Rancher.
+- Delete the `mutating-webhook-configuration` and `validating-webhook-configuration` webhooks that are no longer needed.
+:::
+
 ### Install Rancher Turtles Operator with `Cluster API Operator` as a Helm dependency
 
 A `rancher-turtles` chart repository should be added first:
