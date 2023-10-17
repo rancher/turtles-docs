@@ -57,6 +57,7 @@ const sidebars = {
             'reference-guides/architecture/deployment',
           ]
         },
+      'reference-guides/rancher-turtles-chart/values',
       ],
     },
     {

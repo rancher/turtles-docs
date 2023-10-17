@@ -66,38 +66,9 @@ stringData:
   CUSTOM_ENV_VAR: "false"
 ```
 
-Any values passed to `helm` with the `cluster-api-operator` key will be passed along to the `Cluster API Operator` project. A full set of available values for the `Cluster API Operator` can be found in the operator [values.yaml](https://github.com/kubernetes-sigs/cluster-api-operator/blob/main/hack/charts/cluster-api-operator/values.yaml).
-
-Currently the available set of values for the `cluster-api-operator` setup in the `rancher-turtles`:
-
-```yaml
-cluster-api-operator:
-  enabled: true # indicates if CAPI operator should be installed (default: true)
-  cert-manager:
-    enabled: true # indicates if cert-manager should be installed (default: true)
-  cluster-api:
-    enabled: true # indicates if core CAPI controllers should be installed (default: true)
-    version: v1.4.6 # version of CAPI to install (default: v1.4.6)
-    configSecret:
-      name: "" # (provide only if using a user-managed secret) name of the config secret to use for core CAPI controllers, used by the CAPI operator. See [CAPI operator](https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#installing-azure-infrastructure-provider) docs for more details.
-      namespace: "" # (provide only if using a user-managed secret) namespace of the config secret to use for core CAPI controllers, used by the CAPI operator.
-      defaultName: "capi-env-variables" # default name for the automatically created secret.
-    core:
-      namespace: capi-system
-      fetchConfig: # (only required for airgapped environments)
-        url: ""  # url to fetch config from, used by the CAPI operator. See [CAPI operator](https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec) docs for more details.
-        selector: ""  # selector to use for fetching config, used by the CAPI operator.
-    kubeadmBootstrap:
-      namespace: capi-kubeadm-bootstrap-system
-      fetchConfig:
-        url: ""
-        selector: ""
-    kubeadmControlPlane:
-      namespace: capi-kubeadm-control-plane-system
-      fetchConfig:
-        url: ""
-        selector: ""
-```
+:::info
+For detailed information on the values supported by the chart and their usage, refer to [Helm chart options](../reference-guides/rancher-turtles-chart/values)
+:::
 
 ### Install Rancher Turtles Operator without `Cluster API Operator` as a Helm dependency
 
