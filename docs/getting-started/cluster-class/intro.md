@@ -12,7 +12,7 @@ ClusterClass is an experiment feature of Cluster API. As with any experimental f
 
 ## Pre-requisities
 
-To use ClusterClass it needs to be enabled for core Cluster API and any provider that supports it. This is done by setting the `CLUSTER_TOPOLOGY` variable to false.
+To use ClusterClass it needs to be enabled for core Cluster API and any provider that supports it. This is done by setting the `CLUSTER_TOPOLOGY` variable to `true`.
 
 The Rancher Turtles Helm chart will set this variable by default when its installed. However, when enabling additional providers you will have to ensure `CLUSTER_TOPOLGY` is set in the providers secret. For example:
 
