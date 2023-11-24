@@ -36,7 +36,12 @@ spec:
  version: v1.9.3
  configSecret:
    name: azure-variables
+
 ```
+:::tip
+**There are known issues when provisioning clusters using CAPZ v1.12.0.**
+We recommend using version v1.11.5.
+:::
 
 ### Deleting providers
 
