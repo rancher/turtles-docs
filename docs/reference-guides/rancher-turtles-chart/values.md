@@ -46,7 +46,6 @@ cluster-api-operator:
     version: v1.4.6 # version of CAPI to install (default: v1.4.6)
     configSecret:
       name: "" # (provide only if using a user-managed secret) name of the config secret to use for core CAPI controllers, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#installing-azure-infrastructure-provider docs for more details.
-      namespace: "" # (provide only if using a user-managed secret) namespace of the config secret to use for core CAPI controllers, used by the CAPI operator.
       defaultName: "capi-env-variables" # default name for the automatically created secret.
     core:
       namespace: capi-system
