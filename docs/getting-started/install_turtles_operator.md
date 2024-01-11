@@ -26,10 +26,10 @@ helm repo update
 To install `Cluster API Operator` as a dependency to the `Rancher Turtles`, a minimum set of additional helm flags should be specified:
 
 ```bash
-helm install rancher-turtles turtles/rancher-turtles --version v0.2.0
-    -n rancher-turtles-system
-    --dependency-update
-    --create-namespace --wait
+helm install rancher-turtles turtles/rancher-turtles --version v0.4.0 \
+    -n rancher-turtles-system \
+    --dependency-update \
+    --create-namespace --wait \
     --timeout 180s
 ```
 
@@ -41,23 +41,22 @@ helm install rancher-turtles turtles/rancher-turtles --version v0.2.0
 
 This is the basic, recommended configuration, which manages the creation of a secret containing the required feature flags (`CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled) in the core provider namespace.
 
-If you need to override the default behavior and use an existing secret (or add custom environment variables), you can pass the secret name and namespace helm flags. In this case, as a user, you are in charge of managing the secret creation and its content, including the minimum required features: `CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled.
+If you need to override the default behavior and use an existing secret (or add custom environment variables), you can pass the secret name helm flag. In this case, as a user, you are in charge of managing the secret creation and its content, including the minimum required features: `CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled.
 
 ```bash
 helm install ...
     # Passing secret name and namespace for additional environment variables
     --set cluster-api-operator.cluster-api.configSecret.name=<secret_name>
-    --set cluster-api-operator.cluster-api.configSecret.namespace=<secret_namespace>
 ```
 
-The following is an example of a user-managed secret `cluster-api-operator.cluster-api.configSecret.name=variables`, `cluster-api-operator.cluster-api.configSecret.namespace=default` with `CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` feature flags set and an extra custom variable:
+The following is an example of a user-managed secret `cluster-api-operator.cluster-api.configSecret.name=variables` with `CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` feature flags set and an extra custom variable:
 
 ```yaml title="secret.yaml"
 apiVersion: v1
 kind: Secret
 metadata:
   name: variables
-  namespace: default
+  namespace: rancher-turtles-system
 type: Opaque
 stringData:
   CLUSTER_TOPOLOGY: "true"
@@ -89,7 +88,7 @@ helm repo update
 and then it can be installed into the `rancher-turtles-system` namespace with:
 
 ```bash
-helm install rancher-turtles turtles/rancher-turtles --version v0.2.0
+helm install rancher-turtles turtles/rancher-turtles --version v0.4.0
     -n rancher-turtles-system
     --set cluster-api-operator.enabled=false
     --set cluster-api-operator.cluster-api.enabled=false

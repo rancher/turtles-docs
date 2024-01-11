@@ -49,7 +49,6 @@ helm install capi-operator capi-operator/cluster-api-operator
 	--set cert-manager.enabled=true
 	--timeout 90s
 	--secret-name <secret_name>
-	--secret-namespace <secret_namespace>
 	--wait
 ```
 
