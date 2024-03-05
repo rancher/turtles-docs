@@ -22,6 +22,8 @@ rancherTurtles:
       kubectlImage: rancher/kubectl # indicates the image to use for webhook cleanup (default: rancher/kubectl)
     rancher-kubeconfigs: # with capi 1.5.0 and greater, secrets for kubeconfigs must contain a specific label. See https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/book/src/developer/providers/migrations/v1.4-to-v1.5.md#other
       label: true # indicates that the label will be added (default: true)
+    managementv3-cluster: # rancher will use `clusters.management.cattle.io` to represent an imported capi cluster
+      enabled: false # if false, indicates that `clusters.provisioning.cattle.io` resources will be used (default: false)
 ```
 
 The list has been truncated to show only the configurable feature flags. Other fields with the `rancherTurtles` key are automatically set when a chart is released.
