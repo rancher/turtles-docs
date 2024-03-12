@@ -19,14 +19,14 @@ To simplify setting up Rancher for installing Rancher Turtles, the official Ranc
 A `rancher-turtles` chart repository should be added first:
 
 ```bash
-helm repo add turtles https://rancher-sandbox.github.io/rancher-turtles/
+helm repo add turtles https://charts.rancher-turtles.com
 helm repo update
 ```
 
 To install `Cluster API Operator` as a dependency to the `Rancher Turtles`, a minimum set of additional helm flags should be specified:
 
 ```bash
-helm install rancher-turtles turtles/rancher-turtles --version v0.4.0 \
+helm install rancher-turtles turtles/rancher-turtles --version v0.5.0 \
     -n rancher-turtles-system \
     --dependency-update \
     --create-namespace --wait \
@@ -82,13 +82,13 @@ For information on deployment options, refer to [Deployment Scenarios](../refere
 The recommended path of installation for the operator is by using `Helm`. To install it in the cluster, a chart repository should be added first:
 
 ```bash
-helm repo add turtles https://rancher-sandbox.github.io/rancher-turtles/
+helm repo add turtles https://charts.rancher-turtles.com
 helm repo update
 ```
 and then it can be installed into the `rancher-turtles-system` namespace with:
 
 ```bash
-helm install rancher-turtles turtles/rancher-turtles --version v0.4.0
+helm install rancher-turtles turtles/rancher-turtles --version v0.5.0
     -n rancher-turtles-system
     --set cluster-api-operator.enabled=false
     --set cluster-api-operator.cluster-api.enabled=false

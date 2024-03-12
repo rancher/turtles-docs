@@ -19,7 +19,7 @@ To simplify setting up Rancher for installing Rancher Turtles, the official Ranc
 A `rancher-turtles` chart repository should be added first:
 
 ```bash
-helm repo add turtles https://rancher-sandbox.github.io/rancher-turtles/
+helm repo add turtles https://charts.rancher-turtles.com/
 helm repo update
 ```
 
@@ -82,7 +82,7 @@ For information on deployment options, refer to [Deployment Scenarios](../refere
 The recommended path of installation for the operator is by using `Helm`. To install it in the cluster, a chart repository should be added first:
 
 ```bash
-helm repo add turtles https://rancher-sandbox.github.io/rancher-turtles/
+helm repo add turtles https://charts.rancher-turtles.com/
 helm repo update
 ```
 and then it can be installed into the `rancher-turtles-system` namespace with:
