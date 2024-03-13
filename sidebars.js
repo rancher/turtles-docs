@@ -27,6 +27,7 @@ const sidebars = {
         'getting-started/rancher',
         'getting-started/install_capi_operator',
         'getting-started/install_turtles_operator',
+        'getting-started/uninstall_turtles_operator',
         {
           type: 'category',
           label: 'Your first cluster',
