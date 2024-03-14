@@ -52,7 +52,7 @@ This operation could take a few minutes and, after installing, you can take some
 :::note
 - If `cert-manager` is already available in the cluster, you can disable its installation as a Rancher Turtles dependency to avoid conflicts:
 `--set cluster-api-operator.cert-manager.enabled=false`
-- For a list of Rancher Turtles versions, refer to [Releases page](https://github.com/rancher-sandbox/rancher-turtles/releases).
+- For a list of Rancher Turtles versions, refer to [Releases page](https://github.com/rancher/turtles/releases).
 :::
 
 This is the basic, recommended configuration, which manages the creation of a secret containing the required CAPI feature flags (`CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled) in the core provider namespace. These feature flags are required to enable additional Cluster API functionality.
