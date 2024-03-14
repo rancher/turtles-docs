@@ -18,9 +18,9 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'rancher-sandbox', // Usually your GitHub org/user name.
-  projectName: 'rancher-turtles-docs', // Usually your repo name.
-  scripts: [{ src: 'https://plausible.io/js/plausible.js', async: true, defer: true, 'data-domain': 'rancher-sandbox.github.io' }],
+  organizationName: 'rancher', // Usually your GitHub org/user name.
+  projectName: 'turtles-docs', // Usually your repo name.
+  scripts: [{ src: 'https://plausible.io/js/plausible.js', async: true, defer: true, 'data-domain': 'rancher.github.io' }],
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -49,14 +49,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/rancher-sandbox/rancher-turtles-docs/tree/main/docs/',
+            'https://github.com/rancher/turtles-docs/tree/main/docs/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/rancher-sandbox/rancher-turtles-docs/tree/main/docs/',
+            'https://github.com/rancher/turtles-docs/tree/main/docs/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -90,7 +90,7 @@ const config = {
             dropdownActiveClassDisabled: true,
           },
           {
-            href: 'https://github.com/rancher-sandbox/rancher-turtles-docs',
+            href: 'https://github.com/rancher/turtles-docs',
             label: 'GitHub',
             position: 'right',
           },

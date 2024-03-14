@@ -21,7 +21,7 @@ sidebar_position: 1
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-Thank you for taking the time to contribute to Rancher CAPI extension [projects](https://github.com/rancher-sandbox?q=rancher-turtles&type=all&language=&sort=) :heart:
+Thank you for taking the time to contribute to Rancher CAPI extension [projects](https://github.com/rancher?q=turtles&type=all&language=&sort=) :heart:
 
 Improvements to all areas of the project; from code, to documentation;
 from bug reports to feature design and UI enhancement are gratefully welcome.
@@ -56,12 +56,12 @@ If you’re a new to the project and want to help, but don’t know where to sta
 
 1. Interested in helping to improve:
 
-- Rancher CAPI extension backend? Chime in on [`bugs`](https://github.com/rancher-sandbox/rancher-turtles/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+) or
-    [`help wanted` issues](https://github.com/rancher-sandbox/rancher-turtles/labels/help-wanted).
-    If you are seeking to take on a bigger challenge or a more experienced contributor, check out [`feature requests`](https://github.com/rancher-sandbox/rancher-turtles/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Ffeature).
-- extension UI? Take a look at [`open`](https://github.com/rancher-sandbox/rancher-turtles-ui/issues) or
-    [`help wanted` issues](https://github.com/rancher-sandbox/rancher-turtles-ui/labels/help-wanted).
-- maybe, user-docs? :nerd_face: Then, jump straight into [`open` issues](https://github.com/rancher-sandbox/rancher-turtles-docs/issues) in the docs repository.
+- Rancher CAPI extension backend? Chime in on [`bugs`](https://github.com/rancher/turtles/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+) or
+    [`help wanted` issues](https://github.com/rancher/turtles/labels/help-wanted).
+    If you are seeking to take on a bigger challenge or a more experienced contributor, check out [`feature requests`](https://github.com/rancher/turtles/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Ffeature).
+- extension UI? Take a look at [`open`](https://github.com/rancher/capi-ui-extension) or
+    [`help wanted` issues](https://github.com/rancher/capi-ui-extension/labels/help-wanted).
+- maybe, user-docs? :nerd_face: Then, jump straight into [`open` issues](https://github.com/rancher/turtles-docs/issues) in the docs repository.
 
 ## Opening Issues
 
@@ -100,7 +100,7 @@ If you are here to ask for help or request some new behaviour, this
 is the section for you. We have curated a set of issues for anyone who simply
 wants to build up their open-source cred :muscle:.
 
-- Issues labelled [`good first issues`](https://github.com/search?q=org%3Agithub%2Francher-sandbox+repo%3Arancher-sandbox%2Francher-turtles+repo%3Arancher-sandbox%2Francher-turtles-ui+repo%3Arancher-sandbox%2Francher-turtles-docs+is%3Aopen+label%3A%22good+first+issue%22+&type=issues&ref=advsearch)
+- Issues labelled [`good first issues`](https://github.com/search?q=org%3Agithub%2Francher+repo%3Arancher%2Fturtles+repo%3Arancher%2Fcapi-ui-extension+repo%3Arancher%2Fturtles-docs+is%3Aopen+label%3A%22good+first+issue%22+&type=issues&ref=advsearch)
   should be accessible to folks new to the repos, as well as to open source in general.
 
   These issues should present a low/non-existent barrier to entry with a thorough description,
@@ -116,7 +116,7 @@ wants to build up their open-source cred :muscle:.
 
   See more on [asking for help](#asking-for-help) below!
 
-- [`help wanted` issues](https://github.com/search?q=org%3Agithub%2Francher-sandbox+repo%3Arancher-sandbox%2Francher-turtles+repo%3Arancher-sandbox%2Francher-turtles-ui+repo%3Arancher-sandbox%2Francher-turtles-docs+is%3Aopen+label%3A%22help+wanted%22+&type=issues&ref=advsearch)
+- [`help wanted` issues](https://github.com/search?q=org%3Agithub%2Francher+repo%3Arancher%2Fturtles+repo%3Arancher%2Fcapi-ui-extension+repo%3Arancher%2Fturtles-docs+is%3Aopen+label%3A%22help+wanted%22+&type=issues&ref=advsearch)
   are for those a little more familiar with the code base, but should still be accessible enough
   to newcomers.
 
@@ -207,7 +207,7 @@ The core team regularly processes incoming issues. There may be some delay over 
 
 Every issue will be assigned a `priority/<x>` label. The levels of priorities are:
 
-- [`critical-urgent`](https://github.com/rancher-sandbox/rancher-turtles/labels/priority%2Fcritical-urgent): These are time sensitive issues which should be picked up immediately.
+- [`critical-urgent`](https://github.com/rancher/turtles/labels/priority%2Fcritical-urgent): These are time sensitive issues which should be picked up immediately.
   If an issue labelled `critical` is not assigned or being actively worked on,
   someone is expected to drop what they're doing immediately to work on it.
   This usually means the core team, but community members are welcome to claim
@@ -216,13 +216,13 @@ Every issue will be assigned a `priority/<x>` label. The levels of priorities ar
   they will be paired with a core team-member to manage the tracking, communication and release of any fix
   as well as to assume responsibility of all progess._
 
-- [`important-soon`](https://github.com/rancher-sandbox/rancher-turtles/labels/priority%2Fimportant-soon): Must be assigned as soon as capacity becomes available.
+- [`important-soon`](https://github.com/rancher/turtles/labels/priority%2Fimportant-soon): Must be assigned as soon as capacity becomes available.
   Ideally something should be delivered in time for the next release.
 
-- [`important-longterm`](https://github.com/rancher-sandbox/rancher-turtles/labels/priority%2Fimportant-longterm): Important over the long term, but may not be currently
+- [`important-longterm`](https://github.com/rancher/turtles/labels/priority%2Fimportant-longterm): Important over the long term, but may not be currently
   staffed and/or may require multiple releases to complete.
 
-- [`backlog`](https://github.com/rancher-sandbox/rancher-turtles/labels/priority%2Fbacklog): There appears to be general agreement that this would be good to have,
+- [`backlog`](https://github.com/rancher/turtles/labels/priority%2Fbacklog): There appears to be general agreement that this would be good to have,
   but we may not have anyone available to work on it right now or in the immediate future.
   PRs are still very welcome, although it might take a while to get them reviewed if
   reviewers are fully occupied with higher priority issues, for example immediately before a release.
@@ -231,11 +231,11 @@ These priority categories have been inspired by [the Kubernetes contributing gui
 
 Other labels include:
 
-- [`adr-required`](https://github.com/rancher-sandbox/rancher-turtles/labels/adr-required):
+- [`adr-required`](https://github.com/rancher/turtles/labels/adr-required):
   Indicates that the issue or PR contains a decision that needs to be documented in a [ADR](#adrs-architectural-decision-records) _before_
   it can be worked on.
 
-- [`needs-investigation`](https://github.com/rancher-sandbox/rancher-turtles/labels/needs-investigation):  There is currently insufficient information to either categorize properly,
+- [`needs-investigation`](https://github.com/rancher/turtles/labels/needs-investigation):  There is currently insufficient information to either categorize properly,
   or to understand and implement a solution. This could be because the issue opener did
   not provide enough relevant information, or because more in-depth research is required
   before work can begin.
@@ -254,7 +254,7 @@ Submissions which do not meet standards will be de-prioritised for review.
 ## ADRs (Architectural Decision Records)
 
 :::note
-Please feel free to skip [this](#adrs-architectural-decision-records) and [sub-section](#process) below, since they are only relevant to the [rancher-turtles](https://github.com/rancher-sandbox/rancher-turtles) repository.
+Please feel free to skip [this](#adrs-architectural-decision-records) and [sub-section](#process) below, since they are only relevant to the [rancher-turtles](https://github.com/rancher/turtles) repository.
 :::
 
 Any impactful decisions to the architecture, design, development and behaviour
@@ -267,7 +267,7 @@ Contributors are also welcome to backfill ADRs if they are found to be missing.
 
 ### Process
 
-1. Start a new [discussion](https://github.com/rancher-sandbox/rancher-turtles/discussions/new?category=adr) using the `ADR` category.
+1. Start a new [discussion](https://github.com/rancher/turtles/discussions/new?category=adr) using the `ADR` category.
 
 1. Choose an appropriate clear and concise title (e.g. `ADR: Implement X in Go`).
 
@@ -276,10 +276,10 @@ Contributors are also welcome to backfill ADRs if they are found to be missing.
   any areas which you would like the reviewers to pay attention to, or those on which
   you would specifically like an opinion.
 
-1. Tag in the [maintainers](https://github.com/rancher-sandbox/rancher-turtles/blob/main/CODEOWNERS) as the "Deciders", and invite them to
+1. Tag in the [maintainers](https://github.com/rancher/turtles/blob/main/CODEOWNERS) as the "Deciders", and invite them to
   participate and weigh in on the decision and its consequences.
 
-1. Once a decision has been made, open a PR adding a new ADR to the [directory](https://github.com/rancher-sandbox/rancher-turtles/blob/main/docs/adr).
+1. Once a decision has been made, open a PR adding a new ADR to the [directory](https://github.com/rancher/turtles/blob/main/docs/adr).
   Copy and complete the [template][adr-template];
     - Increment the file number by one
     - Set the status as "Accepted"
@@ -287,5 +287,5 @@ Contributors are also welcome to backfill ADRs if they are found to be missing.
     - Summarise the decision and consequences from the discussion thread
     - Link back to the discussion from the ADR doc
 
-[user-docs]: https://rancher-sandbox.github.io/rancher-turtles-docs/
-[adr-template]: https://github.com/rancher-sandbox/rancher-turtles/blob/main/docs/adr/0000-template.md
+[user-docs]: https://rancher.github.io/turtles-docs/
+[adr-template]: https://github.com/rancher/turtles/blob/main/docs/adr/0000-template.md

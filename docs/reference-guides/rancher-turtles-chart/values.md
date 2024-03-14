@@ -5,7 +5,7 @@ sidebar_position: 0
 # Chart configuration
 
 :::tip
-For the up-to-date content of `values.yaml` source file, refer to the [Rancher Turtles repository](https://github.com/rancher-sandbox/rancher-turtles).
+For the up-to-date content of `values.yaml` source file, refer to the [Rancher Turtles repository](https://github.com/rancher/turtles).
 :::
 
 ## Rancher Turtles values
