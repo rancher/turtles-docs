@@ -28,10 +28,10 @@ If uninstalling, you can refer to [Uninstalling Rancher Turtles](./uninstall_tur
 
 ### Install Rancher Turtles Operator with `Cluster API Operator` as a Helm dependency
 
-The `rancher-turtles` chart is available in https://charts.rancher-turtles.com and this Helm repository must be added before proceeding with the installation:
+The `rancher-turtles` chart is available in https://rancher.github.io/turtles and this Helm repository must be added before proceeding with the installation:
 
 ```bash
-helm repo add turtles https://charts.rancher-turtles.com
+helm repo add turtles https://rancher.github.io/turtles
 helm repo update
 ```
 
@@ -91,10 +91,10 @@ For detailed information on the values supported by the chart and their usage, r
 Remember that if you opt for this installation option, you will need to manage the Cluster API Operator installation yourself. You can follow the [CAPI Operator guide](../tasks/capi-operator/intro.md)
 :::
 
-The `rancher-turtles` chart is available in https://charts.rancher-turtles.com and this Helm repository must be added before proceeding with the installation:
+The `rancher-turtles` chart is available in https://rancher.github.io/turtles and this Helm repository must be added before proceeding with the installation:
 
 ```bash
-helm repo add turtles https://charts.rancher-turtles.com
+helm repo add turtles https://rancher.github.io/turtles
 helm repo update
 ```
 
