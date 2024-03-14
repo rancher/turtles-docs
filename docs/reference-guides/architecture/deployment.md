@@ -5,7 +5,7 @@ sidebar_position: 0
 # Deployment Scenarios
 
 :::note
-The early release of Rancher Turtles only supports having Rancher Manager and 
+Currently Rancher Turtles only supports having Rancher Manager and 
 Rancher Turtles running in the same cluster. A topology with a separate Rancher 
 Manager cluster and one/multiple CAPI management cluster/s will be supported in 
 future releases.
