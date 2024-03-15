@@ -10,7 +10,7 @@ within the Rancher Turtles system. Understanding these components is essential
 for gaining insights into how Rancher leverages Cluster API (CAPI) for cluster 
 management.
 
-![overview](30000ft_view.png)
+![overview](./30000ft_view.png)
 
 ## Rancher Manager
 

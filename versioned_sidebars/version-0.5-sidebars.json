@@ -1,5 +1,6 @@
 {
   "docsSidebar": [
+    "intro",
     {
       "type": "category",
       "label": "Getting Started",

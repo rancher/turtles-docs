@@ -39,7 +39,6 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: '/', // Serve the docs at the site's root
           sidebarPath: require.resolve('./sidebars.js'),
           versions: {
             current: {
@@ -79,8 +78,8 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'getting-started/intro',
+            type: 'docSidebar',
+            sidebarId: 'docsSidebar',
             position: 'left',
             label: 'Documentation',
           },

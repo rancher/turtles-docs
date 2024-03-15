@@ -12,7 +12,7 @@ This section describes how to install `Cluster API Operator` in the Kubernetes c
 
 ### Install as a `Rancher Turtles` dependency (recommended)
 
-See the `Rancher Turtles` section for installing the operator as a Helm [dependency](install_turtles_operator.md#install-rancher-turtles-operator-with-cluster-api-operator-as-a-helm-dependency)
+See the `Rancher Turtles` section for installing the operator as a Helm [dependency](./install_turtles_operator.md#install-rancher-turtles-operator-with-cluster-api-operator-as-a-helm-dependency)
 
 ### Install manually with Helm (alternative)
 To install `Cluster API Operator` with version `1.4.6` of the `CAPI` + `Docker` provider using helm, follow these steps:

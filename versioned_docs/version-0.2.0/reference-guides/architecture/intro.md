@@ -19,4 +19,4 @@ dependency](../../getting-started/install_turtles_operator.md)
 **A Rancher User will use Rancher to manage clusters. Rancher will be able to use 
 Cluster API to manage the lifecycle of child Kubernetes clusters.**
 
-![intro](intro.png)
+![intro](./intro.png)

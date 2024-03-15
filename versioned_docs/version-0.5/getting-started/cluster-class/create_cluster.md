@@ -14,7 +14,7 @@ This guide uses the [examples repository](https://github.com/rancher-sandbox/ran
 
 - Rancher Manager cluster with Rancher Turtles installed
 - Cluster API providers installed for your scenario - we'll be using the Docker infrastructure and Kubeadm bootstrap/control plane providers in these instructions - see [Initialization for common providers](https://cluster-api.sigs.k8s.io/user/quick-start.html#initialization-for-common-providers)
-- The **ClusterClass** feature enabled - see [the introduction](./intro.md)
+- The **ClusterClass** feature enabled - see [the introdction](./intro.md)
 
 ## Configure Rancher Manager
 
