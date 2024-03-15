@@ -59,7 +59,7 @@ namespace: default
 The **fleet.yaml** is used to specify configuration options for fleet (see [docs](https://fleet.rancher.io/ref-fleet-yaml) for further details). In this instance its declaring that the cluster definitions should be added to the **default** namespace
 :::
 
-After the described steps there will be a repository created structure similar to the example: <https://github.com/rancher-sandbox/rancher-turtles-fleet-example>
+After the described steps there will be a repository created structure similar to the example: [https://github.com/rancher-sandbox/rancher-turtles-fleet-example]
 
 ## Mark Namespace for auto-import
 
@@ -91,12 +91,12 @@ There are 2 options to provide the configuration. The first is using the Rancher
 2. Select **Continuos Delivery** from the menu:
 ![sidebar](sidebar.png)
 3. Select **fleet-local** as the namespace from the top right
-![namespace](./ns.png)
+![namespace](ns.png)
 4. Select **Git Repos** from the sidebar
 5. Click **Add Repository**
 6. Enter **clusters** as the name
 7. Get the **HTTPS** clone URL from your git repo
-![git clone url](./gh_clone.png)
+![git clone url](gh_clone.png)
 8. Add the URL into the **Repository URL** field
 9. Change the branch name to **main**
 10. Click **Next**
