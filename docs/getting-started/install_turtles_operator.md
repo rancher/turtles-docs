@@ -23,7 +23,7 @@ To simplify setting up Rancher for installing Rancher Turtles, the official Ranc
 If you would like to understand how Rancher Turtles works and what the architecture looks like, you can refer to the [Architecture](../reference-guides/architecture/intro.md) section.
 
 :::note
-If uninstalling, you can refer to [Uninstalling Rancher Turtles](./uninstall_turtles_operator.md)
+If uninstalling, you can refer to [Uninstalling Rancher Turtles](uninstall_turtles_operator.md)
 :::
 
 ### Install Rancher Turtles Operator with `Cluster API Operator` as a Helm dependency
