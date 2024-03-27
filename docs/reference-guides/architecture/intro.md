@@ -13,7 +13,7 @@ For guidance about setting up Rancher, refer to
 
 For information on how to install Rancher Turtles, refer to 
 [Install Rancher Turtles Operator with Cluster API Operator as a Helm 
-dependency](../../getting-started/install_turtles_operator.md)
+dependency](../../getting-started/install-rancher-turtles/using_rancher_dashboard.md)
 :::
 
 **A Rancher User will use Rancher to manage clusters. Rancher will be able to use 

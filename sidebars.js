@@ -25,8 +25,18 @@ const sidebars = {
       items: [
         'getting-started/intro',
         'getting-started/rancher',
-        'getting-started/install_turtles_operator',
-        'getting-started/uninstall_turtles_operator',
+        {
+          type: 'category',
+          label: 'Install Rancher Turtles',
+          link: {
+            type: 'generated-index'
+          },
+          collapsed: false,
+          items: [
+            'getting-started/install-rancher-turtles/using_rancher_dashboard',
+            'getting-started/install-rancher-turtles/using_helm',
+          ]
+        },
         {
           type: 'category',
           label: 'Your first cluster',
@@ -54,6 +64,7 @@ const sidebars = {
             },
           ]
         },
+        'getting-started/uninstall_turtles',
       ],
     },
     {
