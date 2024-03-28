@@ -26,7 +26,7 @@ helm repo update
 To install `Cluster API Operator` as a dependency to the `Rancher Turtles`, a minimum set of additional helm flags should be specified:
 
 ```bash
-helm install rancher-turtles turtles/rancher-turtles --version v0.2.0
+helm install rancher-turtles turtles/rancher-turtles --version v0.3.0
     -n rancher-turtles-system
     --dependency-update
     --create-namespace --wait
@@ -89,7 +89,7 @@ helm repo update
 and then it can be installed into the `rancher-turtles-system` namespace with:
 
 ```bash
-helm install rancher-turtles turtles/rancher-turtles --version v0.2.0
+helm install rancher-turtles turtles/rancher-turtles --version v0.3.0
     -n rancher-turtles-system
     --set cluster-api-operator.enabled=false
     --set cluster-api-operator.cluster-api.enabled=false
