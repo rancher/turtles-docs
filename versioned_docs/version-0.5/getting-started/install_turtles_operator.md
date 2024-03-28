@@ -19,7 +19,7 @@ To simplify setting up Rancher for installing Rancher Turtles, the official Ranc
 A `rancher-turtles` chart repository should be added first:
 
 ```bash
-helm repo add turtles https://charts.rancher-turtles.com
+helm repo add turtles https://rancher.github.io/turtles
 helm repo update
 ```
 
