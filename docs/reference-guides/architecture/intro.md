@@ -12,7 +12,7 @@ For guidance about setting up Rancher, refer to
 [Rancher Setup](../../getting-started/rancher.md)
 
 For information on how to install Rancher Turtles, refer to 
-[Install Rancher Turtles Operator with Cluster API Operator as a Helm 
+[Install Rancher Turtles with Cluster API Operator as a Helm 
 dependency](../../getting-started/install-rancher-turtles/using_rancher_dashboard.md)
 :::
 

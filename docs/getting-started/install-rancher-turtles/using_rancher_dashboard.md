@@ -13,7 +13,7 @@ If you already have Cluster API Operator installed in your cluster, you should u
 :::
 
 :::info
-Before [installing Rancher Turtles](#install-rancher-turtles-operator-with-cluster-api-operator-as-a-helm-dependency) in your Rancher environment, Rancher's `embedded-cluster-api` functionality must be disabled. This includes also cleaning up Rancher-specific webhooks that otherwise would conflict with CAPI ones.
+Before [installing Rancher Turtles](./using_helm.md#install-rancher-turtles-with-cluster-api-operator-as-a-helm-dependency) in your Rancher environment, Rancher's `embedded-cluster-api` functionality must be disabled. This includes also cleaning up Rancher-specific webhooks that otherwise would conflict with CAPI ones.
 
 To simplify setting up Rancher for installing Rancher Turtles, the official Rancher Turtles Helm chart includes a `pre-install` hook that applies these changes, making it transparent to the end user:
 - Disable the `embedded-cluster-api` feature in Rancher.

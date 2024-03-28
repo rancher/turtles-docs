@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Installing Rancher
 
-*If you're already running Rancher, you can skip this section and jump to [Install Rancher Turtles Operator](./install-rancher-turtles/using_rancher_dashboard.md).*
+*If you're already running Rancher, you can skip this section and jump to [Install Rancher Turtles](./install-rancher-turtles/using_rancher_dashboard.md).*
 
 Helm is the recommended way to install `Rancher` in an existing or new Kubernetes cluster.
 
