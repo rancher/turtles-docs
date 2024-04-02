@@ -106,6 +106,7 @@ const sidebars = {
             'tasks/capi-operator/add_infrastructure_provider',
           ]
         },
+        'tasks/early_adopter_upgrade'
       ]
     },
     {
