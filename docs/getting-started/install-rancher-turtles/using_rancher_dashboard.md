@@ -29,7 +29,7 @@ If uninstalling, you can refer to [Uninstalling Rancher Turtles](../uninstall_tu
 ### Installation
 
 - From your browser, access Rancher Manager and explore the **local** cluster.
-- Using the left navigation pane, go to `Apps` -> `Repositories`.
+- Using the left navigation panel, go to `Apps` -> `Repositories`.
 - Click `Create` to add a new repository.
 - Enter the following:
     - **Name**: `turtles`.
