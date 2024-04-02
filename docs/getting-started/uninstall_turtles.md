@@ -14,15 +14,10 @@ To simplify uninstalling Rancher Turtles (via Rancher Manager or helm command), 
 - Delete the CAPI `deployments` that are no longer needed.
 :::
 
-There are two options to uninstall the Rancher Turtles depending on the installation method.
-
-1. Rancher Turtles installed via Rancher Manager (i.e in local cluster, `Apps->Repositories` to add a turtles repository then `Apps->Charts` to install rancher-turtles extension). To uninstall, simply navigate to local cluster, `Apps->Installed Apps`, find `rancher-turtles` extension and click `Delete`. 
-
-2. Rancher Turtles installed via [helm command](./install-rancher-turtles/using_helm.md). If you would like to uninstall it manually,
-it can be simply achieived via `helm`:
+To uninstall the Rancher Turtles Extension use the following helm command:
 
 ```bash
-helm uninstall -n rancher-turtles-system rancher-turtles
+helm uninstall -n rancher-turtles-system rancher-turtles --cascade foreground --wait
 ```
 
 This may take a few minutes to complete.
