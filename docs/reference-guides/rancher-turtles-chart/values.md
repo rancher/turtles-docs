@@ -10,7 +10,7 @@ For the up-to-date content of `values.yaml` source file, refer to the [Rancher T
 
 ## Rancher Turtles values
 
-When installing Rancher Turtles Operator using the official Helm chart, it is possible to configure a number of feature flags. This is a comprehensive list of the available values and their usage:
+When installing Rancher Turtles using the official Helm chart, it is possible to configure a number of feature flags. This is a comprehensive list of the available values and their usage:
 
 ```yaml
 rancherTurtles:

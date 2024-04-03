@@ -19,7 +19,7 @@ To simplify setting up Rancher for installing Rancher Turtles, the official Ranc
 A `rancher-turtles` chart repository should be added first:
 
 ```bash
-helm repo add turtles https://charts.rancher-turtles.com/
+helm repo add turtles https://rancher.github.io/turtles
 helm repo update
 ```
 
@@ -36,7 +36,7 @@ helm install rancher-turtles turtles/rancher-turtles --version v0.4.0 \
 :::note
 - If `cert-manager` is already available in the cluster, you can disable its installation as a Rancher Turtles dependency to avoid conflicts:
 `--set cluster-api-operator.cert-manager.enabled=false`
-- For a list of Rancher Turtles versions, refer to [Releases page](https://github.com/rancher-sandbox/rancher-turtles/releases).
+- For a list of Rancher Turtles versions, refer to [Releases page](https://github.com/rancher/turtles/releases).
 :::
 
 This is the basic, recommended configuration, which manages the creation of a secret containing the required feature flags (`CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled) in the core provider namespace.
@@ -82,7 +82,7 @@ For information on deployment options, refer to [Deployment Scenarios](../refere
 The recommended path of installation for the operator is by using `Helm`. To install it in the cluster, a chart repository should be added first:
 
 ```bash
-helm repo add turtles https://charts.rancher-turtles.com/
+helm repo add turtles https://rancher.github.io/turtles
 helm repo update
 ```
 and then it can be installed into the `rancher-turtles-system` namespace with:

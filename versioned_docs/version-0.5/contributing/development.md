@@ -14,7 +14,7 @@ sidebar_position: 2
 
 ## Create a local development environment
 
-1. Clone the [Rancher Turtles](https://github.com/rancher-sandbox/rancher-turtles) repository locally
+1. Clone the [Rancher Turtles](https://github.com/rancher/turtles) repository locally
 
 2. Create **tilt-settings.yaml**:
 
@@ -50,7 +50,7 @@ ngrok http https://localhost:10000
 
 ## What happens when you run `make dev-env`?
 
-1. A [kind](https://kind.sigs.k8s.io/) cluster is created with the following [configuration](https://github.com/rancher-sandbox/rancher-turtles/blob/main/scripts/kind-cluster-with-extramounts.yaml).
+1. A [kind](https://kind.sigs.k8s.io/) cluster is created with the following [configuration](https://github.com/rancher/turtles/blob/main/scripts/kind-cluster-with-extramounts.yaml).
 1. [Cert manager](https://cert-manager.io/) is installed on the cluster, which is a requirement for running `Rancher turtes` extension.
 1. `clusterctl` is used to bootstrap CAPI components onto the cluster, and a default configuration includes: core Cluster API controller, Kubeadm bootstrap and control plane providers, Docker infrastructure provider.
 1. `Rancher manager` is installed using helm.
