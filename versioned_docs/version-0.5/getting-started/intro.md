@@ -7,8 +7,11 @@ sidebar_position: 1
 
 Everything you need to know about getting started with Rancher Turtles.
 
-# Prerequisites
+## Demo
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lGsr7KfBjgU?si=ORkzuAJjcdXUXMxh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Prerequisites
 
 | Name                     | Version                                  | Details                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ------------------------ | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19,3 +22,18 @@ Everything you need to know about getting started with Rancher Turtles.
 | Cluster API Operator     | `>=v0.8.1`                               | Using [helm chart](https://github.com/kubernetes-sigs/cluster-api-operator/blob/main/docs/README.md#method-2-use-helm-charts) install or as a [dependency](./install_turtles_operator.md#install-cluster-api-operator-as-a-helm-dependency) to the `Rancher Turtles`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | Cluster API              | `v1.4.6`                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | Rancher-turtles operator | `v0.5.0`                                | Using helm based [installation](./install_turtles_operator.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+
+## Reference Guides
+
+This section focuses on implementation details, including
+[architecture](reference-guides/architecture/intro) and how Rancher Turtles integrates with Rancher.
+
+## Tasks
+
+In this section we cover additional [operational tasks](tasks/intro.md).
+
+## Security
+
+This section focuses on security-related topics:
+
+- [SLSA](security/slsa.md)
