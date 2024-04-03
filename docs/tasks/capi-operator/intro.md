@@ -69,7 +69,7 @@ helm install ... --set infrastructure="docker:v1.4.6;azure:v1.4.6"
 
 The `infrastructure` flag is set to `docker:v1.4.6;azure:v1.4.6`, representing the desired provider names. This means that the `Cluster API Operator` will install and manage multiple providers, `Docker` and `Azure` respectively, with versions `v1.4.6` specified in this example.
 
-The cluster is now ready to install Rancher Turtles. The default behavior when installing the chart is to install Cluster API Operator as a Helm dependency. Since we decided to install it manually before installing Rancher Turtles, the feature `cluster-api-operator.enabled` must be explicitly disabled as otherwise it would conflict with the existing installation. You can refer to [Install Rancher Turtles Operator without Cluster API Operator](../../getting-started/install_turtles_operator.md#install-rancher-turtles-operator-without-cluster-api-operator-as-a-helm-dependency) to see next steps.
+The cluster is now ready to install Rancher Turtles. The default behavior when installing the chart is to install Cluster API Operator as a Helm dependency. Since we decided to install it manually before installing Rancher Turtles, the feature `cluster-api-operator.enabled` must be explicitly disabled as otherwise it would conflict with the existing installation. You can refer to [Install Rancher Turtles without Cluster API Operator](../../getting-started/install-rancher-turtles/using_helm.md#install-rancher-turtles-without-cluster-api-operator-as-a-helm-dependency) to see next steps.
 
 :::tip
 For more fine-grained control of the providers and other components installed with CAPI, see the [Add the infrastructure provider](../../tasks/capi-operator/add_infrastructure_provider.md) section.

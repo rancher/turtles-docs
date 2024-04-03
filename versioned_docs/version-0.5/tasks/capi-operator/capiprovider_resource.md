@@ -8,7 +8,7 @@ The `CAPIProvider` resource allows managing Cluster API Operator manifests in a 
 
 `CAPIProvider` follows a GitOps model - the spec fields are declarative user inputs. The controller only updates status.
 
-[ARD](https://github.com/rancher-sandbox/rancher-turtles/blob/main/docs/adr/0007-rancher-turtles-public-api.md)
+[ARD](https://github.com/rancher/turtles/blob/main/docs/adr/0007-rancher-turtles-public-api.md)
 
 ## Usage
 
@@ -53,7 +53,7 @@ The key fields in the `CAPIProvider` spec are:
 - `features` - Enabled provider features
 - `variables` - Variables is a map of environment variables to add to the content of the `configSecret`
 
-Full documentation on the CAPIProvider resource - [here](https://doc.crds.dev/github.com/rancher-sandbox/rancher-turtles/turtles-capi.cattle.io/CAPIProvider/v1alpha1@v0.4.0).
+Full documentation on the CAPIProvider resource - [here](https://doc.crds.dev/github.com/rancher/turtles/turtles-capi.cattle.io/CAPIProvider/v1alpha1%2540v0.5.0).
 
 ## Deletion
 
