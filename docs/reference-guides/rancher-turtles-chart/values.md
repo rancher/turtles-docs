@@ -45,10 +45,9 @@ Currently the available set of values for the `cluster-api-operator` setup in th
 cluster-api-operator:
   enabled: true # indicates if CAPI operator should be installed (default: true)
   cert-manager:
-    enabled: true # indicates if cert-manager should be installed (default: true)
+    enabled: false # indicates if cert-manager should be installed (default: false)
   cluster-api:
     enabled: true # indicates if core CAPI controllers should be installed (default: true)
-    version: v1.4.6 # version of CAPI to install (default: v1.4.6)
     configSecret:
       name: "" # (provide only if using a user-managed secret) name of the config secret to use for core CAPI controllers, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#installing-azure-infrastructure-provider docs for more details.
       defaultName: "capi-env-variables" # default name for the automatically created secret.
@@ -57,14 +56,17 @@ cluster-api-operator:
       fetchConfig: # (only required for airgapped environments)
         url: ""  # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
         selector: ""  # selector to use for fetching config, used by the CAPI operator.
-    kubeadmBootstrap:
-      namespace: capi-kubeadm-bootstrap-system
-      fetchConfig:
-        url: ""
-        selector: ""
-    kubeadmControlPlane:
-      namespace: capi-kubeadm-control-plane-system
-      fetchConfig:
-        url: ""
-        selector: ""
+    rke2:
+      enabled: true # indicates if RKE2 provider for Cluster API should be installed (default: true)
+      version: "" # version of Cluster API Provider RKE2 (CAPRKE2) to install
+      bootstrap: # CAPRKE2 Bootstrap Provider
+        namespace: rke2-bootstrap-system
+        fetchConfig: # (only required for airgapped environments)
+          url: ""  # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
+          selector: ""  # selector to use for fetching config, used by the CAPI operator.
+      controlPlane: # CAPRKE2 Control Plane Provider
+        namespace: rke2-control-plane-system
+        fetchConfig: # (only required for airgapped environments)
+          url: "" # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
+          selector: ""  # selector to use for fetching config, used by the CAPI operator.
 ```
