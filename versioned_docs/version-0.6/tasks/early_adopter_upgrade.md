@@ -55,7 +55,7 @@ kubectl delete mutatingwebhookconfigurations.admissionregistration.k8s.io capi-m
 ```
 
 :::tip
-If you are not going to continue using the extension then do the next step, instead go to the [re-enable embedded CAPI](#re-enable-embedded-capi) section.
+If you are not going to continue using the extension then do do do the next step, instead go to the [re-enable embedded CAPI](#re-enable-embedded-capi) section.
 :::
 
 4. Follow the instructions to install the new version of the extension [here](../getting-started/install-rancher-turtles/using_rancher_dashboard.md).

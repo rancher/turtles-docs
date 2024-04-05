@@ -59,7 +59,7 @@ namespace: default
 The **fleet.yaml** is used to specify configuration options for fleet (see [docs](https://fleet.rancher.io/ref-fleet-yaml) for further details). In this instance its declaring that the cluster definitions should be added to the **default** namespace
 :::
 
-After the described steps there will be a repository created structure similar to the example: <https://github.com/rancher-sandbox/rancher-turtles-fleet-example>
+After the described steps there will be a repository created structure similar to the example: [https://github.com/rancher-sandbox/rancher-turtles-fleet-example]
 
 ## Mark Namespace for auto-import
 
