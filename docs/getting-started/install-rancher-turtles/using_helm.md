@@ -90,7 +90,7 @@ For detailed information on the values supported by the chart and their usage, r
 ### Install Rancher Turtles without `Cluster API Operator` as a Helm dependency
 
 :::note
-Remember that if you opt for this installation option, you will need to manage the Cluster API Operator installation yourself. You can follow the [CAPI Operator guide](../../tasks/capi-operator/intro.md)
+Remember that if you opt for this installation option, you will need to manage the Cluster API Operator installation yourself. You can follow the [CAPI Operator guide](../../contributing/install_capi_operator.md)
 :::
 
 The `rancher-turtles` chart is available in https://rancher.github.io/turtles and this Helm repository must be added before proceeding with the installation:

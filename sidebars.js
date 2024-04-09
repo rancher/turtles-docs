@@ -99,7 +99,6 @@ const sidebars = {
           label: 'Cluster API Operator',
           collapsed: true,
           items: [
-            'tasks/capi-operator/intro',
             'tasks/capi-operator/basic_cluster_api_provider_installation',
             'tasks/capi-operator/installing_core_provider',
             'tasks/capi-operator/capiprovider_resource',
@@ -116,6 +115,7 @@ const sidebars = {
       items: [
         'contributing/intro',
         'contributing/guidelines',
+        'contributing/install_capi_operator',
         'contributing/development',
       ],
     },
