@@ -16,7 +16,7 @@ future releases.
 In this topology, both Rancher Manager and Rancher Turtles are deployed to the 
 same Kubernetes cluster, and it acts as a centralized management cluster.
 
-![Rancher Manager & CAPI Management Combined](./in_cluster_topology.png)
+![Rancher Manager & CAPI Management Combined](in_cluster_topology.png)
 
 This architecture offers a simplified deployment of components and provides a 
 single view of all clusters. On the flip side, it's important to consider that 

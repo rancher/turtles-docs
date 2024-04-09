@@ -125,7 +125,7 @@ wants to build up their open-source cred :muscle:.
 
 ### Developing rancher-turtles
 
-Check out the dedicated [notes](./development.md) on getting started with development.
+Check out the dedicated [notes](development.md) on getting started with development.
 
 ### Asking for help
 
