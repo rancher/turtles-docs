@@ -40,6 +40,10 @@ If uninstalling, you can refer to [Uninstalling Rancher Turtles](../uninstall_tu
 - Click `Rancher Turtles - the Cluster API Extension`
 - Click `Install` -> `Next` -> `Install`.
 
+:::caution
+Rancher will select not to install Turtles into a [Project](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/projects-and-namespaces) by default. Installing Turtles into a Project is not supported and the default configuration `None` should be used to avoid unexpected behavior during installation.
+:::
+
 ![install-turtles-from-ui](./install-turtles-from-ui.gif)
 
 This will use the default values for the Helm chart, which are good for most installations. If your configuration requires overriding some of these defaults, you can either specify the values during installation from Rancher UI or, alternatively, you can opt for the [manual installation via Helm](./using_helm.md). And, if you are interested on learning more about the available values, you can check the [reference guide](../../reference-guides/rancher-turtles-chart/values.md).
