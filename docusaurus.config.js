@@ -1,4 +1,3 @@
-// @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
@@ -32,6 +31,23 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  themes: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        docsRouteBasePath: "/",
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+        highlightSearchTermsOnTargetPage: true,
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        // language: ["en", "zh"],
+        // ```
+      }),
+    ],
+  ],
 
   presets: [
     [
