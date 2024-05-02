@@ -63,6 +63,7 @@ const sidebars = {
             },
           ]
         },
+        'getting-started/air-gapped-environment',
         'getting-started/uninstall_turtles',
       ],
     },
