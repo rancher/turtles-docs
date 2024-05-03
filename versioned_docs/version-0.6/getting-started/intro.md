@@ -5,9 +5,14 @@ sidebar_position: 1
 
 # Introduction
 
-Everything you need to know about getting started with Rancher Turtles.
+Rancher Turtles is a Kubernetes Operator that provides integration between Rancher Manager and Cluster API (CAPI) with the aim of bringing full CAPI support to Rancher. With Rancher Turtles, you can:
+
+- Automatically import CAPI clusters into Rancher, by installing the Rancher Cluster Agent in CAPI provisioned clusters.
+- Configure the CAPI Operator.
 
 ## Demo
+
+This demo shows how to use the Rancher UI to install Rancher Turtles, create/import a CAPI cluster, and install monitoring on the cluster:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lGsr7KfBjgU?si=ORkzuAJjcdXUXMxh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -25,15 +30,15 @@ Everything you need to know about getting started with Rancher Turtles.
 
 ## Reference Guides
 
-This section focuses on implementation details, including
-[architecture](reference-guides/architecture/intro) and how Rancher Turtles integrates with Rancher.
+This section focuses on implementation details including
+[architecture](./reference-guides/architecture/intro), how Rancher Turtles integrates with Rancher, and [Helm Chart configuration values](./reference-guides/rancher-turtles-chart/values).
 
 ## Tasks
 
-In this section we cover additional [operational tasks](tasks/intro.md).
+In this section we cover additional [operational tasks](./tasks/intro) including basic `CAPIProvider` [installation](./tasks/capi-operator/basic_cluster_api_provider_installation), an [example](./tasks/capi-operator/add_infrastructure_provider) Azure infrastructure provider install using `CAPIProvider`, and [upgrade instructions](./tasks/early_adopter_upgrade) for early adopters of Rancher Turtles.
 
 ## Security
 
-This section focuses on security-related topics:
+Rancher Turtles meets [SLSA Level 3](https://slsa.dev/spec/v1.0/levels#build-l3) requirements as an appropriate hardened build platform, with consistent build processes, and provenance distribution. This section contains more information on security-related topics:
 
-- [SLSA](security/slsa.md)
+- [SLSA](./security/slsa)
