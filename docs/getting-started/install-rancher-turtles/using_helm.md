@@ -4,6 +4,10 @@ sidebar_position: 4
 
 # Via Helm install
 
+:::caution
+In case you need to review the list of prerequisites (including `cluster-api-operator` and `cert-manager`), you can refer to [this table](../intro.md#prerequisites).
+:::
+
 If you want to manually apply the Helm chart and be in full control of the installation.
 
 This section walks through different installation options for the Rancher Turtles.
@@ -52,8 +56,6 @@ This operation could take a few minutes and, after installing, you can take some
 - `capi-operator`.
 
 :::note
-- If `cert-manager` is already available in the cluster, you can disable its installation as a Rancher Turtles dependency to avoid conflicts:
-`--set cluster-api-operator.cert-manager.enabled=false`
 - For a list of Rancher Turtles versions, refer to [Releases page](https://github.com/rancher/turtles/releases).
 :::
 
