@@ -9,6 +9,8 @@ This is the recommended option for installing Rancher Turtles.
 Via Rancher UI, and just by adding the Turtles repository, we can easily let Rancher take care of the installation and configuration of the Cluster API Extension.
 
 :::caution
+In case you need to review the list of prerequisites (including `cluster-api-operator` and `cert-manager`), you can refer to [this table](../intro.md#prerequisites).
+
 If you already have Cluster API Operator installed in your cluster, you should use the [manual helm install method](./using_helm.md) instead.
 :::
 
