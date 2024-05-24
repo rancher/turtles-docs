@@ -83,6 +83,7 @@ const sidebars = {
           ]
         },
         'reference-guides/rancher-turtles-chart/values',
+        'reference-guides/providers',
       ],
     },
     {
