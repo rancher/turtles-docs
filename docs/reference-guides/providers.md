@@ -18,3 +18,11 @@ This is a list of the officially supported CAPI Providers by Turtles. These prov
 |-----------------|--------------------------------|--------------------------|--------------------------|
 | **RKE2**            | CAPRKE2                    | Bootstrap/Control Plane  | https://github.com/rancher-sandbox/cluster-api-provider-rke2 |
 | **AWS**         | CAPA                           | Infrastructure           | https://cluster-api-aws.sigs.k8s.io |
+
+## List of providers in experimental mode
+
+This is a list of providers that are in an advanced state of development and will soon become officially supported.
+
+| Platform        | Code Name                      | Provider Type            | Docs                     |
+|-----------------|--------------------------------|--------------------------|--------------------------|
+| **vSphere**         | CAPV                           | Infrastructure           | https://github.com/kubernetes-sigs/cluster-api-provider-vsphere |
