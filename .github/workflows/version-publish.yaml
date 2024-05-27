@@ -27,8 +27,12 @@ jobs:
         with:
           message: 'Add docs version ${{ env.TAG }}'
           push: false
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Add docs version ${{ env.TAG }}"
       - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push -u origin main
