@@ -25,4 +25,5 @@ This is a list of providers that are in an advanced state of development and wil
 
 | Platform        | Code Name                      | Provider Type            | Docs                     |
 |-----------------|--------------------------------|--------------------------|--------------------------|
+| **Fleet Add-on**  | CAAPF                           | Add-on           | https://github.com/rancher-sandbox/cluster-api-addon-provider-fleet/tree/main/docs |
 | **vSphere**         | CAPV                           | Infrastructure           | https://github.com/kubernetes-sigs/cluster-api-provider-vsphere |
