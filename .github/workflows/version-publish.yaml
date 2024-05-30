@@ -31,4 +31,6 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add .
           git commit -m "Add docs version ${{ env.TAG }}"
-          git push -u origin main
+          git remote add upstream https://github.com/rancher/turtles-docs.git
+          git fetch upstream
+          git push -u upstream main
