@@ -23,10 +23,6 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Create a new version
         run: yarn docusaurus docs:version ${{ env.TAG }}
-      - uses: EndBug/add-and-commit@v9
-        with:
-          message: 'Add docs version ${{ env.TAG }}'
-          push: false
       - name: Commit changes
         run: |
           git add .
