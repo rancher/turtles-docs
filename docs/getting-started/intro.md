@@ -35,7 +35,7 @@ This section focuses on implementation details including
 
 ## Tasks
 
-In this section we cover additional [operational tasks](./tasks/intro) including basic `CAPIProvider` [installation](./tasks/capi-operator/basic_cluster_api_provider_installation), an [example](./tasks/capi-operator/add_infrastructure_provider) Azure infrastructure provider install using `CAPIProvider`, and [upgrade instructions](./tasks/early_adopter_upgrade) for early adopters of Rancher Turtles.
+In this section we cover additional [operational tasks](./tasks/intro) including basic `CAPIProvider` [installation](./tasks/capi-operator/basic_cluster_api_provider_installation), an [example](./tasks/capi-operator/add_infrastructure_provider) AWS infrastructure provider install using `CAPIProvider`, and [upgrade instructions](./tasks/early_adopter_upgrade) for early adopters of Rancher Turtles.
 
 ## Security
 

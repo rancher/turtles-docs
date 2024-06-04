@@ -68,10 +68,10 @@ stringData:
 To select more than one desired provider to be installed together with the `Cluster API Operator`, the `--infrastructure` flag can be specified with multiple provider names separated by a comma. For example:
 
 ```bash
-helm install ... --set infrastructure="docker:v1.4.6;azure:v1.4.6"
+helm install ... --set infrastructure="docker:v1.4.6;aws:v2.3.5"
 ```
 
-The `infrastructure` flag is set to `docker:v1.4.6;azure:v1.4.6`, representing the desired provider names. This means that the `Cluster API Operator` will install and manage multiple providers, `Docker` and `Azure` respectively, with versions `v1.4.6` specified in this example.
+The `infrastructure` flag is set to `docker:v1.4.6;aws:v2.3.5`, representing the desired provider names. This means that the `Cluster API Operator` will install and manage multiple providers, `Docker` and `AWS`, with versions `v1.4.6` and `v2.3.5` respectively.
 
 The cluster is now ready to install Rancher Turtles. The default behavior when installing the chart is to install Cluster API Operator as a Helm dependency. Since we decided to install it manually before installing Rancher Turtles, the feature `cluster-api-operator.enabled` must be explicitly disabled as otherwise it would conflict with the existing installation. You can refer to [Install Rancher Turtles without Cluster API Operator](../getting-started/install-rancher-turtles/using_helm.md#install-rancher-turtles-without-cluster-api-operator-as-a-helm-dependency) to see next steps.
 
