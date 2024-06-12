@@ -2,7 +2,7 @@
 sidebar_position: 0
 ---
 
-# CAPI Providers
+# Supported CAPI Providers
 
 Remember that most Cluster API Providers are upstream projects maintained by the Kubernetes open-source community.
 
