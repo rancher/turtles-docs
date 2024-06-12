@@ -9,7 +9,7 @@ This section will guide you through creating your first cluster and importing it
 ## Prerequisites
 
 - Rancher Manager cluster with Rancher Turtles installed
-- Cluster API providers installed for your scenario - we'll be using the Docker infrastructure and Kubeadm bootstrap/control plane providers in these instructions - see [Initialization for common providers](https://cluster-api.sigs.k8s.io/user/quick-start.html#initialization-for-common-providers)
+- Cluster API providers installed for your scenario - we'll be using the [Docker infrastructure](https://github.com/kubernetes-sigs/cluster-api/tree/main/test/infrastructure/docker) and [RKE2 bootstrap/control plane](https://github.com/rancher-sandbox/cluster-api-provider-rke2) providers in these instructions - see [Initialization for common providers using Turtles' `CAPIProvider`](../../tasks/capi-operator/capiprovider_resource.md)
 - **clusterctl** CLI - see the [releases](https://github.com/kubernetes-sigs/cluster-api/releases)
 
 ## Create your cluster definition
@@ -32,7 +32,7 @@ export WORKER_MACHINE_COUNT=1
 export KUBERNETES_VERSION=v1.26.4
 
 clusterctl generate cluster cluster1 \
---from https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-kubeadm.yaml \
+--from https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml \
 > cluster1.yaml
 ```
 
