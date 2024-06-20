@@ -44,8 +44,6 @@ Currently the available set of values for the `cluster-api-operator` setup in th
 ```yaml
 cluster-api-operator:
   enabled: true # indicates if CAPI operator should be installed (default: true)
-  cert-manager:
-    enabled: false # indicates if cert-manager should be installed (default: false)
   cluster-api:
     enabled: true # indicates if core CAPI controllers should be installed (default: true)
     configSecret:
