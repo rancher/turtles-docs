@@ -82,3 +82,31 @@ The cluster is now ready to install Rancher Turtles. The default behavior when i
 :::tip
 For more fine-grained control of the providers and other components installed with CAPI, see the [Add the infrastructure provider](../tasks/capi-operator/add_infrastructure_provider.md) section.
 :::
+''
+
+### Install Rancher Turtles without `Cluster API Operator` as a Helm dependency
+
+:::note
+This option is only suitable for development purposes and not recommended for production environments.
+:::
+
+The `rancher-turtles` chart is available in https://rancher.github.io/turtles and this Helm repository must be added before proceeding with the installation:
+
+```bash
+helm repo add turtles https://rancher.github.io/turtles
+helm repo update
+```
+
+and then it can be installed into the `rancher-turtles-system` namespace with:
+
+```bash
+helm install rancher-turtles turtles/rancher-turtles --version v0.8.0
+    -n rancher-turtles-system
+    --set cluster-api-operator.enabled=false
+    --set cluster-api-operator.cluster-api.enabled=false
+    --create-namespace --wait
+    --dependency-update
+```
+
+As you can see, we are telling Helm to ignore installing `cluster-api-operator` as a dependency.
+

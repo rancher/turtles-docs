@@ -11,7 +11,7 @@ To provision and configure Cluster API providers, Turtles uses the **CAPIProvide
 To install Cluster API providers in an air-gapped environment the following will need to be done:
 
 1. Configure the Cluster API Operator for an air-gapped environment:
-    - Manually fetch and store a helm chart for the operator.
+    - The operator chart will be fetched and stored as a part of the Turtles chart.
     - Provide image overrides for the operator from an accessible image repository.
 2. Configure Cluster API providers for an air-gapped environment:
     - Provide fetch configuration for each provider from an accessible location (e.g., an internal github/gitlab server) or from pre-created ConfigMaps within the cluster.

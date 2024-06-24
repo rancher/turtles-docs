@@ -5,16 +5,12 @@ sidebar_position: 4
 # Via Helm install
 
 :::caution
-In case you need to review the list of prerequisites (including `cluster-api-operator` and `cert-manager`), you can refer to [this table](../intro.md#prerequisites).
+In case you need to review the list of prerequisites (including `cert-manager`), you can refer to [this table](../intro.md#prerequisites).
 :::
 
 If you want to manually apply the Helm chart and be in full control of the installation.
 
-This section walks through different installation options for the Rancher Turtles.
-- [Install Rancher Turtles with Cluster API Operator as a dependency](#install-rancher-turtles-with-cluster-api-operator-as-a-helm-dependency).
-- [Install Rancher Turtles without Cluster API Operator](#install-rancher-turtles-without-cluster-api-operator-as-a-helm-dependency).
-
-The Cluster API Operator is required for installing Rancher Turtles and you can choose whether you want to take care of this dependency yourself or let the Rancher Turtles Helm chart manage it for you. We recommend [installing as a dependency](#install-rancher-turtles-with-cluster-api-operator-as-a-helm-dependency) for the sake of simplicity, but the best option may depend on your specific configuration.
+The Cluster API Operator is required for installing Rancher Turtles and will be installed as dependency of the Rancher Turtles Helm chart.
 
 CAPI Operator allows handling the lifecycle of Cluster API Providers using a declarative approach, extending the capabilities of `clusterctl`. If you want to learn more about it, you can refer to [Cluster API Operator book](https://cluster-api-operator.sigs.k8s.io/). 
 
@@ -89,31 +85,3 @@ stringData:
 For detailed information on the values supported by the chart and their usage, refer to [Helm chart options](../../reference-guides/rancher-turtles-chart/values)
 :::
 
-### Install Rancher Turtles without `Cluster API Operator` as a Helm dependency
-
-:::note
-Remember that if you opt for this installation option, you will need to manage the Cluster API Operator installation yourself. You can follow the [CAPI Operator guide](../../contributing/install_capi_operator.md)
-:::
-
-The `rancher-turtles` chart is available in https://rancher.github.io/turtles and this Helm repository must be added before proceeding with the installation:
-
-```bash
-helm repo add turtles https://rancher.github.io/turtles
-helm repo update
-```
-
-and then it can be installed into the `rancher-turtles-system` namespace with:
-
-```bash
-helm install rancher-turtles turtles/rancher-turtles --version v0.8.0
-    -n rancher-turtles-system
-    --set cluster-api-operator.enabled=false
-    --set cluster-api-operator.cluster-api.enabled=false
-    --create-namespace --wait
-    --dependency-update
-```
-
-As you can see, we are telling Helm to ignore installing `cluster-api-operator` as a dependency.
-
-This operation could take a few minutes and, after installing, you can take some time to study the installed controller:
-- `rancher-turtles-controller`.
