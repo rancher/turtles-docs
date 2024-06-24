@@ -20,18 +20,23 @@ To install `Cluster API Operator` with version `1.4.6` of the `CAPI` + `Docker` 
 1. Add the Helm repository for the `Cluster API Operator`:
 ```bash
 helm repo add capi-operator https://kubernetes-sigs.github.io/cluster-api-operator
+helm repo add jetstack https://charts.jetstack.io
+
 ```
 2. Update the Helm repository:
 ```bash
 helm repo update
 ```
-3. Install the `Cluster API Operator`, which will also install `cert-manager`:
+3. Install the Cert-Manager:
+```bash
+helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --set installCRDs=true
+```
+4. Install the `Cluster API Operator`:
 ```bash
 helm install capi-operator capi-operator/cluster-api-operator
 	--create-namespace -n capi-operator-system
 	--set infrastructure=docker:v1.4.6
 	--set core=cluster-api:v1.4.6
-	--set cert-manager.enabled=true
 	--timeout 90s --wait # Core Cluster API with kubeadm bootstrap and control plane providers will also be installed
 ```
 
@@ -46,7 +51,6 @@ helm install capi-operator capi-operator/cluster-api-operator
 	--create-namespace -n capi-operator-system
 	--set infrastructure=docker:v1.4.6
 	--set core=cluster-api:v1.4.6
-	--set cert-manager.enabled=true
 	--timeout 90s
 	--secret-name <secret_name>
 	--wait
