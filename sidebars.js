@@ -106,7 +106,15 @@ const sidebars = {
             'tasks/capi-operator/add_infrastructure_provider',
           ]
         },
-        'tasks/early_adopter_upgrade'
+        {
+          type: 'category',
+          label: 'Maintenance',
+          collapsed: true,
+          items: [
+            'tasks/maintenance/early_adopter_upgrade',
+            'tasks/maintenance/import_controller_upgrade'
+          ]
+        },
       ]
     },
     {
