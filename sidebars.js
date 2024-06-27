@@ -89,8 +89,7 @@ const sidebars = {
           collapsed: true,
           items: [
             'reference-guides/providers/supported',
-            'reference-guides/providers/docker_kubeadm',
-            'reference-guides/providers/capa',
+            'reference-guides/providers/howto',
           ]
         },
       ],
