@@ -83,7 +83,15 @@ const sidebars = {
           ]
         },
         'reference-guides/rancher-turtles-chart/values',
-        'reference-guides/providers',
+        {
+          type: 'category',
+          label: 'CAPI Providers',
+          collapsed: true,
+          items: [
+            'reference-guides/providers/supported',
+            'reference-guides/providers/howto',
+          ]
+        },
       ],
     },
     {
