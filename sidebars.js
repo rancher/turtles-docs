@@ -120,7 +120,8 @@ const sidebars = {
           collapsed: true,
           items: [
             'tasks/maintenance/early_adopter_upgrade',
-            'tasks/maintenance/import_controller_upgrade'
+            'tasks/maintenance/import_controller_upgrade',
+            'tasks/maintenance/automigrate_to_v3_import'
           ]
         },
       ]

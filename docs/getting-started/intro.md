@@ -5,6 +5,12 @@ sidebar_position: 1
 
 # Introduction
 
+:::warning
+Starting with Turtles `v0.9.0`, the process used for importing CAPI clusters into Rancher is now based on a different controller logic. If you are a new user of Turtles, you can proceed normally and simply install the extension. If you have been using previous versions of Turtles and are upgrading to `v0.9.0`, we recommend you take a look at the migration mechanisms and their implications:
+- [Automatic migration](../tasks/maintenance/automigrate_to_v3_import.md).
+- [Manual migration](../tasks/maintenance/import_controller_upgrade.md)
+:::
+
 Rancher Turtles is a Kubernetes Operator that provides integration between Rancher Manager and Cluster API (CAPI) with the aim of bringing full CAPI support to Rancher. With Rancher Turtles, you can:
 
 - Automatically import CAPI clusters into Rancher, by installing the Rancher Cluster Agent in CAPI provisioned clusters.
