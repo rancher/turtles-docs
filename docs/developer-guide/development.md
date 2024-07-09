@@ -49,7 +49,7 @@ ngrok http https://localhost:10000
 ## What happens when you run `make dev-env`?
 
 1. A [kind](https://kind.sigs.k8s.io/) cluster is created with the following [configuration](https://github.com/rancher/turtles/blob/main/scripts/kind-cluster-with-extramounts.yaml).
-1. [Cluster API Operator](../contributing/install_capi_operator.md) is installed using helm, which includes: 
+1. [Cluster API Operator](../developer-guide/install_capi_operator.md) is installed using helm, which includes: 
     - Core Cluster API controller
     - Kubeadm Bootstrap and Control Plane Providers
     - Docker Infrastructure Provider
