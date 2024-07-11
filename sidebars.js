@@ -88,7 +88,7 @@ const sidebars = {
           label: 'CAPI Providers',
           collapsed: true,
           items: [
-            'reference-guides/providers/supported',
+            'reference-guides/providers/certified',
             'reference-guides/providers/howto',
             'reference-guides/providers/addon-provider-fleet',
           ]
