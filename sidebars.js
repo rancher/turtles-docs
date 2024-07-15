@@ -128,13 +128,22 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Contributing',
+      label: 'Developer Guide',
       collapsed: true,
       items: [
-        'contributing/intro',
-        'contributing/guidelines',
-        'contributing/install_capi_operator',
-        'contributing/development',
+        'developer-guide/intro',
+        'developer-guide/install_capi_operator',
+        'developer-guide/development',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Reference',
+      collapsed: true,
+      items: [
+        'reference/intro',
+        'reference/contributing_guidelines',
+        'reference/glossary',
       ],
     },
     {
