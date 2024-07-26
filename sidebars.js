@@ -90,6 +90,7 @@ const sidebars = {
           items: [
             'reference-guides/providers/supported',
             'reference-guides/providers/howto',
+            'reference-guides/providers/addon-provider-fleet',
           ]
         },
       ],
