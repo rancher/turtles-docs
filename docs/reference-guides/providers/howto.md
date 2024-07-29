@@ -7,7 +7,7 @@ import TabItem from '@theme/TabItem';
 
 # Create & import a cluster using CAPI providers
 
-This guide goes over the process of creating and importing CAPI clusters with a selection of the officially supported providers.
+This guide goes over the process of creating and importing CAPI clusters with a selection of the officially certified providers.
 
 Keep in mind that most Cluster API Providers are upstream projects maintained by the Kubernetes open-source community.
 
