@@ -93,6 +93,15 @@ const sidebars = {
             'reference-guides/providers/addon-provider-fleet',
           ]
         },
+        {
+          type: 'category',
+          label: 'Test suite',
+          collapsed: true,
+          items: [
+            'reference-guides/test-suite/intro',
+            'reference-guides/test-suite/usage',
+          ]
+        },
       ],
     },
     {
@@ -123,6 +132,15 @@ const sidebars = {
             'tasks/maintenance/early_adopter_upgrade',
             'tasks/maintenance/import_controller_upgrade',
             'tasks/maintenance/automigrate_to_v3_import'
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Provider Certification',
+          collapsed: true,
+          items: [
+            'tasks/provider-certification/intro',
+            'tasks/provider-certification/process',
           ]
         },
       ]
