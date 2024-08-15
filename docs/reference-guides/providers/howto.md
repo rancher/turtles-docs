@@ -56,7 +56,7 @@ To generate the YAML for the cluster, do the following:
 ```bash
 export CONTROL_PLANE_MACHINE_COUNT=3
 export WORKER_MACHINE_COUNT=3
-export RKE2_VERSION=v1.26.0+rke2r1
+export RKE2_VERSION=v1.30.3+rke2r1
 export AWS_NODE_MACHINE_TYPE=t3a.large
 export AWS_CONTROL_PLANE_MACHINE_TYPE=t3a.large
 export AWS_SSH_KEY_NAME="aws-ssh-key"
@@ -83,7 +83,7 @@ To generate the YAML for the cluster, do the following:
 1. Open a terminal and run the following:
 
 ```bash
-export KUBERNETES_VERSION=v1.28
+export KUBERNETES_VERSION=v1.30
 export AWS_REGION=eu-west-2
 export AWS_INSTANCE_TYPE=t3.medium
 
@@ -109,7 +109,7 @@ To generate the YAML for the cluster, do the following:
 ```bash
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
-export KUBERNETES_VERSION=v1.26.4
+export KUBERNETES_VERSION=v1.30.0
 
 clusterctl generate cluster cluster1 \
 --from https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-kubeadm.yaml \

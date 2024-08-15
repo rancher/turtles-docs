@@ -29,7 +29,7 @@ To generate the YAML for the cluster do the following (assuming the Docker infra
 ```bash
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
-export KUBERNETES_VERSION=v1.26.4
+export KUBERNETES_VERSION=v1.30.0
 
 clusterctl generate cluster cluster1 \
 --from https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml \
