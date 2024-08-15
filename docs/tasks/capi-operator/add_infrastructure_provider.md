@@ -32,7 +32,7 @@ metadata:
 spec:
   name: aws
   type: infrastructure # required
-  version: v2.3.5
+  version: v2.6.1
   configSecret:
     name: aws-variables # This will additionally populate the default set of feature gates for the provider inside the secret
   variables:
