@@ -40,7 +40,7 @@ helm repo update
 As mentioned before, installing Rancher Turtles requires the [Cluster API Operator](https://github.com/kubernetes-sigs/cluster-api-operator) and the Helm chart can handle its installation automatically with a minimum set of flags:
 
 ```bash
-helm install rancher-turtles turtles/rancher-turtles --version v0.10.0 \
+helm install rancher-turtles turtles/rancher-turtles --version v0.11.0 \
     -n rancher-turtles-system \
     --dependency-update \
     --create-namespace --wait \
