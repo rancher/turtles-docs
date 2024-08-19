@@ -18,6 +18,10 @@ The **clusterctl** CLI can be used to generate the YAML for a cluster. When you 
 
 Alternatively, you can craft the YAML for your cluster manually. If you decide to do this then you can use the **templates** that infrastructure providers publish as part of their releases. For example, the AWS provider [publishes files](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v2.2.1) prefixed with **cluster-template** that can be used as a base. You will need to replace any tokens yourself or by using clusterctl (e.g. `clusterctl generate cluster test1 --from https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/download/v2.2.1/cluster-template-eks.yaml > cluster.yaml`).
 
+:::tip
+To maintain proper resource management and avoid accidental deletion of custom resources managed outside of Helm during Helm operations, include the `helm.sh/resource-policy": keep` annotation in the top-level CAPI kinds within your cluster manifests.
+:::
+
 :::note
 This guide does not use ClusterClass. Templates that use ClusterClass will require that the experimental feature be enabled.
 :::
@@ -138,3 +142,4 @@ kubectl apply -f repo.yaml
 10. Watch the resources become ready
 11. Select **Cluster Management** from the menu
 12. Check your cluster has been imported
+
