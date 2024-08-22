@@ -100,7 +100,7 @@ helm repo update
 and then it can be installed into the `rancher-turtles-system` namespace with:
 
 ```bash
-helm install rancher-turtles turtles/rancher-turtles --version v0.10.0
+helm install rancher-turtles turtles/rancher-turtles --version v0.11.0
     -n rancher-turtles-system
     --set cluster-api-operator.enabled=false
     --set cluster-api-operator.cluster-api.enabled=false
