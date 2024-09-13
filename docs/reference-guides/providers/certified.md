@@ -32,3 +32,4 @@ This is a list of providers that are in an advanced state of development and wil
 
 | Platform        | Code Name                      | Provider Type            | Docs                     |
 |-----------------|--------------------------------|--------------------------|--------------------------|
+| **Elemental**   | elemental                      | Infrastructure           | https://github.com/rancher-sandbox/cluster-api-provider-elemental |
