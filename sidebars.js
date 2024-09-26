@@ -112,6 +112,7 @@ const sidebars = {
             'tasks/capi-operator/basic_cluster_api_provider_installation',
             'tasks/capi-operator/installing_core_provider',
             'tasks/capi-operator/capiprovider_resource',
+            'tasks/capi-operator/clusterctlconfig_resource',
             'tasks/capi-operator/add_infrastructure_provider',
           ]
         },
