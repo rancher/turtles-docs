@@ -16,12 +16,12 @@ This is a list of the officially certified CAPI Providers by Turtles. These prov
 
 | Platform        | Code Name                      | Provider Type            | Docs                     |
 |-----------------|--------------------------------|--------------------------|--------------------------|
-| **RKE2**        | CAPRKE2                    | Bootstrap/Control Plane  | https://github.com/rancher/cluster-api-provider-rke2 |
-| **Kubeadm**     | Kubeadm                    | Bootstrap/Control Plane  | https://github.com/kubernetes-sigs/cluster-api |
+| **RKE2**        | CAPRKE2                    | Bootstrap/Control Plane  | https://rancher.github.io/cluster-api-provider-rke2 |
+| **Kubeadm**     | Kubeadm                    | Bootstrap/Control Plane  | https://cluster-api.sigs.k8s.io/tasks/bootstrap/kubeadm-bootstrap |
 | **AWS**         | CAPA                           | Infrastructure           | https://cluster-api-aws.sigs.k8s.io |
 | **Docker**\*    | CAPD                           | Infrastructure           | https://cluster-api.sigs.k8s.io |
 | **vSphere**         | CAPV                           | Infrastructure           | https://github.com/kubernetes-sigs/cluster-api-provider-vsphere |
-| **Azure** (Only AKS clusters)         | CAPZ                           | Infrastructure           | https://capz.sigs.k8s.io/ |
+| **Azure** (Only AKS managed clusters)         | CAPZ                           | Infrastructure           | https://capz.sigs.k8s.io/ |
 | **Addon Provider Fleet**    | CAAPF                           | Addon           | http://github.com/rancher-sandbox/cluster-api-addon-provider-fleet |
 
 *Recommended only for development purposes.
