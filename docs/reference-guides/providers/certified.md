@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Certified CAPI Providers
 
@@ -33,3 +35,29 @@ This is a list of providers that are in an advanced state of development and wil
 | Platform        | Code Name                      | Provider Type            | Docs                     |
 |-----------------|--------------------------------|--------------------------|--------------------------|
 | **Elemental**   | elemental                      | Infrastructure           | https://github.com/rancher-sandbox/cluster-api-provider-elemental |
+
+## ClusterClass support for certified providers
+
+The following is a support matrix for each certified provider and their support of the cluster topology feature:
+
+<Tabs>
+  <TabItem value="azure" label="CAPZ">
+        - **Full support** of `ClusterClass`: both managed (AKS) and unmanaged (virtual machines) clusters can be provisioned via topology.
+  </TabItem>
+  <TabItem value="aws" label="CAPA" default>
+        - **Supports** `ClusterClass` when provisioning unmanaged (EC2-based) clusters.
+        - **Does not support** `ClusterClass` when provisioning managed (EKS) clusters: this is a work-in-progress.
+    </TabItem>
+  <TabItem value="rke2" label="CAPRKE2" default>
+        - **Full support** of `ClusterClass`.
+    </TabItem>
+  <TabItem value="kubeadm" label="CABPK" default>
+        - **Full support** of `ClusterClass`.
+    </TabItem>
+  <TabItem value="vsphere" label="CAPV" default>
+        - **Full support** of `ClusterClass`.
+    </TabItem>
+  <TabItem value="docker" label="CAPD" default>
+        - **Full support** of `ClusterClass`.
+    </TabItem>
+</Tabs>
