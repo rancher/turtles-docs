@@ -35,8 +35,8 @@ helm install cert-manager jetstack/cert-manager --namespace cert-manager --creat
 ```bash
 helm install capi-operator capi-operator/cluster-api-operator
 	--create-namespace -n capi-operator-system
-	--set infrastructure=docker:v1.7.3
-	--set core=cluster-api:v1.7.3
+	--set infrastructure=docker:v1.7.7
+	--set core=cluster-api:v1.7.7
 	--timeout 90s --wait # Core Cluster API with kubeadm bootstrap and control plane providers will also be installed
 ```
 
@@ -49,8 +49,8 @@ To provide additional environment variables, enable feature gates, or supply clo
 ```bash
 helm install capi-operator capi-operator/cluster-api-operator
 	--create-namespace -n capi-operator-system
-	--set infrastructure=docker:v1.7.3
-	--set core=cluster-api:v1.7.3
+	--set infrastructure=docker:v1.7.7
+	--set core=cluster-api:v1.7.7
 	--timeout 90s
 	--secret-name <secret_name>
 	--wait
@@ -72,10 +72,10 @@ stringData:
 To select more than one desired provider to be installed together with the `Cluster API Operator`, the `--infrastructure` flag can be specified with multiple provider names separated by a comma. For example:
 
 ```bash
-helm install ... --set infrastructure="docker:v1.7.3;aws:v2.6.1"
+helm install ... --set infrastructure="docker:v1.7.7;aws:v2.6.1"
 ```
 
-The `infrastructure` flag is set to `docker:v1.7.3;aws:v2.6.1`, representing the desired provider names. This means that the `Cluster API Operator` will install and manage multiple providers, `Docker` and `AWS`, with versions `v1.7.3` and `v2.6.1` respectively.
+The `infrastructure` flag is set to `docker:v1.7.7;aws:v2.6.1`, representing the desired provider names. This means that the `Cluster API Operator` will install and manage multiple providers, `Docker` and `AWS`, with versions `v1.7.7` and `v2.6.1` respectively.
 
 The cluster is now ready to install Rancher Turtles. The default behavior when installing the chart is to install Cluster API Operator as a Helm dependency. Since we decided to install it manually before installing Rancher Turtles, the feature `cluster-api-operator.enabled` must be explicitly disabled as otherwise it would conflict with the existing installation. You can refer to [Install Rancher Turtles without Cluster API Operator](../developer-guide/install_capi_operator.md#install-rancher-turtles-without-cluster-api-operator-as-a-helm-dependency) to see next steps.
 
@@ -100,7 +100,7 @@ helm repo update
 and then it can be installed into the `rancher-turtles-system` namespace with:
 
 ```bash
-helm install rancher-turtles turtles/rancher-turtles --version v0.12.0
+helm install rancher-turtles turtles/rancher-turtles --version v0.13.0
     -n rancher-turtles-system
     --set cluster-api-operator.enabled=false
     --set cluster-api-operator.cluster-api.enabled=false
