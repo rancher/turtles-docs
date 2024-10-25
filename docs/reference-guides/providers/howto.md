@@ -126,7 +126,7 @@ kubectl create -f cluster1.yaml
 </Tabs>
 
 :::tip
-After your cluster is provisioned, you can check functionality of the workload cluster using `clusterctl`:
+After your cluster is provisioned, you can check functionality of the workload cluster using `kubectl`:
 ```bash
 kubectl describe cluster cluster1
 ```
