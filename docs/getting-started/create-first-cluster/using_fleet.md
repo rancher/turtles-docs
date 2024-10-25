@@ -10,13 +10,12 @@ This section will guide you through creating your first cluster and importing it
 
 - Rancher Manager cluster with Rancher Turtles installed
 - Cluster API providers installed for your scenario - we'll be using the [Docker infrastructure](https://github.com/kubernetes-sigs/cluster-api/tree/main/test/infrastructure/docker) and [RKE2 bootstrap/control plane](https://github.com/rancher-sandbox/cluster-api-provider-rke2) providers in these instructions - see [Initialization for common providers using Turtles' `CAPIProvider`](../../tasks/capi-operator/capiprovider_resource.md)
-- **clusterctl** CLI - see the [releases](https://github.com/kubernetes-sigs/cluster-api/releases)
 
 ## Create your cluster definition
 
-The **clusterctl** CLI can be used to generate the YAML for a cluster. When you run `clusterctl generate cluster`, it will connect to the management cluster to see what infrastructure providers have been installed. Also, it will take care of replacing any tokens in the chosen template (a.k.a flavour) with values from environment variables.
+The **envsubst** can be used to generate the YAML for a cluster from a template, and substitute environment variables.
 
-Alternatively, you can craft the YAML for your cluster manually. If you decide to do this then you can use the **templates** that infrastructure providers publish as part of their releases. For example, the AWS provider [publishes files](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v2.2.1) prefixed with **cluster-template** that can be used as a base. You will need to replace any tokens yourself or by using clusterctl (e.g. `clusterctl generate cluster test1 --from https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/download/v2.2.1/cluster-template-eks.yaml > cluster.yaml`).
+You can craft the YAML for your cluster manually. If you decide to do this then you can use the **templates** that infrastructure providers publish as part of their releases. For example, the AWS provider [publishes files](https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/tag/v2.2.1) prefixed with **cluster-template** that can be used as a base. You will need to replace any tokens yourself or by using clusterctl (e.g. `curl -s https://github.com/kubernetes-sigs/cluster-api-provider-aws/releases/download/v2.2.1/cluster-template-eks.yaml | envsubst > cluster.yaml`).
 
 :::tip
 To maintain proper resource management and avoid accidental deletion of custom resources managed outside of Helm during Helm operations, include the `helm.sh/resource-policy": keep` annotation in the top-level CAPI kinds within your cluster manifests.
@@ -31,13 +30,12 @@ To generate the YAML for the cluster do the following (assuming the Docker infra
 1. Open a terminal and run the following:
 
 ```bash
+export CLUSTER_NAME=cluster1
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
 export KUBERNETES_VERSION=v1.30.0
 
-clusterctl generate cluster cluster1 \
---from https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml \
-> cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml | envsubst > cluster1.yaml
 ```
 
 2. View **cluster1.yaml** to ensure there are no tokens. You can make any changes you want as well.

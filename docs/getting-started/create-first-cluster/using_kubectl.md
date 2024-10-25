@@ -19,13 +19,12 @@ To generate the YAML for the cluster, do the following (assuming the Docker infr
 1. Open a terminal and run the following:
 
 ```bash
+export CLUSTER_NAME=cluster1
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
 export KUBERNETES_VERSION=v1.30.0
 
-clusterctl generate cluster cluster1 \
---from https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml \
-> cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml | envsubst > cluster1.yaml
 ```
 
 2. View **cluster1.yaml** to ensure there are no tokens. You can make any changes you want as well.
