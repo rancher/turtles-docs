@@ -54,6 +54,7 @@ To generate the YAML for the cluster, do the following:
 1. Open a terminal and run the following:
 
 ```bash
+export CLUSTER_NAME="cluster1"
 export CONTROL_PLANE_MACHINE_COUNT=3
 export WORKER_MACHINE_COUNT=3
 export RKE2_VERSION=v1.30.3+rke2r1
@@ -63,9 +64,7 @@ export AWS_SSH_KEY_NAME="aws-ssh-key"
 export AWS_REGION="aws-region"
 export AWS_AMI_ID="ami-id"
 
-clusterctl generate cluster cluster1 \
---from https://github.com/rancher/cluster-api-provider-rke2/blob/main/samples/aws/internal/cluster-template.yaml \
-> cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/cluster-api-provider-rke2/refs/heads/main/examples/aws/cluster-template.yaml | envsubst > cluster1.yaml
 ```
 2. View **cluster1.yaml** and examine the resulting yaml file. You can make any changes you want as well.
 
@@ -83,13 +82,12 @@ To generate the YAML for the cluster, do the following:
 1. Open a terminal and run the following:
 
 ```bash
+export CLUSTER_NAME=cluster1
 export KUBERNETES_VERSION=v1.30
 export AWS_REGION=eu-west-2
 export AWS_INSTANCE_TYPE=t3.medium
 
-clusterctl generate cluster cluster1 \
---from https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/capa.yaml \
-> cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/capa.yaml | envsubst > cluster1.yaml
 ```
 2. View **cluster1.yaml** to ensure there are no tokens (i.e. SSH keys or cloud credentials). You can make any changes you want as well.
 
@@ -107,13 +105,12 @@ To generate the YAML for the cluster, do the following:
 1. Open a terminal and run the following:
 
 ```bash
+export CLUSTER_NAME=cluster1
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
 export KUBERNETES_VERSION=v1.30.0
 
-clusterctl generate cluster cluster1 \
---from https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-kubeadm.yaml \
-> cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-kubeadm.yaml | envsubst > cluster1.yaml
 ```
 
 2. View **cluster1.yaml** to ensure there are no tokens. You can make any changes you want as well.
@@ -129,9 +126,9 @@ kubectl create -f cluster1.yaml
 </Tabs>
 
 :::tip
-After your cluster is provisioned, you can check functionality of the workload cluster using `clusterctl`:
+After your cluster is provisioned, you can check functionality of the workload cluster using `kubectl`:
 ```bash
-clusterctl describe cluster cluster1
+kubectl describe cluster cluster1
 ```
 
 Remember that clusters are namespaced resources. These examples provision clusters in the `default` namespace, but you will need to provide yours if using a different one.
