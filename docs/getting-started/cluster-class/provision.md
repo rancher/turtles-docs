@@ -34,16 +34,6 @@ This guide uses the [examples repository](https://github.com/rancher-sandbox/ran
           namespace: capz-system
         spec:
           type: infrastructure
-          name: azure
-          credentials:
-              rancherCloudCredential: <rancher-credential-name> # Rancher credentials secret for Azure
-          configSecret:
-              name: azure-variables
-          variables:
-              CLUSTER_TOPOLOGY: "true"
-              EXP_CLUSTER_RESOURCE_SET: "true"
-              EXP_MACHINE_POOL: "true"
-              EXP_AKS_RESOURCE_HEALTH: "true"
         ```
   ## Create ClusterClass object
 
@@ -51,7 +41,7 @@ This guide uses the [examples repository](https://github.com/rancher-sandbox/ran
 
     The template we're using in this example will use CAPZ to provision a managed Azure (AKS) cluster. Before applying the yaml file, you will need to export the following environment variables. Remember to adapt the values to your specific scenario as these are just placeholders:
     ```bash
-    export CLUSTER_CLASS_NAME="azure-sample"                      
+    export CLUSTER_CLASS_NAME="azure-sample"
     export CLUSTER_NAME="azure-aks-cluster"
     export AZURE_LOCATION="northeurope"
     export AZURE_NODE_MACHINE_TYPE="Standard_D2s_v3"
@@ -62,10 +52,10 @@ This guide uses the [examples repository](https://github.com/rancher-sandbox/ran
     export AZURE_CLIENT_SECRET=<password>
     ```
 
-    Using `envsubst` to substitute the exported variables in the original file. 
+    Using `envsubst` to substitute the exported variables in the original file.
 
     ```bash
-    curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/capz/cluster-template-aks-clusterclass.yaml | envsubst >> clusterclass1.yaml
+    curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/capz/cluster-template-aks-clusterclass.yaml | envsubst > clusterclass1.yaml
     ```
 
     This will create a new yaml file `clusterclass1.yaml` that contains the class definition formatted with the exported values. You can study the resulting file before applying it to the cluster.
@@ -86,7 +76,7 @@ This guide uses the [examples repository](https://github.com/rancher-sandbox/ran
     Now that the class resource is available in the cluster, we can go ahead and create a cluster from this topology. Let's first substitute the variables in the template, as we did before:
 
     ```bash
-    curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/capz/cluster-template-aks-topology.yaml | envsubst >> cluster1.yaml
+    curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/capz/cluster-template-aks-topology.yaml | envsubst > cluster1.yaml
     ```
 
     This will create a new yaml file `cluster1.yaml` that contains the cluster definition formatted with the exported values. You can study the resulting file before applying it to the cluster, which will effectively trigger workload cluster creation.
