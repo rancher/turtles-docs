@@ -54,6 +54,7 @@ This guide uses the [examples repository](https://github.com/rancher-sandbox/ran
     export CLUSTER_CLASS_NAME="azure-sample"                      
     export CLUSTER_NAME="azure-aks-cluster"
     export AZURE_LOCATION="northeurope"
+    export AZURE_NODE_MACHINE_TYPE="Standard_D2s_v3"
     export AZURE_SUBSCRIPTION_ID=<subs-id> # you can use: az account show --query 'id' --output tsv
     export KUBERNETES_VERSION="v1.30.4"
     export AZURE_CLIENT_ID=<app-id>
