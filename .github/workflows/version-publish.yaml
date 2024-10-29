@@ -40,4 +40,4 @@ jobs:
           [[ $tag =~ [0-9]+\.[0-9]+\.[0-9]+ ]] || tag+=.0
           echo -e "Update docs version v${tag}\\n\\nChangelog: https://github.com/rancher/turtles/releases/tag/v${tag}\\n\\ncc @rancher/highlander" > body
           export body=$(cat body)
-          gh pr create --title 'turtles-docs release for turtles v${{ env.TAG }}' --body "$body"
+          gh pr create --title 'turtles-docs release for turtles v${{ env.TAG }}' --body "$body" --label "area/documentation"
