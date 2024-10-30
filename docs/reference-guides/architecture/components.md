@@ -30,4 +30,5 @@ following functionalities:
 
 - **Importing CAPI clusters into Rancher:** installing Rancher Cluster Agent in 
 CAPI provisioned clusters.
-- **CAPI Operator Configuration:** Configuration support for the CAPI Operator.
+- **Manage lifecycle of CAPI providers:** managing the lifecycle of CAPI providers with [CAPIProvider](../../tasks/capi-operator/capiprovider_resource.md) API 
+by leveraging [Cluster API Operator](https://github.com/kubernetes-sigs/cluster-api-operator).
