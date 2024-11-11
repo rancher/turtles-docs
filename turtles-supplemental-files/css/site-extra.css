@@ -68,7 +68,7 @@ i.fa[title='Tip:'] {
   background: #000;
   color: #fff;
   /* border-bottom-style: unset; */
-  background-color: #30ba78;
+  background-color: #326ce5;
 }
 
 .nav-container {
@@ -77,7 +77,7 @@ i.fa[title='Tip:'] {
 
 @media screen and (min-width: 1024px) {
   .navbar-dropdown a.navbar-item:hover {
-    background-color: #30ba78;
+    background-color: #326ce5;
     color: white;
     text-decoration: unset;
   }
@@ -97,11 +97,11 @@ i.fa[title='Tip:'] {
 }
 
 .navbar-link {
-  background-color: #0a322c;
+  background-color: #326ce5;
 }
 
 .navbar-link:hover {
-  background-color: #33ba78;
+  background-color: #326ce5;
 }
 
 .has-submenu {
@@ -173,7 +173,7 @@ div#topbar-nav :hover {
 
 /* navbar background color */
 .navbar {
-  background-color: #0a322c;
+  background-color: #ffffff;
 }
 
 /* margin hack: we need this margin to prevent logo from covering
@@ -220,7 +220,7 @@ a.navbar-logo {
 .is-current-page>.nav-link, .is-current-page>.nav-text {
   font-weight: 700;
   color: #fff;
-  background-color: #33ba78;
+  background-color: #326ce5;
   padding-left: 6px;
   padding-right: 10px;
   padding-top: 8px;
@@ -230,7 +230,7 @@ a.navbar-logo {
 
 /* Link hover */
 a:hover {
-  color: #0C322C;
+  color: #326ce5;
   text-decoration: underline;
 }
 
@@ -402,10 +402,14 @@ img.langIcon.korea {
   border-bottom: 1px solid #c0c2c4;
 }
 
-.sidebar .toc-menu a:hover {
-  color: #0C322C;
-  background-color: #EFEFEF;
+.sidebar .toc-menu li:hover {
+  color: #ffffff;
+  background-color: #326ce5;
   text-decoration: underline;
+}
+
+.sidebar .toc-menu li:hover a {
+  color: inherit;
 }
 
 .sidebar .toc-menu a {
@@ -735,7 +739,7 @@ ul {
   color: white;
   font-weight: 500;
   padding-left: 15px;
-  background-color: #0C322C;
+  background-color: #326ce5;
   font-family: 'Poppins';
   padding-top: 10px;
   padding-bottom: 10px;
