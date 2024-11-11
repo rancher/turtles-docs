@@ -5,13 +5,6 @@
         <a class=" navbar-logo" href="https://documentation.suse.com/"><img class="logo"
             src="{{uiRootPath}}/img/logo.svg" /></a>
       </div>
-      {{#if env.SITE_SEARCH_PROVIDER}}
-      <div class="navbar-item search hide-for-print">
-        <div id="search-field" class="field">
-          <input id="search-input" type="text" placeholder="Search the docs" {{#if page.home}} autofocus{{/if}}>
-        </div>
-      </div>
-      {{/if}}
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -48,11 +41,13 @@
               title="OpenSource @ SUSE">&nbsp;More projects...&nbsp;<i class="fas fa-external-link-alt"></i></a>
           </div>
         </div>
-        <div class="navbar-item">
-          <a href="https://twitter.com/SUSE">
-            <img class="x-logo" src="{{uiRootPath}}/img/x-logo-white.png">
-          </a>
+        {{#if env.SITE_SEARCH_PROVIDER}}
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs" {{#if page.home}} autofocus{{/if}}>
+          </div>
         </div>
+        {{/if}}
       </div>
     </div>
   </nav>
