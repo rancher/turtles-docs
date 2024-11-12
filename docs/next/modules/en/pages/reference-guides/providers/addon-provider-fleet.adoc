@@ -1,0 +1,38 @@
+= Cluster API Addon Provider Fleet
+
+== Overview
+
+Cluster API Add-on Provider for `Fleet` (CAAPF) is a Cluster API (CAPI) provider that provides integration with https://fleet.rancher.io/[`Fleet`] to enable the easy deployment of applications to a CAPI provisioned cluster.
+
+== Functionality
+
+* The provider will register a newly provisioned CAPI cluster with `Fleet` by creating a `Fleet` `Cluster` instance with the same `name` and `namespace`. Applications can be automatically deployed to the created cluster using `GitOps`.
+* The provider will automatically create a Fleet `ClusterGroup` for every CAPI `ClusterClass` in the `ClusterClass` namespace. This enables you to deploy the same applications to all clusters created from the same `ClusterClass`.
+
+This allows a user to specify either a https://fleet.rancher.io/ref-bundle[`Bundle`] resource with raw application workloads, or https://fleet.rancher.io/ref-gitrepo[`GitRepo`] to install applications from git. Each of the resources can provide https://fleet.rancher.io/gitrepo-targets#defining-targets[`targets`] with any combination of:
+
+[source,yaml]
+----
+  targets:
+  - clusterGroup: <cluster-class-name> # If the cluster is created from cluster-class
+  - clusterName: <a specific CAPI cluster name>
+----
+
+Additionally, `CAAPF` automatically propagates `CAPI` cluster labels to the `Fleet` cluster resource, so user can specify a target matching common cluster label with:
+
+[source,yaml]
+----
+  targets:
+  - clusterSelector: <label selector for the cluster instances, inherited from CAPI clusters>
+  - clusterGroupSelector: <label selector for the cluster group instances, labels inherited from ClusterClass>
+----
+
+== Example - deploying kindnet CNI
+
+[CAUTION]
+====
+The following example requires `Fleet` version `>=v0.10.1-rc.1`, which is not a part of `rancher/charts` yet.
+====
+
+
+*Demo*: image:https://asciinema.org/a/seEFHKz5DVpUe5CQvWcddSJBp.svg[asciicast,link=https://asciinema.org/a/seEFHKz5DVpUe5CQvWcddSJBp]

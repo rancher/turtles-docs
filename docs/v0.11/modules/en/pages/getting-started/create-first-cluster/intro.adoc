@@ -1,0 +1,9 @@
+= Introduction
+:sidebar_position: 1
+
+Everything you need to know about creating and importing your first CAPI cluster with {product_name}.
+
+Choose one of the following options:
+
+* xref:getting-started/create-first-cluster/using_fleet.adoc[If you are using Fleet]
+* xref:getting-started/create-first-cluster/using_kubectl.adoc[If you want to use kubectl]

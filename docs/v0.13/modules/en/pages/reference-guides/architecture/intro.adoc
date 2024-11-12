@@ -1,0 +1,20 @@
+= Introduction
+:sidebar_position: 0
+
+This guide offers a comprehensive overview of the core components and structure
+that power {product_name} and its integration within the Rancher ecosystem.
+
+[TIP]
+====
+For guidance about setting up Rancher, refer to
+xref:../../getting-started/rancher.adoc[Rancher Setup]
+
+For information on how to install {product_name}, refer to
+xref:../../getting-started/install-rancher-turtles/using_rancher_dashboard.adoc[Install {product_name} using Rancher Dashboard]
+====
+
+
+*A Rancher User will use Rancher to manage clusters. Rancher will be able to use
+Cluster API to manage the lifecycle of child Kubernetes clusters.*
+
+image::intro.png[intro]

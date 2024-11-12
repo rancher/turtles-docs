@@ -1,0 +1,73 @@
+= Chart configuration
+:sidebar_position: 0
+
+[TIP]
+====
+For the up-to-date content of `values.yaml` source file, refer to the https://github.com/rancher/turtles[{product_name} repository].
+====
+
+
+== {product_name} values
+
+When installing {product_name} using the official Helm chart, it is possible to configure a number of feature flags. This is a comprehensive list of the available values and their usage:
+
+[source,yaml]
+----
+rancherTurtles:
+  features:
+    cluster-api-operator:
+      cleanup: true # indicates that rancher turtles resources are cleaned up after uninstalling (default: true)
+      kubectlImage: registry.k8s.io/kubernetes/kubectl:v1.28.0 # indicates the image to use for post-delete cleanup (default: Kubernetes container image registry)
+    embedded-capi: # this is a rancher functionality that is not compatible with rancher-turtles
+      disabled: true # indicates that embedded-capi must be disabled during installation (default: true)
+    rancher-webhook: # an existing rancher installation keeps rancher webhooks after disabling embedded-capi      
+      cleanup: true # indicates that the remaining rancher webhooks be removed (default: true)
+      kubectlImage: registry.k8s.io/kubernetes/kubectl:v1.28.0 # indicates the image to use for pre-install cleanup (default: Kubernetes container image registry)
+    rancher-kubeconfigs: # with capi 1.5.0 and greater, secrets for kubeconfigs must contain a specific label. See https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/book/src/developer/providers/migrations/v1.4-to-v1.5.md#other
+      label: true # indicates that the label will be added (default: true)
+    managementv3-cluster: # rancher will use `clusters.management.cattle.io` to represent an imported capi cluster
+      enabled: false # if false, indicates that `clusters.provisioning.cattle.io` resources will be used (default: false)
+----
+
+The list has been truncated to show only the configurable feature flags. Other fields with the `rancherTurtles` key are automatically set when a chart is released.
+
+== Cluster API Operator values
+
+Any values passed to `helm` with the `cluster-api-operator` key will be passed along to the `Cluster API Operator` project.
+
+[TIP]
+====
+A full set of available values for the `Cluster API Operator` can be found in the operator https://github.com/kubernetes-sigs/cluster-api-operator/blob/main/hack/charts/cluster-api-operator/values.yaml[values.yaml].
+====
+
+
+Currently the available set of values for the `cluster-api-operator` setup in the `rancher-turtles`:
+
+[source,yaml]
+----
+cluster-api-operator:
+  enabled: true # indicates if CAPI operator should be installed (default: true)
+  cluster-api:
+    enabled: true # indicates if core CAPI controllers should be installed (default: true)
+    configSecret:
+      name: "" # (provide only if using a user-managed secret) name of the config secret to use for core CAPI controllers, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#installing-azure-infrastructure-provider docs for more details.
+      defaultName: "capi-env-variables" # default name for the automatically created secret.
+    core:
+      namespace: capi-system
+      fetchConfig: # (only required for airgapped environments)
+        url: ""  # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
+        selector: ""  # selector to use for fetching config, used by the CAPI operator.
+    rke2:
+      enabled: true # indicates if RKE2 provider for Cluster API should be installed (default: true)
+      version: "" # version of Cluster API Provider RKE2 (CAPRKE2) to install
+      bootstrap: # CAPRKE2 Bootstrap Provider
+        namespace: rke2-bootstrap-system
+        fetchConfig: # (only required for airgapped environments)
+          url: ""  # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
+          selector: ""  # selector to use for fetching config, used by the CAPI operator.
+      controlPlane: # CAPRKE2 Control Plane Provider
+        namespace: rke2-control-plane-system
+        fetchConfig: # (only required for airgapped environments)
+          url: "" # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
+          selector: ""  # selector to use for fetching config, used by the CAPI operator.
+----

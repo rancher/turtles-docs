@@ -1,0 +1,100 @@
+= Via Helm install
+
+[CAUTION]
+====
+In case you need to review the list of prerequisites (including `cert-manager`), you can refer to xref:../index.adoc#_prerequisites[this table].
+====
+
+
+If you want to manually apply the Helm chart and be in full control of the installation.
+
+The Cluster API Operator is required for installing {product_name} and will be installed as dependency of the {product_name} Helm chart.
+
+CAPI Operator allows handling the lifecycle of Cluster API Providers using a declarative approach, extending the capabilities of `clusterctl`. If you want to learn more about it, you can refer to https://cluster-api-operator.sigs.k8s.io/[Cluster API Operator book].
+
+[IMPORTANT]
+====
+Before <<_install_suse_rancher_prime_cluster_api_with_cluster_api_operator_as_a_helm_dependency,installing {product_name}>> in your Rancher environment, Rancher's `embedded-cluster-api` functionality must be disabled. This includes also cleaning up Rancher-specific webhooks that otherwise would conflict with CAPI ones.
+
+To simplify setting up Rancher for installing {product_name}, the official {product_name} Helm chart includes a `pre-install` hook that applies these changes, making it transparent to the end user:
+
+* Disable the `embedded-cluster-api` feature in Rancher.
+* Delete the `mutating-webhook-configuration` and `validating-webhook-configuration` webhooks that are no longer needed.
+====
+
+
+If you would like to understand how {product_name} works and what the architecture looks like, you can refer to the xref:../../reference-guides/architecture/intro.adoc[Architecture] section.
+
+[NOTE]
+====
+If uninstalling, you can refer to xref:../getting-started/uninstall_turtles.adoc[Uninstalling {product_name}]
+====
+
+
+== Install {product_name} with `Cluster API Operator` as a Helm dependency
+
+The `rancher-turtles` chart is available in https://rancher.github.io/turtles and this Helm repository must be added before proceeding with the installation:
+
+[source,bash]
+----
+helm repo add turtles https://rancher.github.io/turtles
+helm repo update
+----
+
+As mentioned before, installing {product_name} requires the https://github.com/kubernetes-sigs/cluster-api-operator[Cluster API Operator] and the Helm chart can handle its installation automatically with a minimum set of flags:
+
+[source,bash]
+----
+helm install rancher-turtles turtles/rancher-turtles --version v0.11.0 \
+    -n rancher-turtles-system \
+    --dependency-update \
+    --create-namespace --wait \
+    --timeout 180s
+----
+
+This operation could take a few minutes and, after installing, you can take some time to study the installed controllers, including:
+
+* `rancher-turtles-controller`.
+* `capi-operator`.
+
+[NOTE]
+====
+
+* For a list of {product_name} versions, refer to https://github.com/rancher/turtles/releases[Releases page].
+====
+
+
+This is the basic, recommended configuration, which manages the creation of a secret containing the required CAPI feature flags (`CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled) in the core provider namespace. These feature flags are required to enable additional Cluster API functionality.
+
+If you need to override the default behavior and use an existing secret (or add custom environment variables), you can pass the secret name helm flag. In this case, as a user, you are in charge of managing the secret creation and its content, including the minimum required features: `CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled.
+
+[source,bash]
+----
+helm install ...
+    # Passing secret name and namespace for additional environment variables
+    --set cluster-api-operator.cluster-api.configSecret.name=<secret_name>
+----
+
+The following is an example of a user-managed secret `cluster-api-operator.cluster-api.configSecret.name=variables` with `CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` feature flags set and an extra custom variable:
+
+.secret.yaml
+[source, yaml]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: variables
+  namespace: rancher-turtles-system
+type: Opaque
+stringData:
+  CLUSTER_TOPOLOGY: "true"
+  EXP_CLUSTER_RESOURCE_SET: "true"
+  EXP_MACHINE_POOL: "true"
+  CUSTOM_ENV_VAR: "false"
+----
+
+[IMPORTANT]
+====
+For detailed information on the values supported by the chart and their usage, refer to xref:../reference-guides/rancher-turtles-chart/values.adoc[Helm chart options]
+====
+

@@ -1,0 +1,26 @@
+= Installing the CoreProvider using CAPIProvider resource
+:sidebar_position: 4
+
+This section describes how to install the `CoreProvider` via `CAPIProvider`, which is responsible for managing the Cluster API CRDs and the Cluster API controller.
+
+[NOTE]
+====
+Please refer to installing Core Provider https://cluster-api-operator.sigs.k8s.io/03_topics/03_basic-cluster-api-provider-installation/01_installing-core-provider#installing-the-coreprovider[section] in CAPI Operator docs for additional details on raw `CoreProvider` resource installation.
+
+Only one CoreProvider can be installed at the same time on a single cluster.
+====
+
+
+_Example:_
+
+[source,yaml]
+----
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: cluster-api
+  namespace: capi-system
+spec:
+  version: v1.7.3
+  type: core # required
+----

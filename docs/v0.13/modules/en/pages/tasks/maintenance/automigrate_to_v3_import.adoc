@@ -1,0 +1,18 @@
+= Auto-migration to v3 cluster import
+:sidebar_position: 3
+
+[CAUTION]
+====
+Please read the step described in xref:./import_controller_upgrade.adoc#_context[import controller upgrade], and consider how you want to perform your migration. Feature described here will automatically migrate all old clusters in one go, replacing them with v3 cluster objects.
+====
+
+
+== Context
+
+The goal of the feature is to enable an automatic migration path for users still using v1 cluster import functionality or those currently migrating to v3 clusters. To achieve this, Turtles provides a separate feature flag named `managementv3-cluster-migration`. This option is *disabled* by default, but can be enabled during installation by enabling both checkmarks from the list:
+
+image::image.png[automigrate feature]
+
+== Functionality
+
+The intended behavior for this feature flag is described in the https://github.com/rancher/turtles/blob/main/docs/adr/0011-v1-to-v3-migration.md[ADR]. In summary, when enabled, this flag ensures that cluster imports are not duplicated during upgrade to `management/v3` or downgrade from `management/v3` back to `provisioning/v1`. This prevents duplication of cluster imports and automatically re-imports previously imported CAPI cluster definitions.

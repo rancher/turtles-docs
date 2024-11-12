@@ -1,0 +1,4 @@
+= Basic Cluster API Provider Installation
+:sidebar_position: 1
+
+This section describes the basic process of installing `CAPI` providers using the operator and a basic configuration of AWS Infrastructure provider. For https://cluster-api-operator.sigs.k8s.io/03_topics/03_basic-cluster-api-provider-installation/#basic-cluster-api-provider-installation[section] details please refer to official CAPI Operator documentation.

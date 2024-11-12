@@ -1,0 +1,42 @@
+= Introduction
+:sidebar_position: 1
+
+In this section we cover using *ClusterClass* with {product_name}.
+
+[CAUTION]
+====
+ClusterClass is an experiment feature of Cluster API. As with any experimental feature it should be used with caution as it may be unreliable. All experimental features are not subject to any compatibility or deprecation promise.
+====
+
+
+== Pre-requisities
+
+To use ClusterClass it needs to be enabled for core Cluster API and any provider that supports it. This is done by setting the `CLUSTER_TOPOLOGY` variable to `true`.
+
+The {product_name} Helm chart will set this variable by default when its installed. However, when enabling additional providers you will have to ensure `CLUSTER_TOPOLGY` is set in the providers secret. For example:
+
+[source,yaml]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: capd-variables
+  namespace: default
+type: Opaque
+stringData:
+  CLUSTER_TOPOLOGY: "true"
+----
+
+Which can then be referenced from a provider declaration. For example:
+
+[source,yaml]
+----
+apiVersion: operator.cluster.x-k8s.io/v1alpha1
+kind: InfrastructureProvider
+metadata:
+  name: docker
+  namespace: capd-system
+spec:
+  secretName: capd-variables
+  secretNamespace: default
+----
