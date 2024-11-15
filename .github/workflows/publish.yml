@@ -34,7 +34,7 @@ jobs:
     - name: Install Antora with the Antora Lunr Extension
       run: make environment
     - name: Generate Site
-      run: make remote
+      run: make local
     - name: Upload Artifacts
       uses: actions/upload-pages-artifact@v2
       with:
