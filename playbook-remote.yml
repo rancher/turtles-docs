@@ -1,0 +1,30 @@
+site:
+  title: Cluster-API
+  url: /
+  start_page: v0.13@cluster-api:en:index.adoc
+
+content:
+  sources:
+    - url: https://github.com/rancher/turtles-product-docs.git
+      branches: [main]
+      start_paths: [versions/v0.13, versions/v0.12, versions/v0.11]
+
+
+ui: 
+  bundle:
+    url: https://github.com/rancher/product-docs-ui/blob/main/build/ui-bundle.zip?raw=true
+    snapshot: true
+  supplemental_files: ./product-docs-supplemental-files
+
+runtime:
+  fetch: true
+
+asciidoc:
+  attributes:
+    page-pagination: ''
+    tabs-sync-option: ''
+  extensions:
+  - '@asciidoctor/tabs'
+antora:
+  extensions:
+  - require: '@antora/lunr-extension'

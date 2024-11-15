@@ -1,0 +1,129 @@
+= Air-gapped environment
+:sidebar_position: 3
+
+{product_name} provides support for an air-gapped environment out-of-the-box by leveraging features of the Cluster API Operator, the required dependency for installing {product_name}.
+
+To provision and configure Cluster API providers, Turtles uses the *CAPIProvider* resource to allow managing Cluster API Operator manifests in a declarative way. Every field provided by the upstream CAPI Operator resource for the desired `spec.type` is also available in the `spec` of the *CAPIProvider* resouce.
+
+To install Cluster API providers in an air-gapped environment the following will need to be done:
+
+. Configure the Cluster API Operator for an air-gapped environment:
+ ** The operator chart will be fetched and stored as a part of the Turtles chart.
+ ** Provide image overrides for the operator from an accessible image repository.
+. Configure Cluster API providers for an air-gapped environment:
+ ** Provide fetch configuration for each provider from an accessible location (e.g., an internal github/gitlab server) or from pre-created ConfigMaps within the cluster.
+ ** Provide image overrides for each provider to pull images from an accessible image repository.
+. Configure {product_name} for an air-gapped environment:
+ ** Collect and publish {product_name} images and publish to the private registry. https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images#2-collect-the-cert-manager-image[Example of cert-manager installation for the reference].
+ ** Provide fetch configuration and image values for `core` and `caprke2` providers in xref:../reference-guides/rancher-turtles-chart/values.adoc#cluster-api-operator-values[values.yaml].
+ ** Provider image value for the Cluster API Operator helm chart dependency in https://github.com/kubernetes-sigs/cluster-api-operator/blob/main/hack/charts/cluster-api-operator/values.yaml#L26[values.yaml]. Image values specified with the cluster-api-operator key will be passed along to the Cluster API Operator.
+
+== Example Usage
+
+As an admin, I need to fetch the vSphere provider (CAPV) components from within the cluster because I am working in an air-gapped environment.
+
+In this example, there is a ConfigMap in the `capv-system` namespace that defines the components and metadata of the provider. It can be created manually or by running the following commands:
+
+[source,bash]
+----
+# Get the file contents from the GitHub release
+curl -L https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/releases/download/v1.8.5/infrastructure-components.yaml -o components.yaml
+curl -L https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/releases/download/v1.8.5/metadata.yaml -o metadata.yaml
+
+# Create the configmap from the files
+kubectl create configmap v1.8.5 --namespace=capv-system --from-file=components=components.yaml --from-file=metadata=metadata.yaml --dry-run=client -o yaml > configmap.yaml
+----
+
+This command example would need to be adapted to the provider and version you want to use. The resulting config map will look similar to the example below:
+
+[source,yaml]
+----
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    provider-components: vsphere
+  name: v1.8.5
+  namespace: capv-system
+data:
+  components: |
+    # Components for v1.8.5 YAML go here
+  metadata: |
+    # Metadata information goes here
+----
+
+A *CAPIProvider* resource will need to be created to represent the vSphere infrastructure provider. It will need to be configured with a `fetchConfig`. The label selector allows the operator to determine the available versions of the vSphere provider and the Kubernetes resources that need to be deployed (i.e. contained within ConfigMaps which match the label selector).
+
+Since the provider's version is marked as `v1.8.5`, the operator uses the components information from the ConfigMap with matching label to install the vSphere provider.
+
+[source,yaml]
+----
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: vsphere
+  namespace: capv-system
+spec:
+  name: vsphere
+  type: infrastructure
+  version: v1.8.5
+  configSecret:
+    name: vsphere-variables
+  fetchConfig:
+    selector:
+      matchLabels:
+        provider-components: vsphere
+  deployment:
+    containers:
+    - name: manager
+      imageUrl: "gcr.io/myregistry/capv-controller:v1.8.5-foo"
+  variables:
+    CLUSTER_TOPOLOGY: "true"
+    EXP_CLUSTER_RESOURCE_SET: "true"
+    EXP_MACHINE_POOL: "true"
+----
+
+Additionally the *CAPIProvider* overrides the container image to use for the provider using the `deployment.containers[].imageUrl` field. This allows the operator to pull the image from a registry within the air-gapped environment.
+
+=== Situation when manifests do not fit into ConfigMap
+
+There is a limit on the https://kubernetes.io/docs/concepts/configuration/configmap/#motivation[maximum size] of a ConfigMap - 1MiB. If the manifests do not fit into this size, Kubernetes will generate an error and provider installation fail. To avoid this, you can archive the manifests and put them in the ConfigMap that way.
+
+For example, you have two files: `components.yaml` and `metadata.yaml`. To create a working config map you need:
+
+. Archive components.yaml using `gzip` cli tool
++
+[source,sh]
+----
+gzip -c components.yaml > components.gz
+----
++
+. Create a ConfigMap manifest from the archived data
++
+[source,sh]
+----
+kubectl create configmap v1.8.5 --namespace=capv-system --from-file=components=components.gz --from-file=metadata=metadata.yaml --dry-run=client -o yaml > configmap.yaml
+----
++
+. Edit the file by adding "provider.cluster.x-k8s.io/compressed: true" annotation
++
+[source,sh]
+----
+yq eval -i '.metadata.annotations += {"provider.cluster.x-k8s.io/compressed": "true"}' configmap.yaml
+----
++
+NOTE: without this annotation operator won't be able to determine if the data is compressed or not.
+
+. Add labels that will be used to match the ConfigMap in `fetchConfig` section of the provider
++
+[source,sh]
+----
+yq eval -i '.metadata.labels += {"my-label": "label-value"}' configmap.yaml
+----
++
+. Create a ConfigMap in your kubernetes cluster using kubectl
++
+[source,sh]
+----
+kubectl create -f configmap.yaml
+----

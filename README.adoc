@@ -1,0 +1,92 @@
+[#turtles-product-documentation]
+= Turtles Product Documentation
+
+[#build-the-documentation-site]
+== Build the Documentation site
+
+The repository uses https://docs.antora.org/antora/latest/[Antora Playbooks] to locally or remotely build the AsciiDoc content into a static website.
+
+[#prerequisites]
+=== Prerequisites
+
+[#git]
+==== git
+
+You need git to get the source code of this repository. Run the command below to check whether git is installed on your machine.
+
+[,console]
+----
+git --version
+----
+
+If you don't have git installed on your machine, download and install it for your operating system from the https://git-scm.com/downloads[git downloads] page.
+
+[#node-js]
+==== Node.js
+
+Antora requires an active long term support (LTS) release of Node.js. Run the command below to check if you have Node.js installed, and which version. This command should return an https://nodejs.org/en/about/releases/[active Node.js LTS version number]
+
+[,console]
+----
+node -v
+----
+
+If you don't have Node.js installed on your machine, install it, preferably via https://github.com/nvm-sh/nvm[nvm]
+
+[#clone-the-playbook-repository]
+=== Clone the Playbook repository
+
+Run the git command to clone this repository.
+
+[,console]
+----
+git clone https://github.com/rancher/turtles-product-docs.git
+----
+
+[#install-node-modules]
+=== Install node modules
+
+Open a terminal at the root of the git repository. Run the command below.
+
+[,console]
+----
+npm install
+----
+
+[#run-antora-to-build-the-static-website]
+=== Run Antora to build the static website
+
+As a local example, run the command below to build the site:
+
+[,console]
+----
+npx antora --fetch turtles-local-playbook.yml
+----
+
+Navigate to the `./build/site` directory and open the index.html file in your browser to view and navigate the documentation site.
+
+Alternatively, run the below command first and then open `+http://127.0.0.1:8080/+` in your browser for a web server preview:
+
+[,console]
+----
+make preview
+----
+
+[#run-antora-to-build-the-static-website-using-the-local-documentation-content]
+=== Run Antora to build the static website using the local documentation content
+
+The command provided in the previous section fetches documentation content of the products from their respective remote GitHub repositories. If you want the playbook to use the documentation content from your local machine instead you can do so with `product-docs-playbook-local.yml`.
+
+Clone all the individual product documentation Github repositories one level above the current playbook repository.
+
+As an example, run the command below to use the local `turtles-local-playbook.yml` file.
+
+[,console]
+----
+npx antora --fetch turtles-local-playbook.yml
+----
+
+[#makefile]
+=== Makefile
+
+The Makefile can also be used to set up your environment, build the local and remote static site, and clean your build output directory.

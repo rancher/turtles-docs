@@ -1,0 +1,56 @@
+= SLSA
+:sidebar_position: 1
+
+== Overview
+
+https://slsa.dev/spec/v1.0/about[SLSA] is a set of incrementally adoptable guidelines for supply chain security, established by industry consensus. The specification set by SLSA is useful for both software producers and consumers: producers can follow SLSA's guidelines to make their software supply chain more secure, and consumers can use SLSA to make decisions about whether to trust a software package.
+
+{product_name} meets https://slsa.dev/spec/v1.0/levels[SLSA Level 3] requirements.
+
+|===
+| Requirement | Required at SLSA L3 | Met by {product_name}
+
+| Choose an appropriate build platform
+| Yes
+| Yes
+
+| Follow a consistent build process
+| Yes
+| Yes
+
+| Distribute provenance
+| Yes
+| Yes
+|===
+
+== Build Platform
+
+* The {product_name} project uses Git for source code management.
+* All the {product_name} maintainers are required to have two-factor authentication enabled, to sign and sign off on all their contributions.
+* The {product_name} project uses GitHub Actions and GitHub Runners for building all its release artifacts.
+* The build and release process runs in isolation on an ephemeral environment provided by GitHub-hosted runners.
+
+== Build Process
+
+* The build and release process is defined in code and is kept under version control.
+* The GitHub Workflows make use of GitHub Actions pinned to certain versions and are kept up-to-date using GitHub Dependabot.
+* All changes to the build and release process are done via Pull Requests that must be approved by at least one {product_name} maintainer.
+* The release process can only be kicked off by a {product_name} maintainer by pushing a Git tag in the semver format.
+
+== Provenance
+
+* The {product_name} project uses the official https://github.com/slsa-framework/slsa-github-generator[SLSA GitHub Generator] project for provenance generation and distribution.
+* The provenance for the release artifacts published to GitHub Container Registry and to Rancher Prime Registry is generated using the generator_container_slsa3 GitHub Workflow provided by the https://github.com/slsa-framework/slsa-github-generator[SLSA GitHub Generator] project.
+* The provenance identifies the {product_name} container images using their digest in SHA-256 format.
+* The provenance is signed by Sigstore Cosign using the GitHub OIDC identity, and the public key to verify the provenance is stored in the public https://docs.sigstore.dev/logging/overview/[Rekor transparency log].
+* The release process and the provenance generation are run in isolation on an ephemeral environment provided by GitHub-hosted runners.
+* The provenance of the {product_name} container images can be verified using the official https://github.com/slsa-framework/slsa-verifier[SLSA verifier tool].
+* The provenance generation workflows run on ephemeral and isolated virtual machines, which are fully managed by GitHub.
+* The provenance signing secrets are ephemeral and are generated through Sigstore's https://github.com/sigstore/cosign/blob/main/KEYLESS.md[keyless] signing procedure.
+* The https://github.com/slsa-framework/slsa-github-generator[SLSA GitHub Generator] runs on separate virtual machines than the build and release process, so that the {product_name} build scripts don't have access to the signing secrets.
+
+== Isolation
+
+* The release process and the provenance generation are run in isolation on an ephemeral environment provided by GitHub-hosted runners.
+* The provenance generation is decoupled from the build process; the https://github.com/slsa-framework/slsa-github-generator[SLSA GitHub Generator] runs on separate virtual machines fully managed by GitHub.
+* The release process can't access the provenance signing key because the provenance generator runs in isolation on separate GitHub-hosted runners.

@@ -1,0 +1,46 @@
+* Getting Started
+** xref:index.adoc[Introduction]
+** xref:getting-started/rancher.adoc[Rancher Setup]
+** Install {product_name}
+*** xref:getting-started/install-rancher-turtles/using_rancher_dashboard.adoc[Via Rancher Dashboard]
+*** xref:getting-started/install-rancher-turtles/using_helm.adoc[Via Helm Install]
+** Your first cluster
+*** xref:getting-started/create-first-cluster/intro.adoc[Introduction]
+*** xref:getting-started/create-first-cluster/using_fleet.adoc[Create & import your first cluster using Fleet]
+*** xref:getting-started/create-first-cluster/using_kubectl.adoc[Create & Import Your First Cluster Using kubectl]
+** Using ClusterClass
+*** xref:getting-started/cluster-class/intro.adoc[Introduction]
+*** xref:getting-started/cluster-class/create_cluster.adoc[Create a cluster using Fleet]
+** xref:getting-started/air-gapped-environment.adoc[Air-gapped environment]
+** xref:getting-started/uninstall_turtles.adoc[Uninstall {product_name}]
+* Reference Guides
+** Architecture
+*** xref:reference-guides/architecture/intro.adoc[Introduction]
+*** xref:reference-guides/architecture/components.adoc[Components]
+*** xref:reference-guides/architecture/deployment.adoc[Deployment Scenarios]
+** xref:reference-guides/rancher-turtles-chart/values.adoc[Chart configuration]
+** CAPI Providers
+*** xref:reference-guides/providers/certified.adoc[Certified CAPI Providers]
+*** xref:reference-guides/providers/howto.adoc[Create & import a cluster using CAPI providers]
+*** xref:reference-guides/providers/addon-provider-fleet.adoc[Cluster API Addon Provider Fleet]
+* Tasks
+** xref:tasks/intro.adoc[Introduction]
+** Cluster API Operator
+*** xref:tasks/capi-operator/basic_cluster_api_provider_installation.adoc[Basic Cluster API Provider Installation]
+*** xref:tasks/capi-operator/installing_core_provider.adoc[Installing the CoreProvider using CAPIProvider resource]
+*** xref:tasks/capi-operator/capiprovider_resource.adoc[CAPIProvider Resource]
+*** xref:tasks/capi-operator/add_infrastructure_provider.adoc[Installing AWS Infrastructure Provider using CAPIProvider resource]
+** Maintenance
+*** xref:tasks/maintenance/early_adopter_upgrade.adoc[Upgrade Instructions for Early Adopters]
+*** xref:tasks/maintenance/import_controller_upgrade.adoc[Upgrade Turtles import controller]
+*** xref:tasks/maintenance/automigrate_to_v3_import.adoc[Auto-migration to v3 cluster import]
+* Developer Guide
+** xref:developer-guide/intro.adoc[Introduction]
+** xref:developer-guide/install_capi_operator.adoc[Installing Cluster API Operator]
+** xref:developer-guide/development.adoc[Development setup]
+* Reference
+** xref:reference/intro.adoc[Introduction]
+** xref:reference/contributing_guidelines.adoc[Guidelines]
+** xref:reference/glossary.adoc[Glossary]
+* Security
+** xref:security/slsa.adoc[SLSA]

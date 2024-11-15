@@ -1,0 +1,70 @@
+= Introduction
+
+[WARNING]
+====
+Starting with Turtles `v0.9.0`, the process used for importing CAPI clusters into Rancher is now based on a different controller logic. If you are a new user of Turtles, you can proceed normally and simply install the extension. If you have been using previous versions of Turtles and are upgrading to `v0.9.0`, we recommend you take a look at the migration mechanisms and their implications:
+
+* xref:../tasks/maintenance/automigrate_to_v3_import.adoc[Automatic migration].
+* xref:../tasks/maintenance/import_controller_upgrade.adoc[Manual migration]
+====
+
+
+{product_name} is a Kubernetes Operator that provides integration between Rancher Manager and Cluster API (CAPI) with the aim of bringing full CAPI support to Rancher. With {product_name}, you can:
+
+* Automatically import CAPI clusters into Rancher, by installing the Rancher Cluster Agent in CAPI provisioned clusters.
+* Configure the CAPI Operator.
+
+== Demo
+
+This demo shows how to use the Rancher UI to install {product_name}, create/import a CAPI cluster, and install monitoring on the cluster:
+
++++<iframe width="560" height="315" src="https://www.youtube.com/embed/lGsr7KfBjgU?si=ORkzuAJjcdXUXMxh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">++++++</iframe>+++
+
+== Prerequisites
+
+|===
+| Name | Version | Details
+
+| Kubernetes cluster
+| `>=1.30.0`
+|
+
+| Helm
+| `>=3.12.0`
+|
+
+| Rancher
+| `>=2.9.0`
+| Using https://ranchermanager.docs.rancher.com/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster#install-the-rancher-helm-chart[helm based] installation on any kubernetes cluster directly or on a newly created https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks[Amazon], https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks[Azure] or https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke[Google] service based options.
+
+| Cert-manager
+| `>=v1.15.2`
+| Using https://cert-manager.io/docs/installation/helm/#installing-with-helm[helm] based installation or via https://cert-manager.io/docs/installation/#default-static-install[kubectl apply].
+
+| Cluster API Operator
+| `>=v0.13.0`
+| Using xref:./getting-started/install-rancher-turtles/using_rancher_dashboard.adoc[Rancher UI] (recommended) or https://github.com/kubernetes-sigs/cluster-api-operator/blob/main/docs/README.md#method-2-use-helm-charts[Helm install] (for development use cases)
+
+| Cluster API
+| `v1.7.3`
+|
+
+| {product_name}
+| `>v0.12.0`
+| Using xref:./getting-started/install-rancher-turtles/using_rancher_dashboard.adoc[Rancher UI] (recommended) or xref:./getting-started/install-rancher-turtles/using_helm.adoc[Helm install] (for advanced use cases)
+|===
+
+== Reference Guides
+
+This section focuses on implementation details including
+xref:./reference-guides/architecture/intro.adoc[architecture], how {product_name} integrates with Rancher, and xref:./reference-guides/rancher-turtles-chart/values.adoc[Helm Chart configuration values].
+
+== Tasks
+
+In this section we cover additional xref:./tasks/intro.adoc[operational tasks] including basic `CAPIProvider` xref:./tasks/capi-operator/basic_cluster_api_provider_installation.adoc[installation], an xref:./tasks/capi-operator/add_infrastructure_provider.adoc[example] AWS infrastructure provider install using `CAPIProvider`, and xref:./tasks/maintenance/early_adopter_upgrade.adoc[upgrade instructions] for early adopters of {product_name}.
+
+== Security
+
+{product_name} meets https://slsa.dev/spec/v1.0/levels#build-l3[SLSA Level 3] requirements as an appropriate hardened build platform, with consistent build processes, and provenance distribution. This section contains more information on security-related topics:
+
+* xref:./security/slsa.adoc[SLSA]

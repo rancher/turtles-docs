@@ -1,0 +1,316 @@
+= Glossary
+:sidebar_position: 2
+
+== Table of Contents
+
+[cols=14*]
+|===
+| xref:./glossary.adoc#_a[A]
+| xref:./glossary.adoc#_b[B]
+| xref:./glossary.adoc#_c[C]
+| xref:./glossary.adoc#_f[F]
+| xref:./glossary.adoc#_i[I]
+| xref:./glossary.adoc#_k[K]
+| xref:./glossary.adoc#_m[M]
+| xref:./glossary.adoc#_n[N]
+| xref:./glossary.adoc#_o[O]
+| xref:./glossary.adoc#_p[P]
+| xref:./glossary.adoc#_r[R]
+| xref:./glossary.adoc#_s[S]
+| xref:./glossary.adoc#_t[T]
+| xref:./glossary.adoc#_w[W]
+|===
+
+== A
+
+=== Add-ons
+
+Services beyond the fundamental components required to deploy a Kubernetes-conformant cluster and categorized into two types:
+
+* *Core Add-ons*: Addons that are required to deploy a Kubernetes-conformant cluster: DNS, kube-proxy, CNI.
+* *Additional Add-ons*: Addons that are not required for a Kubernetes-conformant cluster (e.g. metrics/Heapster, Dashboard).
+
+=== Air-gapped environment
+
+Setting up and running Kubernetes clusters without direct access to the internet.
+
+== B
+
+=== Bootstrap
+
+The process of turning a server into a Kubernetes node. This may involve assembling data to provide when creating the server that backs the Machine, as well as runtime configuration of the software running on that server.
+
+=== Bootstrap cluster
+
+A temporary cluster that is used to provision a Target Management cluster.
+
+=== Bootstrap provider
+
+Refers to a <<_provider,provider>> that implements a solution for the <<_bootstrap,bootstrap>> process.
+
+== C
+
+=== CAPI
+
+Core Cluster API
+
+=== CAPA
+
+Cluster API Provider AWS
+
+=== CAPD
+
+Cluster API Provider Docker
+
+=== CAPG
+
+Cluster API Google Cloud Provider
+
+=== CAPIO
+
+Cluster API Operator
+
+=== CAPRKE2
+
+Cluster API Provider RKE2
+
+=== CAPV
+
+Cluster API Provider vSphere
+
+=== CAPZ
+
+Cluster API Provider Azure
+
+=== CAPI Provider
+
+A public API that facilitates provisioning and operations over the <<_cluster_api_operator,CAPI Operator>> and <<_cluster_api,Cluster API>> resources.
+
+=== Child Cluster
+
+Term commonly used interchangeably with the <<_workload_cluster,workload cluster>>.
+
+=== Cluster
+
+A full Kubernetes deployment. See Management Cluster and Workload Cluster.
+
+=== ClusterClass
+
+A collection of templates that define a topology (control plane and workers) to be used to continuously reconcile one or more Clusters.
+See xref:./../getting-started/cluster-class/create_cluster.adoc[ClusterClass]
+
+=== Cluster API
+
+Or *Cluster API project*
+
+The Cluster API is a sub-project of the SIG-cluster-lifecycle. It is also used to refer to the software components, APIs, and community that produce them.
+
+See <<_core_provider,core provider>>
+
+=== Cluster API Operator
+
+Or *Cluster API Operator project*
+
+The Cluster API Operator is a sub-project of the SIG-cluster-lifecycle. It is designed to empower cluster administrators to handle the lifecycle of Cluster API providers within a management cluster using a declarative approach.
+
+=== Cluster API Provider RKE2
+
+<<_caprke2,Cluster API Provider RKE2>> is a combination of two provider types: a Cluster API Control Plane Provider for provisioning Kubernetes control plane nodes and a Cluster API Bootstrap Provider for bootstrapping Kubernetes on a machine where <<_rke2,RKE2>> is used as the Kubernetes distro.
+
+=== Control plane
+
+The set of Kubernetes services that form the basis of a cluster. See also https://kubernetes.io/docs/concepts/#_kubernetes-control-plane There are two variants:
+
+* *Self-provisioned*: A Kubernetes control plane consisting of pods or machines wholly managed by a single Cluster API deployment.
+* *External* or *Managed*: A control plane offered and controlled by some system other than Cluster API (e.g., GKE, AKS, EKS, IKS).
+
+=== Control plane provider
+
+Refers to a <<_provider,provider>> that implements a solution for the management of a Kubernetes <<_control_plane,control plane>>.
+
+See <<_caprke2,CAPRRKE2>>, <<_kcp,KCP>>.
+
+=== Core provider
+
+Refers to a <<_provider,provider>> that implements Cluster API core controllers; if you consider that the first project that must be deployed in a management Cluster is Cluster API itself, it should be clear why the Cluster API project is also referred to as the core provider.
+
+See <<_cluster_api,CAPI>>.
+
+== F
+
+=== Fleet
+
+A container management and deployment engine designed to offer users more control on the local cluster and constant monitoring through GitOps. Take a look at https://fleet.rancher.io/[fleet documentation] to know more about Fleet.
+
+== I
+
+=== Infrastructure provider
+
+Refers to a <<_provider,provider>> that implements provisioning of infrastructure/computational resources required by
+the Cluster or by Machines (e.g. VMs, networking, etc.).
+Clouds infrastructure providers include AWS, Azure, or Google; while VMware, MAAS, or metal3.io can be defined as bare metal providers.
+
+=== IPAM provider
+
+Refers to a <<_provider,provider>> that allows Cluster API to interact with IPAM solutions.
+IPAM provider's interaction with Cluster API is based on the `IPAddressClaim` and `IPAddress` API types.
+
+== K
+
+=== Kubernetes-conformant
+
+Or *Kubernetes-compliant*
+
+A cluster that passes the Kubernetes conformance tests.
+
+=== Kubernetes Operator
+
+A Kubernetes Operator is a method of packaging, deploying, and managing a Kubernetes application. See also https://kubernetes.io/docs/concepts/extend-kubernetes/operator/ for more information.
+
+=== k/k
+
+Refers to the https://github.com/kubernetes/kubernetes[main Kubernetes git repository] or the main Kubernetes project.
+
+=== KCP
+
+Kubeadm Control plane Provider
+
+== M
+
+=== Machine
+
+Or *Machine Resource*
+
+The Custom Resource for Kubernetes that represents an infrastructure component that hosts a Kubernetes node.
+
+=== Manage a cluster
+
+Perform create, scale, upgrade, or destroy operations on the cluster.
+
+=== Managed Kubernetes
+
+Managed Kubernetes refers to any Kubernetes cluster provisioning and maintenance abstraction, usually exposed as an API, that is natively available in a Cloud provider. For example: https://aws.amazon.com/eks/[EKS], https://www.oracle.com/cloud/cloud-native/container-engine-kubernetes/[OKE], https://azure.microsoft.com/en-us/products/kubernetes-service[AKS], https://cloud.google.com/kubernetes-engine[GKE], https://www.ibm.com/cloud/kubernetes-service[IBM Cloud Kubernetes Service], https://www.digitalocean.com/products/kubernetes[DOKS], and many more throughout the Kubernetes Cloud Native ecosystem.
+
+=== Managed Topology
+
+See <<_topology,Topology>>
+
+=== Management cluster
+
+The cluster where one or more Infrastructure Providers run, and where resources (e.g. Machines) are stored. Typically referred to when you are provisioning multiple workload clusters.
+
+== N
+
+=== Node pools
+
+A node pool is a group of nodes within a cluster that all have the same configuration.
+
+== O
+
+=== Operating system
+
+Or *OS*
+
+A generically understood combination of a kernel and system-level userspace interface, such as Linux or Windows, as opposed to a particular distribution.
+
+== P
+
+=== Pivot
+
+Pivot is a process for moving the provider components and declared cluster-api resources from a Source Management cluster to a Target Management cluster.
+
+The pivot process is also used for deleting a management cluster and could also be used during an upgrade of the management cluster.
+
+=== Provider
+
+Or *Cluster API provider*
+
+This term was originally used as abbreviation for <<_infrastructure_provider,Infrastructure provider>>, but currently it is used
+to refer to any project that can be deployed and provides functionality to the Cluster API management Cluster.
+
+See <<_bootstrap_provider,Bootstrap provider>>, <<_control_plane_provider,Control plane provider>>, <<_core_provider,Core provider>>,
+<<_infrastructure_provider,Infrastructure provider>>, <<_ipam_provider,IPAM provider>>, <<_runtime_extension_provider,Runtime extension provider>>.
+
+=== Provider components
+
+Refers to the YAML artifact published as part of the release process for <<_provider,providers>>;
+it usually includes Custom Resource Definitions (CRDs), Deployments (to run the controller manager), RBAC, etc.
+
+In some cases, the same expression is used to refer to the instances of above components deployed in a management cluster.
+
+See <<_provider_repository,Provider repository>>
+
+=== Provider repository
+
+Refers to the location where the YAML for <<_provider_components,provider components>> are hosted; usually a provider repository hosts
+many version of provider components, one for each released version.
+
+== R
+
+=== Rancher
+
+An open-source https://www.rancher.com/[platform] designed to simplify the deployment and management of Kubernetes clusters.
+
+=== Rancher Cluster Agent
+
+A component deployed by Rancher in each Kubernetes cluster it manages. Its primary role is to establish a secure communication channel between the Rancher server and the Kubernetes cluster, enabling Rancher to manage and interact with the cluster.
+
+=== Rancher Manager
+
+The Rancher Manager (or Rancher Server) is where the Rancher UI and API are hosted, and it communicates with managed clusters through components like the <<_rancher_cluster_agent,Rancher Cluster Agent>>. It allows users to manage their Kubernetes clusters, applications, and Rancher-specific resources such as Catalogs, Users, Global Roles, and more.
+
+=== {product_name}
+
+A <<_kubernetes_operator,Kubernetes operator>> that provides integration between Rancher Manager and Cluster API (CAPI) with the aim of bringing full CAPI support to Rancher.
+
+=== RKE2
+
+Rancher's next-generation, fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector. See https://docs.rke2.io/[documentation] for more details.
+
+=== Runtime Extension
+
+An external component which is part of a system built on top of Cluster API that can handle requests for a specific Runtime Hook.
+
+=== Runtime Extension provider
+
+Refers to a <<_provider,provider>> that implements one or more <<_runtime_extension,runtime extensions>>.
+
+== S
+
+=== Scaling
+
+Unless otherwise specified, this refers to horizontal scaling.
+
+=== Stacked control plane
+
+A control plane node where etcd is colocated with the Kubernetes API server, and
+is running as a static pod.
+
+=== Server
+
+The infrastructure that backs a <<_machine,Machine Resource>>, typically either a cloud instance, virtual machine, or physical host.
+
+== T
+
+=== Topology
+
+A field in the Cluster object spec that allows defining and managing the shape of the Cluster's control plane and worker machines from a single point of control. The Cluster's topology is based on a <<_clusterclass,ClusterClass>>.
+Sometimes it is also referred as a managed topology.
+
+See <<_clusterclass,ClusterClass>>
+
+=== Turtles
+
+Refers to <<_rancher_turtles,{product_name}>>
+
+== W
+
+=== Workload Cluster
+
+A cluster created by a ClusterAPI controller, which is _not_ a bootstrap cluster, and is meant to be used by end-users, as opposed to by CAPI tooling.
+
+=== WorkerClass
+
+A collection of templates that define a set of worker nodes in the cluster. A ClusterClass contains zero or more WorkerClass definitions.
+
+See <<_clusterclass,ClusterClass>>

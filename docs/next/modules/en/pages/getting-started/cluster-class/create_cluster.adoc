@@ -1,0 +1,144 @@
+= Create a cluster using Fleet
+:sidebar_position: 2
+
+This section will guide you through creating a cluster that utilizes ClusterClass using a GitOps workflow with Fleet.
+
+[NOTE]
+====
+This guide uses the https://github.com/rancher-sandbox/rancher-turtles-fleet-example/tree/clusterclass[examples repository].
+====
+
+
+== Prerequisites
+
+* Rancher Manager cluster with {product_name} installed
+* Cluster API providers installed for your scenario - we'll be using the Docker infrastructure and Kubeadm bootstrap/control plane providers in these instructions - see https://cluster-api.sigs.k8s.io/user/quick-start.html#initialization-for-common-providers[Initialization for common providers]
+* The *ClusterClass* feature enabled - see xref:./intro.adoc[the introduction]
+
+== Configure Rancher Manager
+
+The clusterclass and cluster definitions will be imported into the Rancher Manager cluster (which is also acting as a Cluster API management cluster) using the *Continuous Delivery* feature (which uses Fleet).
+
+The guide will apply the manifests using a 2-step process. However, this isn't required and they could be combined into one step.
+
+There are 2 options to provide the configuration. The first is using the Rancher Manager UI and the second is by applying some YAML to your cluster. Both are covered below.
+
+=== Import ClusterClass Definitions
+
+[discrete]
+==== Using the Rancher Manager UI
+
+. Go to Rancher Manager
+. Select *Continuos Delivery* from the menu:
+. Select *fleet-local* as the namespace from the top right
+. Select *Git Repos* from the sidebar
+. Click *Add Repository*
+. Enter *classes* as the name
+. Get the *HTTPS* clone URL from your git repo
+. Add the URL into the *Repository URL* field
+. Change the branch name to *clusterclass*
+. Click *Add Path*
+. Enter `/classes`
+. Click *Next*
+. Click *Create*
+. Click on the *clusters* name
+. Watch the resources become ready
+
+=== Using kubectl
+
+. Get the *HTTPS* clone URL from your git repo
+. Create a new file called *repo.yaml*
+. Add the following contents to the new file:
++
+[source,yaml]
+----
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: classes
+  namespace: fleet-local
+spec:
+  branch: clusterclass
+  repo: https://github.com/rancher-sandbox/rancher-turtles-fleet-example.git
+  paths:
+    - /classes
+  targets: []
+----
++
+. Apply the file to the Rancher Manager cluster using *kubectl*:
++
+[source,bash]
+----
+kubectl apply -f repo.yaml
+----
++
+. Go to Rancher Manager
+. Select *Continuos Delivery* from the side bar
+. Select *fleet-local* as the namespace from the top right
+. Select *Git Repos* from the sidebar
+. Click on the *clusters* name
+. Watch the resources become ready
+. Select *Cluster Management* from the menu
+. Check your cluster has been imported
+
+=== Import Cluster Definitions
+
+Now the classes have been imported its possible to use them with cluster definitions.
+
+[discrete]
+==== Using the Rancher Manager UI
+
+. Go to Rancher Manager
+. Select *Continuos Delivery* from the menu:
+. Select *fleet-local* as the namespace from the top right
+. Select *Git Repos* from the sidebar
+. Click *Add Repository*
+. Enter *clusters* as the name
+. Get the *HTTPS* clone URL from your git repo
+. Add the URL into the *Repository URL* field
+. Change the branch name to *clusterclass*
+. Click *Add Path*
+. Enter `/clusters`
+. Click *Next*
+. Click *Create*
+. Click on the *clusters* name
+. Watch the resources become ready
+. Select *Cluster Management* from the menu
+. Check your cluster has been imported
+
+=== Using kubectl
+
+. Get the *HTTPS* clone URL from your git repo
+. Create a new file called *repo.yaml*
+. Add the following contents to the new file:
++
+[source,yaml]
+----
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: clusters
+  namespace: fleet-local
+spec:
+  branch: clusterclass
+  repo: https://github.com/rancher-sandbox/rancher-turtles-fleet-example.git
+  paths:
+    - /clusters
+  targets: []
+----
++
+. Apply the file to the Rancher Manager cluster using *kubectl*:
++
+[source,bash]
+----
+kubectl apply -f repo.yaml
+----
++
+. Go to Rancher Manager
+. Select *Continuos Delivery* from the side bar
+. Select *fleet-local* as the namespace from the top right
+. Select *Git Repos* from the sidebar
+. Click on the *classes* name
+. Watch the resources become ready
+. Select *Cluster Management* from the menu
+. Check your cluster has been imported

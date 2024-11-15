@@ -1,0 +1,52 @@
+= Uninstall {product_name}
+:sidebar_position: 5
+
+This gives an overview of {product_name} uninstallation process.
+
+[CAUTION]
+====
+When installing {product_name} in your Rancher environment, by default, {product_name} enables the Cluster API Operator cleanup. This includes cleaning up Cluster API Operator specific webhooks and deployments that otherwise cause issues with Rancher provisioning.
+
+To simplify uninstalling {product_name} (via Rancher Manager or helm command), the official {product_name} Helm chart includes a `post-delete` hook that applies these changes, making it transparent to the end user:
+
+* Delete the `mutating-webhook-configuration` and `validating-webhook-configuration` webhooks that are no longer needed.
+* Delete the CAPI `deployments` that are no longer needed.
+====
+
+
+To uninstall the {product_name} Extension use the following helm command:
+
+[source,bash]
+----
+helm uninstall -n rancher-turtles-system rancher-turtles --cascade foreground --wait
+----
+
+This may take a few minutes to complete.
+
+[NOTE]
+====
+Remember that, if you use a different name for the installation or a different namespace, you may need to customize the command for your specific configuration.
+====
+
+
+Once uninstalled, Rancher's `embedded-cluster-api` feature must be re-enabled:
+
+. Create a `feature.yaml` file, with `embedded-cluster-api` set to true:
++
+.feature.yaml
+[source,yaml]
+----
+apiVersion: management.cattle.io/v3
+kind: Feature
+metadata:
+  name: embedded-cluster-api
+spec:
+  value: true
+----
++
+. Use `kubectl` to apply the `feature.yaml` file to the cluster:
++
+[source,bash]
+----
+kubectl apply -f feature.yaml
+----
