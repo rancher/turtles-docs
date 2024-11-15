@@ -45,9 +45,9 @@
 ** xref:developer-guide/intro.adoc[Introduction]
 ** xref:developer-guide/install_capi_operator.adoc[Installing Cluster API Operator]
 ** xref:developer-guide/development.adoc[Development setup]
+** xref:developer-guide/contributing_guidelines.adoc[Guidelines]
 * Reference
 ** xref:reference/intro.adoc[Introduction]
-** xref:reference/contributing_guidelines.adoc[Guidelines]
 ** xref:reference/glossary.adoc[Glossary]
 * Security
 ** xref:security/slsa.adoc[SLSA]
