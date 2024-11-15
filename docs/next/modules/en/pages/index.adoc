@@ -65,6 +65,14 @@ xref:./reference-guides/architecture/intro.adoc[architecture], how {product_name
 
 In this section we cover additional xref:./tasks/intro.adoc[operational tasks] including basic `CAPIProvider` xref:./tasks/capi-operator/basic_cluster_api_provider_installation.adoc[installation], an xref:./tasks/capi-operator/add_infrastructure_provider.adoc[example] AWS infrastructure provider install using `CAPIProvider`, and xref:./tasks/maintenance/early_adopter_upgrade.adoc[upgrade instructions] for early adopters of {product_name}.
 
+== Developer Guide
+
+This section describes xref:./developer-guide/contributing_guidelines.adoc[how to get involved] in the development of Rancher Turtles as well as xref:./developer-guide/development.adoc[how to setup a local development environment], if you wish to do so.
+
+== Reference
+
+This section has a useful xref:./reference/glossary.adoc[glossary] to help you navigate Rancher and Cluster API concepts.
+
 == Security
 
 {product_name} meets https://slsa.dev/spec/v1.0/levels#build-l3[SLSA Level 3] requirements as an appropriate hardened build platform, with consistent build processes, and provenance distribution. This section contains more information on security-related topics:

@@ -59,5 +59,7 @@ The installation may take a few minutes and, when it finishes, you will be able 
 * `rancher-turtles-system/rancher-turtles-controller-manager`
 * `rancher-turtles-system/rancher-turtles-cluster-api-operator`
 * `capi-system/capi-controller-manager`
+* `rke2-bootstrap-system/rke2-bootstrap-controller-manager`
+* `rke2-control-plane-system/rke2-control-plane-controller-manager`
 
 image::deployments-turtles.png[deployments-turtles]
