@@ -27,11 +27,11 @@ In this example, there is a ConfigMap in the `capv-system` namespace that define
 [source,bash]
 ----
 # Get the file contents from the GitHub release
-curl -L https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/releases/download/v1.8.5/infrastructure-components.yaml -o components.yaml
-curl -L https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/releases/download/v1.8.5/metadata.yaml -o metadata.yaml
+curl -L https://github.com/rancher-sandbox/cluster-api-provider-vsphere/releases/download/v1.11.2/infrastructure-components.yaml -o components.yaml
+curl -L https://github.com/rancher-sandbox/cluster-api-provider-vsphere/releases/download/v1.11.2/metadata.yaml -o metadata.yaml
 
 # Create the configmap from the files
-kubectl create configmap v1.8.5 --namespace=capv-system --from-file=components=components.yaml --from-file=metadata=metadata.yaml --dry-run=client -o yaml > configmap.yaml
+kubectl create configmap v1.11.2 --namespace=capv-system --from-file=components=components.yaml --from-file=metadata=metadata.yaml --dry-run=client -o yaml > configmap.yaml
 ----
 
 This command example would need to be adapted to the provider and version you want to use. The resulting config map will look similar to the example below:
@@ -43,18 +43,18 @@ kind: ConfigMap
 metadata:
   labels:
     provider-components: vsphere
-  name: v1.8.5
+  name: v1.11.2
   namespace: capv-system
 data:
   components: |
-    # Components for v1.8.5 YAML go here
+    # Components for v1.11.2 YAML go here
   metadata: |
     # Metadata information goes here
 ----
 
 A *CAPIProvider* resource will need to be created to represent the vSphere infrastructure provider. It will need to be configured with a `fetchConfig`. The label selector allows the operator to determine the available versions of the vSphere provider and the Kubernetes resources that need to be deployed (i.e. contained within ConfigMaps which match the label selector).
 
-Since the provider's version is marked as `v1.8.5`, the operator uses the components information from the ConfigMap with matching label to install the vSphere provider.
+Since the provider's version is marked as `v1.11.2`, the operator uses the components information from the ConfigMap with matching label to install the vSphere provider.
 
 [source,yaml]
 ----
@@ -66,7 +66,7 @@ metadata:
 spec:
   name: vsphere
   type: infrastructure
-  version: v1.8.5
+  version: v1.11.2
   configSecret:
     name: vsphere-variables
   fetchConfig:
@@ -76,7 +76,7 @@ spec:
   deployment:
     containers:
     - name: manager
-      imageUrl: "gcr.io/myregistry/capv-controller:v1.8.5-foo"
+      imageUrl: "registry.suse.com/rancher/cluster-api-vsphere-controller:v1.11.2"
   variables:
     CLUSTER_TOPOLOGY: "true"
     EXP_CLUSTER_RESOURCE_SET: "true"
@@ -102,7 +102,7 @@ gzip -c components.yaml > components.gz
 +
 [source,sh]
 ----
-kubectl create configmap v1.8.5 --namespace=capv-system --from-file=components=components.gz --from-file=metadata=metadata.yaml --dry-run=client -o yaml > configmap.yaml
+kubectl create configmap v1.11.2 --namespace=capv-system --from-file=components=components.gz --from-file=metadata=metadata.yaml --dry-run=client -o yaml > configmap.yaml
 ----
 +
 . Edit the file by adding "provider.cluster.x-k8s.io/compressed: true" annotation
