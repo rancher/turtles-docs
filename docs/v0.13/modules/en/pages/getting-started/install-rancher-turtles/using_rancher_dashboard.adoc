@@ -32,17 +32,17 @@ If uninstalling, you can refer to xref:../getting-started/uninstall_turtles.adoc
 
 == Installation
 
-* From your browser, access Rancher Manager and explore the *local* cluster.
-* Using the left navigation panel, go to `Apps` \-> `Repositories`.
-* Click `Create` to add a new repository.
+* From your browser, access Rancher Manager and explore the *local* cluster
+* Using the left navigation panel, go to `Apps` \-> `Repositories`
+* Click `Create` to add a new repository
 * Enter the following:
- ** *Name*: `turtles`.
- ** *Index URL*: https://rancher.github.io/turtles.
-* Wait for the `turtles` repository to have a status of `Active`.
-* Go to `Apps` \-> `Charts`.
-* Filter for `turtles`.
+ ** *Name*: `turtles`
+ ** *Index URL*: https://rancher.github.io/turtles
+* Wait for the `turtles` repository to have a status of `Active`
+* Go to `Apps` \-> `Charts`
+* Filter for `turtles`
 * Click `Rancher Turtles - the Cluster API Extension`
-* Click `Install` \-> `Next` \-> `Install`.
+* Click `Install` \-> `Next` \-> `Install`
 
 [CAUTION]
 ====
