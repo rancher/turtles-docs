@@ -1,0 +1,60 @@
+= Create & Import Your First Cluster Using kubectl
+:sidebar_position: 3
+
+This section will guide you through creating your first cluster and importing it into Rancher Manager using kubectl.
+
+== Prerequisites
+
+* Rancher Manager cluster with {product_name} installed
+* Cluster API providers installed for your scenario - we'll be using the https://github.com/kubernetes-sigs/cluster-api/tree/main/test/infrastructure/docker[Docker infrastructure] and https://github.com/rancher-sandbox/cluster-api-provider-rke2[RKE2 bootstrap/control plane] providers in these instructions - see xref:../../tasks/capi-operator/capiprovider_resource.adoc[Initialization for common providers using Turtles' `CAPIProvider`]
+* *clusterctl* CLI - see the https://github.com/kubernetes-sigs/cluster-api/releases[releases]
+
+== Create Your Cluster Definition
+
+To generate the YAML for the cluster, do the following (assuming the Docker infrastructure provider is being used):
+
+. Open a terminal and run the following:
++
+[source,bash]
+----
+export CLUSTER_NAME=cluster1
+export CONTROL_PLANE_MACHINE_COUNT=1
+export WORKER_MACHINE_COUNT=1
+export KUBERNETES_VERSION=v1.30.0
+
+curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml | envsubst > cluster1.yaml
+----
++
+. View *cluster1.yaml* to ensure there are no tokens. You can make any changes you want as well.
++
+____
+The Cluster API quickstart guide contains more detail. Read the steps related to this section https://cluster-api.sigs.k8s.io/user/quick-start.html#required-configuration-for-common-providers[here].
+____
++
+. Create the cluster using kubectl
++
+[source,bash]
+----
+kubectl create -f cluster1.yaml
+----
+
+== Mark Namespace or Cluster for Auto-Import
+
+To automatically import a CAPI cluster into Rancher Manager, there are 2 options:
+
+. Label a namespace so all clusters contained in it are imported.
+. Label an individual cluster definition so that it's imported.
+
+Labeling a namespace:
+
+[source,bash]
+----
+kubectl label namespace default cluster-api.cattle.io/rancher-auto-import=true
+----
+
+Labeling an individual cluster definition:
+
+[source,bash]
+----
+kubectl label cluster.cluster.x-k8s.io cluster1 cluster-api.cattle.io/rancher-auto-import=true
+----

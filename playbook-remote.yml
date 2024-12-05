@@ -1,13 +1,13 @@
 site:
   title: Rancher Turtles
   url: /
-  start_page: v0.13@turtles:en:index.adoc
+  start_page: v0.14@turtles:en:index.adoc
 
 content:
   sources:
     - url: https://github.com/rancher/turtles-docs.git
       branches: [main]
-      start_paths: [versions/v0.13, versions/v0.12, versions/v0.11]
+      start_paths: [docs/v0.14, docs/v0.13, docs/v0.12, docs/v0.11]
 
 
 ui: 

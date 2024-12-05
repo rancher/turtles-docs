@@ -1,0 +1,30 @@
+= Components
+:sidebar_position: 0
+
+Below is a visual representation of the architecture components of Rancher
+Turtles. This diagram illustrates the key elements and their relationships
+within the {product_name} system. Understanding these components is essential
+for gaining insights into how Rancher leverages Cluster API (CAPI) for cluster
+management.
+
+image::30000ft_view.png[overview]
+
+== Rancher Manager
+
+This is the core component of Rancher and users can leverage the existing
+Explorer feature in the dashboard to access cluster workload details.
+
+== Rancher Cluster Agent
+
+The agent is deployed within child clusters, enabling Rancher to import and
+establish a connection with these clusters. This connection allows Rancher to
+manage the child clusters effectively from within its platform.
+
+== {product_name} - Rancher CAPI Extension
+
+It provides integration between CAPI and Rancher while currently supporting the
+following functionalities:
+
+* *Importing CAPI clusters into Rancher:* installing Rancher Cluster Agent in
+CAPI provisioned clusters.
+* *CAPI Operator Configuration:* Configuration support for the CAPI Operator.
