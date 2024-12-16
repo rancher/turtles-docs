@@ -34,7 +34,7 @@ jobs:
           sed -i "s|start_page:.*|start_page: ${TAG}@turtles:en:index.adoc|" turtles-local-playbook.yml
       - name: Prepend new tag to start_paths
         run: |
-          sed -i "s|start_paths: \[|start_paths: [docs/${TAG}, |" core/turtles-local-playbook.yml
+          sed -i "s|start_paths: \[|start_paths: [docs/${TAG}, |" turtles-local-playbook.yml
       - name: Commit changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
