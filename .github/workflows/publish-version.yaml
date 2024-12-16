@@ -1,0 +1,52 @@
+name: Publish new docs version
+
+on:
+  push:
+    tags:
+    - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+env:
+  TAG: ${{ github.ref_name }}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ env.TAG }}
+      - name: Prepare the tag
+        run: |
+          git fetch --tags
+          echo "TRIMMED_TAG=${TAG#v}" >> $GITHUB_ENV
+          echo "TAG=${TAG}" >> $GITHUB_ENV
+      - name: Copy docs directory
+        run: |
+          mkdir -p docs/${{ env.TAG }}
+          cp -r docs/next/* docs/${{ env.TAG }}
+      - name: Update site.start_page with new tag
+        run: |
+          sed -i "s|start_page:.*|start_page: ${TAG}@turtles:en:index.adoc|" turtles-local-playbook.yml
+      - name: Prepend new tag to start_paths
+        run: |
+          sed -i "s|start_paths: \[|start_paths: [docs/${TAG}, |" core/turtles-local-playbook.yml
+      - name: Commit changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git checkout -b release-${{ env.TRIMMED_TAG }}
+          git add .
+          git commit -m "Add docs version v${{ env.TRIMMED_TAG }}"
+          git push origin release-${{ env.TRIMMED_TAG }}
+          tag=${{ env.TRIMMED_TAG }}
+          [[ $tag =~ [0-9]+\.[0-9]+\.[0-9]+ ]] || tag+=.0
+          echo -e "Update docs version v${tag}\\n\\nChangelog: https://github.com/rancher/turtles/releases/tag/v${tag}\\n\\ncc @rancher/highlander" > body
+          export body=$(cat body)
+          gh pr create --title 'turtles-docs release for turtles v${{ env.TRIMMED_TAG }}' --body "$body" --label "area/documentation"
