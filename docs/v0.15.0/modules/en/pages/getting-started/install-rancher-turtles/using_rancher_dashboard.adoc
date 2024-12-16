@@ -1,0 +1,65 @@
+= Via Rancher Dashboard
+
+
+This is the recommended option for installing {product_name}.
+
+Via Rancher UI, and just by adding the Turtles repository, we can easily let Rancher take care of the installation and configuration of the Cluster API Extension.
+
+[CAUTION]
+====
+In case you need to review the list of prerequisites (including `cert-manager`), you can refer to xref:../index.adoc#_prerequisites[this table].
+====
+
+
+[IMPORTANT]
+====
+Before xref:./using_helm.adoc#_install_suse_rancher_prime_cluster_api_with_cluster_api_operator_as_a_helm_dependency[installing {product_name}] in your Rancher environment, Rancher's `embedded-cluster-api` functionality must be disabled. This includes also cleaning up Rancher-specific webhooks that otherwise would conflict with CAPI ones.
+
+To simplify setting up Rancher for installing {product_name}, the official {product_name} Helm chart includes a `pre-install` hook that applies these changes, making it transparent to the end user:
+
+* Disable the `embedded-cluster-api` feature in Rancher.
+* Delete the `mutating-webhook-configuration` and `validating-webhook-configuration` webhooks that are no longer needed.
+====
+
+
+If you would like to understand how {product_name} works and what the architecture looks like, you can refer to the xref:../../reference-guides/architecture/intro.adoc[Architecture] section.
+
+[NOTE]
+====
+If uninstalling, you can refer to xref:../getting-started/uninstall_turtles.adoc[Uninstalling {product_name}]
+====
+
+
+== Installation
+
+* From your browser, access Rancher Manager and explore the *local* cluster.
+* Using the left navigation panel, go to `Apps` \-> `Repositories`.
+* Click `Create` to add a new repository.
+* Enter the following:
+ ** *Name*: `turtles`.
+ ** *Index URL*: https://rancher.github.io/turtles.
+* Wait for the `turtles` repository to have a status of `Active`.
+* Go to `Apps` \-> `Charts`.
+* Filter for `turtles`.
+* Click `Rancher Turtles - the Cluster API Extension`
+* Click `Install` \-> `Next` \-> `Install`.
+
+[CAUTION]
+====
+Rancher will select not to install Turtles into a https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/projects-and-namespaces[Project] by default. Installing Turtles into a Project is not supported and the default configuration `None` should be used to avoid unexpected behavior during installation.
+====
+
+
+image::install-turtles-from-ui.gif[install-turtles-from-ui]
+
+This will use the default values for the Helm chart, which are good for most installations. If your configuration requires overriding some of these defaults, you can either specify the values during installation from Rancher UI or, alternatively, you can opt for the xref:./using_helm.adoc[manual installation via Helm]. And, if you are interested on learning more about the available values, you can check the xref:../../reference-guides/rancher-turtles-chart/values.adoc[reference guide].
+
+The installation may take a few minutes and, when it finishes, you will be able to see the following new deployments in the cluster:
+
+* `rancher-turtles-system/rancher-turtles-controller-manager`
+* `rancher-turtles-system/rancher-turtles-cluster-api-operator`
+* `capi-system/capi-controller-manager`
+* `rke2-bootstrap-system/rke2-bootstrap-controller-manager`
+* `rke2-control-plane-system/rke2-control-plane-controller-manager`
+
+image::deployments-turtles.png[deployments-turtles]
