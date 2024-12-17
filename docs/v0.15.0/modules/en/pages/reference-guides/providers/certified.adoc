@@ -45,6 +45,11 @@ This is a list of the officially certified CAPI Providers by Turtles. These prov
 | Infrastructure
 | https://capz.sigs.k8s.io/
 
+| *GCP* (Only GKE managed clusters)
+| CAPG
+| Infrastructure
+| https://cluster-api-gcp.sigs.k8s.io/
+
 | *Addon Provider Fleet*
 | CAAPF
 | Addon
