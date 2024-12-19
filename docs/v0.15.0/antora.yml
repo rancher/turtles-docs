@@ -1,0 +1,10 @@
+name: turtles
+title: Rancher Turtles
+version: next
+display_version: 'Next'
+start_page: en:index.adoc
+asciidoc:
+  attributes:
+    product_name: Rancher Turtles
+nav:
+  - modules/en/nav.adoc
