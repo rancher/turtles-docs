@@ -1,0 +1,57 @@
+= Development setup
+:sidebar_position: 3
+
+== Prerequisites:
+
+* https://kind.sigs.k8s.io/[kind]
+* https://helm.sh/[helm]
+* https://tilt.dev/[tilt]
+
+== Create a local development environment
+
+. Clone the https://github.com/rancher/turtles[{product_name}] repository locally
+. Create *tilt-settings.yaml*:
++
+[source,yaml]
+----
+{
+    "k8s_context": "k3d-rancher-test",
+    "default_registry": "ghcr.io/turtles-dev",
+    "debug": {
+        "turtles": {
+            "continue": true,
+            "port": 40000
+        }
+    }
+}
+----
++
+. Open a terminal in the root of the {product_name} repository
+. Run the following:
++
+[source,bash]
+----
+make dev-env
+
+# Or if you want to use a custom hostname for Rancher
+RANCHER_HOSTNAME=my.customhost.dev make dev-env
+----
++
+. When tilt has started, open a new terminal and start ngrok or inlets
++
+[source,bash]
+----
+kubectl port-forward --namespace cattle-system svc/rancher 10000:443
+ngrok http https://localhost:10000
+----
+
+== What happens when you run `make dev-env`?
+
+. A https://kind.sigs.k8s.io/[kind] cluster is created with the following https://github.com/rancher/turtles/blob/main/scripts/kind-cluster-with-extramounts.yaml[configuration].
+. xref:../developer-guide/install_capi_operator.adoc[Cluster API Operator] is installed using helm, which includes:
+ ** Core Cluster API controller
+ ** Kubeadm Bootstrap and Control Plane Providers
+ ** Docker Infrastructure Provider
+ ** Cert manager
+. `Rancher manager` is installed using helm.
+. `tilt up` is run to start the development environment.
