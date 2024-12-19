@@ -24,7 +24,7 @@ jobs:
         run: |
           git fetch --tags
           echo "TRIMMED_TAG=${TAG#v}" >> $GITHUB_ENV
-          echo "TAG=${TAG}" >> $GITHUB_ENV
+          echo "TAG=${TAG%.*}" >> $GITHUB_ENV
       - name: Copy docs directory
         run: |
           mkdir -p docs/${{ env.TAG }}
