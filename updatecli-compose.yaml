@@ -1,0 +1,13 @@
+policies:
+  # The following policies are designed to work from GitHub action workflows.
+  # This means that before running any Updatecli command, we need the two following environment variables set:
+  # 
+  #   GITHUB_TOKEN: Set to a personal access token
+  #   GITHUB_ACTOR: Set to the username associated with the GITHUB_TOKEN
+  # 
+  # Instruction to retrieve your PAT is documented on https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+  - name: Handle releasepost
+    policy: ghcr.io/salasberryfin/rancherlabs-policies/releasepost:0.1.0@sha256:4f34a64936426fdfe723e9380ddaa866453eddec893e82151caf3fe46a008fb6
+    values:
+      - updatecli/values.d/scm.yaml
+      - updatecli/values.d/turtles.yaml
