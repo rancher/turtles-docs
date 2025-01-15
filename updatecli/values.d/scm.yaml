@@ -1,0 +1,9 @@
+# Settings used by releasepost Updatecli policy
+# to identify which Git repository to update.
+scm:
+  enabled: true
+  user: "updatecli-bot"
+  email: "bot@rancher.io"
+  owner: rancher
+  repository: turtles-docs
+  branch: main

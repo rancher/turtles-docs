@@ -51,3 +51,4 @@
 ** xref:reference/glossary.adoc[Glossary]
 * Security
 ** xref:security/slsa.adoc[SLSA]
+* xref:changelogs/index.adoc[Release Notes]

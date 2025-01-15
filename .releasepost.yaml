@@ -1,0 +1,19 @@
+changelogs:
+  - kind: github
+    dir: docs/next/modules/en/pages/changelogs
+    formats:
+      - extension: asciidoc
+        frontmatters: |
+          == "{{ .Changelog.Name }}"
+          === "{{ .Changelog.PublishedAt }}"
+        indexfilename: index
+        indexfrontmatters: |
+          = Release Notes
+        indexfiletemplate: |
+          {{ .FrontMatters }}
+          {{ range $pos, $release := .Changelogs }}
+          * link:changelogs/{{ $release.Tag }}.html[{{ $release.Name }} {{ if (eq $pos 0) }}(latest){{ end}}]
+          {{ end }}
+    spec:
+      owner: rancher
+      repository: turtles
