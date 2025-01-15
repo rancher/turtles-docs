@@ -49,6 +49,7 @@
 * Reference
 ** xref:reference/intro.adoc[Introduction]
 ** xref:reference/glossary.adoc[Glossary]
+** xref:reference/features.adoc[Features]
 * Security
 ** xref:security/slsa.adoc[SLSA]
 * xref:changelogs/index.adoc[Release Notes]
