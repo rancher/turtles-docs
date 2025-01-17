@@ -31,10 +31,10 @@ jobs:
           cp -r docs/next/* docs/${TAG}
       - name: Update site.start_page with new tag
         run: |
-          sed -i "s|start_page:.*|start_page: ${TAG}@turtles:en:index.adoc|" turtles-local-playbook.yml
+          sed -i "s|start_page:.*|start_page: ${TAG}@turtles:en:index.adoc|" turtles-gh-pages-playbook.yml
       - name: Prepend new tag to start_paths
         run: |
-          sed -i "s|start_paths: \[|start_paths: [docs/${TAG}, |" turtles-local-playbook.yml
+          sed -i "s|start_paths: \[|start_paths: [docs/${TAG}, |" turtles-gh-pages-playbook.yml
       - name: Change version in antora.yml
         run: |
           sed -i "s/^version: .*/version: $TAG/" docs/${TAG}/antora.yml

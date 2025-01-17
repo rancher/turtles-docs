@@ -1,0 +1,30 @@
+site:
+  title: Rancher Turtles
+  url: /
+  start_page: next@turtles:en:index.adoc
+
+content:
+  sources:
+    - url: ./
+      start_paths: [docs/next]
+
+# Description: SUSE UI bundle
+ui:
+  bundle:
+    url: https://github.com/rancher/product-docs-ui/blob/main/build/ui-bundle.zip?raw=true
+    snapshot: true
+  supplemental_files: ./turtles-supplemental-files
+
+asciidoc:
+  attributes:
+    page-pagination: ''
+    page-toclevels: 4@
+    tabs-sync-option: ''
+  extensions:
+    - '@asciidoctor/tabs'
+antora:
+  extensions:
+  - require: '@antora/lunr-extension'
+
+output:
+  dir: build/site

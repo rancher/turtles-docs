@@ -52,4 +52,4 @@
 ** xref:reference/features.adoc[Features]
 * Security
 ** xref:security/slsa.adoc[SLSA]
-* xref:changelogs/index.adoc[Release Notes]
+// * xref:changelogs/index.adoc[Release Notes]
