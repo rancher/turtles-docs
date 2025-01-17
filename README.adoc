@@ -40,7 +40,7 @@ Run the git command to clone this repository.
 
 [,console]
 ----
-git clone https://github.com/rancher/turtles-product-docs.git
+git clone https://github.com/rancher/turtles-docs.git
 ----
 
 [#install-node-modules]
@@ -53,40 +53,84 @@ Open a terminal at the root of the git repository. Run the command below.
 npm install
 ----
 
-[#run-antora-to-build-the-static-website]
-=== Run Antora to build the static website
+[#build-the-static-website]
+=== Build the Static Website
 
-As a local example, run the command below to build the site:
+You can use the `make` command to build the documentation site locally or remotely. The Makefile defines various tasks for building the site using different playbooks.
+
+### Build the site locally using the GitHub Pages playbook:
+
+To build the site locally using the GitHub Pages playbook, run the following command:
 
 [,console]
 ----
-npx antora --fetch turtles-local-playbook.yml
+make gh-pages
 ----
 
-Navigate to the `./build/site` directory and open the index.html file in your browser to view and navigate the documentation site.
+This will generate the static website using the `turtles-gh-pages-playbook.yml` playbook.
 
-Alternatively, run the below command first and then open `+http://127.0.0.1:8080/+` in your browser for a web server preview:
+### Build the site remotely:
+
+To build the site remotely using the remote playbook, run:
+
+[,console]
+----
+make remote
+----
+
+This will use the `playbook-remote.yml` to generate the site remotely.
+
+### Build the site using the development playbook:
+
+For development purposes, you can build the site using the development playbook by running:
+
+[,console]
+----
+make dev
+----
+
+This will use the `turtles-dev-playbook.yml` to generate the site with development settings.
+
+### Clean up the build:
+
+To remove the build and temporary directories, use the following command:
+
+[,console]
+----
+make clean
+----
+
+This will delete the `build` and `tmp` directories.
+
+### Preview the site locally:
+
+To preview the site locally, use the `preview` task:
 
 [,console]
 ----
 make preview
 ----
 
-[#run-antora-to-build-the-static-website-using-the-local-documentation-content]
-=== Run Antora to build the static website using the local documentation content
+This will serve the site locally, allowing you to view it in your browser.
 
-The command provided in the previous section fetches documentation content of the products from their respective remote GitHub repositories. If you want the playbook to use the documentation content from your local machine instead you can do so with `product-docs-playbook-local.yml`.
+### Watch for changes and rebuild:
 
-Clone all the individual product documentation Github repositories one level above the current playbook repository.
-
-As an example, run the command below to use the local `turtles-local-playbook.yml` file.
+To watch for changes in the content and rebuild the site automatically, use the `watch` task:
 
 [,console]
 ----
-npx antora --fetch turtles-local-playbook.yml
+make watch
 ----
 
-[#makefile]
-=== Makefile
+This will watch the content and documentation files for changes, rebuild the site, and preview it with hot reload.
 
-The Makefile can also be used to set up your environment, build the local and remote static site, and clean your build output directory.
+### Continuous Integration (CI):
+
+To run the build process for continuous integration, use the `ci` task:
+
+[,console]
+----
+make ci
+----
+
+This will run the build using the GitHub Pages playbook and the development playbook in sequence.
