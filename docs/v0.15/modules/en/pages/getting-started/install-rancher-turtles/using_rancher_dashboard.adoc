@@ -11,16 +11,15 @@ In case you need to review the list of prerequisites (including `cert-manager`),
 ====
 
 
-[IMPORTANT]
+[CAUTION]
 ====
-Before xref:./using_helm.adoc#_install_rancher_turtles_with_cluster_api_operator_as_a_helm_dependency[installing {product_name}] in your Rancher environment, Rancher's `embedded-cluster-api` functionality must be disabled. This includes also cleaning up Rancher-specific webhooks that otherwise would conflict with CAPI ones.
+Rancher's `embedded-cluster-api` functionality will be disabled when installing {product_name}. This includes also cleaning up Rancher-specific webhooks that otherwise would conflict with CAPI ones.
 
-To simplify setting up Rancher for installing {product_name}, the official {product_name} Helm chart includes a `pre-install` hook that applies these changes, making it transparent to the end user:
+The recommended way to disable this feature and the Rancher-specific webhooks, is to use the official {product_name} Helm chart, that includes a `pre-install` hook to apply the following changes:  
 
 * Disable the `embedded-cluster-api` feature in Rancher.
 * Delete the `mutating-webhook-configuration` and `validating-webhook-configuration` webhooks that are no longer needed.
 ====
-
 
 If you would like to understand how {product_name} works and what the architecture looks like, you can refer to the xref:../../reference-guides/architecture/intro.adoc[Architecture] section.
 
