@@ -301,7 +301,7 @@ See <<_clusterclass,ClusterClass>>
 
 === Turtles
 
-Refers to <<_suse_rancher_prime_cluster_api,{product_name}>>
+Refers to <<_rancher_turtles,{product_name}>>
 
 == W
 
