@@ -43,10 +43,10 @@ helm install cert-manager jetstack/cert-manager --namespace cert-manager --creat
 +
 [source,bash]
 ----
-helm install capi-operator capi-operator/cluster-api-operator
- --create-namespace -n capi-operator-system
- --set infrastructure=docker:v1.7.7
- --set core=cluster-api:v1.7.7
+helm install capi-operator capi-operator/cluster-api-operator \
+ --create-namespace -n capi-operator-system \
+ --set infrastructure=docker:v1.7.7 \
+ --set core=cluster-api:v1.7.7 \
  --timeout 90s --wait # Core Cluster API with kubeadm bootstrap and control plane providers will also be installed
 ----
 
@@ -60,12 +60,12 @@ To provide additional environment variables, enable feature gates, or supply clo
 
 [source,bash]
 ----
-helm install capi-operator capi-operator/cluster-api-operator
-	--create-namespace -n capi-operator-system
-	--set infrastructure=docker:v1.7.7
-	--set core=cluster-api:v1.7.7
-	--timeout 90s
-	--secret-name <secret_name>
+helm install capi-operator capi-operator/cluster-api-operator \
+	--create-namespace -n capi-operator-system \
+	--set infrastructure=docker:v1.7.7 \
+	--set core=cluster-api:v1.7.7 \
+	--timeout 90s \
+	--secret-name <secret_name> \
 	--wait
 ----
 
@@ -120,12 +120,98 @@ and then it can be installed into the `rancher-turtles-system` namespace with:
 
 [source,bash]
 ----
-helm install rancher-turtles turtles/rancher-turtles --version v0.13.0
-    -n rancher-turtles-system
-    --set cluster-api-operator.enabled=false
-    --set cluster-api-operator.cluster-api.enabled=false
-    --create-namespace --wait
+helm install rancher-turtles turtles/rancher-turtles --version v0.15.0 \
+    -n rancher-turtles-system \
+    --set cluster-api-operator.enabled=false \
+    --set cluster-api-operator.cluster-api.enabled=false \
+    --create-namespace --wait \
     --dependency-update
 ----
 
 As you can see, we are telling Helm to ignore installing `cluster-api-operator` as a dependency.
+
+In this case, you must apply the following recource configs to the cluster, in order to be able to use CAPRKE2:
+
+[source,yaml]
+----
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rke2-bootstrap-system
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rke2-control-plane-system
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: capi-additional-rbac-roles
+  namespace: capi-system
+data: 
+  manifests: |-
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: provisioning-rke-cattle-io
+      labels:
+        cluster.x-k8s.io/aggregate-to-manager: "true"
+    rules:
+      - apiGroups: ["rke.cattle.io"]
+        resources: ["*"]
+        verbs: ["*"]
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: provisioning-rke-machine-cattle-io
+      labels:
+        cluster.x-k8s.io/aggregate-to-manager: "true"
+    rules:
+      - apiGroups: ["rke-machine.cattle.io"]
+        resources: ["*"]
+        verbs: ["*"]
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: cluster-api
+  namespace: capi-system
+spec:
+  name: cluster-api
+  type: core
+  version: v1.7.7
+  additionalManifests:
+    name: capi-additional-rbac-roles
+    namespace: capi-system
+  configSecret:
+    name: capi-env-variables
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: rke2-bootstrap
+  namespace: rke2-bootstrap-system
+spec:
+  name: rke2
+  type: bootstrap
+  configSecret:
+    name: capi-env-variables
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: rke2-control-plane
+  namespace: rke2-control-plane-system
+spec:
+  name: rke2
+  type: controlPlane
+  configSecret:
+    name: capi-env-variables
+----
+
+[NOTE]
+====
+In the resource manifests above, ensure that the version set for the core CAPI Provider is the same version of CAPI that is supported by Rancher Turtles.
+====
