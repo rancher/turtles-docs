@@ -18,9 +18,7 @@ rancherTurtles:
     cluster-api-operator:
       cleanup: true # indicates that rancher turtles resources are cleaned up after uninstalling (default: true)
       kubectlImage: registry.k8s.io/kubernetes/kubectl:v1.30.0 # indicates the image to use for post-delete cleanup (default: Kubernetes container image registry)
-    embedded-capi: # this is a rancher functionality that is not compatible with rancher-turtles
-      disabled: true # indicates that embedded-capi must be disabled during installation (default: true)
-    rancher-webhook: # an existing rancher installation keeps rancher webhooks after disabling embedded-capi
+    rancher-webhook: # removes Rancher conflicting CAPI webhooks
       cleanup: true # indicates that the remaining rancher webhooks be removed (default: true)
       kubectlImage: registry.k8s.io/kubernetes/kubectl:v1.30.0 # indicates the image to use for pre-install cleanup (default: Kubernetes container image registry)
     rancher-kubeconfigs: # with capi 1.5.0 and greater, secrets for kubeconfigs must contain a specific label. See https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/book/src/developer/providers/migrations/v1.4-to-v1.5.md#other
