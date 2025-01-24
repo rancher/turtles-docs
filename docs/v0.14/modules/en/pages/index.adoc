@@ -36,7 +36,7 @@ This demo shows how to use the Rancher UI to install {product_name}, create/impo
 |
 
 | Rancher
-| `>=2.9.0`
+| `>=2.10.0`
 | Using https://ranchermanager.docs.rancher.com/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster#install-the-rancher-helm-chart[helm based] installation on any kubernetes cluster directly or on a newly created https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks[Amazon], https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks[Azure] or https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke[Google] service based options.
 
 | Cert-manager
