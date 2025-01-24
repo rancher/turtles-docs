@@ -15,16 +15,16 @@ When installing {product_name} using the official Helm chart, it is possible to 
 ----
 rancherTurtles:
   features:
-    cluster-api-operator:
-      cleanup: true # indicates that rancher turtles resources are cleaned up after uninstalling (default: true)
-      kubectlImage: registry.k8s.io/kubernetes/kubectl:v1.30.0 # indicates the image to use for post-delete cleanup (default: Kubernetes container image registry)
-    rancher-webhook: # removes Rancher conflicting CAPI webhooks
-      cleanup: true # indicates that the remaining rancher webhooks be removed (default: true)
-      kubectlImage: registry.k8s.io/kubernetes/kubectl:v1.30.0 # indicates the image to use for pre-install cleanup (default: Kubernetes container image registry)
-    rancher-kubeconfigs: # with capi 1.5.0 and greater, secrets for kubeconfigs must contain a specific label. See https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/book/src/developer/providers/migrations/v1.4-to-v1.5.md#other
       label: true # indicates that the label will be added (default: true)
-    managementv3-cluster: # rancher will use `clusters.management.cattle.io` to represent an imported capi cluster
-      enabled: false # if false, indicates that `clusters.provisioning.cattle.io` resources will be used (default: false)
+    etcd-snapshot-restore: # etcd snapshot and restore exp feature
+      enabled: false # indicates that the feature is enabled (default: false)
+      image: controller
+      imageVersion: v0.0.0
+      imagePullPolicy: IfNotPresent
+    addon-provider-fleet: # install fleet addon provider together with Turtles
+      enabled: true # indicates that the provider is installed (default: true)
+    agent-tls-mode: # use ca certs stored in rancher when importing capi clusters
+      enabled: false # indicates that the feature is enabled (default: false)
 ----
 
 The list has been truncated to show only the configurable feature flags. Other fields with the `rancherTurtles` key are automatically set when a chart is released.
@@ -45,6 +45,7 @@ Currently the available set of values for the `cluster-api-operator` setup in th
 ----
 cluster-api-operator:
   enabled: true # indicates if CAPI operator should be installed (default: true)
+  cleanup: true # indicates if CAPI operator resources should be cleaned up on uninstall (default: true)
   cluster-api:
     enabled: true # indicates if core CAPI controllers should be installed (default: true)
     configSecret:
