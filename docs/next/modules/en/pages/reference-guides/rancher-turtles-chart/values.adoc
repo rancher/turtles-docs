@@ -15,7 +15,6 @@ When installing {product_name} using the official Helm chart, it is possible to 
 ----
 rancherTurtles:
   features:
-    rancher-kubeconfigs: # with capi 1.5.0 and greater, secrets for kubeconfigs must contain a specific label. See https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/book/src/developer/providers/migrations/v1.4-to-v1.5.md#other
       label: true # indicates that the label will be added (default: true)
     etcd-snapshot-restore: # etcd snapshot and restore exp feature
       enabled: false # indicates that the feature is enabled (default: false)
