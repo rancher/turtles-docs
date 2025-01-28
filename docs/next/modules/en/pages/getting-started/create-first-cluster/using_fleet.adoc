@@ -35,8 +35,11 @@ export CLUSTER_NAME=cluster1
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
 export KUBERNETES_VERSION=v1.30.0
+export NAMESPACE=default
 
-curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml | envsubst > cluster1.yaml
+# use the SHELL-FORMAT in envsubst to ensure we replace only the
+# environment variables we exported above
+curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml | envsubst '$CLUSTER_NAME,$CONTROL_PLANE_MACHINE_COUNT,$WORKER_MACHINE_COUNT,$KUBERNETES_VERSION,$NAMESPACE' > cluster1.yaml
 ----
 +
 . View *cluster1.yaml* to ensure there are no tokens. You can make any changes you want as well.

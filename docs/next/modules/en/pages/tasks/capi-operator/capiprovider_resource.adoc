@@ -7,7 +7,7 @@ The `CAPIProvider` resource allows managing Cluster API Operator manifests in a 
 
 Every field provided by the upstream CAPI Operator resource for the desired `spec.type` is also available in the spec of the `CAPIProvider` resouce. Feel free to refer to upstream configuration https://cluster-api-operator.sigs.k8s.io/03_topics/02_configuration/[guides] for advanced scenarios.
 
-https://github.com/rancher/turtles/blob/main/docs/adr/0007-rancher-turtles-public-api.md[ARD]
+https://github.com/rancher/turtles/blob/main/docs/adr/0007-rancher-turtles-public-api.md[ADR]
 
 == Usage
 
