@@ -17,3 +17,6 @@ changelogs:
     spec:
       owner: rancher
       repository: turtles
+      versionfilter:
+        kind: semver
+        pattern: ">=0.1.0"
