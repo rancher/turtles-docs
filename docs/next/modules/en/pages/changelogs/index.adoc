@@ -3,8 +3,6 @@
 
 * link:changelogs/v0.15.0.html[v0.15.0 (latest)]
 
-* link:changelogs/v0.15.0-rc1.html[v0.15.0-rc1 ]
-
 * link:changelogs/v0.14.1.html[v0.14.1 ]
 
 * link:changelogs/v0.14.0.html[v0.14.0 ]
