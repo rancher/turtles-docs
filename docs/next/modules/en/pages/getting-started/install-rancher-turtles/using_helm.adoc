@@ -45,7 +45,7 @@ As mentioned before, installing {product_name} requires the https://github.com/k
 
 [source,bash]
 ----
-helm install rancher-turtles turtles/rancher-turtles --version v0.13.0 \
+helm install rancher-turtles turtles/rancher-turtles --version v0.16.0 \
     -n rancher-turtles-system \
     --dependency-update \
     --create-namespace --wait \

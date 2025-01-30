@@ -28,31 +28,35 @@ This demo shows how to use the Rancher UI to install {product_name}, create/impo
 | Name | Version | Details
 
 | Kubernetes cluster
-| `>=1.30.0`
+| `v1.30.0`
 |
 
 | Helm
-| `>=3.12.0`
+| `v3.12.0`
 |
 
 | Rancher
-| `>=2.10.0`
+| `v2.10.0`
 | Using https://ranchermanager.docs.rancher.com/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster#install-the-rancher-helm-chart[helm based] installation on any kubernetes cluster directly or on a newly created https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks[Amazon], https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks[Azure] or https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke[Google] service based options.
 
 | Cert-manager
-| `>=v1.15.2`
+| `v1.15.2`
 | Using https://cert-manager.io/docs/installation/helm/#installing-with-helm[helm] based installation or via https://cert-manager.io/docs/installation/#default-static-install[kubectl apply].
 
 | Cluster API Operator
-| `>=v0.14.0`
+| `v0.16.0`
 | Using xref:./getting-started/install-rancher-turtles/using_rancher_dashboard.adoc[Rancher UI] (recommended) or https://github.com/kubernetes-sigs/cluster-api-operator/blob/main/docs/README.md#method-2-use-helm-charts[Helm install] (for development use cases)
 
 | Cluster API
-| `v1.7.7`
+| `v1.9.4`
+|
+
+| Cluster API Provider RKE2
+| `v0.11.0`
 |
 
 | {product_name}
-| `>v0.13.0`
+| `v0.16.0`
 | Using xref:./getting-started/install-rancher-turtles/using_rancher_dashboard.adoc[Rancher UI] (recommended) or xref:./getting-started/install-rancher-turtles/using_helm.adoc[Helm install] (for advanced use cases)
 |===
 
