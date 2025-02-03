@@ -35,7 +35,7 @@ export CLUSTER_NAME=cluster1
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
 export KUBERNETES_VERSION=v1.30.0
-export NAMESPACE=default
+export NAMESPACE=capi-clusters
 
 # use the SHELL-FORMAT in envsubst to ensure we replace only the
 # environment variables we exported above
@@ -59,14 +59,14 @@ The Cluster API quickstart guide contains more detail. Read the steps related to
 +
 [source,yaml]
 ----
-namespace: default
+namespace: capi-clusters
 ----
 +
 . Commit the changes
 
 [NOTE]
 ====
-The *fleet.yaml* is used to specify configuration options for fleet (see https://fleet.rancher.io/ref-fleet-yaml[docs] for further details). In this instance its declaring that the cluster definitions should be added to the *default* namespace
+The *fleet.yaml* is used to specify configuration options for fleet (see https://fleet.rancher.io/ref-fleet-yaml[docs] for further details). In this instance its declaring that the cluster definitions should be added to the *capi-clusters* namespace
 ====
 
 
@@ -84,11 +84,11 @@ In both cases the label is `cluster-api.cattle.io/rancher-auto-import`.
 This walkthrough will use the first option of importing all clusters in a namespace.
 
 . Open a terminal
-. Label the default namespace in your Rancher Manager cluster:
+. Label the capi-clusters namespace in your Rancher Manager cluster:
 +
 [source,bash]
 ----
-kubectl label namespace default cluster-api.cattle.io/rancher-auto-import=true
+kubectl label namespace capi-clusters cluster-api.cattle.io/rancher-auto-import=true
 ----
 
 == Configure Rancher Manager
