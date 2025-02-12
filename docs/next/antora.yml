@@ -1,6 +1,7 @@
 name: turtles
 title: Rancher Turtles
 version: next
+prerelease: beta.1
 display_version: 'Next'
 start_page: en:index.adoc
 asciidoc:

@@ -3,6 +3,10 @@ site:
   url: /
   start_page: v0.16@turtles:en:index.adoc
 
+urls:
+  latest_version_segment: stable
+  latest_prerelease_version_segment: next
+
 content:
   sources:
     - url: ./
