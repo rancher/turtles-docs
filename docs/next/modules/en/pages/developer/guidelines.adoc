@@ -121,7 +121,7 @@ are likely to require a fair amount of context.
 
 === Developing rancher-turtles
 
-Check out the dedicated xref:../developer-guide/development.adoc[notes] on getting started with development.
+Check out the dedicated xref:../developer/development.adoc[notes] on getting started with development.
 
 === Asking for help
 

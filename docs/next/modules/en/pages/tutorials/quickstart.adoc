@@ -1,15 +1,66 @@
-= Via Rancher Dashboard
+= Install
+
+{product_name} is a Rancher extension which means that you must have Rancher installed before you can get started with {product_name}.
+
+[TIP]
+====
+If you don't have Rancher installed yet, make sure to follow one of the official https://ranchermanager.docs.rancher.com/pages-for-subheaders/installation-and-upgrade[installation guides]. We recommend you take a look at the xref:./quickstart.adoc#_prerequisites[Prerequisites] table to determine the appropriate version to install.
+====
+
+== Prerequisites
+
+Before you can install {product_name}, you need to have the following components installed:
+
+|===
+| Name | Version | Details
+
+| Kubernetes cluster
+| `v1.30.0`
+|
+
+| Helm
+| `v3.12.0`
+| Follow the official https://helm.sh/docs/intro/install[installation docs]
+
+| Rancher
+| `v2.10.0`
+| Using https://ranchermanager.docs.rancher.com/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster#install-the-rancher-helm-chart[helm based] installation on any kubernetes cluster directly or on a newly created https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks[Amazon], https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks[Azure] or https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke[Google] service based options.
+
+| Cert-manager
+| `v1.15.2`
+| Using https://cert-manager.io/docs/installation/helm/#installing-with-helm[helm] based installation or via https://cert-manager.io/docs/installation/#default-static-install[kubectl apply].
+|===
+
+== Components Versions
+
+This table lists the version of the components installed with the latest version `v0.16.0` of {product_name}:
+
+[TIP]
+====
+If you're customizing the installation parameters, please make sure that you are using compatible versions of the components.
+====
+
+|===
+| Name | Version 
+
+| Cluster API Operator
+| `v0.16.0`
+
+| Cluster API
+| `v1.9.4`
+
+| Cluster API Provider RKE2
+| `v0.11.0`
+|===
+
+== Via Rancher Dashboard
 
 
 This is the recommended option for installing {product_name}.
 
 Via Rancher UI, and just by adding the Turtles repository, we can easily let Rancher take care of the installation and configuration of the Cluster API Extension.
 
-[CAUTION]
-====
-In case you need to review the list of prerequisites (including `cert-manager`), you can refer to xref:../index.adoc#_prerequisites[this table].
-====
-
+Installing {product_name} will transform your Rancher Manager cluster into a CAPI Management cluster so you can provision and manage CAPI workload clusters.
 
 [CAUTION]
 ====
@@ -20,15 +71,6 @@ The recommended way to disable this feature and the Rancher-specific webhooks, i
 * Disable the `embedded-cluster-api` feature in Rancher.
 * Delete the `mutating-webhook-configuration` and `validating-webhook-configuration` webhooks that are no longer needed.
 ====
-
-
-If you would like to understand how {product_name} works and what the architecture looks like, you can refer to the xref:../../reference-guides/architecture/intro.adoc[Architecture] section.
-
-[NOTE]
-====
-If uninstalling, you can refer to xref:../getting-started/uninstall_turtles.adoc[Uninstalling {product_name}]
-====
-
 
 == Installation
 
@@ -52,7 +94,7 @@ Rancher will select not to install Turtles into a https://ranchermanager.docs.ra
 
 image::install-turtles-from-ui.gif[install-turtles-from-ui]
 
-This will use the default values for the Helm chart, which are good for most installations. If your configuration requires overriding some of these defaults, you can either specify the values during installation from Rancher UI or, alternatively, you can opt for the xref:./using_helm.adoc[manual installation via Helm]. And, if you are interested on learning more about the available values, you can check the xref:../../reference-guides/rancher-turtles-chart/values.adoc[reference guide].
+This will use the default values for the Helm chart, which are good for most installations. If your configuration requires overriding some of these defaults, you can either specify the values during installation from Rancher UI or, alternatively, you can opt for the xref:../operator/manual.adoc[manual installation via Helm]. And, if you are interested on learning more about the available values, you can check the xref:../operator/chart.adoc[reference guide].
 
 The installation may take a few minutes and, when it finishes, you will be able to see the following new deployments in the cluster:
 
@@ -69,7 +111,7 @@ image::deployments-turtles.png[deployments-turtles]
 
 Rancher also provides a UI extension that makes it easy to manage CAPI providers, create CAPI clusters and view CAPI related resources via the Rancher Dashboard. Installing the CAPI UI extension is similar to installing Turtles. 
 
-[NOTE]
+[TIP]
 ====
 Installing Turtles prior to installing the CAPI UI extension is recommended.
 ====

@@ -3,7 +3,7 @@
 
 == Installing Rancher
 
-_If you're already running Rancher, you can skip this section and jump to xref:./install-rancher-turtles/using_rancher_dashboard.adoc[Install {product_name}]._
+_If you're already running Rancher, you can skip this section and jump to xref:./quickstart.adoc[Install {product_name}]._
 
 Helm is the recommended way to install `Rancher` in an existing or new Kubernetes cluster.
 

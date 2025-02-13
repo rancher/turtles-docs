@@ -1,4 +1,15 @@
-= Test suite guide
+= Test Suite
+
+This section contains information on how you can leverage the existing E2E suite to integrate any CAPI providers with Turtles and verify that the provisioning and importing of clusters works as expected. The validation performs the following actions:
+
+* Create a management cluster in the desired environment.
+* Install Rancher and Turtles with all prerequisites.
+* Install Gitea.
+* Run the suite that will create a git repo, apply cluster template using Fleet and verify the cluster is created and successfully imported in Rancher.
+
+The test suite can be used for certification of providers not listed in the xref:../reference/certified.adoc[Certification table], as detailed in xref:../operator/certification.adoc[Provider Certification].
+
+== How to Use It
 
 The main reference for reusing the test suite is https://github.com/rancher-sandbox/turtles-integration-suite-example[this repository], which contains an example on how to integrate a given CAPI provider with {product_name} and applies a series of checks based on a GitOps workflow.
 
@@ -50,7 +61,7 @@ Turtles is a Rancher extension and, as such, it needs a Rancher installation to 
 [discrete]
 ==== Run the suite that will create a git repo, apply cluster template using Fleet and verify the cluster is created and successfully imported in Rancher.
 
-The main test suite, and the one used as an example, is based on a GitOps flow and uses https://github.com/rancher/fleet[Fleet] as a GitOps orchestrator tool. Based on the cluster templates provided (you can check the ones that come with the example integration https://github.com/rancher-sandbox/turtles-integration-suite-example/tree/main/suites/data/cluster-templates[here]), it will create the CAPI clusters defined in the YAML files. Once this/these cluster/s are available, they will be configured to be xref:../../getting-started/create-first-cluster/using_fleet.adoc[imported into Rancher using Turtles] and it will verify that the downstream cluster/s is/are accessible via Rancher. It will also check that deletion can be performed on downstream clusters and that they are no longer available in Rancher.
+The main test suite, and the one used as an example, is based on a GitOps flow and uses https://github.com/rancher/fleet[Fleet] as a GitOps orchestrator tool. Based on the cluster templates provided (you can check the ones that come with the example integration https://github.com/rancher-sandbox/turtles-integration-suite-example/tree/main/suites/data/cluster-templates[here]), it will create the CAPI clusters defined in the YAML files. Once this/these cluster/s are available, they will be configured to be xref:../tutorials/first-cluster.adoc[imported into Rancher using Turtles] and it will verify that the downstream cluster/s is/are accessible via Rancher. It will also check that deletion can be performed on downstream clusters and that they are no longer available in Rancher.
 
 == Other options
 
