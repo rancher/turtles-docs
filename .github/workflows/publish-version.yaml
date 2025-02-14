@@ -38,6 +38,9 @@ jobs:
       - name: Change version in antora.yml
         run: |
           sed -i "s/^version: .*/version: $TAG/" docs/${TAG}/antora.yml
+      - name: Remove prerelease tag in antora.yml
+        run: |
+          sed -i '/prerelease/d' docs/$TAG/antora.yml
       - name: Change display_version in antora.yml
         run: |
           sed -i "s/^display_version: .*/display_version: '$TAG'/"  docs/${TAG}/antora.yml
