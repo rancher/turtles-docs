@@ -5,4 +5,11 @@ updates:
     schedule:
         interval: "daily"
     directory: /
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "kind/cleanup"
+      - "area/build-and-releas
     
