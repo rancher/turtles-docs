@@ -21,6 +21,7 @@ export CLUSTER_NAME=cluster1
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
 export KUBERNETES_VERSION=v1.30.0
+export NAMESPACE=capi-clusters
 
 curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml | envsubst > cluster1.yaml
 ----
@@ -49,7 +50,7 @@ Labeling a namespace:
 
 [source,bash]
 ----
-kubectl label namespace default cluster-api.cattle.io/rancher-auto-import=true
+kubectl label namespace capi-clusters cluster-api.cattle.io/rancher-auto-import=true
 ----
 
 Labeling an individual cluster definition:

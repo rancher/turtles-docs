@@ -77,7 +77,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: variables
-  namespace: default
+  namespace: capi-operator-system
 type: Opaque
 stringData:
   CLUSTER_TOPOLOGY: "true"

@@ -26,7 +26,7 @@ apiVersion: turtles-capi.cattle.io/v1alpha1
 kind: CAPIProvider
 metadata:
   name: aws-infra
-  namespace: default
+  namespace: capi-providers
 spec:
   name: aws
   type: infrastructure

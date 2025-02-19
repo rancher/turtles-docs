@@ -114,6 +114,7 @@ export CLUSTER_NAME=cluster1
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
 export KUBERNETES_VERSION=v1.30.0
+export NAMESPACE=capi-clusters
 
 curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-kubeadm.yaml | envsubst > cluster1.yaml
 ----
@@ -140,7 +141,7 @@ After your cluster is provisioned, you can check functionality of the workload c
 kubectl describe cluster cluster1
 ----
 
-Remember that clusters are namespaced resources. These examples provision clusters in the `default` namespace, but you will need to provide yours if using a different one.
+Remember that clusters are namespaced resources. These examples provision clusters in the `capi-clusters` namespace, but you will need to provide yours if using a different one.
 ====
 
 
@@ -155,7 +156,7 @@ Labeling a namespace:
 
 [source,bash]
 ----
-kubectl label namespace default cluster-api.cattle.io/rancher-auto-import=true
+kubectl label namespace capi-clusters cluster-api.cattle.io/rancher-auto-import=true
 ----
 
 Labeling an individual cluster definition:
