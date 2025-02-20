@@ -23,11 +23,11 @@ The recommended way to disable this feature and the Rancher-specific webhooks, i
 ====
 
 
-If you would like to understand how {product_name} works and what the architecture looks like, you can refer to the xref:../../reference-guides/architecture/intro.adoc[Architecture] section.
+If you would like to understand how {product_name} works and what the architecture looks like, you can refer to the xref:../reference/architecture.adoc[Architecture] section.
 
 [NOTE]
 ====
-If uninstalling, you can refer to xref:../getting-started/uninstall_turtles.adoc[Uninstalling {product_name}]
+If uninstalling, you can refer to xref:../tutorials/uninstall.adoc[Uninstalling {product_name}]
 ====
 
 
@@ -56,13 +56,6 @@ This operation could take a few minutes and, after installing, you can take some
 
 * `rancher-turtles-controller`.
 * `capi-operator`.
-
-[NOTE]
-====
-
-* For a list of {product_name} versions, refer to https://github.com/rancher/turtles/releases[Releases page].
-====
-
 
 This is the basic, recommended configuration, which manages the creation of a secret containing the required CAPI feature flags (`CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled) in the core provider namespace. These feature flags are required to enable additional Cluster API functionality.
 
@@ -95,6 +88,6 @@ stringData:
 
 [IMPORTANT]
 ====
-For detailed information on the values supported by the chart and their usage, refer to xref:../reference-guides/rancher-turtles-chart/values.adoc[Helm chart options]
+For detailed information on the values supported by the chart and their usage, refer to xref:../operator/chart.adoc[Helm chart options]
 ====
 

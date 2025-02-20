@@ -1,6 +1,8 @@
 = Certified CAPI Providers
 
-Remember that most Cluster API Providers are upstream projects maintained by the Kubernetes open-source community.
+== What does Certified Providers mean?
+
+Certified Providers are CAPI Providers that are **actively tested** by the Turtles team's CI workflows to validate they work properly with the CAPI extension for Rancher. However, since most CAPI Providers are upstream projects maintained by the Kubernetes open community, **we cannot guarantee** that no issues are introduced as new provider versions are released.
 
 == List of certified providers
 

@@ -1,5 +1,18 @@
-= Create a cluster using Fleet
-:sidebar_position: 2
+= ClusterClass
+
+In this section we cover using *ClusterClass* with {product_name}.
+
+[CAUTION]
+====
+ClusterClass is an experimental feature of Cluster API. As with any experimental features it should be used with caution as it may be unreliable. All experimental features are not subject to any compatibility or deprecation promise.
+====
+
+[TIP]
+====
+Before using ClusterClass, you should study the provider docs and confirm that the feature is supported. When installing the provider, you must explicitly enable this feature. You can follow xref:../operator/clusterclass.adoc[this guide] for instructions. 
+====
+
+== Create a cluster using Fleet
 
 This section will guide you through creating a cluster that utilizes ClusterClass using a GitOps workflow with Fleet.
 
@@ -13,7 +26,7 @@ This guide uses the https://github.com/rancher-sandbox/rancher-turtles-fleet-exa
 
 * Rancher Manager cluster with {product_name} installed
 * Cluster API providers installed for your scenario - we'll be using the Docker infrastructure and Kubeadm bootstrap/control plane providers in these instructions - see https://cluster-api.sigs.k8s.io/user/quick-start.html#initialization-for-common-providers[Initialization for common providers]
-* The *ClusterClass* feature enabled - see xref:./intro.adoc[the introduction]
+* The *ClusterClass* feature enabled - see xref:./clusterclass.adoc#_enable_clusterclass[Enable ClusterClass]
 
 == Configure Rancher Manager
 
