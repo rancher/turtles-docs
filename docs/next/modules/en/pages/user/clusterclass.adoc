@@ -26,7 +26,7 @@ This guide uses the https://github.com/rancher-sandbox/rancher-turtles-fleet-exa
 
 * Rancher Manager cluster with {product_name} installed
 * Cluster API providers installed for your scenario - we'll be using the Docker infrastructure and Kubeadm bootstrap/control plane providers in these instructions - see https://cluster-api.sigs.k8s.io/user/quick-start.html#initialization-for-common-providers[Initialization for common providers]
-* The *ClusterClass* feature enabled - see xref:./clusterclass.adoc#_enable_clusterclass[Enable ClusterClass]
+* The *ClusterClass* feature enabled - see xref:../operator/clusterclass.adoc#_enable_clusterclass[Enable ClusterClass]
 
 == Configure Rancher Manager
 
