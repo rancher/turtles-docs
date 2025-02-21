@@ -55,7 +55,7 @@ Full documentation on the CAPIProvider resource - https://doc.crds.dev/github.co
 
 == Deletion
 
-When a `CAPIProvider` resource is deleted, the kubernetes garbage collection will clean up all the generated provider resources that it owns. This includes:
+When a `CAPIProvider` resource is deleted, the Kubernetes garbage collection will clean up all the generated provider resources that it owns. This includes:
 
 * Cluster API Operator resource instance
 * Secret referenced by the `configSecret`
