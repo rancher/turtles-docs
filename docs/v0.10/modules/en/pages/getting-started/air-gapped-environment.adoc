@@ -14,7 +14,7 @@ To install Cluster API providers in an air-gapped environment the following will
  ** Provide image overrides for each provider to pull images from an accessible image repository.
 . Configure {product_name} for an air-gapped environment:
  ** Collect and publish {product_name} images and publish to the private registry. https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images#2-collect-the-cert-manager-image[Example of cert-manager installation for the reference].
- ** Provide fetch configuration and image values for `core` and `caprke2` providers in xref:../reference-guides/rancher-turtles-chart/values.adoc#cluster-api-operator-values[values.yaml].
+ ** Provide fetch configuration and image values for `core` and `caprke2` providers in xref:../reference-guides/rancher-turtles-chart/values.adoc#_cluster_api_operator_values[values.yaml].
  ** Provider image value for the Cluster API Operator helm chart dependency in https://github.com/kubernetes-sigs/cluster-api-operator/blob/main/hack/charts/cluster-api-operator/values.yaml#L26[values.yaml]. Image values specified with the cluster-api-operator key will be passed along to the Cluster API Operator.
 
 == Example Usage
