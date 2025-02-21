@@ -1,7 +1,7 @@
 name: turtles
 title: Rancher Turtles
 version: v0.12
-display_version: '0.12'
+display_version: 'v0.12'
 start_page: en:index.adoc
 asciidoc:
   attributes:
