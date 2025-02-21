@@ -18,7 +18,7 @@
 ** xref:operator/capiprovider.adoc[Install CAPI Providers]
 ** xref:operator/clusterclass.adoc[Enabling ClusterClass]
 ** xref:operator/certification.adoc[Provider Certification]
-** xref:operator/testsuite.adoc[Test Suite]
+** xref:operator/certificationsuite.adoc[Provider Test Suite]
 ** xref:operator/airgapped.adoc[Air-Gapped Environment]
 * Developer Guide
 ** xref:developer/development.adoc[Development Environment]
