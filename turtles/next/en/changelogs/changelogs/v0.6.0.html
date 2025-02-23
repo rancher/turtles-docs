@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Untitled :: Rancher Turtles</title>
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../../_/css/search.css">
+<link rel="icon" href="../../../../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../../../../_/css/font-styles.css">
+<link rel="stylesheet" href="../../../../../_/fonts/css/all.css">
+<link rel="stylesheet" href="../../../../../_/css/site-extra.css">
+<link rel="stylesheet" href="../../../../../_/css/vendor/tabs.css">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+<link href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet"> -->
+<link rel="stylesheet" href="../../../../../_/css/vendor/light.css">
+<script src="/docserv/res/lightheaded/analytics.js"
+        type="text/javascript"></script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a class=" navbar-logo" href="https://documentation.suse.com/"><img class="logo"
+            src="../../../../../_/img/logo.svg" /></a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">
+            <img src="../../../../../_/img/github_logo.svg" class="langIcon Resurces" alt="Resources" title="Resources">
+          </div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/rancher/turtles"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://github.com/rancher/turtles-docs"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles docs&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">More from SUSE</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://www.rancher.com" target="_blank"><img src="../../../../../_/img/icon-rancher-mask.png" width="51" height="24" alt="Rancher by SUSE"
+              title="SUSE Rancher">&nbsp;Rancher&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://fleet.rancher.io" target="_blank"><img src="../../../../../_/img/icon-fleet-mask.png" width="29" height="24" alt="Fleet"
+              title="Fleet">&nbsp;Fleet&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://www.kubewarden.io" target="_blank"><img src="../../../../../_/img/icon-kubewarden-mask.png" width="29" height="24" alt="Kubewarden"
+              title="Kubewarden">&nbsp;Kubewarden&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://harvesterhci.io" target="_blank"><img src="../../../../../_/img/icon-harvester-mask.png" width="29" height="24" alt="Harvester"
+              title="Harvester">&nbsp;Harvester&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://opensource.suse.com" target="_blank"><img src="../../../../../_/img/icon-suse-mask.png" width="41" height="24" alt="OpenSource at SUSE"
+              title="OpenSource @ SUSE">&nbsp;More projects...&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs" >
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header><div class="body">
+<div class="nav-container" data-component="turtles" data-version="next">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../../index.html">Rancher Turtles</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../../index.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tutorials</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/quickstart.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/first-cluster.html">Your First Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tutorials/uninstall.html">Uninstall</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../reference/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../reference/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../reference/features.html">Feature</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../reference/certified.html">Certified Providers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user/clusters.html">Provision a CAPI cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user/clusterclass.html">Provision a CAPI cluster with ClusterClass</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user/caapf.html">CAPI Addon Provider Fleet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Operator Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../operator/chart.html">Chart Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../operator/manual.html">Manual Installation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../operator/capiprovider.html">Install CAPI Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../operator/clusterclass.html">Enabling ClusterClass</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../operator/certification.html">Provider Certification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../operator/testsuite.html">Test Suite</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../operator/airgapped.html">Air-Gapped Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developer Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../developer/development.html">Development Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../developer/guidelines.html">Development Guideline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../security/slsa.html">SLSA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Rancher Turtles</span>
+    <span class="version">Next</span>
+  </div>
+  <ul class="components">
+        <li class="component is-current">
+          <div class="title"><a href="../../../../stable/en/index.html">Rancher Turtles</a></div>
+          <ul class="versions">
+            <li class="version is-current">
+              <a href="../../index.html">Next</a>
+            </li>
+            <li class="version is-latest">
+              <a href="../../../../stable/en/index.html">v0.16</a>
+            </li>
+            <li class="version">
+              <a href="../../../../v0.15/en/index.html">v0.15</a>
+            </li>
+            <li class="version">
+              <a href="../../../../v0.14/en/index.html">v0.14</a>
+            </li>
+            <li class="version">
+              <a href="../../../../v0.13/en/index.html">v0.13</a>
+            </li>
+            <li class="version">
+              <a href="../../../../v0.12/en/index.html">v0.12</a>
+            </li>
+            <li class="version">
+              <a href="../../../../v0.11/en/index.html">v0.11</a>
+            </li>
+          </ul>
+        </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../../stable/en/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">Next</button>
+  <div class="version-menu">
+    <a class="version is-current" href="v0.6.0.html">Next</a>
+    <a class="version" href="../../../../stable/en/changelogs/changelogs/v0.6.0.html">v0.16</a>
+    <a class="version is-missing" href="../../../../v0.15/en/index.html">v0.15</a>
+    <a class="version is-missing" href="../../../../v0.14/en/index.html">v0.14</a>
+    <a class="version is-missing" href="../../../../v0.13/en/index.html">v0.13</a>
+    <a class="version is-missing" href="../../../../v0.12/en/index.html">v0.12</a>
+    <a class="version is-missing" href="../../../../v0.11/en/index.html">v0.11</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/rancher/turtles-docs/edit/main/docs/next/modules/en/pages/changelogs/changelogs/v0.6.0.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="4">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<div class="sect1">
+<h2 id="_v0_6_0"><a class="anchor" href="#_v0_6_0"></a>"v0.6.0"</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_2024_04_04_122110_0000_utc"><a class="anchor" href="#_2024_04_04_122110_0000_utc"></a>"2024-04-04 12:21:10 +0000 UTC"</h3>
+<div class="paragraph">
+<p><em> (github-actions[bot]) released this 2024-04-04 12:21:10 +0000 UTC - v0.6.0</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_description"><a class="anchor" href="#_description"></a>Description</h3>
+<hr>
+<h1>Rancher Turtles (The Cluster API Extension) GA</h1>
+<p>We are pleased to announce that the Rancher Cluster API Extension (a.k.a Rancher Turtles) is becoming generally available, transitioning out from an early adopter program.</p>
+<p>With each new release going forward we will include a table of the features that have moved to be fully supported and the new features that are experimental.</p>
+<p>The initial GA is targeted at the GitOps workflow (to be used, for example, with Fleet) and cluster creation / operations will need to be performed via the CAPI cluster definitions directly (applied to the management cluster).</p>
+<table>
+<thead>
+<tr>
+<th>Supported</th>
+<th>Experimental (not suitable for production)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatic import of CAPI Clusters into Rancher</td>
+<td>Everything not specifically listed on the “Supported” column</td>
+</tr>
+<tr>
+<td>Enabling CAPI Providers (excluding integration with Rancher Cloud Credentials)</td>
+<td>CAPIProvider integration with Rancher Cloud Credentials.</td>
+</tr>
+<tr>
+<td>Cluster provisioning via Fleet (i.e. GitOps)</td>
+<td>Cluster API Provider vSphere (non-experimental features with the exception of machine pools and clusterclass)</td>
+</tr>
+<tr>
+<td>Cluster API Provider AWS (non-experimental features with the exception of machine pools and clusterclass)</td>
+<td></td>
+</tr>
+<tr>
+<td>Cluster API Provider RKE2 (excluding any day 2 operations like ETCD Backup &amp; Restore)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Supported versions:</p>
+<ul>
+<li>Rancher: v2.8.1 or greater</li>
+<li>Cluster API: v1.4.6</li>
+<li>Cluster API Provider AWS: v2.3.5</li>
+<li>Cluster API Provider RKE2: v0.2.7</li>
+</ul>
+<p>We are also developing an UI extension that will be released in the future. This is only available at present via the early adopter programme. Please get in contact with your account team about details.</p>
+
+<h2>What's Changed</h2>
+<h3>🚀 Enhancements</h3>
+<ul>
+<li>Add dependabot rule to bump CAPI Operator dependency as early as possible by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2145060375" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/392" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/392/hovercard" href="https://github.com/rancher/turtles/pull/392">#392</a></li>
+<li>Pin installed versions for CAPI Operator by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2161192794" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/406" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/406/hovercard" href="https://github.com/rancher/turtles/pull/406">#406</a></li>
+<li>Support creating management v3 cluster by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2104979087" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/362" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/362/hovercard" href="https://github.com/rancher/turtles/pull/362">#362</a></li>
+<li>Add post-delete helm hook for RT extension deletion process by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/furkatgofurov7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/furkatgofurov7">@furkatgofurov7</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2178774511" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/425" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/425/hovercard" href="https://github.com/rancher/turtles/pull/425">#425</a></li>
+<li>feat: add devcontainer by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/richardcase/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/richardcase">@richardcase</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2188914131" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/434" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/434/hovercard" href="https://github.com/rancher/turtles/pull/434">#434</a></li>
+<li>feat: changing to use EKS for management cluster by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/richardcase/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/richardcase">@richardcase</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2148763893" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/394" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/394/hovercard" href="https://github.com/rancher/turtles/pull/394">#394</a></li>
+<li>Install RKE2 by default by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexander-demicev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexander-demicev">@alexander-demicev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2194925244" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/437" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/437/hovercard" href="https://github.com/rancher/turtles/pull/437">#437</a></li>
+</ul>
+<h3>🐛 Bugs</h3>
+<ul>
+<li>Fix dependabot duplicate rule issue by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2151184625" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/398" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/398/hovercard" href="https://github.com/rancher/turtles/pull/398">#398</a></li>
+<li>Re-apply capi infra periodically by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2146145830" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/393" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/393/hovercard" href="https://github.com/rancher/turtles/pull/393">#393</a></li>
+<li>Provider re apply tests by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2171487002" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/422" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/422/hovercard" href="https://github.com/rancher/turtles/pull/422">#422</a></li>
+<li>Fix repo name in release-workflow.yml GH workflow by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/furkatgofurov7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/furkatgofurov7">@furkatgofurov7</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2205354494" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/444" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/444/hovercard" href="https://github.com/rancher/turtles/pull/444">#444</a></li>
+<li>fix: install aws-iam-authenticator by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/richardcase/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/richardcase">@richardcase</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2208376900" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/447" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/447/hovercard" href="https://github.com/rancher/turtles/pull/447">#447</a></li>
+<li>fix: chart changes for upgrade and uninstall by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/richardcase/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/richardcase">@richardcase</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2220076691" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/458" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/458/hovercard" href="https://github.com/rancher/turtles/pull/458">#458</a></li>
+<li>Fix nightly release CI job by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/furkatgofurov7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/furkatgofurov7">@furkatgofurov7</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2220725057" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/459" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/459/hovercard" href="https://github.com/rancher/turtles/pull/459">#459</a></li>
+<li>Exclude namespace selection from questions.yaml by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2225006252" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/464" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/464/hovercard" href="https://github.com/rancher/turtles/pull/464">#464</a></li>
+</ul>
+<h3>📖 Docs</h3>
+<ul>
+<li>Add ADR around use of structured proxy types by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="1887194033" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/114" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/114/hovercard" href="https://github.com/rancher/turtles/pull/114">#114</a></li>
+<li>add helm chart repository adr by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2179296540" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/426" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/426/hovercard" href="https://github.com/rancher/turtles/pull/426">#426</a></li>
+</ul>
+<h3>🌱 Other Changes</h3>
+<ul>
+<li>Bump helm/kind-action from 1.8.0 to 1.9.0 by <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/dependabot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dependabot">@dependabot</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2129430330" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/379" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/379/hovercard" href="https://github.com/rancher/turtles/pull/379">#379</a></li>
+<li>Bump golangci/golangci-lint-action from 3.7.0 to 4.0.0 by <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/dependabot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dependabot">@dependabot</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2129430276" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/378" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/378/hovercard" href="https://github.com/rancher/turtles/pull/378">#378</a></li>
+<li>Bump slackapi/slack-github-action from 1.24.0 to 1.25.0 by <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/dependabot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dependabot">@dependabot</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2104673288" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/360" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/360/hovercard" href="https://github.com/rancher/turtles/pull/360">#360</a></li>
+<li>Bump aquasecurity/trivy-action from 0.16.1 to 0.17.0 by <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/dependabot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dependabot">@dependabot</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2129430367" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/380" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/380/hovercard" href="https://github.com/rancher/turtles/pull/380">#380</a></li>
+<li>update development environment script by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2131905591" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/383" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/383/hovercard" href="https://github.com/rancher/turtles/pull/383">#383</a></li>
+<li>Update tests to use same envtest helper, add eventual checks for cache consistency by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2149145906" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/395" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/395/hovercard" href="https://github.com/rancher/turtles/pull/395">#395</a></li>
+<li>Rancher credentials lookup by namespace name by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2143972424" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/390" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/390/hovercard" href="https://github.com/rancher/turtles/pull/390">#390</a></li>
+<li>Bump go to 1.22 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2151043910" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/397" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/397/hovercard" href="https://github.com/rancher/turtles/pull/397">#397</a></li>
+<li>Pin provider versions by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/furkatgofurov7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/furkatgofurov7">@furkatgofurov7</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2161072595" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/404" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/404/hovercard" href="https://github.com/rancher/turtles/pull/404">#404</a></li>
+<li>Configure janitor to cleanup aws resources by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2167619125" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/413" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/413/hovercard" href="https://github.com/rancher/turtles/pull/413">#413</a></li>
+<li>Add tests for capi provider edit operations by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2150958177" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/396" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/396/hovercard" href="https://github.com/rancher/turtles/pull/396">#396</a></li>
+<li>test: add wait-delete-cluster interval by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2171412393" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/421" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/421/hovercard" href="https://github.com/rancher/turtles/pull/421">#421</a></li>
+<li>update go version in release test workflow by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2170855635" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/418" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/418/hovercard" href="https://github.com/rancher/turtles/pull/418">#418</a></li>
+<li>Bump Azure/setup-helm from 3 to 4 by <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/dependabot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dependabot">@dependabot</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2165965923" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/411" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/411/hovercard" href="https://github.com/rancher/turtles/pull/411">#411</a></li>
+<li>Bump aquasecurity/trivy-action from 0.17.0 to 0.18.0 by <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/dependabot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dependabot">@dependabot</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2165966024" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/412" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/412/hovercard" href="https://github.com/rancher/turtles/pull/412">#412</a></li>
+<li>Bump CAPI to v1.6.2 &amp; CAPI Operator v0.9.0 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/furkatgofurov7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/furkatgofurov7">@furkatgofurov7</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2161066157" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/403" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/403/hovercard" href="https://github.com/rancher/turtles/pull/403">#403</a></li>
+<li>Create dependabot.yml to run make generate on each dependabot PR by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2161713326" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/408" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/408/hovercard" href="https://github.com/rancher/turtles/pull/408">#408</a></li>
+<li>Disable kubeadm provider installation by default by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexander-demicev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexander-demicev">@alexander-demicev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2160907529" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/402" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/402/hovercard" href="https://github.com/rancher/turtles/pull/402">#402</a></li>
+<li>Bump go version in dependabot workflow  by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2184028332" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/429" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/429/hovercard" href="https://github.com/rancher/turtles/pull/429">#429</a></li>
+<li>Rename 'rancher-sandbox/rancher-turtles' to 'rancher/turtles' by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/furkatgofurov7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/furkatgofurov7">@furkatgofurov7</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2186029061" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/432" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/432/hovercard" href="https://github.com/rancher/turtles/pull/432">#432</a></li>
+<li>Bump operator dependency to 0.9.1 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2205421482" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/445" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/445/hovercard" href="https://github.com/rancher/turtles/pull/445">#445</a></li>
+<li>Edit chart display name by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2210499541" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/449" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/449/hovercard" href="https://github.com/rancher/turtles/pull/449">#449</a></li>
+<li>Downgrade CAPI to 1.4.6 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2212898579" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/452" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/452/hovercard" href="https://github.com/rancher/turtles/pull/452">#452</a></li>
+<li>Revise questions.yaml and add missing options by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2213191699" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/454" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/454/hovercard" href="https://github.com/rancher/turtles/pull/454">#454</a></li>
+<li>chore: add tags to eks resources by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/richardcase/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/richardcase">@richardcase</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2223421010" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/463" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/463/hovercard" href="https://github.com/rancher/turtles/pull/463">#463</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/rancher/turtles/compare/v0.5.0...v0.6.0"><tt>v0.5.0...v0.6.0</tt></a></p>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="_download"><a class="anchor" href="#_download"></a>Download</h3>
+<table class="tableblock frame-all grid-rows stretch">
+<colgroup>
+<col style="width: 60%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Created At</th>
+<th class="tableblock halign-left valign-top">Updated At</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rancher/turtles/releases/download/v0.6.0/rancher-turtles-0.6.0.tgz">rancher-turtles-0.6.0.tgz</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2024-04-04 12:21:11 +0000 UTC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2024-04-04T12:21:11Z</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div class="paragraph">
+<p><em>Information retrieved from <a href="https://github.com/rancher/turtles/releases/tag/v0.6.0">here</a></em></p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../../../_/js/site.js"></script>
+<script async src="../../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../../.." data-snippet-length="100" data-stylesheet="../../../../../_/css/search.css"></script>
+<script async src="../../../../../search-index.js"></script>
+<script src="../../../../../_/js/vendor/langSelection.js"></script>
+<script async src="../../../../../_/js/vendor/tabs.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Guidelines :: Rancher Turtles</title>
+    <link rel="prev" href="development.html">
+    <link rel="next" href="../reference/intro.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../_/css/search.css">
+<link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../../../_/css/font-styles.css">
+<link rel="stylesheet" href="../../../../_/fonts/css/all.css">
+<link rel="stylesheet" href="../../../../_/css/site-extra.css">
+<link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+<link href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet"> -->
+<link rel="stylesheet" href="../../../../_/css/vendor/light.css">
+<script src="/docserv/res/lightheaded/analytics.js"
+        type="text/javascript"></script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a class=" navbar-logo" href="https://documentation.suse.com/"><img class="logo"
+            src="../../../../_/img/logo.svg" /></a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">
+            <img src="../../../../_/img/github_logo.svg" class="langIcon Resurces" alt="Resources" title="Resources">
+          </div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/rancher/turtles"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://github.com/rancher/turtles-docs"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles docs&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">More from SUSE</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://www.rancher.com" target="_blank"><img src="../../../../_/img/icon-rancher-mask.png" width="51" height="24" alt="Rancher by SUSE"
+              title="SUSE Rancher">&nbsp;Rancher&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://fleet.rancher.io" target="_blank"><img src="../../../../_/img/icon-fleet-mask.png" width="29" height="24" alt="Fleet"
+              title="Fleet">&nbsp;Fleet&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://www.kubewarden.io" target="_blank"><img src="../../../../_/img/icon-kubewarden-mask.png" width="29" height="24" alt="Kubewarden"
+              title="Kubewarden">&nbsp;Kubewarden&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://harvesterhci.io" target="_blank"><img src="../../../../_/img/icon-harvester-mask.png" width="29" height="24" alt="Harvester"
+              title="Harvester">&nbsp;Harvester&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://opensource.suse.com" target="_blank"><img src="../../../../_/img/icon-suse-mask.png" width="41" height="24" alt="OpenSource at SUSE"
+              title="OpenSource @ SUSE">&nbsp;More projects...&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs" >
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header><div class="body">
+<div class="nav-container" data-component="turtles" data-version="v0.16">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Rancher Turtles</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../index.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/rancher.html">Rancher Setup</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Install Rancher Turtles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting-started/install-rancher-turtles/using_rancher_dashboard.html">Via Rancher Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting-started/install-rancher-turtles/using_helm.html">Via Helm Install</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Your first cluster</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting-started/create-first-cluster/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting-started/create-first-cluster/using_fleet.html">Create &amp; import your first cluster using Fleet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting-started/create-first-cluster/using_kubectl.html">Create &amp; Import Your First Cluster Using kubectl</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Using ClusterClass</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting-started/cluster-class/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../getting-started/cluster-class/create_cluster.html">Create a cluster using Fleet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/air-gapped-environment.html">Air-gapped environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../getting-started/uninstall_turtles.html">Uninstall Rancher Turtles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Architecture</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../reference-guides/architecture/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../reference-guides/architecture/components.html">Components</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../reference-guides/architecture/deployment.html">Deployment Scenarios</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference-guides/rancher-turtles-chart/values.html">Chart configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">CAPI Providers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../reference-guides/providers/certified.html">Certified CAPI Providers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../reference-guides/providers/howto.html">Create &amp; import a cluster using CAPI providers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../reference-guides/providers/addon-provider-fleet.html">Cluster API Addon Provider Fleet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Test suite</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../reference-guides/test-suite/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../reference-guides/test-suite/usage.html">Test suite guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tasks</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tasks/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Cluster API Operator</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tasks/capi-operator/basic_cluster_api_provider_installation.html">Basic Cluster API Provider Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tasks/capi-operator/installing_core_provider.html">Installing the CoreProvider using CAPIProvider resource</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tasks/capi-operator/capiprovider_resource.html">CAPIProvider Resource</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tasks/capi-operator/clusterctlconfig_resource.html">ClusterctlConfig Resource</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tasks/capi-operator/add_infrastructure_provider.html">Installing AWS Infrastructure Provider using CAPIProvider resource</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Maintenance</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tasks/maintenance/early_adopter_upgrade.html">Upgrade Instructions for Early Adopters</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tasks/maintenance/import_controller_upgrade.html">Upgrade Turtles import controller</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tasks/maintenance/automigrate_to_v3_import.html">Auto-migration to v3 cluster import</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Provider Certification</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tasks/provider-certification/intro.html">What is a Certified Provider?</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../tasks/provider-certification/process.html">Provider Certification Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developer Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="install_capi_operator.html">Installing Cluster API Operator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="development.html">Development setup</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="contributing_guidelines.html">Guidelines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/features.html">Features</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/slsa.html">SLSA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../changelogs/index.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Rancher Turtles</span>
+    <span class="version">v0.16</span>
+  </div>
+  <ul class="components">
+        <li class="component is-current">
+          <div class="title"><a href="../index.html">Rancher Turtles</a></div>
+          <ul class="versions">
+            <li class="version">
+              <a href="../../../next/en/index.html">Next</a>
+            </li>
+            <li class="version is-current is-latest">
+              <a href="../index.html">v0.16</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.15/en/index.html">v0.15</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.14/en/index.html">v0.14</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.13/en/index.html">v0.13</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.12/en/index.html">v0.12</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.11/en/index.html">v0.11</a>
+            </li>
+          </ul>
+        </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Rancher Turtles</a></li>
+    <li>Developer Guide</li>
+    <li><a href="contributing_guidelines.html">Guidelines</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">v0.16</button>
+  <div class="version-menu">
+    <a class="version is-missing" href="../../../next/en/index.html">Next</a>
+    <a class="version is-current" href="contributing_guidelines.html">v0.16</a>
+    <a class="version" href="../../../v0.15/en/developer-guide/contributing_guidelines.html">v0.15</a>
+    <a class="version" href="../../../v0.14/en/developer-guide/contributing_guidelines.html">v0.14</a>
+    <a class="version is-missing" href="../../../v0.13/en/index.html">v0.13</a>
+    <a class="version is-missing" href="../../../v0.12/en/index.html">v0.12</a>
+    <a class="version is-missing" href="../../../v0.11/en/index.html">v0.11</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/rancher/turtles-docs/edit/main/docs/v0.16/modules/en/pages/developer-guide/contributing_guidelines.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="4">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Guidelines</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_how_to_get_involved">How to get involved?</a></p>
+</li>
+<li>
+<p><a href="#_submitting_prs">Submitting PRs</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_choosing_something_to_work_on">Choosing something to work on</a></p>
+</li>
+<li>
+<p><a href="#_developing_rancher_turtles">Developing rancher-turtles</a></p>
+</li>
+<li>
+<p><a href="#_asking_for_help">Asking for help</a></p>
+</li>
+<li>
+<p><a href="#_pr_submission_guidelines">PR submission guidelines</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_commit_message_formatting">Commit message formatting</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="#_opening_issues">Opening Issues</a></p>
+</li>
+<li>
+<p><a href="#_how_the_maintainers_process_contributions">How the Maintainers process contributions</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_prioritizing_issues">Prioritizing issues</a></p>
+</li>
+<li>
+<p><a href="#_reviewing_prs">Reviewing PRs</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="#_adrs_architectural_decision_records">ADRs (Architectural Decision Records)</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_process">Process</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Thank you for taking the time to contribute to Rancher CAPI extension <a href="https://github.com/rancher?q=turtles&amp;type=all&amp;language=&amp;sort=">projects</a>.</p>
+</div>
+<div class="paragraph">
+<p>Improvements to all areas of the project; from code, to documentation;
+from bug reports to feature design and UI enhancement are gratefully welcome.
+This guide should cover all aspects of how to interact with the project
+and how to get involved in development as smoothly as possible.</p>
+</div>
+<div class="paragraph">
+<p>Reading docs is often tedious, so let&#8217;s put the important contributing rule
+right at the top: <strong>Always be kind!</strong></p>
+</div>
+<div class="paragraph">
+<p>Looking forward to seeing your contributions in the repo!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_get_involved"><a class="anchor" href="#_how_to_get_involved"></a>How to get involved?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;d love to accept your patches in pretty much all areas of projects development!</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re a new to the project and want to help, but don&#8217;t know where to start, here is a non-exhaustive list of ways you can help out:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Submit a <a href="#_submitting_prs">Pull Request</a></p>
+<div class="paragraph">
+<p>Beyond fixing bugs and submitting new features, there are other things you can submit
+ which, while less flashy, will be deeply appreciated by all who interact with the codebase:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Extending test coverage!</p>
+</li>
+<li>
+<p>Refactoring!</p>
+</li>
+<li>
+<p>Reviewing and updating <a href="https://rancher.github.io/turtles-docs/">documentation</a>!</p>
+</li>
+<li>
+<p>Adding a new UI functionality!</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>(See also <a href="#_choosing_something_to_work_on">Choosing something to work on</a> below.)</p>
+</div>
+</li>
+<li>
+<p>Open an <a href="#_opening_issues">issue</a></p>
+<div class="paragraph">
+<p>We have 2 forms of issues: bug reports and feature requests. If you are not sure which category you need, just make the best guess and provide as much information as possible.</p>
+</div>
+</li>
+<li>
+<p>Interested in helping to improve:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Rancher CAPI extension backend? Chime in on <a href="https://github.com/rancher/turtles/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug+"><code>bugs</code></a> or
+<a href="https://github.com/rancher/turtles/labels/help-wanted"><code>help wanted</code> issues</a>.
+If you are seeking to take on a bigger challenge or a more experienced contributor, check out <a href="https://github.com/rancher/turtles/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Ffeature"><code>feature requests</code></a>.</p>
+</li>
+<li>
+<p>extension UI? Take a look at <a href="https://github.com/rancher/capi-ui-extension"><code>open</code></a> or
+<a href="https://github.com/rancher/capi-ui-extension/labels/help-wanted"><code>help wanted</code> issues</a>.</p>
+</li>
+<li>
+<p>maybe, user-docs? Then, jump straight into <a href="https://github.com/rancher/turtles-docs/issues"><code>open</code> issues</a> in the docs repository.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_opening_issues"><a class="anchor" href="#_opening_issues"></a>Opening Issues</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These guides aim to help you write issues in a way which will ensure that they are processed
+as quickly as possible.</p>
+</div>
+<div class="paragraph">
+<p><em>See below for <a href="#_prioritizing_issues">how issues are prioritized</a></em>.</p>
+</div>
+<div class="paragraph">
+<p><strong>General rules</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Before opening anything, take a good look through existing issues.</p>
+</li>
+<li>
+<p>More is more: give as much information as it is humanly possible to give.
+Highly detailed issues are more likely to be picked up because they can be prioritized and
+scheduled for work faster. They are also more accessible
+to the community, meaning that you may not have to wait for the core team to get to it.</p>
+</li>
+<li>
+<p>Please do not open an issue with a description that is <strong>just</strong> a link to another issue,
+a link to a slack conversation, a quote from either one of those, or anything else
+equally opaque. This raises the bar for entry and makes it hard for the community
+to get involved. Take the time to write a proper description and summarise key points.</p>
+</li>
+<li>
+<p>Take care with formatting. Ensure the <a href="https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/getting-started-with-writing-and-formatting-on-github">markdown is tidy</a>,
+use <a href="https://docs.github.com/en/free-pro-team@latest/github/writing-on-github/creating-and-highlighting-code-blocks">code blocks</a> etc etc.
+The faster something can be read, the faster it can be dealt with.</p>
+</li>
+<li>
+<p>Keep it civil. Yes, it is annoying when things don&#8217;t work, but it is way more fun helping out
+someone who is not&#8230;&#8203; the worst. Remember that conversing via text exacerbates
+everyone&#8217;s negativity bias, so throw in some emoji when in doubt.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_submitting_prs"><a class="anchor" href="#_submitting_prs"></a>Submitting PRs</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_choosing_something_to_work_on"><a class="anchor" href="#_choosing_something_to_work_on"></a>Choosing something to work on</h3>
+<div class="paragraph">
+<p>If you are here to ask for help or request some new behaviour, this
+is the section for you. We have curated a set of issues for anyone who simply
+wants to build up their open-source cred.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Issues labelled <a href="https://github.com/search?q=org%3Agithub%2Francher+repo%3Arancher%2Fturtles+repo%3Arancher%2Fcapi-ui-extension+repo%3Arancher%2Fturtles-docs+is%3Aopen+label%3A%22good+first+issue%22+&amp;type=issues&amp;ref=advsearch"><code>good first issues</code></a>
+should be accessible to folks new to the repos, as well as to open source in general.</p>
+<div class="paragraph">
+<p>These issues should present a low/non-existent barrier to entry with a thorough description,
+easy-to-follow reproduction (if relevant) and enough context for anyone to pick up.
+The objective should be clear, possibly with a suggested solution or some pseudocode.
+If anything similar has been done, that work should be linked.</p>
+</div>
+<div class="paragraph">
+<p>If you have come across an issue tagged with <code>good first issue</code> which you think you would
+like to claim but isn&#8217;t 100% clear, please ask for more info! When people write issues
+there is a <em>lot</em> of assumed knowledge which is very often taken for granted. This is
+something we could all get better at, so don&#8217;t be shy in asking for what you need
+to do great work.</p>
+</div>
+<div class="paragraph">
+<p>See more on <a href="#_asking_for_help">asking for help</a> below!</p>
+</div>
+</li>
+<li>
+<p><a href="https://github.com/search?q=org%3Agithub%2Francher+repo%3Arancher%2Fturtles+repo%3Arancher%2Fcapi-ui-extension+repo%3Arancher%2Fturtles-docs+is%3Aopen+label%3A%22help+wanted%22+&amp;type=issues&amp;ref=advsearch"><code>help wanted</code> issues</a>
+are for those a little more familiar with the code base, but should still be accessible enough
+to newcomers.</p>
+</li>
+<li>
+<p>All other issues labelled <code>kind/&lt;x&gt;</code> or <code>area/&lt;x&gt;</code> are also up for grabs, but
+are likely to require a fair amount of context.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_developing_rancher_turtles"><a class="anchor" href="#_developing_rancher_turtles"></a>Developing rancher-turtles</h3>
+<div class="paragraph">
+<p>Check out the dedicated <a href="development.html" class="xref page">notes</a> on getting started with development.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_asking_for_help"><a class="anchor" href="#_asking_for_help"></a>Asking for help</h3>
+<div class="paragraph">
+<p>If you need help at any stage of your work, please don&#8217;t hesitate to ask!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To get more detail on the issue you have chosen, it is a good idea to start by asking
+whoever created it to provide more information.</p>
+</li>
+<li>
+<p>If you are struggling with something while working on your PR, or aren&#8217;t quite
+sure of your approach, you can open a <a href="https://github.blog/2019-02-14-introducing-draft-pull-requests/">draft</a>
+(prefix the title with <code>WIP:</code>) and explain what you are thinking.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pr_submission_guidelines"><a class="anchor" href="#_pr_submission_guidelines"></a>PR submission guidelines</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fork the desired repo, develop and test your code changes.</p>
+</li>
+<li>
+<p>Push your changes to the branch on your fork and submit a pull request to the original repository
+against the <code>main</code> branch.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git push &lt;remote-name&gt; &lt;feature-name&gt;</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Submit a pull request.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>All code PR must be labeled with one of</p>
+<div class="ulist">
+<ul>
+<li>
+<p>⚠️ (<code>:warning:</code>, major or breaking changes)</p>
+</li>
+<li>
+<p>✨ (<code>:sparkles:</code>, feature additions)</p>
+</li>
+<li>
+<p>🐛 (<code>:bug:</code>, patch and bugfixes)</p>
+</li>
+<li>
+<p>📖 (<code>:book:</code>, documentation or proposals)</p>
+</li>
+<li>
+<p>🌱 (<code>:seedling:</code>, minor or other)</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Where possible, please squash your commits to ensure a tidy and descriptive history.</p>
+</div>
+<div class="paragraph">
+<p>If your PR is still a work in progress, please open a <a href="https://github.blog/2019-02-14-introducing-draft-pull-requests/">Draft PR</a>
+and prefix your title with the word <code>WIP</code>. When your PR is ready for review, you
+can change the title and remove the Draft setting.</p>
+</div>
+<div class="paragraph">
+<p>We recommend that you regularly rebase from <code>main</code> of the original repo to keep your
+branch up to date.</p>
+</div>
+<div class="paragraph">
+<p>In general, we will merge a PR once a maintainer has reviewed and approved it.
+Trivial changes (e.g., corrections to spelling) may get waved through.
+For substantial changes, more people may become involved, and you might get asked to resubmit the PR or divide the changes into more than one PR.</p>
+</div>
+<div class="sect3">
+<h4 id="_commit_message_formatting"><a class="anchor" href="#_commit_message_formatting"></a>Commit message formatting</h4>
+<div class="paragraph">
+<p><em>For more on how to write great commit messages, and why you should, check out
+<a href="https://chris.beams.io/posts/git-commit/">this excellent blog post</a>.</em></p>
+</div>
+<div class="paragraph">
+<p>We follow a rough convention for commit messages that is designed to answer three
+questions: what changed, why was the change made, and how did you make it.</p>
+</div>
+<div class="paragraph">
+<p>The subject line should feature the <em>what</em> and
+the body of the commit should describe the <em>why</em> and <em>how</em>.
+If you encountered any weirdness along the way, this is a good place
+to note what you discovered and how you solved it.</p>
+</div>
+<div class="paragraph">
+<p>The format can be described more formally as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">&lt;short title for what changed&gt;
+&lt;BLANK LINE&gt;
+&lt;why this change was made and what changed&gt;
+&lt;BLANK LINE&gt;
+&lt;any interesting details&gt;
+&lt;footer&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first line is the subject and should be no longer than 70 characters, the
+second line is always blank, and other lines should be wrapped at a max of 80 characters.
+This allows the message to be easier to read on GitHub as well as in various git tools.</p>
+</div>
+<div class="paragraph">
+<p>There is a template recommend for use <a href="https://gist.github.com/yitsushi/656e68c7db141743e81b7dcd23362f1a">here</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_the_maintainers_process_contributions"><a class="anchor" href="#_how_the_maintainers_process_contributions"></a>How the Maintainers process contributions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_prioritizing_issues"><a class="anchor" href="#_prioritizing_issues"></a>Prioritizing issues</h3>
+<div class="paragraph">
+<p>The core team regularly processes incoming issues. There may be some delay over holiday periods.</p>
+</div>
+<div class="paragraph">
+<p>Every issue will be assigned a <code>priority/&lt;x&gt;</code> label. The levels of priorities are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/rancher/turtles/labels/priority%2Fcritical-urgent"><code>critical-urgent</code></a>: These are time sensitive issues which should be picked up immediately.
+If an issue labelled <code>critical</code> is not assigned or being actively worked on,
+someone is expected to drop what they&#8217;re doing immediately to work on it.
+This usually means the core team, but community members are welcome to claim
+issues at any priority level if they get there first. <em>However, given the pressing
+timeframe, should a non-core contributor request to be assigned to a <code>critical</code> issue,
+they will be paired with a core team-member to manage the tracking, communication and release of any fix
+as well as to assume responsibility of all progess.</em></p>
+</li>
+<li>
+<p><a href="https://github.com/rancher/turtles/labels/priority%2Fimportant-soon"><code>important-soon</code></a>: Must be assigned as soon as capacity becomes available.
+Ideally something should be delivered in time for the next release.</p>
+</li>
+<li>
+<p><a href="https://github.com/rancher/turtles/labels/priority%2Fimportant-longterm"><code>important-longterm</code></a>: Important over the long term, but may not be currently
+staffed and/or may require multiple releases to complete.</p>
+</li>
+<li>
+<p><a href="https://github.com/rancher/turtles/labels/priority%2Fbacklog"><code>backlog</code></a>: There appears to be general agreement that this would be good to have,
+but we may not have anyone available to work on it right now or in the immediate future.
+PRs are still very welcome, although it might take a while to get them reviewed if
+reviewers are fully occupied with higher priority issues, for example immediately before a release.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These priority categories have been inspired by <a href="https://github.com/kubernetes/community/blob/master/contributors/guide/issue-triage.md">the Kubernetes contributing guide</a>.</p>
+</div>
+<div class="paragraph">
+<p>Other labels include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/rancher/turtles/labels/adr-required"><code>adr-required</code></a>:
+Indicates that the issue or PR contains a decision that needs to be documented in a <a href="#_adrs_architectural_decision_records">ADR</a> <em>before</em>
+it can be worked on.</p>
+</li>
+<li>
+<p><a href="https://github.com/rancher/turtles/labels/needs-investigation"><code>needs-investigation</code></a>:  There is currently insufficient information to either categorize properly,
+or to understand and implement a solution. This could be because the issue opener did
+not provide enough relevant information, or because more in-depth research is required
+before work can begin.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reviewing_prs"><a class="anchor" href="#_reviewing_prs"></a>Reviewing PRs</h3>
+<div class="paragraph">
+<p>The core team aims to clear the PR queue as quickly as possible. Community members
+should also feel free to keep an eye on things and provide their own thoughts and expertise.</p>
+</div>
+<div class="paragraph">
+<p>High-value and/or high priority contributions will be processed as quickly as possible,
+while lower priority or nice-to-have things may take a little longer to get approved.</p>
+</div>
+<div class="paragraph">
+<p>To help facilitate a smoother and faster review, follow the guidelines <a href="#_pr_submission_guidelines">above</a>.
+Submissions which do not meet standards will be de-prioritised for review.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adrs_architectural_decision_records"><a class="anchor" href="#_adrs_architectural_decision_records"></a>ADRs (Architectural Decision Records)</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Please feel free to skip <a href="#_adrs_architectural_decision_records">this</a> and <a href="#_process">sub-section</a> below, since they are only relevant to the <a href="https://github.com/rancher/turtles">rancher-turtles</a> repository.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Any impactful decisions to the architecture, design, development and behaviour
+of rancher-turtles must be recorded in the form of an <a href="https://engineering.atspotify.com/2020/04/14/when-should-i-write-an-architecture-decision-record/">ADR</a>.</p>
+</div>
+<div class="paragraph">
+<p>A template can be found at <a href="https://github.com/rancher/turtles/blob/main/docs/adr/0000-template.md"><code>docs/adr/0000-template.md</code></a> of the repo,
+with numerous examples of completed records in the same directory.</p>
+</div>
+<div class="paragraph">
+<p>Contributors are also welcome to backfill ADRs if they are found to be missing.</p>
+</div>
+<div class="sect2">
+<h3 id="_process"><a class="anchor" href="#_process"></a>Process</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Start a new <a href="https://github.com/rancher/turtles/discussions/new?category=adr">discussion</a> using the <code>ADR</code> category.</p>
+</li>
+<li>
+<p>Choose an appropriate clear and concise title (e.g. <code>ADR: Implement X in Go</code>).</p>
+</li>
+<li>
+<p>Provide a context of the decision to be made. Describe
+the various options, if more than one, and explain the pros and cons. Highlight
+any areas which you would like the reviewers to pay attention to, or those on which
+you would specifically like an opinion.</p>
+</li>
+<li>
+<p>Tag in the <a href="https://github.com/rancher/turtles/blob/main/CODEOWNERS">maintainers</a> as the "Deciders", and invite them to
+participate and weigh in on the decision and its consequences.</p>
+</li>
+<li>
+<p>Once a decision has been made, open a PR adding a new ADR to the <a href="https://github.com/rancher/turtles/blob/main/docs/adr">directory</a>.
+Copy and complete the <a href="https://github.com/rancher/turtles/blob/main/docs/adr/0000-template.md">template</a>;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Increment the file number by one</p>
+</li>
+<li>
+<p>Set the status as "Accepted"</p>
+</li>
+<li>
+<p>Set the deciders as those who approved the discussion outcome</p>
+</li>
+<li>
+<p>Summarise the decision and consequences from the discussion thread</p>
+</li>
+<li>
+<p>Link back to the discussion from the ADR doc</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="development.html">Development setup</a></span>
+  <span class="next"><a href="../reference/intro.html">Introduction</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../../_/js/site.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/langSelection.js"></script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
+
+
+  </body>
+</html>

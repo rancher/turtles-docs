@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Development setup :: Rancher Turtles</title>
+    <link rel="prev" href="../operator/airgapped.html">
+    <link rel="next" href="guidelines.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../_/css/search.css">
+<link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../../../_/css/font-styles.css">
+<link rel="stylesheet" href="../../../../_/fonts/css/all.css">
+<link rel="stylesheet" href="../../../../_/css/site-extra.css">
+<link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+<link href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet"> -->
+<link rel="stylesheet" href="../../../../_/css/vendor/light.css">
+<script src="/docserv/res/lightheaded/analytics.js"
+        type="text/javascript"></script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a class=" navbar-logo" href="https://documentation.suse.com/"><img class="logo"
+            src="../../../../_/img/logo.svg" /></a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">
+            <img src="../../../../_/img/github_logo.svg" class="langIcon Resurces" alt="Resources" title="Resources">
+          </div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/rancher/turtles"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://github.com/rancher/turtles-docs"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles docs&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">More from SUSE</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://www.rancher.com" target="_blank"><img src="../../../../_/img/icon-rancher-mask.png" width="51" height="24" alt="Rancher by SUSE"
+              title="SUSE Rancher">&nbsp;Rancher&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://fleet.rancher.io" target="_blank"><img src="../../../../_/img/icon-fleet-mask.png" width="29" height="24" alt="Fleet"
+              title="Fleet">&nbsp;Fleet&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://www.kubewarden.io" target="_blank"><img src="../../../../_/img/icon-kubewarden-mask.png" width="29" height="24" alt="Kubewarden"
+              title="Kubewarden">&nbsp;Kubewarden&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://harvesterhci.io" target="_blank"><img src="../../../../_/img/icon-harvester-mask.png" width="29" height="24" alt="Harvester"
+              title="Harvester">&nbsp;Harvester&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://opensource.suse.com" target="_blank"><img src="../../../../_/img/icon-suse-mask.png" width="41" height="24" alt="OpenSource at SUSE"
+              title="OpenSource @ SUSE">&nbsp;More projects...&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs" >
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header><div class="body">
+<div class="nav-container" data-component="turtles" data-version="next">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Rancher Turtles</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tutorials</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/quickstart.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/first-cluster.html">Your First Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/uninstall.html">Uninstall</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/features.html">Feature</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/certified.html">Certified Providers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user/clusters.html">Provision a CAPI cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user/clusterclass.html">Provision a CAPI cluster with ClusterClass</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user/caapf.html">CAPI Addon Provider Fleet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Operator Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/chart.html">Chart Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/manual.html">Manual Installation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/capiprovider.html">Install CAPI Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/clusterclass.html">Enabling ClusterClass</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/certification.html">Provider Certification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/testsuite.html">Test Suite</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/airgapped.html">Air-Gapped Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developer Guide</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="development.html">Development Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="guidelines.html">Development Guideline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/slsa.html">SLSA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../changelogs/index.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Rancher Turtles</span>
+    <span class="version">Next</span>
+  </div>
+  <ul class="components">
+        <li class="component is-current">
+          <div class="title"><a href="../../../stable/en/index.html">Rancher Turtles</a></div>
+          <ul class="versions">
+            <li class="version is-current">
+              <a href="../index.html">Next</a>
+            </li>
+            <li class="version is-latest">
+              <a href="../../../stable/en/index.html">v0.16</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.15/en/index.html">v0.15</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.14/en/index.html">v0.14</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.13/en/index.html">v0.13</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.12/en/index.html">v0.12</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.11/en/index.html">v0.11</a>
+            </li>
+          </ul>
+        </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../stable/en/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Rancher Turtles</a></li>
+    <li>Developer Guide</li>
+    <li><a href="development.html">Development Environment</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">Next</button>
+  <div class="version-menu">
+    <a class="version is-current" href="development.html">Next</a>
+    <a class="version is-missing" href="../../../stable/en/index.html">v0.16</a>
+    <a class="version is-missing" href="../../../v0.15/en/index.html">v0.15</a>
+    <a class="version is-missing" href="../../../v0.14/en/index.html">v0.14</a>
+    <a class="version is-missing" href="../../../v0.13/en/index.html">v0.13</a>
+    <a class="version is-missing" href="../../../v0.12/en/index.html">v0.12</a>
+    <a class="version is-missing" href="../../../v0.11/en/index.html">v0.11</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/rancher/turtles-docs/edit/main/docs/next/modules/en/pages/developer/development.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="4">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Development setup</h1>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://kind.sigs.k8s.io/">kind</a></p>
+</li>
+<li>
+<p><a href="https://helm.sh/">helm</a></p>
+</li>
+<li>
+<p><a href="https://tilt.dev/">tilt</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_a_local_development_environment"><a class="anchor" href="#_create_a_local_development_environment"></a>Create a local development environment</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clone the <a href="https://github.com/rancher/turtles">Rancher Turtles</a> repository locally</p>
+</li>
+<li>
+<p>Create <strong>tilt-settings.yaml</strong>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">{
+    "k8s_context": "k3d-rancher-test",
+    "default_registry": "ghcr.io/turtles-dev",
+    "debug": {
+        "turtles": {
+            "continue": true,
+            "port": 40000
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Open a terminal in the root of the Rancher Turtles repository</p>
+</li>
+<li>
+<p>Run the following:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">make dev-env
+
+# Or if you want to use a custom hostname for Rancher
+RANCHER_HOSTNAME=my.customhost.dev make dev-env</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>When tilt has started, open a new terminal and start ngrok or inlets</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl port-forward --namespace cattle-system svc/rancher 10000:443
+ngrok http https://localhost:10000</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_happens_when_you_run_make_dev_env"><a class="anchor" href="#_what_happens_when_you_run_make_dev_env"></a>What happens when you run <code>make dev-env</code>?</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A <a href="https://kind.sigs.k8s.io/">kind</a> cluster is created with the following <a href="https://github.com/rancher/turtles/blob/main/scripts/kind-cluster-with-extramounts.yaml">configuration</a>.</p>
+</li>
+<li>
+<p><a href="https://cluster-api-operator.sigs.k8s.io">Cluster API Operator</a> is installed using helm, which includes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Core Cluster API controller</p>
+</li>
+<li>
+<p>Kubeadm Bootstrap and Control Plane Providers</p>
+</li>
+<li>
+<p>Docker Infrastructure Provider</p>
+</li>
+<li>
+<p>Cert manager</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>Rancher manager</code> is installed using helm.</p>
+</li>
+<li>
+<p><code>tilt up</code> is run to start the development environment.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../operator/airgapped.html">Air-Gapped Environment</a></span>
+  <span class="next"><a href="guidelines.html">Development Guideline</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../../_/js/site.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/langSelection.js"></script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
+
+
+  </body>
+</html>
