@@ -98,9 +98,10 @@ This will use the default values for the Helm chart, which are good for most ins
 
 The installation may take a few minutes and, when it finishes, you will be able to see the following new deployments in the cluster:
 
-* `rancher-turtles-system/rancher-turtles-controller-manager`
-* `rancher-turtles-system/rancher-turtles-cluster-api-operator`
 * `capi-system/capi-controller-manager`
+* `rancher-turtles-system/caapf-controller-manager`
+* `rancher-turtles-system/rancher-turtles-cluster-api-operator`
+* `rancher-turtles-system/rancher-turtles-controller-manager`
 * `rke2-bootstrap-system/rke2-bootstrap-controller-manager`
 * `rke2-control-plane-system/rke2-control-plane-controller-manager`
 
@@ -130,3 +131,5 @@ Installing Turtles prior to installing the CAPI UI extension is recommended.
 * Select the version to install (default is the latest) and click `Install`.
 * Once the extension is installed, click on the `Reload` button at the top of the page to reload the page.
 * The CAPI UI extension is now installed. You can navigate to `Cluster Management` \-> `CAPI` to start using it. 
+
+image::install-capi-ui-extension.gif[install-capi-ui-extension]
