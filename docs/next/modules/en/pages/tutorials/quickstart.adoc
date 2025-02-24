@@ -24,11 +24,11 @@ Before you can install {product_name}, you need to have the following components
 
 | Rancher
 | `v2.10.0`
-| Using https://ranchermanager.docs.rancher.com/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster#install-the-rancher-helm-chart[helm based] installation on any kubernetes cluster directly or on a newly created https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks[Amazon], https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks[Azure] or https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke[Google] service based options.
+| Install using https://ranchermanager.docs.rancher.com/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster#install-the-rancher-helm-chart[Helm] on any Kubernetes cluster, whether self-hosted or on a managed service from https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks[Amazon], https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks[Azure], or https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke[Google].
 
 | Cert-manager
 | `v1.15.2`
-| Using https://cert-manager.io/docs/installation/helm/#installing-with-helm[helm] based installation or via https://cert-manager.io/docs/installation/#default-static-install[kubectl apply].
+| Using https://cert-manager.io/docs/installation/helm/#installing-with-helm[Helm] based installation or via https://cert-manager.io/docs/installation/#default-static-install[kubectl apply].
 |===
 
 == Components Versions

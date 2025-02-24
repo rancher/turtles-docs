@@ -4,7 +4,7 @@
 
 == What is Rancher Turtles?
 
-The Cluster API Extension for Rancher, also known as {product_name} is a Kubernetes Operator that provides **integration between Rancher Manager and Cluster API (CAPI)** with the aim of bringing full CAPI support to Rancher.
+The Cluster API Extension for Rancher, also known as {product_name}, is a Kubernetes Operator that provides **integration between Rancher Manager and Cluster API (CAPI)** with the aim of bringing full CAPI support to Rancher.
 
 With {product_name}, you can:
 
@@ -16,7 +16,7 @@ image::intro.png[intro,640,480]
 
 == Navigate the Documentation
 
-To simplify the process of getting started with {product_name}, we have organized the documentation so it flows naturally from understanding basic concepts to using more advanced features. We recommend you follow along with the documentation but, if you have previous experience with any of the topics presented, you can jump to the specific section.
+To make it easier to get started with {product_name}, we have structured the documentation to guide you naturally from basic concepts to advanced features. We recommend following along step by step, but if you are already familiar with certain topics, feel free to skip ahead to the relevant sections.
 
 === Tutorials
 
@@ -40,7 +40,7 @@ If you are interested in contributing to {product_name}, this section will guide
 
 === Security
 
-{product_name} meets https://slsa.dev/spec/v1.0/levels#build-l3[SLSA Level 3] requirements as an appropriate hardened build platform, with consistent build processes, and provenance distribution. xref:./security/slsa.adoc[This section] contains more information on security-related topics.
+{product_name} meets https://slsa.dev/spec/v1.0/levels#build-l3[SLSA Level 3] requirements by running builds on a hardened platform with consistent build processes and provenance distribution. xref:./security/slsa.adoc[This section] contains more details on security-related topics.
 
 === Release Notes
 
