@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Test suite guide :: Rancher Turtles</title>
+    <link rel="prev" href="intro.html">
+    <link rel="next" href="../../tasks/intro.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../../_/css/search.css">
+<link rel="icon" href="../../../../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../../../../_/css/font-styles.css">
+<link rel="stylesheet" href="../../../../../_/fonts/css/all.css">
+<link rel="stylesheet" href="../../../../../_/css/site-extra.css">
+<link rel="stylesheet" href="../../../../../_/css/vendor/tabs.css">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+<link href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet"> -->
+<link rel="stylesheet" href="../../../../../_/css/vendor/light.css">
+<script src="/docserv/res/lightheaded/analytics.js"
+        type="text/javascript"></script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a class=" navbar-logo" href="https://documentation.suse.com/"><img class="logo"
+            src="../../../../../_/img/logo.svg" /></a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">
+            <img src="../../../../../_/img/github_logo.svg" class="langIcon Resurces" alt="Resources" title="Resources">
+          </div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/rancher/turtles"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://github.com/rancher/turtles-docs"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles docs&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">More from SUSE</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://www.rancher.com" target="_blank"><img src="../../../../../_/img/icon-rancher-mask.png" width="51" height="24" alt="Rancher by SUSE"
+              title="SUSE Rancher">&nbsp;Rancher&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://fleet.rancher.io" target="_blank"><img src="../../../../../_/img/icon-fleet-mask.png" width="29" height="24" alt="Fleet"
+              title="Fleet">&nbsp;Fleet&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://www.kubewarden.io" target="_blank"><img src="../../../../../_/img/icon-kubewarden-mask.png" width="29" height="24" alt="Kubewarden"
+              title="Kubewarden">&nbsp;Kubewarden&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://harvesterhci.io" target="_blank"><img src="../../../../../_/img/icon-harvester-mask.png" width="29" height="24" alt="Harvester"
+              title="Harvester">&nbsp;Harvester&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://opensource.suse.com" target="_blank"><img src="../../../../../_/img/icon-suse-mask.png" width="41" height="24" alt="OpenSource at SUSE"
+              title="OpenSource @ SUSE">&nbsp;More projects...&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs" >
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header><div class="body">
+<div class="nav-container" data-component="turtles" data-version="v0.14">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../../index.html">Rancher Turtles</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Getting Started</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../index.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started/rancher.html">Rancher Setup</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Install Rancher Turtles</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getting-started/install-rancher-turtles/using_rancher_dashboard.html">Via Rancher Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getting-started/install-rancher-turtles/using_helm.html">Via Helm Install</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Your first cluster</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getting-started/create-first-cluster/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getting-started/create-first-cluster/using_fleet.html">Create &amp; import your first cluster using Fleet</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getting-started/create-first-cluster/using_kubectl.html">Create &amp; Import Your First Cluster Using kubectl</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Using ClusterClass</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getting-started/cluster-class/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../getting-started/cluster-class/create_cluster.html">Create a cluster using Fleet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started/air-gapped-environment.html">Air-gapped environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../getting-started/uninstall_turtles.html">Uninstall Rancher Turtles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference Guides</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Architecture</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/components.html">Components</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../architecture/deployment.html">Deployment Scenarios</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../rancher-turtles-chart/values.html">Chart configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">CAPI Providers</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../providers/certified.html">Certified CAPI Providers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../providers/howto.html">Create &amp; import a cluster using CAPI providers</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../providers/addon-provider-fleet.html">Cluster API Addon Provider Fleet</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Test suite</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="intro.html">Introduction</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="usage.html">Test suite guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tasks</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../tasks/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Cluster API Operator</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tasks/capi-operator/basic_cluster_api_provider_installation.html">Basic Cluster API Provider Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tasks/capi-operator/installing_core_provider.html">Installing the CoreProvider using CAPIProvider resource</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tasks/capi-operator/capiprovider_resource.html">CAPIProvider Resource</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tasks/capi-operator/clusterctlconfig_resource.html">ClusterctlConfig Resource</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tasks/capi-operator/add_infrastructure_provider.html">Installing AWS Infrastructure Provider using CAPIProvider resource</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Maintenance</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tasks/maintenance/early_adopter_upgrade.html">Upgrade Instructions for Early Adopters</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tasks/maintenance/import_controller_upgrade.html">Upgrade Turtles import controller</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tasks/maintenance/automigrate_to_v3_import.html">Auto-migration to v3 cluster import</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Provider Certification</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tasks/provider-certification/intro.html">What is a Certified Provider?</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../tasks/provider-certification/process.html">Provider Certification Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developer Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../developer-guide/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../developer-guide/install_capi_operator.html">Installing Cluster API Operator</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../developer-guide/development.html">Development setup</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../developer-guide/contributing_guidelines.html">Guidelines</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../reference/intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../reference/glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../security/slsa.html">SLSA</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Rancher Turtles</span>
+    <span class="version">v0.14</span>
+  </div>
+  <ul class="components">
+        <li class="component is-current">
+          <div class="title"><a href="../../../../stable/en/index.html">Rancher Turtles</a></div>
+          <ul class="versions">
+            <li class="version">
+              <a href="../../../../next/en/index.html">Next</a>
+            </li>
+            <li class="version is-latest">
+              <a href="../../../../stable/en/index.html">v0.16</a>
+            </li>
+            <li class="version">
+              <a href="../../../../v0.15/en/index.html">v0.15</a>
+            </li>
+            <li class="version is-current">
+              <a href="../../index.html">v0.14</a>
+            </li>
+            <li class="version">
+              <a href="../../../../v0.13/en/index.html">v0.13</a>
+            </li>
+            <li class="version">
+              <a href="../../../../v0.12/en/index.html">v0.12</a>
+            </li>
+            <li class="version">
+              <a href="../../../../v0.11/en/index.html">v0.11</a>
+            </li>
+          </ul>
+        </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../../stable/en/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../../index.html">Rancher Turtles</a></li>
+    <li>Reference Guides</li>
+    <li>Test suite</li>
+    <li><a href="usage.html">Test suite guide</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">v0.14</button>
+  <div class="version-menu">
+    <a class="version is-missing" href="../../../../next/en/index.html">Next</a>
+    <a class="version" href="../../../../stable/en/reference-guides/test-suite/usage.html">v0.16</a>
+    <a class="version" href="../../../../v0.15/en/reference-guides/test-suite/usage.html">v0.15</a>
+    <a class="version is-current" href="usage.html">v0.14</a>
+    <a class="version" href="../../../../v0.13/en/reference-guides/test-suite/usage.html">v0.13</a>
+    <a class="version" href="../../../../v0.12/en/reference-guides/test-suite/usage.html">v0.12</a>
+    <a class="version" href="../../../../v0.11/en/reference-guides/test-suite/usage.html">v0.11</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/rancher/turtles-docs/edit/main/docs/v0.14/modules/en/pages/reference-guides/test-suite/usage.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="4">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Test suite guide</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The main reference for reusing the test suite is <a href="https://github.com/rancher-sandbox/turtles-integration-suite-example">this repository</a>, which contains an example on how to integrate a given CAPI provider with Rancher Turtles and applies a series of checks based on a GitOps workflow.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_before_execution"><a class="anchor" href="#_before_execution"></a>Before execution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The end-to-end test environment used in Turtles provides a number of configuration alternatives depending on the type of test you are running and the type of checks you are performing. If getting started with the test suite, we recommend you keep your configuration as simple as possible and limit the number of customizations so you can understand the process and its configuration details. You can start your journey on provider testing by cloning the sample repository:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>git clone https://github.com/rancher-sandbox/turtles-integration-suite-example.git</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The simplest test execution you can run creates a local environment that does not use an internet-facing endpoint. This limits the checks to only local downstream clusters (effectively, CAPI clusters provisioned via CAPD) but it is enough to run the example integration. You can simply run this local version by specifying that you intend to run it locally.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>MANAGEMENT_CLUSTER_ENVIRONMENT="isolated-kind" make test</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When checking the integration with other infrastructure providers (e.g. providers for cloud vendors), you will have to make your Rancher instance available via endpoint to the downstream clusters, which are no longer in your local environment. The <code>MANAGEMENT_CLUSTER_ENVIRONMENT</code> variable we used before, supports the following values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>MANAGEMENT_CLUSTER_ENVIRONMENT: "kind" # supported options are eks, isolated-kind, kind</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>isolated-kind</code>, which is the value we used for local testing, and <code>kind</code> will deploy equivalent local environments. The difference is that <code>kind</code> will also configure a publicly accessible endpoint via <a href="https://ngrok.com/">ngrok</a>. You can get a free (limited) <code>ngrok</code> endpoint and use it for executing tests. Before running <code>make test</code>, you will also need to set the following environment variables:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NGROK_API_KEY: ""
+NGROK_AUTHTOKEN: ""</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using this configuration, during environment creation, the Rancher instance will be configured to be accessible via your <code>ngrok</code> endpoint and downstream clusters will be able to communicate with it.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="#_other_options">Other options</a> section contains more information on what you can configure before execution.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_basic_workflow"><a class="anchor" href="#_basic_workflow"></a>Basic Workflow</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In previous sections we introduced the main actions performed in the sample test integration:</p>
+</div>
+<h4 id="_create_a_management_cluster_in_the_desired_environment" class="discrete">Create a management cluster in the desired environment.</h4>
+<div class="paragraph">
+<p>This is not a Turtles specific requirement as, when working with CAPI, there needs to be a management cluster that will be used to create resources that represent downstream clusters. This is the main part of the test environment and, depending on the environment variables passed to the test suite, it can either be hosted locally (using <code>kind</code>) or in the cloud (<code>eks</code>).</p>
+</div>
+<h4 id="_install_rancher_and_turtles_with_all_prerequisites" class="discrete">Install Rancher and Turtles with all prerequisites.</h4>
+<div class="paragraph">
+<p>Turtles is a Rancher extension and, as such, it needs a Rancher installation to be deployed. Rancher Manager will be run in the management cluster we created in the first step and the Turtles chart will be installed when Rancher is available. If using an internet-facing configuration, an ingress controller will make Rancher reachable from an outside network (e.g. cluster deployed in the cloud).</p>
+</div>
+<h4 id="_run_the_suite_that_will_create_a_git_repo_apply_cluster_template_using_fleet_and_verify_the_cluster_is_created_and_successfully_imported_in_rancher" class="discrete">Run the suite that will create a git repo, apply cluster template using Fleet and verify the cluster is created and successfully imported in Rancher.</h4>
+<div class="paragraph">
+<p>The main test suite, and the one used as an example, is based on a GitOps flow and uses <a href="https://github.com/rancher/fleet">Fleet</a> as a GitOps orchestrator tool. Based on the cluster templates provided (you can check the ones that come with the example integration <a href="https://github.com/rancher-sandbox/turtles-integration-suite-example/tree/main/suites/data/cluster-templates">here</a>), it will create the CAPI clusters defined in the YAML files. Once this/these cluster/s are available, they will be configured to be <a href="../../getting-started/create-first-cluster/using_fleet.html" class="xref page">imported into Rancher using Turtles</a> and it will verify that the downstream cluster/s is/are accessible via Rancher. It will also check that deletion can be performed on downstream clusters and that they are no longer available in Rancher.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_other_options"><a class="anchor" href="#_other_options"></a>Other options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can take a look at the <code>config.yaml</code> <a href="https://github.com/rancher-sandbox/turtles-integration-suite-example/blob/main/config/config.yaml">file</a> in the <code>turtles-integration-suite-example</code> repository, which contains a list of environment variables used during test environment deployment and test execution. The following is a truncated version of the above mentioned YAML file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>...
+variables:
+  CLUSTERCTL_BINARY_PATH: ""
+  USE_EXISTING_CLUSTER: "false"
+  SKIP_RESOURCE_CLEANUP: "false"
+  ARTIFACTS_FOLDER: "_artifacts"
+  MANAGEMENT_CLUSTER_ENVIRONMENT: "kind" # supported options are eks, isolated-kind, kind
+  RANCHER_VERSION: "v2.8.1"
+  KUBERNETES_VERSION: "v1.28.6"
+  KUBERNETES_MANAGEMENT_VERSION: "v1.27.0"
+  KUBERNETES_MANAGEMENT_AWS_REGION: "eu-west-2"
+  RKE2_VERSION: "v1.28.1+rke2r1"
+  TURTLES_PATH: "turtles/rancher-turtles"
+  TURTLES_REPO_NAME: "turtles"
+  TURTLES_URL: https://rancher.github.io/turtles
+  TURTLES_VERSION: "v0.10.0"
+  RANCHER_HOSTNAME: "localhost"
+  RANCHER_FEATURES: ""
+  RANCHER_PATH: "rancher-latest/rancher"
+  RANCHER_REPO_NAME: "rancher-latest"
+  RANCHER_URL: "https://releases.rancher.com/server-charts/latest"
+  CERT_MANAGER_URL: "https://charts.jetstack.io"
+  CERT_MANAGER_REPO_NAME: "jetstack"
+  CERT_MANAGER_PATH: "jetstack/cert-manager"
+  ...
+  ...
+  ...
+  HELM_BINARY_PATH: "helm"
+  HELM_EXTRA_VALUES_FOLDER: "/tmp"
+  # Additional setup for establishing rancher ingress
+  NGROK_REPO_NAME: "ngrok"
+  NGROK_URL: "https://ngrok.github.io/kubernetes-ingress-controller"
+  NGROK_PATH: "ngrok/kubernetes-ingress-controller"
+  NGROK_API_KEY: ""
+  NGROK_AUTHTOKEN: ""
+  GITEA_REPO_NAME: "gitea-charts"
+  GITEA_REPO_URL: "https://dl.gitea.com/charts/"
+  GITEA_CHART_NAME: "gitea"
+  GITEA_CHART_VERSION: "9.4.0"
+  ...</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can refer to <a href="https://github.com/rancher/turtles/tree/main/test/e2e#e2e-tests">Turtles repository</a> to see all the suites and parameters you can use to customize test execution. We recommend doing this only if you are familiar with the deployment/configuration of the test environment and have specific integration requirements.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="intro.html">Introduction</a></span>
+  <span class="next"><a href="../../tasks/intro.html">Introduction</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../../../_/js/site.js"></script>
+<script async src="../../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../../.." data-snippet-length="100" data-stylesheet="../../../../../_/css/search.css"></script>
+<script async src="../../../../../search-index.js"></script>
+<script src="../../../../../_/js/vendor/langSelection.js"></script>
+<script async src="../../../../../_/js/vendor/tabs.js"></script>
+
+
+  </body>
+</html>
