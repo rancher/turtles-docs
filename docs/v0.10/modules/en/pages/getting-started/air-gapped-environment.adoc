@@ -120,7 +120,7 @@ NOTE: without this annotation operator won't be able to determine if the data is
 yq eval -i '.metadata.labels += {"my-label": "label-value"}' configmap.yaml
 ----
 +
-. Create a ConfigMap in your kubernetes cluster using kubectl
+. Create a ConfigMap in your Kubernetes cluster using kubectl
 +
 [source,sh]
 ----
