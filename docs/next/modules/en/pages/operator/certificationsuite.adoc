@@ -1,4 +1,4 @@
-= Test Suite
+= Provider Test Suite
 
 This section contains information on how you can leverage the existing E2E suite to integrate any CAPI providers with Turtles and verify that the provisioning and importing of clusters works as expected. The validation performs the following actions:
 
