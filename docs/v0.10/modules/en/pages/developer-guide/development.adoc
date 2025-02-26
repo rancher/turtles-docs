@@ -48,10 +48,10 @@ ngrok http https://localhost:10000
 == What happens when you run `make dev-env`?
 
 . A https://kind.sigs.k8s.io/[kind] cluster is created with the following https://github.com/rancher/turtles/blob/main/scripts/kind-cluster-with-extramounts.yaml[configuration].
-. xref:../developer-guide/install_capi_operator.adoc[Cluster API Operator] is installed using helm, which includes:
+. xref:../developer-guide/install_capi_operator.adoc[Cluster API Operator] is installed using Helm, which includes:
  ** Core Cluster API controller
  ** Kubeadm Bootstrap and Control Plane Providers
  ** Docker Infrastructure Provider
  ** Cert manager
-. `Rancher manager` is installed using helm.
+. `Rancher manager` is installed using Helm.
 . `tilt up` is run to start the development environment.

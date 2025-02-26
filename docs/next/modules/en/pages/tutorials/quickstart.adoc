@@ -53,7 +53,7 @@ If you're customizing the installation parameters, please make sure that you are
 | `v0.11.0`
 |===
 
-== Via Rancher Dashboard
+== Install {product_name} using Rancher Dashboard
 
 
 This is the recommended option for installing {product_name}.

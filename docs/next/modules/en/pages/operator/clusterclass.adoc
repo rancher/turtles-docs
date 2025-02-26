@@ -1,4 +1,4 @@
-= ClusterClass
+= Enabling ClusterClass
 
 In this section we cover enabling *ClusterClass* for a CAPI Provider.
 

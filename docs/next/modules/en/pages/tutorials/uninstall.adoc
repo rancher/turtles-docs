@@ -1,7 +1,7 @@
 = Uninstall {product_name}
 :sidebar_position: 5
 
-To uninstall {product_name} use the following helm command:
+To uninstall {product_name} use the following Helm command:
 
 [source,bash]
 ----
@@ -19,7 +19,7 @@ Remember that, if you use a different name for the installation or a different n
 ====
 When installing {product_name} in your Rancher environment, by default, {product_name} enables the Cluster API Operator cleanup. This includes cleaning up Cluster API Operator specific webhooks and deployments that otherwise cause issues with Rancher provisioning.
 
-To simplify uninstalling {product_name} (via Rancher Manager or helm command), the official {product_name} Helm chart includes a `post-delete` hook that applies the following changes, making it transparent to the end user:
+To simplify uninstalling {product_name} (via Rancher Manager or Helm command), the official {product_name} Helm chart includes a `post-delete` hook that applies the following changes, making it transparent to the end user:
 
 * It deletes the `mutating-webhook-configuration` and `validating-webhook-configuration` webhooks that are no longer needed.
 * It deletes the CAPI `deployments` that are no longer needed.
