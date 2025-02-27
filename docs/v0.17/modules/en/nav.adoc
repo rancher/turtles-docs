@@ -1,0 +1,28 @@
+* xref:index.adoc[Overview]
+* Tutorials
+** xref:tutorials/quickstart.adoc[Quick Start]
+** xref:tutorials/first-cluster.adoc[Your First Cluster]
+** xref:tutorials/uninstall.adoc[Uninstall]
+* Reference
+** xref:reference/architecture.adoc[Architecture]
+** xref:reference/glossary.adoc[Glossary]
+** xref:reference/features.adoc[Feature]
+** xref:reference/certified.adoc[Certified Providers]
+* User Guide
+** xref:user/clusters.adoc[Provision a CAPI cluster]
+** xref:user/clusterclass.adoc[Provision a CAPI cluster with ClusterClass]
+** xref:user/caapf.adoc[CAPI Addon Provider Fleet]
+* Operator Guide
+** xref:operator/chart.adoc[Chart Configuration]
+** xref:operator/manual.adoc[Manual Installation]]
+** xref:operator/capiprovider.adoc[Install CAPI Providers]
+** xref:operator/clusterclass.adoc[Enabling ClusterClass]
+** xref:operator/certification.adoc[Provider Certification]
+** xref:operator/certificationsuite.adoc[Provider Test Suite]
+** xref:operator/airgapped.adoc[Air-Gapped Environment]
+* Developer Guide
+** xref:developer/development.adoc[Development Environment]
+** xref:developer/guidelines.adoc[Development Guideline]
+* Security
+** xref:security/slsa.adoc[SLSA]
+* xref:changelogs/index.adoc[Release Notes]

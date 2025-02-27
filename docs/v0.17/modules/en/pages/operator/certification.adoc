@@ -1,0 +1,92 @@
+= Provider Certification 
+:sidebar_position: 1
+
+== What is a Certified Provider?
+
+As most CAPI providers are upstream projects maintained by the open community, there is no safe way to guarantee that any clusters provisioned with a given provider can be imported into Rancher via Turtles. However, we do implement a certification process for those providers that:
+
+* Are actively tested as part of our E2E suites.
+* These tests are kept up-to-date to validate recent versions of the provider.
+* Satisfy the prerequisites in the certification process.
+
+== Certify Your Custom Provider
+
+Additionally, if you are a provider developer or simply want to use a different provider that is not listed as certified, you have 2 options:
+
+* Reuse the existing Turtles E2E suite to get started with the certification status request. More detailed information can be found here in the 
+xref:./certification.adoc#_provider_certification_using_turtles_test_suite[Provider Certification Using Turtles Test Suite] section.
+* Use your own integration suite to certify your provider. More detailed information can be found here in the 
+xref:./certification.adoc#_certify_provider_with_custom_integration_suite[Certify Provider With Custom Integration Suite] section.
+
+[discrete]
+==== Why would I want to validate my provider?
+
+The number of CAPI providers keeps growing and the community is coming up with new projects for different infrastructure hosts. This openness helps enrich the CAPI ecosystem but makes it impossible to control and test all providers Turtles will work with across the whole CAPI project. Developers of Turtles will maintain a xref:../reference/certified.adoc[list of certified providers] that are actively tested and validated by CI mechanisms but this list will be limited to key and well-known providers. That is why we encourage users of providers not listed to reuse Turtles' test suite and validate the integration between the provider and Turtles.
+
+[discrete]
+==== Can I use Turtles with an uncertified provider?
+
+Turtles is a project that aims to be agnostic and integrate with the whole CAPI ecosystem and you are free to use it without validating any providers. Chances are you will probably find no issues with most upstream projects.
+
+[discrete]
+==== What is the difference between certified and supported?
+
+As CAPI providers are projects maintained by the Kubernetes community, we cannot guarantee support for a given provider. This is why we opt for focusing on constant validation of xref:../reference/certified.adoc[Certified Providers] and offer users the possibility of integrating with the existing test suite to verify their providers of choice.
+
+== Provider Certification Using Turtles Test Suite
+
+The process of certification is based on verifying {product_name} integration with CAPI providers. To simplify this task, we prepared a generic test that validates the provisioning and importing of a downstream CAPI cluster.
+
+[TIP]
+====
+We recommend you refer to this https://github.com/rancher-sandbox/turtles-integration-suite-example[example] on how to use Turtles' test suite.
+====
+
+=== Test & Certify Your Provider
+
+The first step in validating that your provider is compatible with Turtles and that you can provision CAPI clusters and import them into Rancher via Turtles is to integrate with our test suite. We provide a repository with an https://github.com/rancher-sandbox/turtles-integration-suite-example[integration example] that you can use as a reference for your integration.
+
+Turtles as a project contains a https://github.com/rancher/turtles/tree/main/test/e2e/suites[number of suites] to verify different features and processes but, for provider certification, we require you to run only one test that uses a GitOps flow. Turtles is a project that integrates well with a GitOps approach for cluster provisioning and that is why this is our primary way of validating provider integration with Rancher. Running the full suite for a given CAPI provider will:
+
+* Create a management cluster in the desired environment.
+* Install Rancher and Turtles with all prerequisites.
+* Install Gitea.
+* Run the suite that will create a git repo, apply cluster template using Fleet and verify the cluster is created and successfully imported in Rancher.
+
+==== Test Configuration
+
+To successfully run the test suite, you will have to provide a number of environment variables. Some of these are agnostic, which means they are required for any provider you want to test, but others will be specific for the provider you are validating. Please, be aware of the particular specifications of the provider being tested, such as credentials, endpoints, etc.
+
+[TIP]
+====
+Next, we recommend you read the xref:../operator/certificationsuite.adoc[Test suite guide]
+====
+
+== Certify Provider With Custom Integration Suite
+
+To certify your provider using a custom integration suite, ensure it meets the following key requirements:
+
+=== Requirements
+
+* The provider must be deployed using the `CAPIProvider` API.
+* Clusters created with the provider must be successfully imported into Rancher via Turtles.
+
+=== Certification Process
+
+1. **Develop an Integration Suite** 
+   * Install and configure Rancher and Turtles.
+   * Deploy the CAPI provider.
+   * Provision a cluster and import it into Rancher.
+
+2. **Run and Validate Tests**
+   * Ensure clusters are created and imported successfully.
+
+3. **Submit a request for Certification**
+   * Provide test results, logs, and steps followed.
+   * Submit a GitHub issue using the [Request for Certification template](https://github.com/rancher/turtles/issues/new/choose).
+
+== Request for Certification
+
+Integrating with Turtles' test suite and running checks on your provider of interest is enough to validate that it is compatible with {product_name}. As it is not feasible for us to continuously test every CAPI provider, this certification workflow will allow you as a user to verify the expected functionality. However, as we are not actively testing newer iterations of the provider (with newer versions of Turtles), the support and guarantee for the given provider is limited, and you will be responsible for validating future releases.
+
+If, after successfully running checks on your provider, you would like to request it be added to the table of xref:../reference/certified.adoc[Certified Providers], hence being added to the project's periodic E2E suite, you can request so via GitHub issue, using the https://github.com/rancher/turtles/issues/new/choose[Request for Certification template]. The proposal will be studied by the community and we will decide on the feasibility of adding the provider to the certification matrix.

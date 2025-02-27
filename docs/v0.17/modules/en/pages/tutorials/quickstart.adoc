@@ -1,0 +1,135 @@
+= Install
+
+{product_name} is a Rancher extension which means that you must have Rancher installed before you can get started with {product_name}.
+
+[TIP]
+====
+If you don't have Rancher installed yet, make sure to follow one of the official https://ranchermanager.docs.rancher.com/pages-for-subheaders/installation-and-upgrade[installation guides]. We recommend you take a look at the xref:./quickstart.adoc#_prerequisites[Prerequisites] table to determine the appropriate version to install.
+====
+
+== Prerequisites
+
+Before you can install {product_name}, you need to have the following components installed:
+
+|===
+| Name | Version | Details
+
+| Kubernetes cluster
+| `v1.30.0`
+|
+
+| Helm
+| `v3.12.0`
+| Follow the official https://helm.sh/docs/intro/install[installation docs]
+
+| Rancher
+| `v2.10.0`
+| Install using https://ranchermanager.docs.rancher.com/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster#install-the-rancher-helm-chart[Helm] on any Kubernetes cluster, whether self-hosted or on a managed service from https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks[Amazon], https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks[Azure], or https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke[Google].
+
+| Cert-manager
+| `v1.15.2`
+| Using https://cert-manager.io/docs/installation/helm/#installing-with-helm[Helm] based installation or via https://cert-manager.io/docs/installation/#default-static-install[kubectl apply].
+|===
+
+== Components Versions
+
+This table lists the version of the components installed with the latest version `v0.16.0` of {product_name}:
+
+[TIP]
+====
+If you're customizing the installation parameters, please make sure that you are using compatible versions of the components.
+====
+
+|===
+| Name | Version 
+
+| Cluster API Operator
+| `v0.16.0`
+
+| Cluster API
+| `v1.9.4`
+
+| Cluster API Provider RKE2
+| `v0.11.0`
+|===
+
+== Install {product_name} using Rancher Dashboard
+
+
+This is the recommended option for installing {product_name}.
+
+Via Rancher UI, and just by adding the Turtles repository, we can easily let Rancher take care of the installation and configuration of the Cluster API Extension.
+
+Installing {product_name} will transform your Rancher Manager cluster into a CAPI Management cluster so you can provision and manage CAPI workload clusters.
+
+[CAUTION]
+====
+Rancher's `embedded-cluster-api` functionality will be disabled when installing {product_name}. This includes also cleaning up Rancher-specific webhooks that otherwise would conflict with CAPI ones.
+
+The recommended way to disable this feature and the Rancher-specific webhooks, is to use the official {product_name} Helm chart, that includes a `pre-install` hook to apply the following changes:  
+
+* Disable the `embedded-cluster-api` feature in Rancher.
+* Delete the `mutating-webhook-configuration` and `validating-webhook-configuration` webhooks that are no longer needed.
+====
+
+== Installation
+
+* From your browser, access Rancher Manager and explore the *local* cluster.
+* Using the left navigation panel, go to `Apps` \-> `Repositories`.
+* Click `Create` to add a new repository.
+* Enter the following:
+ ** *Name*: `turtles`.
+ ** *Index URL*: https://rancher.github.io/turtles.
+* Wait for the `turtles` repository to have a status of `Active`.
+* Go to `Apps` \-> `Charts`.
+* Filter for `turtles`.
+* Click `Rancher Turtles - the Cluster API Extension`
+* Click `Install` \-> `Next` \-> `Install`.
+
+[CAUTION]
+====
+Rancher will select not to install Turtles into a https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/manage-clusters/projects-and-namespaces[Project] by default. Installing Turtles into a Project is not supported and the default configuration `None` should be used to avoid unexpected behavior during installation.
+====
+
+
+image::install-turtles-from-ui.gif[install-turtles-from-ui]
+
+This will use the default values for the Helm chart, which are good for most installations. If your configuration requires overriding some of these defaults, you can either specify the values during installation from Rancher UI or, alternatively, you can opt for the xref:../operator/manual.adoc[manual installation via Helm]. And, if you are interested on learning more about the available values, you can check the xref:../operator/chart.adoc[reference guide].
+
+The installation may take a few minutes and, when it finishes, you will be able to see the following new deployments in the cluster:
+
+* `capi-system/capi-controller-manager`
+* `rancher-turtles-system/caapf-controller-manager`
+* `rancher-turtles-system/rancher-turtles-cluster-api-operator`
+* `rancher-turtles-system/rancher-turtles-controller-manager`
+* `rke2-bootstrap-system/rke2-bootstrap-controller-manager`
+* `rke2-control-plane-system/rke2-control-plane-controller-manager`
+
+image::deployments-turtles.png[deployments-turtles]
+
+
+== CAPI UI extension installation
+
+Rancher also provides a UI extension that makes it easy to manage CAPI providers, create CAPI clusters and view CAPI related resources via the Rancher Dashboard. Installing the CAPI UI extension is similar to installing Turtles. 
+
+[TIP]
+====
+Installing Turtles prior to installing the CAPI UI extension is recommended.
+====
+
+* From your browser, access Rancher Manager and navigate to the `Extensions` page.
+* Using the three dots menu located at the top right, select `Manage Repositories`. This should open the `Repositories` page for the *local* cluster.
+* Click `Create` to add a new repository.
+* Enter the following:
+ ** *Name*: `capi-ui`.
+ ** *Target*: http(s) URL to an index generated by Helm
+ ** *Index URL*: https://rancher.github.io/capi-ui-extension.
+* Click `Create`.
+* Wait for the `capi-ui` repository to have a status of `Active`.
+* Go to `Extensions` \-> `Available`.
+* Find the `CAPI UI` card and click on its `Install` button.
+* Select the version to install (default is the latest) and click `Install`.
+* Once the extension is installed, click on the `Reload` button at the top of the page to reload the page.
+* The CAPI UI extension is now installed. You can navigate to `Cluster Management` \-> `CAPI` to start using it. 
+
+image::install-capi-ui-extension.gif[install-capi-ui-extension]
