@@ -1,16 +1,15 @@
-= Via Helm install
+= Manual Installation
+
+This page describes how to install {product_name} manually, using the Helm CLI.
 
 [CAUTION]
 ====
 In case you need to review the list of prerequisites (including `cert-manager`), you can refer to xref:../tutorials/quickstart.adoc#_prerequisites[this table].
 ====
 
+{product_name} uses the https://github.com/kubernetes-sigs/cluster-api-operator[Cluster API Operator] to provide a declarative way of installing Cluster API Providers and managing their lifecycle. If you want to learn more about it, you can refer to the https://cluster-api-operator.sigs.k8s.io[Cluster API Operator book].
 
-If you want to manually apply the Helm chart and be in full control of the installation.
-
-The Cluster API Operator is required for installing {product_name} and will be installed as dependency of the {product_name} Helm chart.
-
-CAPI Operator allows handling the lifecycle of Cluster API Providers using a declarative approach, extending the capabilities of `clusterctl`. If you want to learn more about it, you can refer to https://cluster-api-operator.sigs.k8s.io/[Cluster API Operator book].
+Since {product_name} depends on the Cluster API Operator functionality, it is installed as a dependency of the {product_name} Helm chart.
 
 [CAUTION]
 ====
@@ -30,10 +29,9 @@ If you would like to understand how {product_name} works and what the architectu
 If uninstalling, you can refer to xref:../tutorials/uninstall.adoc[Uninstalling {product_name}]
 ====
 
+== Install {product_name} using Helm
 
-== Install {product_name} with `Cluster API Operator` as a Helm dependency
-
-The `rancher-turtles` chart is available in https://rancher.github.io/turtles and this Helm repository must be added before proceeding with the installation:
+The `rancher-turtles` Helm chart is available in https://rancher.github.io/turtles and this Helm repository must be added before proceeding with the installation:
 
 [source,bash]
 ----
@@ -41,7 +39,7 @@ helm repo add turtles https://rancher.github.io/turtles
 helm repo update
 ----
 
-As mentioned before, installing {product_name} requires the https://github.com/kubernetes-sigs/cluster-api-operator[Cluster API Operator] and the Helm chart can handle its installation automatically with a minimum set of flags:
+Once the Helm repository has been added and updated locally, you can proceed to install {product_name}. The Helm chart will handle installation of any dependencies automatically:
 
 [source,bash]
 ----
@@ -52,14 +50,18 @@ helm install rancher-turtles turtles/rancher-turtles --version v0.16.0 \
     --timeout 180s
 ----
 
-This operation could take a few minutes and, after installing, you can take some time to study the installed controllers, including:
+The installation process may take a few minutes. Once complete, you can take some time to review the installed controllers:
 
-* `rancher-turtles-controller`.
-* `capi-operator`.
+* `rancher-turtles` controller.
+* `cluster-api` controller.
+* `cluster-api-operator` controller.
+* `cluster-api-addon-provider-fleet` controller.
+* `rke2-bootstrap` controller.
+* `rke2-control-plane` controller.
 
-This is the basic, recommended configuration, which manages the creation of a secret containing the required CAPI feature flags (`CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled) in the core provider namespace. These feature flags are required to enable additional Cluster API functionality.
+By default, the installation process will create a secret named `capi-env-variables` in the core provider namespace, which is used to enable certain Cluster API feature flags (`CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL`). These feature flags are required to enable additional Cluster API functionality.
 
-If you need to override the default behavior and use an existing secret (or add custom environment variables), you can pass the secret name helm flag. In this case, as a user, you are in charge of managing the secret creation and its content, including the minimum required features: `CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL` enabled.
+If you need to override the default behavior and use an existing secret (or add custom environment variables), you can pass the secret name via a Helm flag, as shown in the example below. In this case, you are responsible for managing the secret creation and its contents, so make sure to include the feature flags (`CLUSTER_TOPOLOGY`, `EXP_CLUSTER_RESOURCE_SET` and `EXP_MACHINE_POOL`) as enabled.
 
 [source,bash]
 ----

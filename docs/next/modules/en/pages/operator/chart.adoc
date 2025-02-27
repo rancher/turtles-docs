@@ -1,4 +1,4 @@
-= Chart configuration
+= Chart Configuration
 :sidebar_position: 0
 
 [TIP]

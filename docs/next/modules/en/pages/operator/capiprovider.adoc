@@ -1,4 +1,4 @@
-= CAPIProvider Resource
+= Install CAPI Providers
 :sidebar_position: 2
 
 The `CAPIProvider` resource allows managing Cluster API Operator manifests in a declarative way. It is used to provision and configure Cluster API providers like AWS, vSphere etc.
@@ -44,12 +44,12 @@ The `CAPIProvider` controller will own all the generated provider resources, all
 
 The key fields in the `CAPIProvider` spec are:
 
-* `name` - Name of the provider (aws, vsphere etc). Inherited from `metadata.name` if is not specified.
-* `type` - Kind of provider resource (infrastructure, controlplane etc)
-* `credentials` - Source credentials for provider specification
-* `configSecret` - Name of the provider config secret, where the variables and synced credential will be stored. By default if not specified, will inherit the name of the `CAPIProvider` resource
-* `features` - Enabled provider features
-* `variables` - Variables is a map of environment variables to add to the content of the `configSecret`
+* `name` - Name of the provider (aws, vsphere etc). Inherited from `metadata.name` if not specified.
+* `type` - Kind of provider resource (can be set to `core`, `controlPlane`, `bootstrap`, `infrastructure`, `addon`, `ipam` or `runtimeextension`).
+* `credentials` - Source credentials for provider specification.
+* `configSecret` - Name of the provider config secret, where the variables and synced credential will be stored. By default if not specified, will inherit the name of the `CAPIProvider` resource.
+* `features` - Enabled provider features.
+* `variables` - Variables is a map of environment variables to add to the content of the `configSecret`.
 
 Full documentation on the CAPIProvider resource - https://doc.crds.dev/github.com/rancher/turtles/turtles-capi.cattle.io/CAPIProvider/v1alpha1@v0.5.0[here].
 
