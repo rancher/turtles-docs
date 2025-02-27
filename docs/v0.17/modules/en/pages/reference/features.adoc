@@ -1,0 +1,60 @@
+= Features
+:sidebar_position: 0
+
+This section describes features and feature stages in {product_name}.
+
+== List of Beta and Alpha Features
+
+|===
+| Feature | Helm Feature Name | Sub-Feature | Default | Stage 
+
+1.1+| *Day 2 Operations*
+1.1+| `day2operations`
+| `etcdBackupRestore`
+| disabled
+| alpha
+
+| *Add-on Provider Fleet*
+| `addon-provider-fleet`
+| _None_
+| enabled
+| beta
+
+| *Agent TLS Mode*
+| `agent-tls-mode`
+| _None_
+| disabled
+| alpha
+
+| *Cluster Class Operations*
+| `clusterclass-operations`
+| _None_
+| disabled
+| alpha
+|===
+
+== Feature Stages
+
+{product_name} follows the Kubernetes link:https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/#feature-stages[feature stages] process. A feature can be in one of the following stages: Alpha, Beta, or General Availability (GA).
+
+=== Alpha Stage
+- Disabled by default.
+- May be buggy, with no long-term support.
+- API may change without notice.
+- Recommended only for short-lived testing clusters.
+
+=== Beta Stage
+- Always enabled by default.
+- Well-tested and considered safe.
+- Support is stable, but schema may change in future releases.
+- Recommended for non-business-critical uses due to potential incompatible changes.
+
+[NOTE]
+====
+Please provide feedback on Alpha and Beta features!
+====
+
+=== General Availability (GA) Stage
+- Always enabled, cannot be disabled.
+- No feature gate needed.
+- Stable, with long-term support in future releases.
