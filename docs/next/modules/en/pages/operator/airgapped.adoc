@@ -1,4 +1,4 @@
-= Air-gapped environment
+= Air-gapped Environment
 :sidebar_position: 3
 
 {product_name} provides support for an air-gapped environment out-of-the-box by leveraging features of the Cluster API Operator, the required dependency for installing {product_name}.
@@ -85,7 +85,7 @@ spec:
 
 Additionally the *CAPIProvider* overrides the container image to use for the provider using the `deployment.containers[].imageUrl` field. This allows the operator to pull the image from a registry within the air-gapped environment.
 
-=== Situation when manifests do not fit into ConfigMap
+=== ConfigMap size limitations
 
 There is a limit on the https://kubernetes.io/docs/concepts/configuration/configmap/#motivation[maximum size] of a ConfigMap - 1MiB. If the manifests do not fit into this size, Kubernetes will generate an error and provider installation fail. To avoid this, you can archive the manifests and put them in the ConfigMap that way.
 
@@ -112,7 +112,7 @@ kubectl create configmap v1.11.2 --namespace=capv-system --from-file=components=
 yq eval -i '.metadata.annotations += {"provider.cluster.x-k8s.io/compressed": "true"}' configmap.yaml
 ----
 +
-NOTE: without this annotation operator won't be able to determine if the data is compressed or not.
+NOTE: Without this annotation, the operator won't be able to determine if the data is compressed or not.
 
 . Add labels that will be used to match the ConfigMap in `fetchConfig` section of the provider
 +

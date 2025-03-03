@@ -5,7 +5,7 @@ The `CAPIProvider` resource allows managing Cluster API Operator manifests in a 
 
 `CAPIProvider` follows a GitOps model - the spec fields are declarative user inputs. The controller only updates status.
 
-Every field provided by the upstream CAPI Operator resource for the desired `spec.type` is also available in the spec of the `CAPIProvider` resouce. Feel free to refer to upstream configuration https://cluster-api-operator.sigs.k8s.io/03_topics/02_configuration/[guides] for advanced scenarios.
+Every field provided by the upstream CAPI Operator resource for the desired `spec.type` is also available in the spec of the `CAPIProvider` resource. Feel free to refer to upstream configuration https://cluster-api-operator.sigs.k8s.io/03_topics/02_configuration/[guides] for advanced scenarios.
 
 == Usage
 
@@ -36,7 +36,7 @@ spec:
     clusterResourceSet: true
 ----
 
-This will generate an AWS infrastructure provider with the supplied mapping for rancher credential secret and custom enabled features.
+This will generate an AWS infrastructure provider with the supplied mapping for Rancher credential secret and custom enabled features.
 
 The `CAPIProvider` controller will own all the generated provider resources, allowing garbage collection by deleting the `CAPIProvider` object.
 
