@@ -1,157 +1,150 @@
 = ClusterClass
 
-In this section we cover using *ClusterClass* with {product_name}.
-
-[CAUTION]
-====
-ClusterClass is an experimental feature of Cluster API. As with any experimental features it should be used with caution as it may be unreliable. All experimental features are not subject to any compatibility or deprecation promise.
-====
-
-[TIP]
-====
-Before using ClusterClass, you should study the provider docs and confirm that the feature is supported. When installing the provider, you must explicitly enable this feature. You can follow xref:../operator/clusterclass.adoc[this guide] for instructions. 
-====
-
-== Create a cluster using Fleet
-
-This section will guide you through creating a cluster that utilizes ClusterClass using a GitOps workflow with Fleet.
-
-[NOTE]
-====
-This guide uses the https://github.com/rancher-sandbox/rancher-turtles-fleet-example/tree/clusterclass[examples repository].
-====
-
+In this section we cover using https://cluster-api.sigs.k8s.io/tasks/experimental-features/cluster-class/[ClusterClass] with {product_name}.
 
 == Prerequisites
 
 * Rancher Manager cluster with {product_name} installed
-* Cluster API providers installed for your scenario - we'll be using the Docker infrastructure and Kubeadm bootstrap/control plane providers in these instructions - see https://cluster-api.sigs.k8s.io/user/quick-start.html#initialization-for-common-providers[Initialization for common providers]
-* The *ClusterClass* feature enabled - see xref:../operator/clusterclass.adoc#_enable_clusterclass[Enable ClusterClass]
 
-== Configure Rancher Manager
+== Setup
 
-The clusterclass and cluster definitions will be imported into the Rancher Manager cluster (which is also acting as a Cluster API management cluster) using the *Continuous Delivery* feature (which uses Fleet).
+[tabs]
+======
 
-The guide will apply the manifests using a 2-step process. However, this isn't required and they could be combined into one step.
-
-There are 2 options to provide the configuration. The first is using the Rancher Manager UI and the second is by applying some YAML to your cluster. Both are covered below.
-
-=== Import ClusterClass Definitions
-
-[discrete]
-==== Using the Rancher Manager UI
-
-. Go to Rancher Manager
-. Select *Continuos Delivery* from the menu:
-. Select *fleet-local* as the namespace from the top right
-. Select *Git Repos* from the sidebar
-. Click *Add Repository*
-. Enter *classes* as the name
-. Get the *HTTPS* clone URL from your git repo
-. Add the URL into the *Repository URL* field
-. Change the branch name to *clusterclass*
-. Click *Add Path*
-. Enter `/classes`
-. Click *Next*
-. Click *Create*
-. Click on the *clusters* name
-. Watch the resources become ready
-
-=== Using kubectl
-
-. Get the *HTTPS* clone URL from your git repo
-. Create a new file called *repo.yaml*
-. Add the following contents to the new file:
+Azure RKE2::
++
+To prepare the management Cluster, we are going to install the https://capz.sigs.k8s.io/[Cluster API Provider Azure], and create a https://capz.sigs.k8s.io/topics/identities#service-principal[ServicePrincipal] identity to provision a new Cluster on Azure. +
+Before we start, a ServicePrincipal needs to be created, with at least Contributor access to an Azure subscription. +
+Refer to the https://capz.sigs.k8s.io/getting-started#setting-up-your-azure-environment[CAPZ documentation] for more details. +
++
+* Provider installation
 +
 [source,yaml]
 ----
-apiVersion: fleet.cattle.io/v1alpha1
-kind: GitRepo
+apiVersion: v1
+kind: Namespace
 metadata:
-  name: classes
-  namespace: fleet-local
+  name: capz-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: azure
+  namespace: capz-system
 spec:
-  branch: clusterclass
-  repo: https://github.com/rancher-sandbox/rancher-turtles-fleet-example.git
-  paths:
-    - /classes
-  targets: []
+  type: infrastructure
+  name: azure
+  variables:
+    CLUSTER_TOPOLOGY: "true"
 ----
 +
-. Apply the file to the Rancher Manager cluster using *kubectl*:
+* Identity setup
++
+A Secret containing the ADD Service Principal password need to be created first.  
 +
 [source,bash]
 ----
-kubectl apply -f repo.yaml
+# Settings needed for AzureClusterIdentity used by the AzureCluster
+export AZURE_CLUSTER_IDENTITY_SECRET_NAME="cluster-identity-secret"
+export AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE="default"
+export AZURE_CLIENT_SECRET="<Password>"
+
+# Create a secret to include the password of the Service Principal identity created in Azure
+# This secret will be referenced by the AzureClusterIdentity used by the AzureCluster
+kubectl create secret generic "${AZURE_CLUSTER_IDENTITY_SECRET_NAME}" --from-literal=clientSecret="${AZURE_CLIENT_SECRET}" --namespace "${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}"
 ----
 +
-. Go to Rancher Manager
-. Select *Continuos Delivery* from the side bar
-. Select *fleet-local* as the namespace from the top right
-. Select *Git Repos* from the sidebar
-. Click on the *clusters* name
-. Watch the resources become ready
-. Select *Cluster Management* from the menu
-. Check your cluster has been imported
-
-=== Import Cluster Definitions
-
-Now the classes have been imported its possible to use them with cluster definitions.
-
-[discrete]
-==== Using the Rancher Manager UI
-
-. Go to Rancher Manager
-. Select *Continuos Delivery* from the menu:
-. Select *fleet-local* as the namespace from the top right
-. Select *Git Repos* from the sidebar
-. Click *Add Repository*
-. Enter *clusters* as the name
-. Get the *HTTPS* clone URL from your git repo
-. Add the URL into the *Repository URL* field
-. Change the branch name to *clusterclass*
-. Click *Add Path*
-. Enter `/clusters`
-. Click *Next*
-. Click *Create*
-. Click on the *clusters* name
-. Watch the resources become ready
-. Select *Cluster Management* from the menu
-. Check your cluster has been imported
-
-=== Using kubectl
-
-. Get the *HTTPS* clone URL from your git repo
-. Create a new file called *repo.yaml*
-. Add the following contents to the new file:
+The AzureClusterIdentity can now be created to use the Service Principal identity. +
+For more information on best practices when using Azure identities, please refer to the official https://capz.sigs.k8s.io/topics/identities-use-cases[documentation]. +
++
+Note that some variables are left to the user to substitute. +
 +
 [source,yaml]
 ----
-apiVersion: fleet.cattle.io/v1alpha1
-kind: GitRepo
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureClusterIdentity
 metadata:
-  name: clusters
-  namespace: fleet-local
+  labels:
+    clusterctl.cluster.x-k8s.io/move-hierarchy: "true"
+  name: cluster-identity
+  namespace: default
 spec:
-  branch: clusterclass
-  repo: https://github.com/rancher-sandbox/rancher-turtles-fleet-example.git
-  paths:
-    - /clusters
-  targets: []
+  allowedNamespaces: {}
+  clientID: <AZURE_APP_ID>
+  clientSecret:
+    name: <AZURE_CLUSTER_IDENTITY_SECRET_NAME>
+    namespace: <AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE>
+  tenantID: <AZURE_TENANT_ID>
+  type: ServicePrincipal
 ----
+
+======
+
+
+== Create a Cluster from a ClusterClass
+
+[tabs]
+======
+
+Azure RKE2::
 +
-. Apply the file to the Rancher Manager cluster using *kubectl*:
+* An Azure ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterClasses[Turtles examples].
 +
 [source,bash]
 ----
-kubectl apply -f repo.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterClasses/azure/clusterclass-example.yaml
 ----
 +
-. Go to Rancher Manager
-. Select *Continuos Delivery* from the side bar
-. Select *fleet-local* as the namespace from the top right
-. Select *Git Repos* from the sidebar
-. Click on the *classes* name
-. Watch the resources become ready
-. Select *Cluster Management* from the menu
-. Check your cluster has been imported
+* Additionally, the Azure Cloud Provider will need to be installed on each downstream Cluster, for the nodes to be initialized correctly. +
++
+We can do this automatically at Cluster creation using a https://cluster-api.sigs.k8s.io/tasks/experimental-features/cluster-resource-set[ClusterResourceSet]. +
+Beware of the `azure-cloud-controller-manager` image version number on the ClusterResourceSet manifest. This is hardcoded, but should match the version of Kubernetes that the Cluster is using. +
++
+The ClusterResourceSet is configured to match any Cluster with the `cloud-provider: azure` label. +
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/azure/clusterresourceset-cloud-provider.yaml
+----
++
+* Create the Azure Cluster from the example ClusterClass +
++ 
+Note that some variables are left to the user to substitute. +
++
+[source,yaml]
+----
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cloud-provider: azure
+  name: azure-quickstart
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 10.96.0.0/12
+    services:
+      cidrBlocks:
+      - 10.244.0.0/16
+  topology:
+    class: azure-example
+    controlPlane:
+      replicas: 3
+    variables:
+    - name: subscriptionID
+      value: <AZURE_SUBSCRIPTION_ID>
+    - name: location
+      value: <AZURE_LOCATION>
+    - name: resourceGroup
+      value: <AZURE_RESOURCE_GROUP>
+    - name: azureClusterIdentityName
+      value: cluster-identity
+    version: v1.31.1+rke2r1
+    workers:
+      machineDeployments:
+      - class: rke2-default-worker
+        name: md-0
+        replicas: 3
+----
+======
