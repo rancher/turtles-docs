@@ -1,5 +1,4 @@
 = Features
-:sidebar_position: 0
 
 This section describes features and feature stages in {product_name}.
 

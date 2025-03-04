@@ -6,8 +6,9 @@
 * Reference
 ** xref:reference/architecture.adoc[Architecture]
 ** xref:reference/glossary.adoc[Glossary]
-** xref:reference/features.adoc[Feature]
+** xref:reference/features.adoc[Features]
 ** xref:reference/certified.adoc[Certified Providers]
+** xref:reference/CAPRKE2.adoc[CAPRKE2]
 * User Guide
 ** xref:user/clusters.adoc[Provision a CAPI cluster]
 ** xref:user/clusterclass.adoc[Provision a CAPI cluster with ClusterClass]

@@ -1,0 +1,11 @@
+= Cluster API Provider RKE2
+
+== What is Cluster API Provider RKE2?
+
+The link:https://cluster-api.sigs.k8s.io/[Cluster API] brings declarative, Kubernetes-style APIs to cluster creation, configuration and management.
+
+Cluster API Provider RKE2 (CAPRKE2) is a combination of 2 provider types, a Cluster API Control Plane Provider for provisioning Kubernetes control plane nodes and a Cluster API Bootstrap Provider for bootstrapping Kubernetes on a machine where link:https://docs.rke2.io/[RKE2] is used as the Kubernetes distro.
+
+== Learn more
+
+To learn more about CAPRKE2, visit its dedicated documentation link:https://caprke2.docs.rancher.com/[website].
