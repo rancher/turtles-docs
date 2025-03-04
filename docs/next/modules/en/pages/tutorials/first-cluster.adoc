@@ -65,6 +65,7 @@ export CLUSTER_NAME=cluster1
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
 export KUBERNETES_VERSION=v1.30.0
+export NAMESPACE=capi-clusters
 
 curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml | envsubst > cluster1.yaml
 ----
@@ -75,7 +76,8 @@ curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-
 +
 [source,bash]
 ----
-kubectl create -f cluster1.yaml
+kubectl create namespace capi-clusters
+kubectl apply -f cluster1.yaml
 ----
 . Watch the resources become ready
 . Select *Cluster Management* from the menu
