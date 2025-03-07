@@ -11,10 +11,11 @@
 * User Guide
 ** xref:user/clusters.adoc[Provision a CAPI cluster]
 ** xref:user/clusterclass.adoc[Provision a CAPI cluster with ClusterClass]
+** xref:user/fleet.adoc[Create a cluster using Fleet]
 ** xref:user/caapf.adoc[CAPI Addon Provider Fleet]
 * Operator Guide
 ** xref:operator/chart.adoc[Chart Configuration]
-** xref:operator/manual.adoc[Manual Installation]]
+** xref:operator/manual.adoc[Manual Installation]
 ** xref:operator/capiprovider.adoc[Install CAPI Providers]
 ** xref:operator/clusterclass.adoc[Enabling ClusterClass]
 ** xref:operator/certification.adoc[Provider Certification]
