@@ -106,3 +106,5 @@ kubectl label namespace capi-clusters cluster-api.cattle.io/rancher-auto-import=
 [NOTE]
 A namespace (or cluster) can be marked for auto-import at any time: before or after the cluster has been created.
 
+[CAUTION]
+To prevent a cluster from getting stuck in deletion when Fleet is removed, keep auto-import enabled in the UI or avoid manually removing labels in the cluster's namespace, as Turtles will no longer handle the 'import' functionality from that point onward.
