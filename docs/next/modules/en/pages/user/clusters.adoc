@@ -267,7 +267,7 @@ export CLUSTER_NAME=cluster1
 export NAMESPACE=capi-clusters
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
-export RKE2_VERSION=v1.30.3+rke2r1 
+export RKE2_VERSION=v1.31.4+rke2r1 
 export AWS_NODE_MACHINE_TYPE=t3a.large 
 export AWS_CONTROL_PLANE_MACHINE_TYPE=t3a.large 
 export AWS_SSH_KEY_NAME="aws-ssh-key" 
@@ -303,7 +303,7 @@ export AWS_CONTROL_PLANE_MACHINE_TYPE=t3.large
 export AWS_NODE_MACHINE_TYPE=t3.large
 export AWS_SSH_KEY_NAME="aws-ssh-key" 
 export AWS_REGION="aws-region"
-export KUBERNETES_VERSION=v1.29.9
+export KUBERNETES_VERSION=v1.31.4
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
 
@@ -338,9 +338,9 @@ export CLUSTER_NAME=cluster1
 export NAMESPACE=capi-clusters
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
-export RKE2_VERSION=v1.30.2+rke2r1
+export RKE2_VERSION=v1.31.4+rke2r1
 export RKE2_CNI=calico
-export KUBERNETES_VERSION=v1.30.4 # needed for the CAPI Docker provider to use proper image
+export KUBERNETES_VERSION=v1.31.4 # needed for the CAPI Docker provider to use proper image
 
 curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/docker-rke2.yaml -o docker-rke2.yaml
 envsubst '${NAMESPACE} ${CLUSTER_NAME} ${WORKER_MACHINE_COUNT} ${RKE2_VERSION} ${RKE2_CNI} ${CONTROL_PLANE_MACHINE_COUNT} ${KUBERNETES_VERSION}' < template-docker-rke2.yaml > cluster1.yaml
@@ -370,7 +370,7 @@ export CLUSTER_NAME=cluster1
 export NAMESPACE=capi-clusters
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
-export KUBERNETES_VERSION=v1.30.4
+export KUBERNETES_VERSION=v1.31.4
 
 curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/docker-kubeadm.yaml | envsubst > cluster1.yaml
 ----
@@ -416,8 +416,8 @@ export CONTROL_PLANE_ENDPOINT_IP: "192.168.9.230"
 export VSPHERE_TLS_THUMBPRINT: "..."
 export EXP_CLUSTER_RESOURCE_SET: "true"
 export VSPHERE_SSH_AUTHORIZED_KEY: "ssh-rsa AAAAB3N..."
-export CPI_IMAGE_K8S_VERSION: "v1.30.0"
-export KUBERNETES_VERSION=v1.30.0
+export CPI_IMAGE_K8S_VERSION: "v1.31.0"
+export KUBERNETES_VERSION=v1.31.4
 ----
 +
 . Open a terminal and run the following:
@@ -466,8 +466,8 @@ export CONTROL_PLANE_ENDPOINT_IP: "192.168.9.230"
 export VSPHERE_TLS_THUMBPRINT: "..."
 export EXP_CLUSTER_RESOURCE_SET: "true"
 export VSPHERE_SSH_AUTHORIZED_KEY: "ssh-rsa AAAAB3N..."
-export CPI_IMAGE_K8S_VERSION: "v1.30.0"
-export KUBERNETES_VERSION=v1.30.0
+export CPI_IMAGE_K8S_VERSION: "v1.31.0"
+export KUBERNETES_VERSION=v1.31.4
 ----
 +
 . Open a terminal and run the following:
@@ -498,7 +498,7 @@ To generate the YAML for the cluster, do the following:
 export CLUSTER_NAME=cluster1
 export NAMESPACE=capi-clusters
 export WORKER_MACHINE_COUNT=1
-export KUBERNETES_VERSION=v1.30.4
+export KUBERNETES_VERSION=v1.31.4
 ----
 +
 . Open a terminal and run the following:

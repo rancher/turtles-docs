@@ -75,15 +75,15 @@ variables:
   SKIP_RESOURCE_CLEANUP: "false"
   ARTIFACTS_FOLDER: "_artifacts"
   MANAGEMENT_CLUSTER_ENVIRONMENT: "kind" # supported options are eks, isolated-kind, kind
-  RANCHER_VERSION: "v2.8.1"
-  KUBERNETES_VERSION: "v1.28.6"
-  KUBERNETES_MANAGEMENT_VERSION: "v1.27.0"
+  RANCHER_VERSION: "v2.10.2"
+  KUBERNETES_VERSION: "v1.31.4"
+  KUBERNETES_MANAGEMENT_VERSION: "v1.31.4"
   KUBERNETES_MANAGEMENT_AWS_REGION: "eu-west-2"
-  RKE2_VERSION: "v1.28.1+rke2r1"
+  RKE2_VERSION: "v1.31.4+rke2r1"
   TURTLES_PATH: "turtles/rancher-turtles"
   TURTLES_REPO_NAME: "turtles"
   TURTLES_URL: https://rancher.github.io/turtles
-  TURTLES_VERSION: "v0.10.0"
+  TURTLES_VERSION: "v0.18.0"
   RANCHER_HOSTNAME: "localhost"
   RANCHER_FEATURES: ""
   RANCHER_PATH: "rancher-latest/rancher"
@@ -106,7 +106,7 @@ variables:
   GITEA_REPO_NAME: "gitea-charts"
   GITEA_REPO_URL: "https://dl.gitea.com/charts/"
   GITEA_CHART_NAME: "gitea"
-  GITEA_CHART_VERSION: "9.4.0"
+  GITEA_CHART_VERSION: "10.6.0"
   ...
 ----
 
