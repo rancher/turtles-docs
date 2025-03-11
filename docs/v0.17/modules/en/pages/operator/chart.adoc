@@ -30,7 +30,9 @@ rancherTurtles:
 The list has been truncated to show only the configurable feature flags. Other fields with the `rancherTurtles` key are automatically set when a chart is released. 
 
 [NOTE]
+====
 Nested feature flags take effect when their parent feature flag is enabled. For example, the `rancherTurtles.features.day2operations.etcdBackupRestore.enabled` flag takes effect only when the `rancherTurtles.features.day2operations.enabled` flag is set to true.
+====
 
 == Cluster API Operator values
 
@@ -49,6 +51,8 @@ Currently the available set of values for the `cluster-api-operator` setup in th
 cluster-api-operator:
   enabled: true # indicates whether CAPI operator is installed (default: true).
   cleanup: true # indicates whether CAPI operator resources are cleaned up on uninstall (default: true).
+  cert-manager:
+    enabled: false # indicates whether cert-manager is installed (default: false).
   cluster-api:
     enabled: true # indicates whether core CAPI controllers are installed (default: true).
     configSecret:
@@ -56,6 +60,7 @@ cluster-api-operator:
       defaultName: "capi-env-variables" # default name for the automatically created secret.
     core:
       namespace: capi-system
+      imageUrl: "" # image URL to override the image for a provider.
       fetchConfig: # (only required for airgapped environments).
         url: ""  # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
         selector: ""  # selector to use for fetching config, used by the CAPI operator.
@@ -64,11 +69,13 @@ cluster-api-operator:
       version: "" # version of Cluster API Provider RKE2 (CAPRKE2) to install.
       bootstrap: # CAPRKE2 Bootstrap Provider.
         namespace: rke2-bootstrap-system
+        imageUrl: "" # image URL to override the image for a provider.
         fetchConfig: # (only required for airgapped environments).
           url: ""  # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
           selector: ""  # selector to use for fetching config, used by the CAPI operator.
       controlPlane: # CAPRKE2 Control Plane Provider.
         namespace: rke2-control-plane-system
+        imageUrl: "" # image URL to override the image for a provider.
         fetchConfig: # (only required for airgapped environments).
           url: "" # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
           selector: ""  # selector to use for fetching config, used by the CAPI operator.

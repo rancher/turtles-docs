@@ -36,3 +36,8 @@ The following example requires `Fleet` version `>=v0.10.1-rc.1`, which is not a 
 
 
 *Demo*: image:https://asciinema.org/a/seEFHKz5DVpUe5CQvWcddSJBp.svg[asciicast,link=https://asciinema.org/a/seEFHKz5DVpUe5CQvWcddSJBp]
+
+[TIP]
+====
+For more information about the provider, please refer to https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[CAAPF book]. 
+====

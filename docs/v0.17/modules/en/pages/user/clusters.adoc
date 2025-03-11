@@ -315,7 +315,7 @@ export AWS_AMI_ID="ami-id"
 curl -s https://raw.githubusercontent.com/rancher/cluster-api-provider-rke2/refs/heads/main/examples/aws/cluster-template.yaml | envsubst > cluster1.yaml
 ----
 +
-. View **cluster1.yaml** and examine the resulting yaml file. You can make any changes you want as well.
+. View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
 +
 > The Cluster API quickstart guide contains more detail. Read the steps related to this section https://cluster-api.sigs.k8s.io/user/quick-start.html#required-configuration-for-common-providers[here].
 
@@ -323,7 +323,7 @@ curl -s https://raw.githubusercontent.com/rancher/cluster-api-provider-rke2/refs
 +
 [source,bash]
 ----
-bash kubectl create -f cluster1.yaml
+kubectl create -f cluster1.yaml
 ----
 
 AWS EC2 Kubeadm::

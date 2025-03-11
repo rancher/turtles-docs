@@ -32,4 +32,4 @@ spec:
     EXP_AKS_RESOURCE_HEALTH: "true"
 ----
 
-The resource defined in this yaml file will install CAPZ with support for a number of features, including `CLUSTER_TOPOLOGY`.
+The resource defined in this YAML file will install CAPZ with support for a number of features, including `CLUSTER_TOPOLOGY`.

@@ -20,42 +20,42 @@ This is a list of the officially certified CAPI Providers by Turtles. These prov
 | *RKE2*
 | CAPRKE2
 | Bootstrap/Control Plane
-| https://rancher.github.io/cluster-api-provider-rke2
+| https://rancher.github.io/cluster-api-provider-rke2[CAPRKE2 book]
 
 | *Kubeadm*
 | Kubeadm
 | Bootstrap/Control Plane
-| https://cluster-api.sigs.k8s.io/tasks/bootstrap/kubeadm-bootstrap
+| https://cluster-api.sigs.k8s.io/tasks/bootstrap/kubeadm-bootstrap[CABPK docs]
 
 | *AWS*
 | CAPA
 | Infrastructure
-| https://cluster-api-aws.sigs.k8s.io
+| https://cluster-api-aws.sigs.k8s.io[CAPA book]
 
 | *Docker**
 | CAPD
 | Infrastructure
-| https://cluster-api.sigs.k8s.io
+| https://cluster-api.sigs.k8s.io[CAPI book]
 
 | *vSphere*
 | CAPV
 | Infrastructure
-| https://github.com/kubernetes-sigs/cluster-api-provider-vsphere
+| https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/blob/main/docs/getting_started.md[CAPV docs]
 
 | *Azure* (Only AKS managed clusters)
 | CAPZ
 | Infrastructure
-| https://capz.sigs.k8s.io/
+| https://capz.sigs.k8s.io/[CAPZ book]
 
 | *GCP* (Only GKE managed clusters)
 | CAPG
 | Infrastructure
-| https://cluster-api-gcp.sigs.k8s.io/
+| https://cluster-api-gcp.sigs.k8s.io/[CAPG book]
 
 | *Addon Provider Fleet*
 | CAAPF
 | Addon
-| http://github.com/rancher-sandbox/cluster-api-addon-provider-fleet
+| https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[CAAPF book]
 |===
 
 *Recommended only for development purposes.
@@ -82,6 +82,11 @@ CAPA::
 +
 - **Supports** `ClusterClass` when provisioning unmanaged (EC2-based) clusters.
 - **Does not support** `ClusterClass` when provisioning managed (EKS) clusters: this is a work-in-progress.
+
+CAPG::
++
+- **Supports** `ClusterClass` when provisioning unmanaged (virtual machines) clusters.
+- **Does not support** `ClusterClass` when provisioning managed (GKE) clusters: this is a work-in-progress.
 
 CAPRKE2::
 +

@@ -51,17 +51,17 @@ In previous sections we introduced the main actions performed in the sample test
 [discrete]
 ==== Create a management cluster in the desired environment.
 
-This is not a Turtles specific requirement as, when working with CAPI, there needs to be a management cluster that will be used to create resources that represent downstream clusters. This is the main part of the test environment and, depending on the environment variables passed to the test suite, it can either be hosted locally (using `kind`) or in the cloud (`eks`).
+* This is not a Turtles specific requirement as, when working with CAPI, there needs to be a management cluster that will be used to create resources that represent downstream clusters. This is the main part of the test environment and, depending on the environment variables passed to the test suite, it can either be hosted locally (using `kind`) or in the cloud (`eks`).
 
 [discrete]
 ==== Install Rancher and Turtles with all prerequisites.
 
-Turtles is a Rancher extension and, as such, it needs a Rancher installation to be deployed. Rancher Manager will be run in the management cluster we created in the first step and the Turtles chart will be installed when Rancher is available. If using an internet-facing configuration, an ingress controller will make Rancher reachable from an outside network (e.g. cluster deployed in the cloud).
+* Turtles is a Rancher extension and, as such, it needs a Rancher installation to be deployed. Rancher Manager will be run in the management cluster we created in the first step and the Turtles chart will be installed when Rancher is available. If using an internet-facing configuration, an ingress controller will make Rancher reachable from an outside network (e.g. cluster deployed in the cloud).
 
 [discrete]
 ==== Run the suite that will create a git repo, apply cluster template using Fleet and verify the cluster is created and successfully imported in Rancher.
 
-The main test suite, and the one used as an example, is based on a GitOps flow and uses https://github.com/rancher/fleet[Fleet] as a GitOps orchestrator tool. Based on the cluster templates provided (you can check the ones that come with the example integration https://github.com/rancher-sandbox/turtles-integration-suite-example/tree/main/suites/data/cluster-templates[here]), it will create the CAPI clusters defined in the YAML files. Once this/these cluster/s are available, they will be configured to be xref:../tutorials/first-cluster.adoc[imported into Rancher using Turtles] and it will verify that the downstream cluster/s is/are accessible via Rancher. It will also check that deletion can be performed on downstream clusters and that they are no longer available in Rancher.
+* The main test suite, and the one used as an example, is based on a GitOps flow and uses https://github.com/rancher/fleet[Fleet] as a GitOps orchestrator tool. Based on the cluster templates provided (you can check the ones that come with the example integration https://github.com/rancher-sandbox/turtles-integration-suite-example/tree/main/suites/data/cluster-templates[here]), it will create the CAPI clusters defined in the YAML files. Once this/these cluster/s are available, they will be configured to be xref:../tutorials/first-cluster.adoc[imported into Rancher using Turtles] and it will verify that the downstream cluster/s is/are accessible via Rancher. It will also check that deletion can be performed on downstream clusters and that they are no longer available in Rancher.
 
 == Other options
 

@@ -24,7 +24,9 @@ By inspecting the contents of this repository, you will find:
 . *fleet.yaml* is used to specify the configuration options for Fleet. In this case it's declaring that the cluster definition should be added to the `default` namespace.
 
 [NOTE]
+====
 If you prefer, you can create your own Fleet repository using the same base structure.
+====
 
 *Use Rancher UI to add your Fleet repository*
 
@@ -54,7 +56,7 @@ Manually using kubectl::
 +
 ====
 *Create your cluster definition*
-+
+
 To generate the YAML for the cluster, do the following:
 
 . Open a terminal and run the following:
@@ -104,7 +106,11 @@ kubectl label namespace capi-clusters cluster-api.cattle.io/rancher-auto-import=
 ----
 
 [NOTE]
+====
 A namespace (or cluster) can be marked for auto-import at any time: before or after the cluster has been created.
+====
 
 [CAUTION]
+====
 To prevent a cluster from getting stuck in deletion when Fleet is removed, keep auto-import enabled in the UI or avoid manually removing labels in the cluster's namespace, as Turtles will no longer handle the 'import' functionality from that point onward.
+====
