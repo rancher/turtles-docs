@@ -24,9 +24,7 @@ By inspecting the contents of this repository, you will find:
 . *fleet.yaml* is used to specify the configuration options for Fleet. In this case it's declaring that the cluster definition should be added to the `default` namespace.
 
 [NOTE]
-====
 If you prefer, you can create your own Fleet repository using the same base structure.
-====
 
 *Use Rancher UI to add your Fleet repository*
 
