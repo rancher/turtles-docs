@@ -21,6 +21,7 @@
         "turtles": {
             "continue": true,
             "port": 40000
+            "insecure_skip_verify": "true"
         }
     }
 }
@@ -33,11 +34,11 @@
 ----
 make dev-env
 
-# Or if you want to use a custom hostname for Rancher
-RANCHER_HOSTNAME=my.customhost.dev make dev-env
+# Or if you want to use a custom hostname for Rancher and your ngrok credentials
+NGROK_API_KEY=`key` NGROK_AUTHTOKEN=`token` RANCHER_HOSTNAME=my.customhost.dev make dev-env
 ----
 +
-. When tilt has started, open a new terminal and start ngrok or inlets
+. If you don't have ngrok credentials and have not provided them in earlier step, you can also open a new terminal and start ngrok or inlets after tilt has started:
 +
 [source,bash]
 ----
@@ -47,11 +48,18 @@ ngrok http https://localhost:10000
 
 == What happens when you run `make dev-env`?
 
-. A https://kind.sigs.k8s.io/[kind] cluster is created with the following https://github.com/rancher/turtles/blob/main/scripts/kind-cluster-with-extramounts.yaml[configuration].
-. https://cluster-api-operator.sigs.k8s.io[Cluster API Operator] is installed using Helm, which includes:
- ** Core Cluster API controller
- ** Kubeadm Bootstrap and Control Plane Providers
- ** Docker Infrastructure Provider
- ** Cert manager
-. `Rancher manager` is installed using Helm.
-. `tilt up` is run to start the development environment.
+. A https://kind.sigs.k8s.io/[kind] cluster will be created using the following https://github.com/rancher/turtles/blob/main/scripts/kind-cluster-with-extramounts.yaml[configuration].
+. The following prerequisite components will be installed using Helm:
+ ** Rancher manager.
+ ** Cert manager.
+ ** ngrok Kubernetes Operator.
+. Docker images will be built locally, and Helm will deploy the following controllers in the cluster:
+ ** Core Cluster API controller.
+ ** RKE2 Bootstrap/Control Plane Provider controllers.
+ ** Docker Infrastructure Provider controller.
+ ** CAPI Add-on Provider for Fleet controller.
+ ** Rancher Turtles controller.
+ ** Rancher Turtles Cluster API Operator controller.
+ ** Rancher Turtles ClusterClass controller.
+ ** Rancher Turtles Day 2 operations controller.
+. The development environment will be started using `tilt up`.
