@@ -72,7 +72,7 @@ Cluster API Operator
 
 === CAPRKE2
 
-Cluster API Provider RKE2
+Cluster API Provider RKE2. For detailed information on CAPRKE2, check out its documentation https://caprke2.docs.rancher.com[here].
 
 === CAPV
 
