@@ -375,9 +375,11 @@ export NAMESPACE=capi-clusters
 export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
 export RKE2_VERSION=v1.30.2+rke2r1
+export RKE2_CNI=calico
 export KUBERNETES_VERSION=v1.30.4 # needed for the CAPI Docker provider to use proper image
 
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/docker-rke2.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/docker-rke2.yaml -o template-docker-rke2.yaml
+envsubst '${NAMESPACE} ${CLUSTER_NAME} ${WORKER_MACHINE_COUNT} ${RKE2_VERSION} ${RKE2_CNI} ${CONTROL_PLANE_MACHINE_COUNT} ${KUBERNETES_VERSION}' < template-docker-rke2.yaml > docker-rke2.yaml
 ----
 +
 . View **cluster1.yaml** to ensure there are no tokens. You can make any changes you want as well.
@@ -388,6 +390,7 @@ curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e
 +
 [source,bash]
 ----
+kubectl create namespace ${NAMESPACE}
 kubectl create -f cluster1.yaml 
 ----
 
