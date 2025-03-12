@@ -88,11 +88,11 @@ spec:
 
 Azure RKE2::
 +
-* An Azure ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterClasses[Turtles examples].
+* An Azure ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterClasses/azure/clusterclass-example.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/clusterclass-example.yaml
 ----
 +
 * Additionally, the Azure Cloud Provider will need to be installed on each downstream Cluster, for the nodes to be initialized correctly. +
