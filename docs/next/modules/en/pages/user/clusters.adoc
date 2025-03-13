@@ -88,7 +88,10 @@ follow the provider documentation if some options need to be customized:
 [source,bash]
 ----
 export AZURE_CLIENT_SECRET="xxx"
+export NAMESPACE=capi-clusters
 ----
++
+Create *capz-provider-template.yaml* file with content below:
 +
 [source,yaml]
 ----
@@ -107,13 +110,26 @@ spec:
   type: infrastructure
 ---
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: ${NAMESPACE}
+---
+apiVersion: v1
 stringData:
   clientSecret: "${AZURE_CLIENT_SECRET}"
 kind: Secret
 metadata:
   name: cluster-identity-secret
-  namespace: default
+  namespace: ${NAMESPACE}
 type: Opaque
+----
++
+Generate *capz-provider.yaml* with variables and apply manifest to Kubernetes:
++
+[source,bash]
+----
+cat capz-provider-template.yaml | envsubst > capz-provider.yaml
+kubectl apply -f capz-provider.yaml
 ----
 
 GCP GKE::
