@@ -1,6 +1,6 @@
 = GitOps Best Practices for Turtles and CAPI
 
-This section provides best practices for implementing GitOps with Turtles and Cluster API (CAPI), focusing on using https://fleet.rancher.io/[Fleet] in combination with *Cluster API Addon Provider Fleet*(`CAAPF`) for automated agent provisioning and integration into `CAPI` ecosystem.
+This section provides best practices for implementing GitOps with Turtles and Cluster API (CAPI), focusing on using https://fleet.rancher.io/[Fleet] in combination with *Cluster API Addon Provider Fleet*(`CAAPF`) for automated agent provisioning and integration into the `CAPI` ecosystem.
 
 These tips are transferable and can be applied even when using a different GitOps solution.
 
@@ -9,7 +9,7 @@ These tips are transferable and can be applied even when using a different GitOp
 - **Separate CAPI Clusters and ClusterClass Configurations:**
   Keep CAPI cluster configurations (`clusters/`) distinct from CAPI `ClusterClass` definitions (`templates/`). This separation allows multiple clusters to be provisioned from shared templates while reducing the risk of unintended infrastructure changes.
 - **Isolate Addon Configurations:**
-  Store application manifests in `applications/`, ensuring they are independent of `Clusters` and `ClusterClasses`. This enables selective or grouped provisioning based on user demand or matching selectors, preventing interference with cluster infrastructure. Please be aware that helm chart dependencies need to be https://fleet.rancher.io/gitrepo-content#fleetyaml[refreshed] prior to addon provisioning.
+  Store application manifests in `applications/`, ensuring they are independent of `Clusters` and `ClusterClasses`. This enables selective or grouped provisioning based on user demand or matching selectors, preventing interference with cluster infrastructure. Please be aware that Helm chart dependencies need to be https://fleet.rancher.io/gitrepo-content#fleetyaml[refreshed] prior to addon provisioning.
 - **Utilize Nested GitRepo Resources:**
   Leverage https://fleet.rancher.io/gitrepo-content#nested-gitrepo-crs[nested] `GitRepo` resources in Fleet to structure repository content efficiently. This approach allows for modular provisioning, combining `ClusterClass` definitions, required addons/applications, and cluster configurations while maintaining separation of concerns.
 - **Use GitOps Integration Tools When Available**
@@ -17,7 +17,7 @@ These tips are transferable and can be applied even when using a different GitOp
 - **Apply Kustomize Overlays for Environment-Specific Customization:**
   Use `overlays/` to store Kustomize overlays for different environments. This ensures that configuration changes, such as scaling adjustments, networking modifications, or component upgrades, can be applied dynamically without altering base manifests.
 - **Utilize Compare Patches:**
-  Fleet allows to perform selective ignoring of resource differences, if bundle contains proper rules for https://fleet.rancher.io/troubleshooting#fleet-deployment-stuck-in-modified-state[`diff` detection]. This would prevent bundles from being stuck in mofied state.
+  Fleet allows performing selective ignoring of resource differences if the bundle contains proper rules for https://fleet.rancher.io/troubleshooting#fleet-deployment-stuck-in-modified-state[`diff` detection]. This would prevent bundles from being stuck in a modified state.
 
 == Folder Separation Strategy
 
@@ -35,7 +35,7 @@ repo-root/
 │   │   ├── staging/       # Staging clusters
 │   │   ├── dev/           # Development clusters
 │   ├── addons/            # Application-specific manifests focused on cluster bootstrapping, like CNI, CCM, CPI configurations.
-│   │   ├── cni/           # Group applications based on purpose. Provide fleet.yaml per each sub-directtory to maintain bundle separation.
+│   │   ├── cni/           # Group applications based on purpose. Provide fleet.yaml per each sub-directory to maintain bundle separation.
 │   │   ├── ccm/
 │   ├── templates/         # CAPI ClusterClass templates for cluster provisioning
 │   ├── fleet.yaml         # Fleet bundle configuration
@@ -45,7 +45,7 @@ repo-root/
 │   ├── dev/.              # Kustomize overlays for development environments
 ----
 
-== Providers configuration
+== Providers Configuration
 
 CAPI providers define the infrastructure components necessary for cluster provisioning. A simple setup may look like:
 
@@ -69,7 +69,7 @@ spec:
   type: core
 ```
 
-== Templates configuration
+== Templates Configuration
 
 Specify `dependsOn` in `fleet.yaml` for specific `CAPIProvider` bundles or external `GitRepo` components. This ensures templates roll out in the correct order and prevents issues where component controllers are missing or not ready to accept `ClusterClass` definitions.
 
@@ -80,9 +80,9 @@ dependsOn:
   - name: infra-aws # Wait for AWS provider installation
 ```
 
-== Clusters configuration
+== Clusters Configuration
 
-Use labels to dynamically match clusters with required addons, allowing to deploy only nessesary workloads.
+Use labels to dynamically match clusters with required addons, allowing deployment of only necessary workloads.
 
 Example label usage:
 
@@ -99,7 +99,7 @@ metadata:
 
 [WARNING]
 ====
-It is recommended to separate cluster definitions from the templates, as such cluster bundle removal would allow CAPI controller to process deletion in the correct order. Removing `Clusters` and `ClusterClasses` simultaneously may yield unexpected outcomes.
+It is recommended to separate cluster definitions from the templates, as such cluster bundle removal would allow the CAPI controller to process deletion in the correct order. Removing `Clusters` and `ClusterClasses` simultaneously may yield unexpected outcomes.
 ====
 
 == Addon Configuration

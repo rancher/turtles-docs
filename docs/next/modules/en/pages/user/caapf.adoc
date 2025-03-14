@@ -2,7 +2,7 @@
 
 == Overview
 
-Cluster API Add-on Provider for `Fleet` (CAAPF) is a Cluster API (CAPI) provider that provides integration with https://fleet.rancher.io/[`Fleet`] to enable the easy deployment of applications to a CAPI provisioned cluster.
+Cluster API Add-on Provider for `Fleet` (CAAPF) is a Cluster API (CAPI) provider that provides integration with https://fleet.rancher.io/[`Fleet`] to enable the easy deployment of applications to a CAPI-provisioned cluster.
 
 [TIP]
 ====
@@ -15,7 +15,7 @@ For more information about the provider, please refer to https://rancher-sandbox
 * The provider will automatically create a Fleet `ClusterGroup` for every CAPI `ClusterClass` in the `ClusterClass` namespace. This enables you to deploy the same applications to all clusters created from the same `ClusterClass`.
 * The provider will automatically create a Fleet `ClusterGroup` for every referenced CAPI `ClusterClass` by `Cluster` located in a different namespace from `ClusterClass`. This enables you to deploy the same applications to all clusters referencing the same `ClusterClass` in a particular namespace.
 
-This allows a user to specify either a https://fleet.rancher.io/ref-bundle[`Bundle`] resource with raw application workloads, or https://fleet.rancher.io/ref-gitrepo[`GitRepo`] to install applications from git. Each of the resources can provide https://fleet.rancher.io/gitrepo-targets#defining-targets[`targets`] with any combination of:
+This allows a user to specify either a https://fleet.rancher.io/ref-bundle[`Bundle`] resource with raw application workloads or https://fleet.rancher.io/ref-gitrepo[`GitRepo`] to install applications from git. Each of the resources can provide https://fleet.rancher.io/gitrepo-targets#defining-targets[`targets`] with any combination of:
 
 [source,yaml]
 ----
@@ -24,7 +24,7 @@ This allows a user to specify either a https://fleet.rancher.io/ref-bundle[`Bund
   - clusterName: <a specific CAPI cluster name>
 ----
 
-Additionally, `CAAPF` automatically propagates `CAPI` cluster labels to the `Fleet` cluster resource, so user can specify a target matching common cluster label with:
+Additionally, `CAAPF` automatically propagates `CAPI` cluster labels to the `Fleet` cluster resource, so users can specify a target matching a common cluster label with:
 
 [source,yaml]
 ----
@@ -37,13 +37,13 @@ Additionally, `CAAPF` automatically propagates `CAPI` cluster labels to the `Fle
 
 The *Cluster API Addon Provider Fleet* automates application https://fleet.rancher.io/ref-fleet-yaml#templating[templating] for imported CAPI clusters based on matching cluster state. This feature ensures that the state of a CAPI cluster and resources is always up-to-date in the `spec.templateValues.ClusterValues` field of the Fleet cluster resource. This allows users to:
 
-- Reference specific parts of CAPI cluster directly or via Helm substitution patterns referencing `.ClusterValues.Cluster` data.
-- Substitute based on the state of the control plane resource via `.ClusterValues.ControlPlane` field.
-- Substitute based on the state of the infrastructure cluster resource via `.ClusterValues.InfrastructureCluster` field.
+- Reference specific parts of the CAPI cluster directly or via Helm substitution patterns referencing `.ClusterValues.Cluster` data.
+- Substitute based on the state of the control plane resource via the `.ClusterValues.ControlPlane` field.
+- Substitute based on the state of the infrastructure cluster resource via the `.ClusterValues.InfrastructureCluster` field.
 - Maintain a consistent application state across different clusters.
 - Use the same template for multiple matching clusters to simplify deployment and management.
 
-For more information on the feature please refer to https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/04_reference/02_templating-strategy.html[templating documentation] in the book.
+For more information on the feature, please refer to https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/04_reference/02_templating-strategy.html[templating documentation] in the book.
 
 == Example - deploying kindnet CNI
 
@@ -53,4 +53,4 @@ For more information on the feature please refer to https://rancher-sandbox.gith
 
 *Demo*: image:https://asciinema.org/a/706570.svg[asciicast,link=https://asciinema.org/a/706570]
 
-For a tutorial and prerequisites please refer to https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/03_tutorials/04_installing_calico_via_gitrepo.html[gitrepo tutorial] section in the book.
+For a tutorial and prerequisites, please refer to https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/03_tutorials/04_installing_calico_via_gitrepo.html[gitrepo tutorial] section in the book.
