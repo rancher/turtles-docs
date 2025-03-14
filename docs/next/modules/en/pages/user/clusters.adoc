@@ -312,7 +312,7 @@ export AWS_SSH_KEY_NAME="aws-ssh-key"
 export AWS_REGION="aws-region" 
 export AWS_AMI_ID="ami-id" 
 
-curl -s https://raw.githubusercontent.com/rancher/cluster-api-provider-rke2/refs/heads/main/examples/aws/cluster-template.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/cluster-api-provider-rke2/refs/heads/main/examples/templates/aws/cluster-template.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
