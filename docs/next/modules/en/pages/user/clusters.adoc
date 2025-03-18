@@ -533,7 +533,7 @@ To generate the YAML for the cluster, do the following:
 +
 [source,bash]
 ----
-export CLUSTERCLASS_NAME=clusterclass1
+export CLUSTER_CLASS_NAME=clusterclass1
 export CLUSTER_NAME=cluster1
 export NAMESPACE=capi-clusters
 export CONTROL_PLANE_MACHINE_COUNT=1
