@@ -42,7 +42,7 @@ This is a list of the officially certified CAPI Providers by Turtles. These prov
 | Infrastructure
 | https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/blob/main/docs/getting_started.md[CAPV docs]
 
-| *Azure* (Only AKS managed clusters)
+| *Azure*
 | CAPZ
 | Infrastructure
 | https://capz.sigs.k8s.io/[CAPZ book]
