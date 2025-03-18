@@ -25,6 +25,8 @@
 * Developer Guide
 ** xref:developer/development.adoc[Development Environment]
 ** xref:developer/guidelines.adoc[Development Guideline]
+* Troubleshooting Guide
+** xref:troubleshooting/troubleshooting.adoc[Troubleshooting]
 * Security
 ** xref:security/slsa.adoc[SLSA]
 * xref:changelogs/index.adoc[Release Notes]
