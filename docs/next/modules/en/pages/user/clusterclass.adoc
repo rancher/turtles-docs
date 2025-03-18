@@ -67,7 +67,6 @@ metadata:
   labels:
     clusterctl.cluster.x-k8s.io/move-hierarchy: "true"
   name: cluster-identity
-  namespace: default
 spec:
   allowedNamespaces: {}
   clientID: <AZURE_APP_ID>
