@@ -78,60 +78,6 @@ spec:
   type: controlPlane
 ----
 
-Azure AKS::
-+
-* Rancher Manager cluster with {product_name} installed
-* Cluster API Providers: you can find a guide on how to install a provider using the `CAPIProvider` resource xref:../operator/capiprovider.adoc[here]
-** https://github.com/kubernetes-sigs/cluster-api-provider-aws/[Infrastructure provider for Azure], this is an example of Azure provider installation,
-follow the provider documentation if some options need to be customized:
-+
-[source,bash]
-----
-export AZURE_CLIENT_SECRET="xxx"
-export NAMESPACE=capi-clusters
-----
-+
-Create *capz-provider-template.yaml* file with content below:
-+
-[source,yaml]
-----
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: capz-system
----
-apiVersion: turtles-capi.cattle.io/v1alpha1
-kind: CAPIProvider
-metadata:
-  name: azure
-  namespace: capz-system
-spec:
-  type: infrastructure
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: ${NAMESPACE}
----
-apiVersion: v1
-stringData:
-  clientSecret: "${AZURE_CLIENT_SECRET}"
-kind: Secret
-metadata:
-  name: cluster-identity-secret
-  namespace: ${NAMESPACE}
-type: Opaque
-----
-+
-Generate *capz-provider.yaml* with variables and apply manifest to Kubernetes:
-+
-[source,bash]
-----
-cat capz-provider-template.yaml | envsubst > capz-provider.yaml
-kubectl apply -f capz-provider.yaml
-----
-
 GCP GKE::
 +
 * Rancher Manager cluster with {product_name} installed
@@ -529,42 +475,6 @@ export KUBERNETES_VERSION=v1.30.0
 [source,bash]
 ----
 curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/vsphere-kubeadm.yaml | envsubst > cluster1.yaml
-----
-+
-. View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
-+
-> The Cluster API quickstart guide contains more detail. Read the steps related to this section https://cluster-api.sigs.k8s.io/user/quick-start.html#required-configuration-for-common-providers[here].
-+
-. Create the cluster using kubectl
-+
-[source,bash]
-----
-kubectl create namespace ${NAMESPACE}
-kubectl apply -f cluster1.yaml
-----
-
-Azure AKS::
-+
-To generate the YAML for the cluster, do the following:
-+
-[source,bash]
-----
-export CLUSTER_CLASS_NAME=clusterclass1
-export CLUSTER_NAME=cluster1
-export NAMESPACE=capi-clusters
-export CONTROL_PLANE_MACHINE_COUNT=1
-export WORKER_MACHINE_COUNT=1
-export KUBERNETES_VERSION=v1.30.4
-export AZURE_SUBSCRIPTION_ID="xxx"
-export AZURE_CLIENT_ID="xxx"
-export AZURE_TENANT_ID="xxx"
-----
-+
-. Open a terminal and run the following:
-+
-[source,bash]
-----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/azure-aks-topology.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
