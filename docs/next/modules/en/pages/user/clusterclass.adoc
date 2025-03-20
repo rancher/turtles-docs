@@ -11,7 +11,7 @@ In this section we cover using https://cluster-api.sigs.k8s.io/tasks/experimenta
 [tabs]
 ======
 
-Azure RKE2::
+Azure::
 +
 To prepare the management Cluster, we are going to install the https://capz.sigs.k8s.io/[Cluster API Provider Azure], and create a https://capz.sigs.k8s.io/topics/identities#service-principal[ServicePrincipal] identity to provision a new Cluster on Azure. +
 Before we start, a ServicePrincipal needs to be created, with at least Contributor access to an Azure subscription. +
@@ -34,8 +34,6 @@ metadata:
 spec:
   type: infrastructure
   name: azure
-  variables:
-    CLUSTER_TOPOLOGY: "true"
 ----
 +
 * Identity setup
@@ -55,6 +53,7 @@ kubectl create secret generic "${AZURE_CLUSTER_IDENTITY_SECRET_NAME}" --from-lit
 ----
 +
 The AzureClusterIdentity can now be created to use the Service Principal identity. +
+Note that the AzureClusterIdentity is a namespaced resource and it needs to be created in the same namespace as the Cluster. +
 For more information on best practices when using Azure identities, please refer to the official https://capz.sigs.k8s.io/topics/identities-use-cases[documentation]. +
 +
 Note that some variables are left to the user to substitute. +
@@ -116,6 +115,7 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
   labels:
+    cluster-api.cattle.io/rancher-auto-import: "true"
     cloud-provider: azure
   name: azure-quickstart
 spec:
@@ -145,5 +145,53 @@ spec:
       - class: rke2-default-worker
         name: md-0
         replicas: 3
+----
+
+Azure AKS::
++
+* An Azure AKS ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/clusterclass-aks-example.yaml
+----
++
+* Create the Azure AKS Cluster from the example ClusterClass +
++ 
+Note that some variables are left to the user to substitute. +
++
+[source,yaml]
+----
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cluster-api.cattle.io/rancher-auto-import: "true"
+  name: azure-aks-quickstart
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: azure-aks-example
+    variables:
+    - name: subscriptionID
+      value: <AZURE_SUBSCRIPTION_ID>
+    - name: location
+      value: <AZURE_LOCATION>
+    - name: resourceGroup
+      value: <AZURE_RESOURCE_GROUP>
+    - name: azureClusterIdentityName
+      value: cluster-identity
+    version: v1.31.1
+    workers:
+      machinePools:
+      - class: default-system
+        name: system-1
+        replicas: 1
+      - class: default-worker
+        name: worker-1
+        replicas: 1
 ----
 ======
