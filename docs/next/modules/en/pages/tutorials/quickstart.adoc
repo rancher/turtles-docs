@@ -44,7 +44,7 @@ If you're customizing the installation parameters, please make sure that you are
 | Name | Version 
 
 | Cluster API Operator
-| `v0.18.0`
+| `v0.17.1`
 
 | Cluster API
 | `v1.9.6`

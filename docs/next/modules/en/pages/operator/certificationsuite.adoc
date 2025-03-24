@@ -64,9 +64,11 @@ In previous sections we introduced the main actions performed in the sample test
 * The main test suite, and the one used as an example, is based on a GitOps flow and uses https://github.com/rancher/fleet[Fleet] as a GitOps orchestrator tool. Based on the cluster templates provided (you can check the ones that come with the example integration https://github.com/rancher-sandbox/turtles-integration-suite-example/tree/main/suites/data/cluster-templates[here]), it will create the CAPI clusters defined in the YAML files. Once this/these cluster/s are available, they will be configured to be xref:../tutorials/first-cluster.adoc[imported into Rancher using Turtles] and it will verify that the downstream cluster/s is/are accessible via Rancher. It will also check that deletion can be performed on downstream clusters and that they are no longer available in Rancher.
 
 == Other options
+:kubernetes-version: v1.31.4
 
 You can take a look at the `config.yaml` https://github.com/rancher-sandbox/turtles-integration-suite-example/blob/main/config/config.yaml[file] in the `turtles-integration-suite-example` repository, which contains a list of environment variables used during test environment deployment and test execution. The following is a truncated version of the above mentioned YAML file:
 
+[source,yaml,subs=attributes+]
 ----
 ...
 variables:
@@ -76,10 +78,10 @@ variables:
   ARTIFACTS_FOLDER: "_artifacts"
   MANAGEMENT_CLUSTER_ENVIRONMENT: "kind" # supported options are eks, isolated-kind, kind
   RANCHER_VERSION: "v2.10.2"
-  KUBERNETES_VERSION: "v1.31.4"
-  KUBERNETES_MANAGEMENT_VERSION: "v1.31.4"
+  KUBERNETES_VERSION: "{kubernetes-version}"
+  KUBERNETES_MANAGEMENT_VERSION: "{kubernetes-version}"
   KUBERNETES_MANAGEMENT_AWS_REGION: "eu-west-2"
-  RKE2_VERSION: "v1.31.4+rke2r1"
+  RKE2_VERSION: "{kubernetes-version}+rke2r1"
   TURTLES_PATH: "turtles/rancher-turtles"
   TURTLES_REPO_NAME: "turtles"
   TURTLES_URL: https://rancher.github.io/turtles
