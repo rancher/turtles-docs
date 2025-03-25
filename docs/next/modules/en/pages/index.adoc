@@ -38,6 +38,10 @@ You may want to dive into more advanced maintenance tasks, like xref:./operator/
 
 If you are interested in contributing to {product_name}, this section will guide you through the process of setting up your xref:./developer/development.adoc[development environment] and understanding the xref:./developer/guidelines.adoc[guidelines] for contributing.
 
+=== Troubleshooting
+
+This section covers basic troubleshooting approaches for issues related to Rancher Turtles, Cluster API (CAPI), and CAPI providers the xref:./troubleshooting/troubleshooting.adoc[troubleshooting]
+
 === Security
 
 {product_name} meets https://slsa.dev/spec/v1.0/levels#build-l3[SLSA Level 3] requirements by running builds on a hardened platform with consistent build processes and provenance distribution. xref:./security/slsa.adoc[This section] contains more details on security-related topics.
