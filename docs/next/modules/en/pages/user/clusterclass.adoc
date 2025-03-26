@@ -81,6 +81,11 @@ spec:
 
 == Create a Cluster from a ClusterClass
 
+[WARNING]
+====
+Examples using `HelmApps` need at least Rancher `v2.11`, or otherwise Fleet `v0.12` or higher.
+====
+
 [tabs]
 ======
 
@@ -90,19 +95,20 @@ Azure RKE2::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/clusterclass-example.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/clusterclass-rke2-example.yaml
 ----
 +
-* Additionally, the Azure Cloud Provider will need to be installed on each downstream Cluster, for the nodes to be initialized correctly. +
+* Additionally, the https://capz.sigs.k8s.io/self-managed/cloud-provider-config[Azure Cloud Provider] will need to be installed on each downstream Cluster, for the nodes to be initialized correctly. +
+For this example we are also going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
 +
-We can do this automatically at Cluster creation using a https://cluster-api.sigs.k8s.io/tasks/experimental-features/cluster-resource-set[ClusterResourceSet]. +
-Beware of the `azure-cloud-controller-manager` image version number on the ClusterResourceSet manifest. This is hardcoded, but should match the version of Kubernetes that the Cluster is using. +
-+
-The ClusterResourceSet is configured to match any Cluster with the `cloud-provider: azure` label. +
+We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+This Add-on provider is installed by default with {product_name}. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/azure/clusterresourceset-cloud-provider.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/azure/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
 ----
 +
 * Create the Azure Cluster from the example ClusterClass +
@@ -117,17 +123,15 @@ metadata:
   labels:
     cluster-api.cattle.io/rancher-auto-import: "true"
     cloud-provider: azure
+    cni: calico
   name: azure-quickstart
 spec:
   clusterNetwork:
     pods:
       cidrBlocks:
-      - 10.96.0.0/12
-    services:
-      cidrBlocks:
-      - 10.244.0.0/16
+      - 192.168.0.0/16
   topology:
-    class: azure-example
+    class: azure-rke2-example
     controlPlane:
       replicas: 3
     variables:
