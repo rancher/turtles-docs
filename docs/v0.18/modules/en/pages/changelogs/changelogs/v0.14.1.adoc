@@ -1,0 +1,44 @@
+== "v0.14.1"
+=== "2024-12-03 09:34:26 +0000 UTC"
+
+// Disclaimer: this file is generated, do not edit it manually.
+
+
+__ (github-actions[bot]) released this 2024-12-03 09:34:26 +0000 UTC - v0.14.1__
+
+
+=== Description
+
+---
+
+++++
+
+
+<h2>What's Changed</h2>
+<h3>Other Changes</h3>
+<ul>
+<li>[release-0.14] Backport etcd image and RBAC by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexander-demicev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexander-demicev">@alexander-demicev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2713333215" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/900" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/900/hovercard" href="https://github.com/rancher/turtles/pull/900">#900</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/rancher/turtles/compare/v0.14.0...v0.14.1"><tt>v0.14.0...v0.14.1</tt></a></p>
+
+++++
+
+---
+
+
+
+=== Download
+
+[cols="3,1,1" options="header" frame="all" grid="rows"]
+|===
+| Name | Created At | Updated At
+
+| link:https://github.com/rancher/turtles/releases/download/v0.14.1/rancher-turtles-0.14.1.tgz[rancher-turtles-0.14.1.tgz] | 2024-12-03 09:34:27 +0000 UTC | 2024-12-03T09:34:27Z
+
+|===
+
+
+---
+
+__Information retrieved from link:https://github.com/rancher/turtles/releases/tag/v0.14.1[here]__
+
