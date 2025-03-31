@@ -1,0 +1,64 @@
+== "v0.5.0"
+=== "2024-02-15 11:32:39 +0000 UTC"
+
+// Disclaimer: this file is generated, do not edit it manually.
+
+
+__ (github-actions[bot]) released this 2024-02-15 11:32:39 +0000 UTC - v0.5.0__
+
+
+=== Description
+
+---
+
+++++
+
+<p>Rancher Turtles is a extension to Rancher that brings full Cluster API integration to Rancher.</p>
+
+<h2>What's Changed</h2>
+<h3>🚀 Enhancements</h3>
+<ul>
+<li>✨Implement initial rancher credentials mapping by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2077173350" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/342" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/342/hovercard" href="https://github.com/rancher/turtles/pull/342">#342</a></li>
+</ul>
+<h3>🐛 Bugs</h3>
+<ul>
+<li>fix: installation on eks by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/richardcase/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/richardcase">@richardcase</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2086354424" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/349" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/349/hovercard" href="https://github.com/rancher/turtles/pull/349">#349</a></li>
+<li>🐛 Separate k8s versions for management and child clusters, add a separate group for v2prov testing. by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2090371090" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/354" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/354/hovercard" href="https://github.com/rancher/turtles/pull/354">#354</a></li>
+<li>🐛 Slow down nightly schedule 2 times, to prevent hitting data limit by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2099934103" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/358" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/358/hovercard" href="https://github.com/rancher/turtles/pull/358">#358</a></li>
+</ul>
+<h3>📖 Docs</h3>
+<ul>
+<li>📖 Add release docs to Rancher Turtles repo by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/furkatgofurov7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/furkatgofurov7">@furkatgofurov7</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2100194046" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/359" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/359/hovercard" href="https://github.com/rancher/turtles/pull/359">#359</a></li>
+<li>docs: managementv3 cluster support strategy by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2099858306" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/357" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/357/hovercard" href="https://github.com/rancher/turtles/pull/357">#357</a></li>
+</ul>
+<h3>Other Changes</h3>
+<ul>
+<li>Bump github.com/go-git/go-git/v5 to v5.11.0 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/furkatgofurov7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/furkatgofurov7">@furkatgofurov7</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2074746382" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/340" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/340/hovercard" href="https://github.com/rancher/turtles/pull/340">#340</a></li>
+<li>🌱 Implement full cluster artifact gathering for both clusters after each test run by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2067494325" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/335" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/335/hovercard" href="https://github.com/rancher/turtles/pull/335">#335</a></li>
+<li>chore(deps): Bump the test-dependencies group in /test with 3 updates by <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/dependabot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dependabot">@dependabot</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2093097177" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/355" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/355/hovercard" href="https://github.com/rancher/turtles/pull/355">#355</a></li>
+<li>chore(deps): Bump actions/upload-artifact from 3 to 4 by <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/dependabot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dependabot">@dependabot</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2045781774" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/328" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/328/hovercard" href="https://github.com/rancher/turtles/pull/328">#328</a></li>
+<li>chore: e2e environment with fixed capd version by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2118192955" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/372" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/372/hovercard" href="https://github.com/rancher/turtles/pull/372">#372</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/rancher/turtles/compare/v0.4.0...v0.5.0"><tt>v0.4.0...v0.5.0</tt></a></p>
+
+++++
+
+---
+
+
+
+=== Download
+
+[cols="3,1,1" options="header" frame="all" grid="rows"]
+|===
+| Name | Created At | Updated At
+
+| link:https://github.com/rancher/turtles/releases/download/v0.5.0/rancher-turtles-0.5.0.tgz[rancher-turtles-0.5.0.tgz] | 2024-02-15 11:32:40 +0000 UTC | 2024-02-15T11:32:40Z
+
+|===
+
+
+---
+
+__Information retrieved from link:https://github.com/rancher/turtles/releases/tag/v0.5.0[here]__
+
