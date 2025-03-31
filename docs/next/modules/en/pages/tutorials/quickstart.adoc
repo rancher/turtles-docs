@@ -15,11 +15,11 @@ Before you can install {product_name}, you need to have the following components
 | Name | Version | Details
 
 | Kubernetes cluster
-| `v1.31.0`
+| `v1.31.4`
 |
 
 | Helm
-| `v3.17.0`
+| `v3.17.1`
 | Follow the official https://helm.sh/docs/intro/install[installation docs]
 
 | Rancher
@@ -33,7 +33,7 @@ Before you can install {product_name}, you need to have the following components
 
 == Components Versions
 
-This table lists the version of the components installed with the latest version `v0.17.0` of {product_name}:
+This table lists the version of the components installed with the latest version `v0.18.0` of {product_name}:
 
 [TIP]
 ====
@@ -44,13 +44,13 @@ If you're customizing the installation parameters, please make sure that you are
 | Name | Version 
 
 | Cluster API Operator
-| `v0.17.0`
+| `v0.17.1`
 
 | Cluster API
-| `v1.9.5`
+| `v1.9.6`
 
 | Cluster API Provider RKE2
-| `v0.12.0`
+| `v0.13.0`
 |===
 
 == Install {product_name} using Rancher Dashboard
