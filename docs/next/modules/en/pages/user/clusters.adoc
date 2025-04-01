@@ -348,7 +348,7 @@ export RKE2_CNI=calico
 export KUBERNETES_VERSION={kubernetes-version} # needed for the CAPI Docker provider to use proper image
 
 curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/docker-rke2.yaml -o docker-rke2.yaml
-envsubst '${NAMESPACE} ${CLUSTER_NAME} ${WORKER_MACHINE_COUNT} ${RKE2_VERSION} ${RKE2_CNI} ${CONTROL_PLANE_MACHINE_COUNT} ${KUBERNETES_VERSION}' < template-docker-rke2.yaml > cluster1.yaml
+envsubst '${NAMESPACE} $\{CLUSTER_NAME} $\{WORKER_MACHINE_COUNT} $\{RKE2_VERSION} $\{RKE2_CNI} $\{CONTROL_PLANE_MACHINE_COUNT} $\{KUBERNETES_VERSION}' < template-docker-rke2.yaml > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** to ensure there are no tokens. You can make any changes you want as well.
@@ -529,7 +529,7 @@ GCP GKE::
 +
 To generate the YAML for the cluster, do the following:
 +
-[source,bash]
+[source,bash,subs=attributes+]
 ----
 export CLUSTER_NAME={cluster-name}
 export NAMESPACE={namespace}

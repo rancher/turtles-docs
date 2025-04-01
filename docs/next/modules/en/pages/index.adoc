@@ -40,7 +40,7 @@ If you are interested in contributing to {product_name}, this section will guide
 
 === Troubleshooting
 
-This section covers basic troubleshooting approaches for issues related to Rancher Turtles, Cluster API (CAPI), and CAPI providers the xref:./troubleshooting/troubleshooting.adoc[troubleshooting]
+This section covers basic xref:./troubleshooting/troubleshooting.adoc[troubleshooting approaches] for issues related to Rancher Turtles, Cluster API (CAPI), and CAPI providers.
 
 === Security
 
