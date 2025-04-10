@@ -114,6 +114,9 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 * Create the Azure Cluster from the example ClusterClass +
 + 
 Note that some variables are left to the user to substitute. +
+Also beware that the `internal-first` `registrationMethod` variable is used as a workaround for correct provisioning. +
+This immutable variable however will lead to issues when scaling or rolling out control plane nodes. +
+A https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/5525[patch] will support this case in a future release of CAPZ, but the Cluster will need to be reprovisioned to change the `registrationMethod` +
 +
 [source,yaml]
 ----
@@ -143,6 +146,8 @@ spec:
       value: <AZURE_RESOURCE_GROUP>
     - name: azureClusterIdentityName
       value: cluster-identity
+    - name: registrationMethod
+      value: internal-first
     version: v1.31.1+rke2r1
     workers:
       machineDeployments:
