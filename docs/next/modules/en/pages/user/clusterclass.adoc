@@ -290,7 +290,7 @@ spec:
     class: docker-kubeadm-example
     controlPlane:
       replicas: 3
-    version: v1.31.7
+    version: v1.31.6
     workers:
       machineDeployments:
         - class: default-worker
@@ -402,7 +402,7 @@ spec:
     - name: rke2CNI
       value: ${RKE2_CNI}
     - name: dockerImage
-      value: kindest/node:v.1.31.6
+      value: kindest/node:v1.31.6
     version: v1.31.6+rke2r1
     workers:
       machineDeployments:
