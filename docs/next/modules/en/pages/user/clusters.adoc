@@ -10,6 +10,7 @@ Keep in mind that most Cluster API Providers are upstream projects maintained by
 
 [tabs]
 ======
+
 AWS EKS/RKE2/Kubeadm::
 +
 * Rancher Manager cluster with {product_name} installed
@@ -122,72 +123,7 @@ Docker RKE2/Kubeadm::
 
 vSphere RKE2/Kubeadm::
 +
-* Rancher Manager cluster with {product_name} installed 
-* Cluster API Providers: you can find a guide on how to install a provider using the `CAPIProvider` resource xref:../operator/capiprovider.adoc[here]
-** https://github.com/kubernetes-sigs/cluster-api-provider-aws/[Infrastructure provider for vSphere], this is an example of vSphere provider installation,
-follow the provider documentation if some options need to be customized:
-+
-[source, yaml]
-----
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: capv-system
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: vsphere
-  namespace: capv-system
-type: Opaque
-stringData:
-  VSPHERE_USERNAME: xxx
-  VSPHERE_PASSWORD: xxx
----
-apiVersion: turtles-capi.cattle.io/v1alpha1
-kind: CAPIProvider
-metadata:
-  name: vsphere
-  namespace: capv-system
-spec:
-  type: infrastructure
-----
-+
-** https://github.com/rancher/cluster-api-provider-rke2[Bootstrap/Control Plane provider for RKE2](installed by default) or https://github.com/kubernetes-sigs/cluster-api[Bootstrap/Control Plane provider for Kubeadm], example
-of Kubeadm installation:
-+
-[source,yaml]
-----
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: capi-kubeadm-bootstrap-system
----
-apiVersion: turtles-capi.cattle.io/v1alpha1
-kind: CAPIProvider
-metadata:
-  name: kubeadm-bootstrap
-  namespace: capi-kubeadm-bootstrap-system
-spec:
-  name: kubeadm
-  type: bootstrap
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: capi-kubeadm-control-plane-system
----
-apiVersion: turtles-capi.cattle.io/v1alpha1
-kind: CAPIProvider
-metadata:
-  name: kubeadm-control-plane
-  namespace: capi-kubeadm-control-plane-system
-spec:
-  name: kubeadm
-  type: controlPlane
-----
+* Following installation guide was moved here xref:../user/clusterclass.adoc[here]
 
 ======
 
@@ -287,101 +223,7 @@ Docker Kubeadm::
 
 vSphere RKE2::
 +
-Before creating a vSphere+RKE2 workload cluster, it is required to have a VM template with the necessary RKE2 binaries and dependencies. The template should already include RKE2 binaries if operating in an air-gapped environment, following the https://docs.rke2.io/install/airgap#tarball-method[tarball method]. You can find additional configuration details in the https://github.com/rancher/cluster-api-provider-rke2/tree/main/samples/vmware[CAPRKE2 repository].
-+
-To generate the YAML for the cluster, do the following:
-+
-[source,bash,subs=attributes+]
-----
-export CLUSTER_NAME={cluster-name}
-export NAMESPACE={namespace}
-export CONTROL_PLANE_MACHINE_COUNT={control-plane-machine-count}
-export WORKER_MACHINE_COUNT={worker-machine-count}
-export VSPHERE_USERNAME: "<username>"
-export VSPHERE_PASSWORD: "<password>"
-export VSPHERE_SERVER: "10.0.0.1"
-export VSPHERE_DATACENTER: "SDDC-Datacenter"
-export VSPHERE_DATASTORE: "DefaultDatastore"
-export VSPHERE_NETWORK: "VM Network"
-export VSPHERE_RESOURCE_POOL: "*/Resources"
-export VSPHERE_FOLDER: "vm"
-export VSPHERE_TEMPLATE: "ubuntu-1804-kube-v1.17.3"
-export CONTROL_PLANE_ENDPOINT_IP: "192.168.9.230"
-export VSPHERE_TLS_THUMBPRINT: "..."
-export EXP_CLUSTER_RESOURCE_SET: "true"
-export VSPHERE_SSH_AUTHORIZED_KEY: "ssh-rsa AAAAB3N..."
-export CPI_IMAGE_K8S_VERSION: "v1.31.0"
-export KUBERNETES_VERSION={kubernetes-version}
-----
-+
-. Open a terminal and run the following:
-+
-[source,bash]
-----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/vsphere-rke2.yaml | envsubst > cluster1.yaml
-----
-+
-. View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
-+
-> The Cluster API quickstart guide contains more detail. Read the steps related to this section https://cluster-api.sigs.k8s.io/user/quick-start.html#required-configuration-for-common-providers[here].
-+
-. Create the cluster using kubectl
-+
-[source,bash]
-----
-kubectl create namespace ${NAMESPACE}
-kubectl apply -f cluster1.yaml
-----
-
-vSphere Kubeadm::
-+
-Before creating a vSphere+kubeadm workload cluster, it is required to have a VM template with the necessary kubeadm binaries and dependencies. The template should already include kubeadm, kubelet, and kubectl if operating in an air-gapped environment, following the https://github.com/kubernetes-sigs/image-builder[image-builder project]. You can find additional configuration details in the https://github.com/kubernetes-sigs/cluster-api-provider-vsphere[CAPV repository].
-+
-A list of published machine images (OVAs) is available https://github.com/kubernetes-sigs/image-builder#kubernetes-versions-with-published-ovas[here].
-+
-To generate the YAML for the cluster, do the following:
-+
-[source,bash,subs=attributes+]
-----
-export CLUSTER_NAME={cluster-name}
-export NAMESPACE={namespace}
-export CONTROL_PLANE_MACHINE_COUNT={control-plane-machine-count}
-export WORKER_MACHINE_COUNT={worker-machine-count}
-export VSPHERE_USERNAME: "<username>"
-export VSPHERE_PASSWORD: "<password>"
-export VSPHERE_SERVER: "10.0.0.1"
-export VSPHERE_DATACENTER: "SDDC-Datacenter"
-export VSPHERE_DATASTORE: "DefaultDatastore"
-export VSPHERE_NETWORK: "VM Network"
-export VSPHERE_RESOURCE_POOL: "*/Resources"
-export VSPHERE_FOLDER: "vm"
-export VSPHERE_TEMPLATE: "ubuntu-1804-kube-vxxx"
-export CONTROL_PLANE_ENDPOINT_IP: "192.168.9.230"
-export VSPHERE_TLS_THUMBPRINT: "..."
-export EXP_CLUSTER_RESOURCE_SET: "true"
-export VSPHERE_SSH_AUTHORIZED_KEY: "ssh-rsa AAAAB3N..."
-export CPI_IMAGE_K8S_VERSION: "v1.31.0"
-export KUBERNETES_VERSION={kubernetes-version}
-----
-+
-. Open a terminal and run the following:
-+
-[source,bash]
-----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/vsphere-kubeadm.yaml | envsubst > cluster1.yaml
-----
-+
-. View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
-+
-> The Cluster API quickstart guide contains more detail. Read the steps related to this section https://cluster-api.sigs.k8s.io/user/quick-start.html#required-configuration-for-common-providers[here].
-+
-. Create the cluster using kubectl
-+
-[source,bash]
-----
-kubectl create namespace ${NAMESPACE}
-kubectl apply -f cluster1.yaml
-----
+* Following installation guide was moved here xref:../user/clusterclass.adoc[here]
 
 AWS EKS::
 +
