@@ -264,7 +264,7 @@ Docker Kubeadm::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/custerclass-docker-kubeadm.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/clusterclass-docker-kubeadm.yaml
 ----
 +
 * Create the Docker Kubeadm Cluster from the example ClusterClass +
@@ -304,7 +304,7 @@ Docker RKE2::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/custerclass-rke2-kubeadm.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/clusterclass-docker-rke2.yaml
 ----
 +
 * Create the LoadBalancer ConfigMap for Docker RKEv2 Cluster +
