@@ -267,6 +267,17 @@ Docker Kubeadm::
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/clusterclass-docker-kubeadm.yaml
 ----
 +
++ For this example we are also going to install Calico as the default CNI.+
++
+We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+This Add-on provider is installed by default with {product_name}. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+----
++
 * Create the Docker Kubeadm Cluster from the example ClusterClass +
 + 
 Note that some variables are left to the user to substitute. +
@@ -277,6 +288,8 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
   name: docker-kubeadm-quickstart
+  labels:
+    cni: calico
 spec:
   clusterNetwork:
     pods:
@@ -305,6 +318,17 @@ Docker RKE2::
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/clusterclass-docker-rke2.yaml
+----
++
++ For this example we are also going to install Calico as the default CNI.+
++
+We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+This Add-on provider is installed by default with {product_name}. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
 ----
 +
 * Create the LoadBalancer ConfigMap for Docker RKEv2 Cluster +
@@ -383,6 +407,8 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster 
 metadata:
   name: docker-rke2-example
+  labels:
+    cni: calico
   annotations:
     cluster-api.cattle.io/upstream-system-agent: "true"
 spec:
