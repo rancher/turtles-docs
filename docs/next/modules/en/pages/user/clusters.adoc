@@ -329,7 +329,7 @@ kubectl create -f cluster1.yaml
 +
 . Deploy CNI
 +
-> Once cluster is created a CNI is required for Nodes to become ready. You can refere to Cluster API documentation for example CNI installation https://cluster-api.sigs.k8s.io/user/quick-start#deploy-a-cni-solution[here].
+> Once cluster is created a CNI is required for Nodes to become ready. You can refer to Cluster API documentation for example CNI installation https://cluster-api.sigs.k8s.io/user/quick-start#deploy-a-cni-solution[here].
 
 Docker RKE2::
 +
@@ -394,7 +394,7 @@ kubectl create -f cluster1.yaml
 +
 . Deploy CNI
 +
-> Once cluster is created a CNI is required for Nodes to become ready. You can refere to Cluster API documentation for example CNI installation https://cluster-api.sigs.k8s.io/user/quick-start#deploy-a-cni-solution[here].
+> Once cluster is created a CNI is required for Nodes to become ready. You can refer to Cluster API documentation for example CNI installation https://cluster-api.sigs.k8s.io/user/quick-start#deploy-a-cni-solution[here].
 
 vSphere RKE2::
 +
