@@ -118,61 +118,7 @@ spec:
 
 Docker RKE2/Kubeadm::
 +
-* Rancher Manager cluster with {product_name} installed 
-* Cluster API Providers: you can find a guide on how to install a provider using the `CAPIProvider` resource xref:../operator/capiprovider.adoc[here]
-** https://github.com/kubernetes-sigs/cluster-api[Infrastructure provider for Docker], example of Docker provider installation:
-+
-[source,yaml]
-----
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: capd-system
----
-apiVersion: turtles-capi.cattle.io/v1alpha1
-kind: CAPIProvider
-metadata:
-  name: docker
-  namespace: capd-system
-spec:
-  type: infrastructure
-----
-+
-** https://github.com/rancher/cluster-api-provider-rke2[Bootstrap/Control Plane provider for RKE2](installed by default) or https://github.com/kubernetes-sigs/cluster-api[Bootstrap/Control Plane provider for Kubeadm], example
-of Kubeadm installation:
-+
-[source,yaml]
-----
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: capi-kubeadm-bootstrap-system
----
-apiVersion: turtles-capi.cattle.io/v1alpha1
-kind: CAPIProvider
-metadata:
-  name: kubeadm-bootstrap
-  namespace: capi-kubeadm-bootstrap-system
-spec:
-  name: kubeadm
-  type: bootstrap
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: capi-kubeadm-control-plane-system
----
-apiVersion: turtles-capi.cattle.io/v1alpha1
-kind: CAPIProvider
-metadata:
-  name: kubeadm-control-plane
-  namespace: capi-kubeadm-control-plane-system
-spec:
-  name: kubeadm
-  type: controlPlane
-----
+* Following installation guide was moved here xref:../user/clusterclass.adoc[here]
 
 vSphere RKE2/Kubeadm::
 +
@@ -333,68 +279,11 @@ kubectl create -f cluster1.yaml
 
 Docker RKE2::
 +
-To generate the YAML for the cluster, do the following:
-+
-. Open a terminal and run the following:
-+
-[source,bash,subs=attributes+]
-----
-export CLUSTER_NAME={cluster-name}
-export NAMESPACE={namespace}
-export CONTROL_PLANE_MACHINE_COUNT={control-plane-machine-count}
-export WORKER_MACHINE_COUNT={worker-machine-count}
-export RKE2_VERSION={kubernetes-version}+rke2r1
-export RKE2_CNI=calico
-export KUBERNETES_VERSION={kubernetes-version} # needed for the CAPI Docker provider to use proper image
-
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/docker-rke2.yaml -o docker-rke2.yaml
-envsubst '${NAMESPACE} $\{CLUSTER_NAME} $\{WORKER_MACHINE_COUNT} $\{RKE2_VERSION} $\{RKE2_CNI} $\{CONTROL_PLANE_MACHINE_COUNT} $\{KUBERNETES_VERSION}' < template-docker-rke2.yaml > cluster1.yaml
-----
-+
-. View **cluster1.yaml** to ensure there are no tokens. You can make any changes you want as well.
-+
-> The Cluster API quickstart guide contains more detail. Read the steps related to this section https://cluster-api.sigs.k8s.io/user/quick-start.html#required-configuration-for-common-providers[here]. 
-
-. Create the cluster using kubectl
-+
-[source,bash]
-----
-kubectl create namespace ${NAMESPACE}
-kubectl create -f cluster1.yaml 
-----
+* Following installation guide was moved here xref:../user/clusterclass.adoc[here]
 
 Docker Kubeadm::
 +
-To generate the YAML for the cluster, do the following:
-+
-. Open a terminal and run the following:
-+
-[source,bash,subs=attributes+]
-----
-export CLUSTER_NAME={cluster-name}
-export NAMESPACE={namespace}
-export CONTROL_PLANE_MACHINE_COUNT={control-plane-machine-count}
-export WORKER_MACHINE_COUNT={worker-machine-count}
-export KUBERNETES_VERSION={kubernetes-version}
-
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/docker-kubeadm.yaml | envsubst > cluster1.yaml
-----
-+
-. View **cluster1.yaml** to ensure there are no tokens. You can make any changes you want as well.
-+
-> The Cluster API quickstart guide contains more detail. Read the steps related to this section https://cluster-api.sigs.k8s.io/user/quick-start.html#required-configuration-for-common-providers[here]. 
-
-. Create the cluster using kubectl
-+
-[source,bash]
-----
-kubectl create namespace ${NAMESPACE}
-kubectl create -f cluster1.yaml 
-----
-+
-. Deploy CNI
-+
-> Once cluster is created a CNI is required for Nodes to become ready. You can refer to Cluster API documentation for example CNI installation https://cluster-api.sigs.k8s.io/user/quick-start#deploy-a-cni-solution[here].
+* Following installation guide was moved here xref:../user/clusterclass.adoc[here]
 
 vSphere RKE2::
 +
