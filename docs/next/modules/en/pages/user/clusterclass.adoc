@@ -80,7 +80,7 @@ Docker::
 +
 To prepare the management Cluster, we are going to install the Docker Cluster API Provider.
 +
-* Provider installation
+* Infrastructure Docker provider installation
 +
 [source,yaml]
 ----
@@ -98,7 +98,7 @@ spec:
   type: infrastructure
 ----
 +
-* Boostrap and control plane setup
+* https://github.com/rancher/cluster-api-provider-rke2[Bootstrap/Control Plane provider for RKE2](installed by default) or https://github.com/kubernetes-sigs/cluster-api[Bootstrap/Control Plane provider for Kubeadm], example of Kubeadm installation:
 +
 [source,yaml]
 ----
@@ -267,7 +267,7 @@ Docker Kubeadm::
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/clusterclass-docker-kubeadm.yaml
 ----
 +
-* For this example we are also going to install Calico as the default CNI. +
+* For this example we are also going to install Calico as the default CNI.
 +
 We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
@@ -320,7 +320,7 @@ Docker RKE2::
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/clusterclass-docker-rke2.yaml
 ----
 +
-* For this example we are also going to install Calico as the default CNI. +
+* For this example we are also going to install Calico as the default CNI.
 +
 We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
