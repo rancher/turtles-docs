@@ -509,7 +509,7 @@ vSphere RKE2::
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/vsphere/clusterclass-rke2-example.yaml
 ----
 +
-* Additionally, the https://github.com/kubernetes-sigs/cluster-api-provider-vsphere[vSphere Cloud Provider] will need to be installed on CAPI Cluster.+
+* Additionally, the https://github.com/kubernetes-sigs/cluster-api-provider-vsphere[vSphere Cloud Provider] will need to be installed on CAPI Cluster. +
 For this example we are also going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
 +
 We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
