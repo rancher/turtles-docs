@@ -333,8 +333,6 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 +
 * Create the LoadBalancer ConfigMap for Docker RKEv2 Cluster +
 +
-Note that some variables are left to the user to substitute. +
-+
 [source,yaml]
 ----
 apiVersion: v1
@@ -398,8 +396,6 @@ data:
 ----
 +
 * Create the Docker Kubeadm Cluster from the example ClusterClass +
-+ 
-Note that some variables are left to the user to substitute. +
 +
 [source,yaml]
 ----
@@ -426,7 +422,7 @@ spec:
       replicas: 3
     variables:
     - name: rke2CNI
-      value: ${RKE2_CNI}
+      value: none
     - name: dockerImage
       value: kindest/node:v1.31.6
     version: v1.31.6+rke2r1
