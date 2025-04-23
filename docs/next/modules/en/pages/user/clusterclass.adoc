@@ -198,6 +198,140 @@ spec:
   name: kubeadm
   type: controlPlane
 ----
++
+* Credentials setup
++
+A Secret containing the vSphere vCenter user and password need to be created first.
++
+[source,bash]
+----
+# Settings needed for vSphere vCenter
+export VCENTER_SECRET_NAME="vsphere-cluster-secret"
+export VCENTER_USERNAME="<vCenter_UserName>"
+export VCENTER_PASSWORD="<vCenter_Password>"
+
+# Create a secret to include the username and password for vSpehere vCenter
+kubectl create secret generic "${VCENTER_SECRET_NAME}" --from-literal=clientSecret="${VCENTER_USERNAME}" --namespace "${VCENTER_PASSWORD}"
+----
++
+* Cloud Provider Integration setup
++
+To setup Cloud Provider Integration create following object resources *vsphere-config-secret*, *cloud-provider-vsphere-credentials* and *cpi-configmap* +
++
+Note that some variables are left to the user to substitute. +
++
+[source,yaml]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vsphere-config-secret
+stringData:
+  data: |-
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: vsphere-config-secret
+      namespace: vmware-system-csi
+    stringData:
+      csi-vsphere.conf: |+
+        [Global]
+        thumbprint = "${VSPHERE_TLS_THUMBPRINT}"
+
+        [VirtualCenter "${VSPHERE_SERVER}"]
+        user = "${VSPHERE_USERNAME}"
+        password = "${VSPHERE_PASSWORD}"
+        datacenters = "${VSPHERE_DATACENTER}"
+
+        [Network]
+        public-network = "${VSPHERE_NETWORK}"
+
+    type: Opaque
+type: addons.cluster.x-k8s.io/resource-set
+----
++
+Note that some variables are left to the user to substitute. +
++
+[source,yaml]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloud-provider-vsphere-credentials
+  namespace: '${NAMESPACE}'
+stringData:
+  data: |-
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      labels:
+        component: cloud-controller-manager
+        vsphere-cpi-infra: secret
+      name: cloud-provider-vsphere-credentials
+      namespace: kube-system
+    stringData:
+      ${VSPHERE_SERVER}.password: "${VSPHERE_PASSWORD}"
+      ${VSPHERE_SERVER}.username: "${VSPHERE_USERNAME}"
+    type: Opaque
+type: addons.cluster.x-k8s.io/resource-set
+----
++
+Note that some variables are left to the user to substitute. +
++
+[source,yaml]
+----
+apiVersion: v1
+data:
+  data: |-
+    ---
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: cloud-config
+      labels:
+        app: "cpi"
+        vsphere-cpi-infra: cloud-config
+        component: cloud-controller-manager
+      namespace: kube-system
+    data:
+      vsphere.conf: |
+        global:
+          port: 443
+          thumbprint: "${VSPHERE_TLS_THUMBPRINT}"
+          secretName: cloud-provider-vsphere-credentials
+          secretNamespace: kube-system
+        vcenter:
+          "${VSPHERE_SERVER}":
+            server: "${VSPHERE_SERVER}"
+            datacenters:
+              - "${VSPHERE_DATACENTER}"
+kind: ConfigMap
+metadata:
+  name: cpi-configmap
+----
++
+As the last object resource create ClusterResourceSet.
++
+[source,yaml]
+----
+apiVersion: addons.cluster.x-k8s.io/v1beta1
+kind: ClusterResourceSet
+metadata:
+  labels:
+    cluster.x-k8s.io/cluster-name: '${CLUSTER_NAME}'
+  name: ${CLUSTER_NAME}-crs-0
+spec:
+  clusterSelector:
+    matchLabels:
+      cluster.x-k8s.io/cluster-name: '${CLUSTER_NAME}'
+  resources:
+  - kind: Secret
+    name: vsphere-config-secret
+  - kind: Secret
+    name: cloud-provider-vsphere-credentials
+  - kind: ConfigMap
+    name: cpi-configmap
+----
 ======
 
 == Create a Cluster from a ClusterClass
@@ -500,6 +634,164 @@ spec:
         replicas: 3
 ----
 
+vSphere Kubeadm::
++
+* A vSphere ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/vsphere/clusterclass-kubeadm-example.yaml
+----
++
+* Additionally, the https://github.com/kubernetes-sigs/cluster-api-provider-vsphere[vSphere Cloud Provider] will need to be installed on CAPI Cluster. +
+For this example we are also going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
++
+We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+This Add-on provider is installed by default with {product_name}. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/vsphere/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+----
++
+* Create the vSphere Cluster from the example ClusterClass +
++ 
+Note that some variables are left to the user to substitute. +
++
+[source,yaml]
+----
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cluster.x-k8s.io/cluster-name: vsphere-kubeadm-example
+    cni: calico
+    cloud-provider: vsphere
+    csi: vsphere
+  name: vsphere-kubeadm-example
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: 'vsphere-kubeadm-example'
+    controlPlane:
+      replicas: 3
+    variables:
+    - name: sshKey
+      value: '${VSPHERE_SSH_AUTHORIZED_KEY}'
+    - name: kubeVipPodManifest
+      value: |
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: kube-vip
+          namespace: kube-system
+        spec:
+          containers:
+          - args:
+            - manager
+            env:
+            - name: vip_arp
+              value: "true"
+            - name: port
+              value: "6443"
+            - name: vip_nodename
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: vip_interface
+              value: ${VIP_NETWORK_INTERFACE:=""}
+            - name: vip_cidr
+              value: "32"
+            - name: dns_mode
+              value: first
+            - name: cp_enable
+              value: "true"
+            - name: cp_namespace
+              value: kube-system
+            - name: svc_enable
+              value: "true"
+            - name: svc_leasename
+              value: plndr-svcs-lock
+            - name: vip_leaderelection
+              value: "true"
+            - name: vip_leasename
+              value: plndr-cp-lock
+            - name: vip_leaseduration
+              value: "5"
+            - name: vip_renewdeadline
+              value: "3"
+            - name: vip_retryperiod
+              value: "1"
+            - name: address
+              value: ${CONTROL_PLANE_ENDPOINT_IP}
+            - name: prometheus_server
+              value: :2112
+            image: ghcr.io/kube-vip/kube-vip:v0.8.10
+            imagePullPolicy: IfNotPresent
+            name: kube-vip
+            resources: {}
+            securityContext:
+              capabilities:
+                add:
+                - NET_ADMIN
+                - NET_RAW
+                drop:
+                - ALL
+            volumeMounts:
+            - mountPath: /etc/kubernetes/admin.conf
+              name: kubeconfig
+            - mountPath: /etc/hosts
+              name: etchosts
+          hostNetwork: true
+          volumes:
+          - hostPath:
+              path: /etc/kubernetes/super-admin.conf
+              type: File
+            name: kubeconfig
+          - hostPath:
+              path: /etc/kube-vip.hosts
+              type: File
+            name: etchosts
+    - name: controlPlaneIpAddr
+      value: ${CONTROL_PLANE_ENDPOINT_IP}
+    - name: controlPlanePort
+      value: 6443
+    - name: infraServer
+      value:
+        thumbprint: '${VSPHERE_TLS_THUMBPRINT}'
+        url: '${VSPHERE_SERVER}'
+    - name: credsSecretName
+      value: vsphere-cluster-secret
+    - name: vsphereDataCenter
+      value: '${VSPHERE_DATACENTER}'
+    - name: vsphereDataStore
+      value: '${VSPHERE_DATASTORE}'
+    - name: vsphereFolder
+      value: '${VSPHERE_FOLDER}'
+    - name: vsphereNetwork
+      value: '${VSPHERE_NETWORK}'
+    - name: vsphereResourcePool
+      value: '${VSPHERE_RESOURCE_POOL}'
+    - name: vsphereServer
+      value: '${VSPHERE_SERVER}'
+    - name: vsphereStorageServer
+      value: '${VSPHERE_STORAGE_SERVER}'
+    - name: vsphereTemplate
+      value: '${VSPHERE_TEMPLATE}'
+    version: '${KUBERNETES_VERSION}'
+    workers:
+      machineDeployments:
+      - class: vsphere-kubeadm-example-worker
+        metadata: {}
+        name: md-0
+        replicas: 3
+----
+
 vSphere RKE2::
 +
 * A vSphere ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
@@ -547,7 +839,7 @@ spec:
         replicas: 3
     variables:
     - name: credsSecretName
-      value: vsphere-rke2-example
+      value: vsphere-cluster-secret
     - name: infraServer
       value:
         url: '${VSPHERE_SERVER}'
