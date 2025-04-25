@@ -3,7 +3,7 @@
 
 This section describes features and feature stages in {product_name}.
 
-== List of Beta and Alpha Features
+== List of Features
 
 |===
 | Feature | Helm Feature Name | Sub-Feature | Default | Stage 
@@ -15,10 +15,10 @@ This section describes features and feature stages in {product_name}.
 | alpha
 
 | *Add-on Provider Fleet*
-| `addon-provider-fleet`
+| _None_
 | _None_
 | enabled
-| beta
+| GA
 
 | *Agent TLS Mode*
 | `agent-tls-mode`
