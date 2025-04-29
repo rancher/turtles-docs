@@ -23,8 +23,8 @@ This section describes features and feature stages in {product_name}.
 | *Agent TLS Mode*
 | `agent-tls-mode`
 | _None_
-| disabled
-| alpha
+| enabled
+| beta
 
 | *Cluster Class Operations*
 | `clusterclass-operations`
