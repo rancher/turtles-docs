@@ -1,0 +1,63 @@
+== "v0.15.0"
+=== "2024-12-19 10:32:58 +0000 UTC"
+
+// Disclaimer: this file is generated, do not edit it manually.
+
+
+__ (github-actions[bot]) released this 2024-12-19 10:32:58 +0000 UTC - v0.15.0__
+
+
+=== Description
+
+---
+
+++++
+
+
+<h2>What's Changed</h2>
+<h3>🐛 Bugs</h3>
+<ul>
+<li>Use docker build for e2e image by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexander-demicev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexander-demicev">@alexander-demicev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2715336994" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/902" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/902/hovercard" href="https://github.com/rancher/turtles/pull/902">#902</a></li>
+<li>🐛 Fix diff check on secret sync by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2729696540" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/916" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/916/hovercard" href="https://github.com/rancher/turtles/pull/916">#916</a></li>
+<li>Prevent infinite CAPIProvider reconciliations by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/anmazzotti/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/anmazzotti">@anmazzotti</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2720448309" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/908" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/908/hovercard" href="https://github.com/rancher/turtles/pull/908">#908</a></li>
+</ul>
+<h3>Other Changes</h3>
+<ul>
+<li>Remove Elemental from supported providers list by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/anmazzotti/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/anmazzotti">@anmazzotti</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2711190556" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/890" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/890/hovercard" href="https://github.com/rancher/turtles/pull/890">#890</a></li>
+<li>Unify etcd snapshot-restore image with turtles by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2712380575" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/897" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/897/hovercard" href="https://github.com/rancher/turtles/pull/897">#897</a></li>
+<li>Revert "Disable e2e verification for NoCreatorRBAC annotation in AWS and Azure" by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2712507326" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/899" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/899/hovercard" href="https://github.com/rancher/turtles/pull/899">#899</a></li>
+<li>Increase manager memory limit by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/anmazzotti/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/anmazzotti">@anmazzotti</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2715590725" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/903" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/903/hovercard" href="https://github.com/rancher/turtles/pull/903">#903</a></li>
+<li>Fix nightly e2e image push in workflow by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2717399231" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/905" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/905/hovercard" href="https://github.com/rancher/turtles/pull/905">#905</a></li>
+<li>Rename release workflow by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexander-demicev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexander-demicev">@alexander-demicev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2720684967" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/909" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/909/hovercard" href="https://github.com/rancher/turtles/pull/909">#909</a></li>
+<li>Bump golang to 1.22.10 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexander-demicev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexander-demicev">@alexander-demicev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2735483981" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/920" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/920/hovercard" href="https://github.com/rancher/turtles/pull/920">#920</a></li>
+<li>🌱 Remove retry usages across the code by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2730163593" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/918" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/918/hovercard" href="https://github.com/rancher/turtles/pull/918">#918</a></li>
+<li>chore(deps): Bump golang.org/x/crypto from 0.28.0 to 0.31.0 in /test by <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/dependabot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dependabot">@dependabot</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2735435963" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/919" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/919/hovercard" href="https://github.com/rancher/turtles/pull/919">#919</a></li>
+<li>✨ Populate fleet external annotation on management clusters by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2729980792" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/917" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/917/hovercard" href="https://github.com/rancher/turtles/pull/917">#917</a></li>
+<li>chore(deps): Bump aquasecurity/trivy-action from 0.28.0 to 0.29.0 by <a class="user-mention notranslate" data-hovercard-type="organization" data-hovercard-url="/orgs/dependabot/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/dependabot">@dependabot</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2689191291" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/864" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/864/hovercard" href="https://github.com/rancher/turtles/pull/864">#864</a></li>
+<li>Support tilt hot reload for etcd snapshot restore by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexander-demicev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexander-demicev">@alexander-demicev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2735488992" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/921" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/921/hovercard" href="https://github.com/rancher/turtles/pull/921">#921</a></li>
+<li>Run each case inside suite in parallel by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexander-demicev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexander-demicev">@alexander-demicev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2736364448" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/924" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/924/hovercard" href="https://github.com/rancher/turtles/pull/924">#924</a></li>
+<li>Increase timeout when waiting for reconciler by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/anmazzotti/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/anmazzotti">@anmazzotti</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2735792328" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/923" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/923/hovercard" href="https://github.com/rancher/turtles/pull/923">#923</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/rancher/turtles/compare/v0.14.1...v0.15.0"><tt>v0.14.1...v0.15.0</tt></a></p>
+
+++++
+
+---
+
+
+
+=== Download
+
+[cols="3,1,1" options="header" frame="all" grid="rows"]
+|===
+| Name | Created At | Updated At
+
+| link:https://github.com/rancher/turtles/releases/download/v0.15.0/rancher-turtles-0.15.0.tgz[rancher-turtles-0.15.0.tgz] | 2024-12-19 10:32:59 +0000 UTC | 2024-12-19T10:32:59Z
+
+|===
+
+
+---
+
+__Information retrieved from link:https://github.com/rancher/turtles/releases/tag/v0.15.0[here]__
+

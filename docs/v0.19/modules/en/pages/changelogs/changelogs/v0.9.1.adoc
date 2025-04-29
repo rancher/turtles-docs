@@ -1,0 +1,48 @@
+== "v0.9.1"
+=== "2024-07-18 13:15:25 +0000 UTC"
+
+// Disclaimer: this file is generated, do not edit it manually.
+
+
+__ (github-actions[bot]) released this 2024-07-18 13:15:25 +0000 UTC - v0.9.1__
+
+
+=== Description
+
+---
+
+++++
+
+<p>Rancher Turtles is an extension to Rancher that brings full Cluster API integration to Rancher.</p>
+
+<h2>What's Changed</h2>
+<h3>🐛 Bugs</h3>
+<ul>
+<li>Check agent deployment based on Ready condition: <a href="https://github.com/rancher/turtles/pull/591" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/591/hovercard">delay cluster import until manifests are deleted </a></li>
+<li><a href="https://github.com/rancher/turtles/pull/597" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/597/hovercard">Apply finalizer on rancher cluster to avoid re-create race condition</a></li>
+<li><a href="https://github.com/rancher/turtles/pull/593" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/593/hovercard">Fix v1 controller test on embedded-capi-disabled suite</a></li>
+</ul>
+<p>These fixes are cherry-picked for patch release <a href="https://github.com/rancher/turtles/pull/606" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/606/hovercard">here</a></p>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/rancher/turtles/compare/v0.9.0...v0.9.1"><tt>v0.9.0...v0.9.1</tt></a></p>
+
+++++
+
+---
+
+
+
+=== Download
+
+[cols="3,1,1" options="header" frame="all" grid="rows"]
+|===
+| Name | Created At | Updated At
+
+| link:https://github.com/rancher/turtles/releases/download/v0.9.1/rancher-turtles-0.9.1.tgz[rancher-turtles-0.9.1.tgz] | 2024-07-18 13:15:26 +0000 UTC | 2024-07-18T13:15:26Z
+
+|===
+
+
+---
+
+__Information retrieved from link:https://github.com/rancher/turtles/releases/tag/v0.9.1[here]__
+
