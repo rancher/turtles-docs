@@ -43,7 +43,7 @@ AWS RKE2::
 +
 Before creating an AWS+RKE2 workload cluster, it is required to build an AMI for the RKE2 version that is going to be installed on the cluster. You can follow the steps in the https://github.com/rancher/cluster-api-provider-rke2/tree/main/image-builder#aws[RKE2 image-builder README] to build the AMI. 
 +
-We recommend you refer to the CAPRKE2 repository where you can find a https://github.com/rancher/cluster-api-provider-rke2/tree/main/samples/aws[samples folder] with different CAPA+CAPRKE2 cluster configurations that can be used to provision downstream clusters. The https://github.com/rancher/cluster-api-provider-rke2/tree/main/samples/aws/internal[internal folder] contains cluster templates to deploy an RKE2 cluster on AWS using the internal cloud provider, and the https://github.com/rancher/cluster-api-provider-rke2/tree/main/samples/aws/external[external folder] contains the cluster templates to deploy a cluster with the external cloud provider. 
+We recommend you refer to the CAPRKE2 repository where you can find a https://github.com/rancher/cluster-api-provider-rke2/tree/main/examples/templates/aws[samples folder] with different CAPA+CAPRKE2 cluster configurations that can be used to provision downstream clusters. 
 +
 We will use the `internal` one for this guide, however the same steps apply for `external`. 
 +
@@ -63,7 +63,7 @@ export AWS_REGION="aws-region"
 export AWS_AMI_ID="ami-id"
 
 clusterctl generate cluster cluster1 \
---from https://github.com/rancher/cluster-api-provider-rke2/blob/main/samples/aws/internal/cluster-template.yaml \
+--from https://github.com/rancher/cluster-api-provider-rke2/blob/release-0.5/samples/aws/internal/cluster-template.yaml \
 > cluster1.yaml
 ----
 +
