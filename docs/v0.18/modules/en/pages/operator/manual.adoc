@@ -43,7 +43,7 @@ Once the Helm repository has been added and updated locally, you can proceed to 
 
 [source,bash]
 ----
-helm install rancher-turtles turtles/rancher-turtles --version v0.16.0 \
+helm install rancher-turtles turtles/rancher-turtles --version v0.18.0 \
     -n rancher-turtles-system \
     --dependency-update \
     --create-namespace --wait \
