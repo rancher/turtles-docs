@@ -1,0 +1,108 @@
+== "v0.9.0"
+=== "2024-06-28 10:54:06 +0000 UTC"
+
+// Disclaimer: this file is generated, do not edit it manually.
+
+
+__ (github-actions[bot]) released this 2024-06-28 10:54:06 +0000 UTC - v0.9.0__
+
+
+=== Description
+
+---
+
+++++
+
+<h3><strong><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> Important:</strong></h3>
+<h4>Starting with Turtles <code>v0.9.0</code>, the process used for importing CAPI clusters into Rancher has changed. We recommend you take a look at the changelog and the instructions provided in the <code>v0.9</code> version of the Turtles book: <a href="https://turtles.docs.rancher.com/" rel="nofollow">https://turtles.docs.rancher.com/</a></h4>
+<p>Rancher Turtles is an extension to Rancher that brings full Cluster API integration to Rancher.</p>
+<table>
+<thead>
+<tr>
+<th>Supported</th>
+<th>Experimental (not suitable for production)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Automatic import of CAPI Clusters into Rancher</td>
+<td>Everything not specifically listed on the “Supported” column</td>
+</tr>
+<tr>
+<td>Manual migration from provisioning/v1 to management/v3 Cluster import</td>
+<td>Cluster API Provider vSphere (non-experimental features with the exception of machine pools and clusterclass)</td>
+</tr>
+<tr>
+<td>Automatic migration from provisioning/v1 to management/v3 Cluster import (disabled by default)</td>
+<td>CAPIProvider integration with Rancher Cloud Credentials.</td>
+</tr>
+<tr>
+<td>Enabling CAPI Providers (excluding integration with Rancher Cloud Credentials)</td>
+<td></td>
+</tr>
+<tr>
+<td>Cluster provisioning via Fleet (i.e. GitOps)</td>
+<td></td>
+</tr>
+<tr>
+<td>Cluster API Provider AWS (non-experimental features with the exception of machine pools and clusterclass)</td>
+<td></td>
+</tr>
+<tr>
+<td>Cluster API Provider RKE2 (excluding any day 2 operations like ETCD Backup &amp; Restore)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Supported versions:</p>
+<ul>
+<li>Rancher: v2.8.1 or greater</li>
+<li>Cluster API: v1.4.6</li>
+<li>Cluster API Provider AWS: v2.3.5</li>
+<li>Cluster API Provider RKE2: v0.3.0</li>
+</ul>
+<h2>What's Changed</h2>
+<h3>🚀 Enhancements</h3>
+<ul>
+<li>Bump RKE2 API version in E2E by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexander-demicev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexander-demicev">@alexander-demicev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2309985481" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/546" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/546/hovercard" href="https://github.com/rancher/turtles/pull/546">#546</a></li>
+<li>Bump CAPI Operator to v0.11.0 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexander-demicev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexander-demicev">@alexander-demicev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2340729682" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/567" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/567/hovercard" href="https://github.com/rancher/turtles/pull/567">#567</a></li>
+<li>test: add rke2 cluster to e2e test cases by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2325461305" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/562" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/562/hovercard" href="https://github.com/rancher/turtles/pull/562">#562</a></li>
+<li>feat: add script for import controller migration by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2352776991" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/574" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/574/hovercard" href="https://github.com/rancher/turtles/pull/574">#574</a></li>
+<li>Add v1-&gt;v3 cluster migration by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/alexander-demicev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/alexander-demicev">@alexander-demicev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2355753113" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/575" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/575/hovercard" href="https://github.com/rancher/turtles/pull/575">#575</a></li>
+</ul>
+<h3>📖 Docs</h3>
+<ul>
+<li>📖 Updated documentation release steps by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2327884030" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/563" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/563/hovercard" href="https://github.com/rancher/turtles/pull/563">#563</a></li>
+<li>📖 ADR: v1-v3 automatic migration by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2372228079" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/579" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/579/hovercard" href="https://github.com/rancher/turtles/pull/579">#579</a></li>
+<li>docs: add adr for v1 to v3 controller migration by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2349057438" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/573" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/573/hovercard" href="https://github.com/rancher/turtles/pull/573">#573</a></li>
+</ul>
+<h3>Other Changes</h3>
+<ul>
+<li>chore: Fix imageUrl override to allow air-gapped turtles helm chart setup by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2346233909" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/572" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/572/hovercard" href="https://github.com/rancher/turtles/pull/572">#572</a></li>
+<li>🌱 Cleanup v1 cluster before creating v3 clusters on upgrade by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2363859235" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/576" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/576/hovercard" href="https://github.com/rancher/turtles/pull/576">#576</a></li>
+<li>Import CAPI cluster with managementv3 by default by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2369764421" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/578" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/578/hovercard" href="https://github.com/rancher/turtles/pull/578">#578</a></li>
+<li>🐛 Separate auto-migration e2e from the import tests by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/Danil-Grigorev/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/Danil-Grigorev">@Danil-Grigorev</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2378489735" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/586" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/586/hovercard" href="https://github.com/rancher/turtles/pull/586">#586</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/rancher/turtles/compare/v0.8.0...v0.9.0"><tt>v0.8.0...v0.9.0</tt></a></p>
+
+++++
+
+---
+
+
+
+=== Download
+
+[cols="3,1,1" options="header" frame="all" grid="rows"]
+|===
+| Name | Created At | Updated At
+
+| link:https://github.com/rancher/turtles/releases/download/v0.9.0/rancher-turtles-0.9.0.tgz[rancher-turtles-0.9.0.tgz] | 2024-06-28 10:54:07 +0000 UTC | 2024-06-28T10:54:07Z
+
+|===
+
+
+---
+
+__Information retrieved from link:https://github.com/rancher/turtles/releases/tag/v0.9.0[here]__
+
