@@ -77,7 +77,7 @@ variables:
   SKIP_RESOURCE_CLEANUP: "false"
   ARTIFACTS_FOLDER: "_artifacts"
   MANAGEMENT_CLUSTER_ENVIRONMENT: "kind" # supported options are eks, isolated-kind, kind
-  RANCHER_VERSION: "v2.10.2"
+  RANCHER_VERSION: "v2.11.0"
   KUBERNETES_VERSION: "{kubernetes-version}"
   KUBERNETES_MANAGEMENT_VERSION: "{kubernetes-version}"
   KUBERNETES_MANAGEMENT_AWS_REGION: "eu-west-2"
@@ -85,7 +85,7 @@ variables:
   TURTLES_PATH: "turtles/rancher-turtles"
   TURTLES_REPO_NAME: "turtles"
   TURTLES_URL: https://rancher.github.io/turtles
-  TURTLES_VERSION: "v0.18.0"
+  TURTLES_VERSION: "v0.19.0"
   RANCHER_HOSTNAME: "localhost"
   RANCHER_FEATURES: ""
   RANCHER_PATH: "rancher-latest/rancher"

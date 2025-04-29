@@ -23,7 +23,7 @@ Before you can install {product_name}, you need to have the following components
 | Follow the official https://helm.sh/docs/intro/install[installation docs]
 
 | Rancher
-| `v2.10.2`
+| `v2.11.0`
 | Install using https://ranchermanager.docs.rancher.com/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster#install-the-rancher-helm-chart[Helm] on any Kubernetes cluster, whether self-hosted or on a managed service from https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks[Amazon], https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks[Azure], or https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke[Google].
 
 | Cert-manager
@@ -33,7 +33,7 @@ Before you can install {product_name}, you need to have the following components
 
 == Components Versions
 
-This table lists the version of the components installed with the latest version `v0.18.0` of {product_name}:
+This table lists the version of the components installed with the latest version `v0.19.0` of {product_name}:
 
 [TIP]
 ====
@@ -44,13 +44,13 @@ If you're customizing the installation parameters, please make sure that you are
 | Name | Version 
 
 | Cluster API Operator
-| `v0.17.1`
+| `v0.18.1`
 
 | Cluster API
-| `v1.9.6`
+| `v1.9.5`
 
 | Cluster API Provider RKE2
-| `v0.13.0`
+| `v0.14.0`
 |===
 
 == Install {product_name} using Rancher Dashboard
