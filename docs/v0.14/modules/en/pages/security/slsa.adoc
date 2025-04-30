@@ -46,7 +46,7 @@ https://slsa.dev/spec/v1.0/about[SLSA] is a set of incrementally adoptable guide
 * The release process and the provenance generation are run in isolation on an ephemeral environment provided by GitHub-hosted runners.
 * The provenance of the {product_name} container images can be verified using the official https://github.com/slsa-framework/slsa-verifier[SLSA verifier tool].
 * The provenance generation workflows run on ephemeral and isolated virtual machines, which are fully managed by GitHub.
-* The provenance signing secrets are ephemeral and are generated through Sigstore's https://github.com/sigstore/cosign/blob/main/KEYLESS.md[keyless] signing procedure.
+* The provenance signing secrets are ephemeral and are generated through Sigstore's https://docs.sigstore.dev/cosign/signing/overview/[keyless] signing procedure.
 * The https://github.com/slsa-framework/slsa-github-generator[SLSA GitHub Generator] runs on separate virtual machines than the build and release process, so that the {product_name} build scripts don't have access to the signing secrets.
 
 == Isolation

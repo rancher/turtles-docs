@@ -23,7 +23,7 @@ rancherTurtles:
     rancher-webhook: # an existing rancher installation keeps rancher webhooks after disabling embedded-capi      
       cleanup: true # indicates that the remaining rancher webhooks be removed (default: true)
       kubectlImage: registry.k8s.io/kubernetes/kubectl:v1.28.0 # indicates the image to use for pre-install cleanup (default: Kubernetes container image registry)
-    rancher-kubeconfigs: # with capi 1.5.0 and greater, secrets for kubeconfigs must contain a specific label. See https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/book/src/developer/providers/migrations/v1.4-to-v1.5.md#other
+    rancher-kubeconfigs: # with capi 1.5.0 and greater, secrets for kubeconfigs must contain a specific label. See https://github.com/kubernetes-sigs/cluster-api/blob/release-1.5/docs/book/src/developer/providers/migrations/v1.4-to-v1.5.md#other
       label: true # indicates that the label will be added (default: true)
     managementv3-cluster: # rancher will use `clusters.management.cattle.io` to represent an imported capi cluster
       enabled: false # if false, indicates that `clusters.provisioning.cattle.io` resources will be used (default: false)
