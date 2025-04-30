@@ -53,8 +53,6 @@ clean: ## Remove the build and temporary directories.
 .PHONY: environment
 environment: ## Install and update npm dependencies.
 	npm install && npm update
-	npm install -g nodemon
-	npm install -g concurrently
 
 ##@ Preview
 
@@ -70,6 +68,8 @@ dev: environment ## Build the site using the development playbook.
 
 .PHONY: watch
 watch: environment ## Watch for changes, rebuild, and preview with hot reload.
+	npm install -g nodemon
+	npm install -g concurrently
 	concurrently \
 		"nodemon --watch content --watch docs --ext adoc,yml --exec 'make dev'" \
 		"make preview"
