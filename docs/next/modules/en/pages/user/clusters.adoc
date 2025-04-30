@@ -10,7 +10,7 @@ Keep in mind that most Cluster API Providers are upstream projects maintained by
 
 [tabs]
 ======
-AWS EKS/RKE2/Kubeadm::
+AWS EKS::
 +
 * Rancher Manager cluster with {product_name} installed
 * Cluster API Providers: you can find a guide on how to install a provider using the `CAPIProvider` resource xref:../operator/capiprovider.adoc[here]
@@ -118,7 +118,7 @@ spec:
 
 Docker RKE2/Kubeadm::
 +
-* Following installation guide was moved here xref:../user/clusterclass.adoc[here]
+* You can follow the installation guide xref:../user/clusterclass.adoc[here]
 
 vSphere RKE2/Kubeadm::
 +
@@ -202,88 +202,19 @@ spec:
 ======
 AWS EC2 RKE2::
 +
-Before creating an AWS+RKE2 workload cluster, it is required to build an AMI for the RKE2 version that is going to be installed on the cluster. You can follow the steps in the https://github.com/rancher/cluster-api-provider-rke2/tree/main/image-builder#aws[RKE2 image-builder README] to build the AMI. 
-+
-We recommend you refer to the CAPRKE2 repository where you can find a https://github.com/rancher/cluster-api-provider-rke2/tree/main/examples/templates/aws[samples folder] with different CAPA+CAPRKE2 cluster configurations that can be used to provision downstream clusters.
-+
-We will use the `internal` one for this guide, however the same steps apply for `external`. 
-+
-To generate the YAML for the cluster, do the following:
-+
-. Open a terminal and run the following: 
-+
-[source,bash,subs=attributes+]
-----
-export CLUSTER_NAME={cluster-name}
-export NAMESPACE={namespace}
-export CONTROL_PLANE_MACHINE_COUNT={control-plane-machine-count}
-export WORKER_MACHINE_COUNT={worker-machine-count}
-export RKE2_VERSION={kubernetes-version}+rke2r1
-export AWS_NODE_MACHINE_TYPE=t3a.large 
-export AWS_CONTROL_PLANE_MACHINE_TYPE=t3a.large 
-export AWS_SSH_KEY_NAME="aws-ssh-key" 
-export AWS_REGION="aws-region" 
-export AWS_AMI_ID="ami-id" 
-
-curl -s https://raw.githubusercontent.com/rancher/cluster-api-provider-rke2/refs/heads/main/examples/templates/aws/cluster-template.yaml | envsubst > cluster1.yaml
-----
-+
-. View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
-+
-> The Cluster API quickstart guide contains more detail. Read the steps related to this section https://cluster-api.sigs.k8s.io/user/quick-start.html#required-configuration-for-common-providers[here].
-
-. Create the cluster using kubectl
-+
-[source,bash]
-----
-kubectl create namespace ${NAMESPACE}
-kubectl create -f cluster1.yaml
-----
+* You can follow the installation guide xref:../user/clusterclass.adoc[here]
 
 AWS EC2 Kubeadm::
 +
-To generate the YAML for the cluster, do the following:
-+
-. Open a terminal and run the following:
-+
-[source,bash,subs=attributes+]
-----
-export CLUSTER_NAME={cluster-name}
-export NAMESPACE={namespace}
-export AWS_CONTROL_PLANE_MACHINE_TYPE=t3.large
-export AWS_NODE_MACHINE_TYPE=t3.large
-export AWS_SSH_KEY_NAME="aws-ssh-key" 
-export AWS_REGION="aws-region"
-export KUBERNETES_VERSION={kubernetes-version}
-export CONTROL_PLANE_MACHINE_COUNT={control-plane-machine-count}
-export WORKER_MACHINE_COUNT={worker-machine-count}
-
-curl -s https://raw.githubusercontent.com/kubernetes-sigs/cluster-api-provider-aws/refs/heads/main/templates/cluster-template.yaml | envsubst > cluster1.yaml
-----
-+
-. View **cluster1.yaml** to ensure there are no tokens (i.e. SSH keys or cloud credentials). You can make any changes you want as well. 
-+
-> The Cluster API quickstart guide contains more detail. Read the steps related to this section https://cluster-api.sigs.k8s.io/user/quick-start.html#required-configuration-for-common-providers[here]. 
- 
-. Create the cluster using kubectl
-+
-[source,bash]
-----
-kubectl create namespace ${NAMESPACE}
-kubectl create -f cluster1.yaml
-----
-+
-. Deploy CNI
-+
-> Once cluster is created a CNI is required for Nodes to become ready. You can refer to Cluster API documentation for example CNI installation https://cluster-api.sigs.k8s.io/user/quick-start#deploy-a-cni-solution[here].
+* You can follow the installation guide xref:../user/clusterclass.adoc[here]
 
 Docker RKE2::
 +
-* Following installation guide was moved here xref:../user/clusterclass.adoc[here]
+* You can follow the installation guide xref:../user/clusterclass.adoc[here]
 
 Docker Kubeadm::
 +
-* Following installation guide was moved here xref:../user/clusterclass.adoc[here]
+* You can follow the installation guide xref:../user/clusterclass.adoc[here]
 
 vSphere RKE2::
 +
@@ -473,12 +404,15 @@ Labeling a namespace:
 
 [source,bash]
 ----
-kubectl label namespace capi-clusters cluster-api.cattle.io/rancher-auto-import=true
+export NAMESPACE=default
+kubectl label namespace $NAMESPACE cluster-api.cattle.io/rancher-auto-import=true
 ----
 
 Labeling an individual cluster definition:
 
 [source,bash]
 ----
-kubectl label cluster.cluster.x-k8s.io -n default cluster1 cluster-api.cattle.io/rancher-auto-import=true
+export CLUSTER_NAME=cluster1
+export NAMESPACE=default
+kubectl label cluster.cluster.x-k8s.io -n $NAMESPACE $CLUSTER_NAME cluster-api.cattle.io/rancher-auto-import=true
 ----

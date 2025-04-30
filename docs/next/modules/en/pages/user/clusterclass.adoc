@@ -365,7 +365,7 @@ spec:
 
 AWS Kubeadm::
 +
-* An AWS ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
+* An AWS Kubeadm ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
 [source,bash]
 ----
@@ -427,6 +427,76 @@ spec:
     - name: workerMachineType
       value: <AWS_NODE_MACHINE_TYPE>
     version: v1.31.0
+    workers:
+      machineDeployments:
+      - class: default-worker
+        name: md-0
+        replicas: 1
+----
+
+AWS RKE2::
++
+[WARNING]
+====
+Before creating an AWS+RKE2 workload cluster, it is required to either build an AMI for the RKE2 version that is going to be installed on the cluste or find one that will work for non-airgapped installations. 
+You can follow the steps in the https://github.com/rancher/cluster-api-provider-rke2/tree/main/image-builder#aws[RKE2 image-builder README] to build the AMI. 
+====
++
+* An AWS RKE2 ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/aws/rke2/clusterclass-ec2-rke2-example.yaml
+----
++
+* The https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS] will need to be installed on each downstream Cluster for the nodes to be functional. +
+* Additionally, we will also enable https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver]. +
++
+We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+This Add-on provider is installed by default with {product_name}. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico and the EBS CSI Driver in the workload cluster. +
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/aws/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/aws-helm/helm-chart.yaml
+----
++
+* Create the AWS Cluster from the example ClusterClass +
++ 
+Note that some variables are left to the user to substitute. +
++
+[source,yaml]
+----
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cloud-provider: aws
+    csi: aws-ebs-csi-driver
+    cluster-api.cattle.io/rancher-auto-import: "true"
+  name: aws-quickstart
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: aws-rke2-example
+    controlPlane:
+      replicas: 1
+    variables:
+    - name: region
+      value: ${AWS_REGION}
+    - name: sshKeyName
+      value: ${AWS_SSH_KEY_NAME}
+    - name: controlPlaneMachineType
+      value: ${AWS_RKE2_CONTROL_PLANE_MACHINE_TYPE}
+    - name: workerMachineType
+      value: ${AWS_RKE2_NODE_MACHINE_TYPE}
+    - name: amiID
+      value: ${AWS_AMI_ID}
+    version: ${RKE2_VERSION}
     workers:
       machineDeployments:
       - class: default-worker
@@ -768,3 +838,14 @@ spec:
       value: <KUBE_VIP_INTERFACE>
 ----
 ======
+
+
+== Optionally Mark Namespace for Auto-Import
+
+To automatically import a CAPI cluster into Rancher Manager, you can label a namespace so all clusters contained in it are imported.
+
+[source,bash]
+----
+export NAMESPACE=default
+kubectl label namespace $NAMESPACE cluster-api.cattle.io/rancher-auto-import=true
+----

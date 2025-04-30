@@ -118,7 +118,7 @@ spec:
 
 Docker RKE2/Kubeadm::
 +
-* Following installation guide was moved here xref:../user/clusterclass.adoc[here]
+* You can follow the installation guide xref:../user/clusterclass.adoc[here]
 
 vSphere RKE2/Kubeadm::
 +
@@ -279,11 +279,11 @@ kubectl create -f cluster1.yaml
 
 Docker RKE2::
 +
-* Following installation guide was moved here xref:../user/clusterclass.adoc[here]
+* You can follow the installation guide xref:../user/clusterclass.adoc[here]
 
 Docker Kubeadm::
 +
-* Following installation guide was moved here xref:../user/clusterclass.adoc[here]
+* You can follow the installation guide xref:../user/clusterclass.adoc[here]
 
 vSphere RKE2::
 +
