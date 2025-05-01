@@ -123,6 +123,39 @@ spec:
   configSecret:
     name: aws
 ----
++
+* https://github.com/rancher/cluster-api-provider-rke2[Bootstrap/Control Plane provider for RKE2](installed by default) or https://github.com/kubernetes-sigs/cluster-api[Bootstrap/Control Plane provider for Kubeadm], example of Kubeadm installation:
++
+[source,yaml]
+----
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-bootstrap-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-bootstrap
+  namespace: capi-kubeadm-bootstrap-system
+spec:
+  name: kubeadm
+  type: bootstrap
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-control-plane-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-control-plane
+  namespace: capi-kubeadm-control-plane-system
+spec:
+  name: kubeadm
+  type: controlPlane
+----
 
 Docker::
 +
@@ -203,6 +236,39 @@ spec:
   variables:
     VSPHERE_USERNAME: "" 
     VSPHERE_PASSWORD: ""
+----
++
+* https://github.com/rancher/cluster-api-provider-rke2[Bootstrap/Control Plane provider for RKE2](installed by default) or https://github.com/kubernetes-sigs/cluster-api[Bootstrap/Control Plane provider for Kubeadm], example of Kubeadm installation:
++
+[source,yaml]
+----
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-bootstrap-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-bootstrap
+  namespace: capi-kubeadm-bootstrap-system
+spec:
+  name: kubeadm
+  type: bootstrap
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-control-plane-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-control-plane
+  namespace: capi-kubeadm-control-plane-system
+spec:
+  name: kubeadm
+  type: controlPlane
 ----
 +
 * Identity Setup
@@ -607,6 +673,165 @@ spec:
       - class: default-worker
         name: md-0
         replicas: 3
+----
+
+vSphere Kubeadm::
++
+* A vSphere ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/vsphere/kubeadm/clusterclass-kubeadm-example.yaml
+----
++
+* Additionally, the https://github.com/kubernetes/cloud-provider-vsphere[vSphere Cloud Provider] will need to be installed on each downstream Cluster, for the nodes to be initialized correctly. +
+The https://github.com/kubernetes-sigs/vsphere-csi-driver[Container Storage Interface (CSI) driver for vSphere] will be used as storage solution. +
+Finally, for this example we are going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
++
+We can install all applications automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+This Add-on provider is installed by default with {product_name}. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/vsphere/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+----
++
+Since the vSphere CSI driver is not packaged in Helm, we are going to include its entire manifest in a Fleet Bundle, that will be applied to the downstream Cluster.
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/vsphere/bundle.yaml
+----
++
+* Cluster configuration
++
+The vSphere Cloud Provider and the vSphere CSI controller need additional configuration to be applied on the downstream Cluster. +
+Similarly to the steps above, we can create two additional Fleet Bundles, that will be applied to the downstream Cluster. +
+Please beware that these Bundles are configured to target the downstream Cluster by name: `vsphere-kubeadm-quickstart`. +
+If you use a different name for your Cluster, change the Bundle targets accordingly.  
++
+[source,yaml]
+----
+kind: Bundle
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: vsphere-csi-config
+spec:
+  resources:
+  - content: |-
+      apiVersion: v1
+      kind: Secret
+      type: Opaque
+      metadata:
+        name: vsphere-config-secret
+        namespace: vmware-system-csi
+      stringData:
+        csi-vsphere.conf: |+
+          [Global]
+          thumbprint = "<VSPHERE_THUMBPRINT>"
+
+          [VirtualCenter "<VSPHERE_SERVER>"]
+          user = "<VSPHERE_USER>"
+          password = "<VSPHERE_PASSWORD>"
+          datacenters = "<VSPHERE_DATACENTED>"
+
+          [Network]
+          public-network = "<VSPHERE_NETWORK>"
+
+          [Labels]
+          zone = ""
+          region = ""
+  targets:
+  - clusterSelector:
+      matchLabels:
+        csi: vsphere
+        cluster.x-k8s.io/cluster-name: 'vsphere-kubeadm-quickstart'
+---
+kind: Bundle
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: vsphere-cloud-credentials
+spec:
+  resources:
+  - content: |-
+      apiVersion: v1
+      kind: Secret
+      type: Opaque
+      metadata:
+        name: vsphere-cloud-secret
+        namespace: kube-system
+      stringData:
+        <VSPHERE_SERVER>.password: "<VSPHERE_PASSWORD>"
+        <VSPHERE_SERVER>.username: "<VSPHERE_USER>"
+  targets:
+  - clusterSelector:
+      matchLabels:
+        cloud-provider: vsphere
+        cluster.x-k8s.io/cluster-name: 'vsphere-kubeadm-quickstart'
+
+----
++
+* Create the vSphere Cluster from the example ClusterClass +
++
+Note that for this example we are using https://kube-vip.io/[kube-vip] as a Control Plane load balancer. +
+The `KUBE_VIP_INTERFACE` will be used to bind the `CONTROL_PLANE_IP` in ARP mode. Depending on your operating system and network device configuration, you need to configure this value accordingly - for example, to `eth0`. +
+The `kube-vip` static manifest is embedded in the ClusterClass definition. For more information on how to generate a static kube-vip manifest for your own ClusterClasses, please consult the official https://kube-vip.io/docs/installation/static/[documentation].  
++
+[source,yaml]
+----
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cni: calico
+    cloud-provider: vsphere
+    csi: vsphere
+    cluster-api.cattle.io/rancher-auto-import: "true"
+  name: 'vsphere-kubeadm-quickstart'
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: vsphere-kubeadm-example
+    version: v1.31.4
+    controlPlane:
+      replicas: 1
+    workers:
+      machineDeployments:
+      - class: vsphere-kubeadm-example-worker
+        name: md-0
+        replicas: 1
+    variables:
+    - name: vSphereClusterIdentityName
+      value: cluster-identity
+    - name: vSphereTLSThumbprint
+      value: <VSPHERE_THUMBPRINT>
+    - name: vSphereDataCenter
+      value: <VSPHERE_DATACENTER>
+    - name: vSphereDataStore
+      value: <VSPHERE_DATASTORE>
+    - name: vSphereFolder
+      value: <VSPHERE_FOLDER>
+    - name: vSphereNetwork
+      value: <VSPHERE_NETWORK>
+    - name: vSphereResourcePool
+      value: <VSPHERE_RESOURCE_POOL>
+    - name: vSphereServer
+      value: <VSPHERE_SERVER>
+    - name: vSphereTemplate
+      value: <VSPHERE_TEMPLATE>
+    - name: controlPlaneIpAddr
+      value: <CONTROL_PLANE_IP>
+    - name: controlPlanePort
+      value: 6443
+    - name: sshKey
+      value: <SSH_KEY>
+    - name: kubeVIPInterface
+      value: <KUBE_VIP_INTERFACE>
 ----
 
 vSphere RKE2::
