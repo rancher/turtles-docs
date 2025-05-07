@@ -326,7 +326,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 * Additionally, the https://capz.sigs.k8s.io/self-managed/cloud-provider-config[Azure Cloud Provider] will need to be installed on each downstream Cluster, for the nodes to be initialized correctly. +
 For this example we are also going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
 +
-We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
 Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +
@@ -442,7 +442,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 * The https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS] will need to be installed on each downstream Cluster for the nodes to be functional. +
 * Additionally, we will also enable https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver]. +
 +
-We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
 Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico and the EBS CSI Driver in the workload cluster. +
 +
@@ -518,7 +518,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 * The https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS] will need to be installed on each downstream Cluster for the nodes to be functional. +
 * Additionally, we will also enable https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver]. +
 +
-We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
 Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico and the EBS CSI Driver in the workload cluster. +
 +
@@ -581,7 +581,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 +
 * For this example we are also going to install Calico as the default CNI.
 +
-We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
 Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +
@@ -634,7 +634,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 +
 * For this example we are also going to install Calico as the default CNI.
 +
-We can do this automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
 Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +
@@ -758,7 +758,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 The https://github.com/kubernetes-sigs/vsphere-csi-driver[Container Storage Interface (CSI) driver for vSphere] will be used as storage solution. +
 Finally, for this example we are going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
 +
-We can install all applications automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+We can install all applications automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
 Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +
@@ -917,7 +917,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 The https://github.com/kubernetes-sigs/vsphere-csi-driver[Container Storage Interface (CSI) driver for vSphere] will be used as storage solution. +
 Finally, for this example we are going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
 +
-We can install all applications automatically at Cluster creation using the https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+We can install all applications automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
 Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +

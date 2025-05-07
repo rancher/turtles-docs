@@ -6,7 +6,7 @@ Cluster API Add-on Provider for `Fleet` (CAAPF) is a Cluster API (CAPI) provider
 
 [TIP]
 ====
-For more information about the provider, please refer to https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[CAAPF book].
+For more information about the provider, please refer to https://rancher.github.io/cluster-api-addon-provider-fleet/[CAAPF book].
 ====
 
 == Functionality
@@ -43,7 +43,7 @@ The *Cluster API Addon Provider Fleet* automates application https://fleet.ranch
 - Maintain a consistent application state across different clusters.
 - Use the same template for multiple matching clusters to simplify deployment and management.
 
-For more information on the feature, please refer to https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/04_reference/02_templating-strategy.html[templating documentation] in the book.
+For more information on the feature, please refer to https://rancher.github.io/cluster-api-addon-provider-fleet/04_reference/02_templating-strategy.html[templating documentation] in the book.
 
 == Example - deploying kindnet CNI
 
@@ -53,4 +53,4 @@ For more information on the feature, please refer to https://rancher-sandbox.git
 
 *Demo*: image:https://asciinema.org/a/706570.svg[asciicast,link=https://asciinema.org/a/706570]
 
-For a tutorial and prerequisites, please refer to https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/03_tutorials/04_installing_calico_via_gitrepo.html[gitrepo tutorial] section in the book.
+For a tutorial and prerequisites, please refer to https://rancher.github.io/cluster-api-addon-provider-fleet/03_tutorials/04_installing_calico_via_gitrepo.html[gitrepo tutorial] section in the book.
