@@ -39,5 +39,5 @@ The following example requires `Fleet` version `>=v0.10.1-rc.1`, which is not a 
 
 [TIP]
 ====
-For more information about the provider, please refer to https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[CAAPF book]. 
+For more information about the provider, please refer to https://rancher.github.io/cluster-api-addon-provider-fleet/[CAAPF book]. 
 ====

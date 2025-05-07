@@ -55,7 +55,7 @@ This is a list of the officially certified CAPI Providers by Turtles. These prov
 | *Addon Provider Fleet*
 | CAAPF
 | Addon
-| https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/[CAAPF book]
+| https://rancher.github.io/cluster-api-addon-provider-fleet/[CAAPF book]
 |===
 
 *Recommended only for development purposes.

@@ -13,7 +13,7 @@ These tips are transferable and can be applied even when using a different GitOp
 - **Utilize Nested GitRepo Resources:**
   Leverage https://fleet.rancher.io/gitrepo-content#nested-gitrepo-crs[nested] `GitRepo` resources in Fleet to structure repository content efficiently. This approach allows for modular provisioning, combining `ClusterClass` definitions, required addons/applications, and cluster configurations while maintaining separation of concerns.
 - **Use GitOps Integration Tools When Available**
-  When configuring a GitOps setup, take into consideration available tooling and features it provides. An example of this is https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/00_intro.html[`CAAPF`], which automates Fleet GitOps installation on `CAPI` clusters and provides convenient automation.
+  When configuring a GitOps setup, take into consideration available tooling and features it provides. An example of this is https://rancher.github.io/cluster-api-addon-provider-fleet/00_intro.html[`CAAPF`], which automates Fleet GitOps installation on `CAPI` clusters and provides convenient automation.
 - **Apply Kustomize Overlays for Environment-Specific Customization:**
   Use `overlays/` to store Kustomize overlays for different environments. This ensures that configuration changes, such as scaling adjustments, networking modifications, or component upgrades, can be applied dynamically without altering base manifests.
 - **Utilize Compare Patches:**
@@ -155,7 +155,7 @@ repo-root/
 │   │   │   ├── fleet.yaml # Fleet configuration for the Calico setup
 ----
 
-The `fleet.yaml` file defines templating rules and `comparePatches` to ensure a smooth rollout, independent of cluster configuration. To learn more about `CAAPF` templating, which is leveraged here, refer to the official https://rancher-sandbox.github.io/cluster-api-addon-provider-fleet/04_reference/02_templating-strategy.html[documentation]
+The `fleet.yaml` file defines templating rules and `comparePatches` to ensure a smooth rollout, independent of cluster configuration. To learn more about `CAAPF` templating, which is leveraged here, refer to the official https://rancher.github.io/cluster-api-addon-provider-fleet/04_reference/02_templating-strategy.html[documentation]
 
 ```yaml
 helm:
