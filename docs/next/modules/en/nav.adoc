@@ -22,6 +22,7 @@
 ** xref:operator/certification.adoc[Provider Certification]
 ** xref:operator/certificationsuite.adoc[Provider Test Suite]
 ** xref:operator/airgapped.adoc[Air-Gapped Environment]
+** xref:operator/vsphere-vm-template.adoc[Create a VM Template in vSphere]
 * Developer Guide
 ** xref:developer/development.adoc[Development Environment]
 ** xref:developer/guidelines.adoc[Development Guideline]

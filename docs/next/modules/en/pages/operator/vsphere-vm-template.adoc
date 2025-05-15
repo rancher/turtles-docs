@@ -1,0 +1,93 @@
+= Create a VM Template in vSphere
+
+In this section we will cover how to create a VM template in VMware vSphere environment using a `.vmdk` image. This process is useful for deploying SUSE Linux Enterprise products on vSphere, including **SUSE Linux Micro** suitable for CAPV (CAPI on vSphere) and **{product_name}**.
+
+[NOTE]
+====
+This document is based on vSphere Client version 8.0.2.00300.
+====
+
+
+== Prerequisites
+
+* A genuine `.vmdk` image downloaded from the
+https://www.suse.com/download/sle-micro/[SUSE website].
+* Access to the vSphere Web Client connected to a vCenter instance.
+* An existing vSphere Datastore with sufficient available space.
+* Permissions to create and manage virtual machines (VMs) and templates.
+
+
+== Step 1: Upload the VMDK Image to the vSphere Datastore
+
+. Log in to the *vSphere Web Client*.
+. In the *Inventory*, navigate to the *Datastore* tab and select an
+existing datastore.
+. Switch to the *Files* view and click *New Folder* to create a
+directory for the `.vmdk` image.
+. Select the newly created directory in the left-side panel and click
+*Upload Files*.
+. Choose the `.vmdk` file and start the upload.
+. Wait for the upload to complete before proceeding.
+
+
+== Step 2: Create a Temporary VM Using the Uploaded VMDK
+
+. _(Optional)_ In the *Inventory*, go to the *Cluster* tab, right-click
+on the cluster name, and select *New Resource Pool…*. Enter a name and
+create the resource pool.
+. _(Optional)_ In the *VMs and Templates* tab, right-click on the
+datacenter name, select *New Folder* → *New VM and Template Folder*, and
+provide a name for the folder.
+. In the *VMs and Templates* tab, right-click an existing folder and
+select *New Virtual Machine*.
+. In the creation wizard, select *Create a new virtual machine* and follow the steps below:
+.. *Name and Folder*: Enter a name for the temporary VM, ideally with a
+`-vm` suffix. Select an existing folder.
+.. *Compute Resource*: Choose a cluster or resource pool. Ensure
+compatibility checks succeed.
+.. *Storage*: Select a datastore with sufficient space.
+.. *Compatibility*: Use the default (e.g., _ESXi 8.0 U2 and later_).
+.. *Guest OS*:
+* _Guest OS Family_: Linux +
+* _Guest OS Version_: SUSE Linux Enterprise 15 (64-bit)
+.. *Customize Hardware*:
+* Configure CPU and memory as required. +
+* Remove the default *New Hard Disk 16 GB*. +
+* Click *Add New Device* → *Existing Hard Disk* → select the uploaded
+`.vmdk` file from the datastore and folder. +
+* Select a *Network* with DHCP and DNS services configured.
+.. *Ready to Complete*: Review your settings and click *Finish*.
++
+[NOTE]
+====
+Do not start the VM after completing this step.
+====
+
+
+== Step 3: Convert the Temporary VM to a Template
+
+. In the *VMs and Templates* tab, locate the temporary VM (with the `-vm` suffix).
+. Right-click on the VM and select *Clone* → *Clone to Template*.
+. In the clone wizard:
+.. *Name and Folder*: Name the template (typically the VM name without the `-vm` suffix). Select the desired folder.
+.. *Compute Resource*: Select the appropriate cluster or resource pool.
+.. *Storage*: Select the storage for the disk image files.
++
+[IMPORTANT]
+====
+Choose a datastore and set the *virtual disk format* to *Thin provision*.
+
+This ensures the disk is normalized and compatible with vSphere and
+ESXi.
+====
+.. *Ready to Complete*: Review and confirm the settings. Click *Finish*.
+. Once cloning is complete, you may safely delete the temporary VM.
+
+
+== Conclusion
+
+You now have a reusable VM template based on a SUSE Linux Enterprise product, which can be used to deploy new virtual machines on vSphere. The template can be utilized directly via the vSphere Web Client (right-click the template → *New VM from This Template*), or through automation tools such as **Terraform**, **Tofu** and **{product_name}**.
+
+**SUSE Linux Micro 6.1** includes a preinstalled cloud-init agent with VMware support, allowing userdata configuration at first boot.
+
+For more information, please refer to the official SUSE product documentation at https://documentation.suse.com.
