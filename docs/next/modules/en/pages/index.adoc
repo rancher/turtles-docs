@@ -14,6 +14,15 @@ With {product_name}, you can:
 
 image::intro.png[intro,640,480]
 
+The following video shows you how to get started with {product_name} in just 3 minutes. You will learn how to:
+
+- Use Rancher Dashboard to install Turtles.
+- Deploy the CAPI Infrastructure Provider for Docker.
+- Provision a workload cluster via Fleet: you can inspect source files in https://github.com/rancher/turtles/tree/main/examples[Turtles repository].
+- Import the workload cluster into Rancher.
+
++++<iframe width="560" height="315" src="https://www.youtube.com/embed/cel1yV94h5o?si=qfPrZhBGDvvIdhMn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>+++
+
 == Navigate the Documentation
 
 To make it easier to get started with {product_name}, we have structured the documentation to guide you naturally from basic concepts to advanced features. We recommend following along step by step, but if you are already familiar with certain topics, feel free to skip ahead to the relevant sections.
