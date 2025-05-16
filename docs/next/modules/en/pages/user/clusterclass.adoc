@@ -444,19 +444,13 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 +
 We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
-Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico and the EBS CSI Driver in the workload cluster. +
+The `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico, the EBS CSI Driver, and the AWS Cloud Controller Manager in the workload cluster. +
 +
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/aws/helm-chart.yaml
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/aws/calico/helm-chart.yaml
-----
-+
-We will need to create a Fleet Bundle to deploy the AWS Cloud Controller Manager as the upstream Helm chart has limitations that retrict us from applying the desired configuration via CAPI Add-on Provider Fleet. We expect this to be a temporary solution until the official chart is capable of supporting our requirements. +
-+
-[source,bash]
-----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/aws/fleet-bundle.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/aws/helm-chart.yaml
 ----
 +
 * Create the AWS Cluster from the example ClusterClass +
@@ -520,12 +514,13 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 +
 We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
-Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico and the EBS CSI Driver in the workload cluster. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying the AWS Cloud Controller Manager and the EBS CSI Driver in the workload cluster. +
+The CNI selection can instead be configured using Cluster variables and it will be provided by RKE2. +
 +
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/aws/helm-chart.yaml
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/aws-helm/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/aws/helm-chart.yaml
 ----
 +
 * Create the AWS Cluster from the example ClusterClass +
@@ -552,6 +547,8 @@ spec:
     controlPlane:
       replicas: 1
     variables:
+    - name: cni
+      value: calico
     - name: region
       value: ${AWS_REGION}
     - name: sshKeyName
