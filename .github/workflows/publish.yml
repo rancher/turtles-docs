@@ -2,7 +2,7 @@ name: Rancher Turtles documentation - publish to GitHub Pages with Lunr Search E
 on:
   # Runs every hour.
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 0 * * *'
   # Runs whenever a change is pushed to the main branch
   push:
     branches: [main]
