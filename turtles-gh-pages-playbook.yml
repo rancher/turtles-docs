@@ -1,7 +1,7 @@
 site:
   title: Rancher Turtles
   url: /
-  start_page: v0.19@turtles:en:index.adoc
+  start_page: v0.20@turtles:en:index.adoc
 
 urls:
   latest_version_segment: stable
@@ -10,7 +10,7 @@ urls:
 content:
   sources:
     - url: ./
-      start_paths: [docs/v0.19, docs/v0.18, docs/v0.17, docs/v0.16, docs/v0.15, docs/v0.14, docs/v0.13, docs/v0.12, docs/v0.11, docs/next]
+      start_paths: [docs/v0.20, docs/v0.19, docs/v0.18, docs/v0.17, docs/v0.16, docs/v0.15, docs/v0.14, docs/v0.13, docs/v0.12, docs/v0.11, docs/next]
 
 # Description: SUSE UI bundle
 ui:
