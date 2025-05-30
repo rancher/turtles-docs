@@ -946,7 +946,8 @@ spec:
 +
 Note that for this example we are using https://kube-vip.io/[kube-vip] as a Control Plane load balancer. +
 The `KUBE_VIP_INTERFACE` will be used to bind the `CONTROL_PLANE_IP` in ARP mode. Depending on your operating system and network device configuration, you need to configure this value accordingly - for example, to `eth0`. +
-The `kube-vip` static manifest is embedded in the ClusterClass definition. For more information on how to generate a static kube-vip manifest for your own ClusterClasses, please consult the official https://kube-vip.io/docs/installation/static/[documentation].  
+The `kube-vip` static manifest is embedded in the ClusterClass definition. For more information on how to generate a static kube-vip manifest for your own ClusterClasses, please consult the official https://kube-vip.io/docs/installation/static/[documentation]. +
+In case you are using a VM template based on SUSE Linux Micro, you may optionally provide a `productKey` variable to enable automatic SL Micro registration against SUSE Customer Center.
 +
 [source,yaml]
 ----
@@ -1001,6 +1002,8 @@ spec:
       value: <SSH_KEY>
     - name: kubeVIPInterface
       value: <KUBE_VIP_INTERFACE>
+    - name: productKey
+      value: <SL_MICRO_PRODUCT_KEY>
 ----
 ======
 
