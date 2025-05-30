@@ -33,7 +33,7 @@ Before you can install {product_name}, you need to have the following components
 
 == Components Versions
 
-This table lists the version of the components installed with the latest version `v0.19.0` of {product_name}:
+This table lists the version of the components installed with the latest version `v0.20.0` of {product_name}:
 
 [TIP]
 ====
@@ -50,7 +50,7 @@ If you're customizing the installation parameters, please make sure that you are
 | `v1.9.5`
 
 | Cluster API Provider RKE2
-| `v0.14.0`
+| `v0.16.0`
 |===
 
 == Install {product_name} using Rancher Dashboard
