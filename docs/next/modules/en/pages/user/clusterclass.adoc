@@ -308,7 +308,8 @@ spec:
 
 [WARNING]
 ====
-Examples using `HelmApps` need at least Rancher `v2.11`, or otherwise Fleet `v0.12` or higher.
+- Examples using `HelmApps` need at least Rancher `v2.11`, or otherwise Fleet `v0.12` or higher.
+- Currently, we only support initial provisioning with 1 control plane replica for Kubeadm providers; this can be later scaled up, https://github.com/rancher/turtles/issues/1402[refer]. +
 ====
 
 [tabs]
@@ -453,7 +454,6 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 * Create the Azure Cluster from the example ClusterClass +
 +
 Note that some variables are left to the user to substitute. +
-Also beware that at the moment we only support initial provisioning with 1 control plane replica; this can be later increased, https://github.com/rancher/turtles/issues/1402[refer]. +
 +
 [source,yaml]
 ----
