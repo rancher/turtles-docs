@@ -237,7 +237,7 @@ CAPIProvider.Spec.Manager.Verbosity=5
 ----
 (5 is equivalent to DEBUG)
 
-== How to collect infortmation from Rancher Turtles and CAPI
+== How to collect information from Rancher Turtles and CAPI
 
 https://github.com/crust-gather/crust-gather[crust-gather] is a project created by Cluster API developers specifically designed for gathering logs and resource states from CAPI environments. It's a safe and official tool that can be used in any type of environment (development, testing, or production) to collect comprehensive diagnostic information for troubleshooting.
 
