@@ -483,7 +483,7 @@ spec:
       value: <AZURE_RESOURCE_GROUP>
     - name: azureClusterIdentityName
       value: cluster-identity
-    version: v1.31.2
+    version: v1.31.1
     workers:
       machineDeployments:
       - class: kubeadm-default-worker
