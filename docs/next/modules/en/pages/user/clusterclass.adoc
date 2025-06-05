@@ -308,7 +308,8 @@ spec:
 
 [WARNING]
 ====
-Examples using `HelmApps` need at least Rancher `v2.11`, or otherwise Fleet `v0.12` or higher.
+- Examples using `HelmApps` need at least Rancher `v2.11`, or otherwise Fleet `v0.12` or higher.
+- Currently, we only support initial provisioning with 1 control plane replica for Kubeadm providers; this can be later scaled up, https://github.com/rancher/turtles/issues/1402[refer]. +
 ====
 
 [tabs]
@@ -426,6 +427,67 @@ spec:
         replicas: 1
       - class: default-worker
         name: worker-1
+        replicas: 1
+----
+Azure Kubeadm::
++
+* An Azure ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/kubeadm/clusterclass-kubeadm-example.yaml
+----
++
+* Additionally, the https://capz.sigs.k8s.io/self-managed/cloud-provider-config[Azure Cloud Provider] will need to be installed on each downstream Cluster, for the nodes to be initialized correctly. +
+For this example we are also going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
++
+We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
+This Add-on provider is installed by default with {product_name}. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/azure/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+----
++
+* Create the Azure Cluster from the example ClusterClass +
++
+Note that some variables are left to the user to substitute. +
++
+[source,yaml]
+----
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cluster-api.cattle.io/rancher-auto-import: "true"
+    cloud-provider: azure
+    cni: calico
+  name: azure-kubeadm-quickstart
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: azure-kubeadm-example
+    controlPlane:
+      replicas: 1
+    variables:
+    - name: subscriptionID
+      value: <AZURE_SUBSCRIPTION_ID>
+    - name: location
+      value: <AZURE_LOCATION>
+    - name: resourceGroup
+      value: <AZURE_RESOURCE_GROUP>
+    - name: azureClusterIdentityName
+      value: cluster-identity
+    version: v1.31.1
+    workers:
+      machineDeployments:
+      - class: kubeadm-default-worker
+        name: md-0
         replicas: 1
 ----
 
