@@ -1,11 +1,12 @@
-= Install CAPI Providers
-:sidebar_position: 2
+= CAPI Provider
 
 The `CAPIProvider` resource allows managing Cluster API Operator manifests in a declarative way. It is used to provision and configure Cluster API providers like AWS, vSphere etc.
 
 `CAPIProvider` follows a GitOps model - the spec fields are declarative user inputs. The controller only updates status.
 
-Every field provided by the upstream CAPI Operator resource for the desired `spec.type` is also available in the spec of the `CAPIProvider` resource. Feel free to refer to upstream configuration https://cluster-api-operator.sigs.k8s.io/03_topics/02_configuration/[guides] for advanced scenarios.
+Every field provided by the upstream CAPI Operator `CAPIProviderSpec` resource is also available in the spec of the `CAPIProvider` resource. Feel free to refer to upstream configuration link:https:/cluster-api-operator.sigs.k8s.io/03_topics/02_configuration/05_provider-spec-configuration[guides] for advanced scenarios.
+
+All the xref:../overview/certified.adoc[certified] CAPI Providers are configured using an embedded configuration. In order to override it, a custom xref:./clusterctlconfig.adoc#_override_a_certified_provider_version[ClusterctlConfig] needs to be created.
 
 == Usage
 
@@ -50,8 +51,6 @@ The key fields in the `CAPIProvider` spec are:
 * `configSecret` - Name of the provider config secret, where the variables and synced credential will be stored. By default if not specified, will inherit the name of the `CAPIProvider` resource.
 * `features` - Enabled provider features.
 * `variables` - Variables is a map of environment variables to add to the content of the `configSecret`.
-
-Full documentation on the CAPIProvider resource - https://doc.crds.dev/github.com/rancher/turtles/turtles-capi.cattle.io/CAPIProvider/v1alpha1@v0.5.0[here].
 
 == Deletion
 

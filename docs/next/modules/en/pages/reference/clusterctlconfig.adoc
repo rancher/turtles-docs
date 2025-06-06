@@ -1,0 +1,89 @@
+= ClusterctlConfig
+
+The `ClusterctlConfig` resource allows managing overrides for clusterctl (CAPI Operator) configurations in a declarative way. It is used to configure clusterctl providers and their urls, as well as version restrictions.
+
+`ClusterctlConfig` follows a GitOps model - the spec fields are declarative user inputs. Turtles does not create or update the resource, it is up to user to specify provider url overrides and maintain its state. It takes precedence over embedded defaults or `clusterctl` default set of provider definitions.
+
+https://github.com/rancher/turtles/blob/main/docs/adr/0012-clusterctl-provider.md[ADR]
+
+== Usage
+
+To use the `ClusterctlConfig` resource:
+
+. Create a `ClusterctlConfig` resource with the `clusterctl-config` name in the `turtles` namespace.
+. The `ClusterctlConfig` controller will handle updates for the `ConfigMap` mounted to the `cluster-api-operator` with the required clusterctl configuration based on the `ClusterctlConfig` spec.
+. Manage the `ClusterctlConfig` object declaratively to apply changes to the generated provider configurations. It may require some time for changes to take effect, as `kubelet` takes care of updating mounted point based on `ConfigMap` state.
+
+Here is an example `ClusterctlConfig` manifest:
+
+[,yaml]
+----
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: ClusterctlConfig
+metadata:
+  name: clusterctl-config
+  namespace: rancher-turtles-system
+spec:
+  providers:
+  - name: metal3
+    url: https://github.com/metal3-io/cluster-api-provider-metal3/releases/v1.7.1/infrastructure-components.yaml
+    type: InfrastructureProvider
+  images:
+  - name: metal3
+    repository: "my.registry.mirror"
+    tag: customTag
+----
+
+This example will generate a clusterctl configuration for the `metal3` provider with the specified URL and type.
+
+== Specification
+
+The key fields in the `ClusterctlConfig` spec are:
+
+* `providers[].name` - Name of the provider (e.g. metal3)
+* `providers[].url` - URL of the provider configuration (e.g.
+https://github.com/metal3-io/cluster-api-provider-metal3/releases/v1.7.1/infrastructure-components.yaml). This can use `latest` release, if supported, or pin the maximum version to `v1.7.1` for example.
+* `providers[].type` - Type of the provider (e.g. InfrastructureProvider)
+
+* `images[].name` - The image name to override (e.g. infrastructure-metal3, cluster-api, bootstrap-rke2, control-plane-rke2)
+* `images[].repository` - Sets the container registry override to pull images from
+* `images[].tag` - Allows to specify a tag for the images
+
+== Override a Certified Provider version
+
+{product_name} embeds a validated configuration where all certified provider versions are pinned.  +
+Typically versions are updated with any relese of {product_name}.  
+
+[WARNING]
+====
+- {product_name} only validates the embedded configuration for certified providers. Any customization to the embedded configuration can eventually lead to incompatibilities and unsupported scenarios. 
+====
+
+In order to override a provider version, or to use a different registry to pull images, a `ClusterctlConfig` can be defined.  +
+For more information on image override, please refer to the upstream link:https://cluster-api.sigs.k8s.io/clusterctl/configuration#image-overrides[documentation].  
+
+[source,yaml]
+----
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: ClusterctlConfig
+metadata:
+  name: clusterctl-config
+  namespace: rancher-turtles-system
+spec:
+  providers:
+  - name: rke2
+    url: "https://github.com/rancher/cluster-api-provider-rke2/releases/v0.16.0/control-plane-components.yaml"
+    type: ControlPlaneProvider
+  - name: rke2
+    url: "https://github.com/rancher/cluster-api-provider-rke2/releases/v0.16.0/bootstrap-components.yaml"
+    type: BootstrapProvider
+  images:
+  - name: control-plane-rke2
+    repository: "ghcr.io/rancher"
+  - name: bootstrap-rke2
+    repository: "ghcr.io/rancher"
+----
+
+== Deletion
+
+When a `ClusterctlConfig` resource is deleted, the config map is reverted to its original state, managed by turtles.

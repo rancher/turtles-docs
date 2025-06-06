@@ -31,9 +31,13 @@ To make it easier to get started with {product_name}, we have structured the doc
 
 If this is your first time using {product_name} and you want to get started quickly, we recommend you start xref:./tutorials/quickstart.adoc[here]. This will guide you through the process of getting your environment ready for installing {product_name}, using CAPI to provision a new workload cluster and importing it into Rancher.
 
+=== Overview
+
+Understand the xref:./overview/architecture.adoc[architecture] of {product_name}, the xref:./overview/features.adoc[features], the concept of xref:./overview/certified.adoc[`Certified Providers`] and the xref:./overview/glossary.adoc[core concepts] of the operator's features.
+
 === Reference
 
-Understand the xref:./reference/architecture.adoc[architecture] of {product_name}, the xref:./reference/features.adoc[features], the concept of xref:./reference/certified.adoc[`Certified Providers`] and the xref:./reference/glossary.adoc[core concepts] of the operator's features.
+Contains the reference documentation for all {product_name} custom resources.
 
 === User Guide
 
@@ -41,7 +45,7 @@ Learn how to use {product_name} to xref:./user/clusters.adoc[manage your CAPI cl
 
 === Operator Guide
 
-You may want to dive into more advanced maintenance tasks, like xref:./operator/manual.adoc[customizing your {product_name} installation], e.g. configuring {product_name} for more advanced scenarios like xref:./operator/airgapped.adoc[air-gapped environments], how to xref:./operator/capiprovider.adoc[install and manage CAPI Providers] or xref:./operator/certification.adoc[certifying the provider of your choice].
+You may want to dive into more advanced maintenance tasks, like xref:./operator/manual.adoc[customizing your {product_name} installation], e.g. configuring {product_name} for more advanced scenarios like xref:./operator/airgapped.adoc[air-gapped environments], or xref:./operator/certification.adoc[certifying the provider of your choice].
 
 === Developer Guide
 
