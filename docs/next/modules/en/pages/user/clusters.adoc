@@ -13,7 +13,7 @@ Keep in mind that most Cluster API Providers are upstream projects maintained by
 AWS::
 +
 * Rancher Manager cluster with {product_name} installed
-* Cluster API Providers: you can find a guide on how to install a provider using the `CAPIProvider` resource xref:../operator/capiprovider.adoc[here]
+* Cluster API Providers: you can find a guide on how to install a provider using the `CAPIProvider` resource xref:../reference/capiprovider.adoc[here]
 ** https://github.com/kubernetes-sigs/cluster-api-provider-aws/[Infrastructure provider for AWS], this is an example of AWS provider installation,
 follow the provider documentation if some options need to be customized:
 +
@@ -81,7 +81,7 @@ spec:
 GCP GKE::
 +
 * Rancher Manager cluster with {product_name} installed
-* Cluster API Providers: you can find a guide on how to install a provider using the `CAPIProvider` resource xref:../operator/capiprovider.adoc[here]
+* Cluster API Providers: you can find a guide on how to install a provider using the `CAPIProvider` resource xref:../reference/capiprovider.adoc[here]
 ** https://github.com/kubernetes-sigs/cluster-api-provider-gcp/[Infrastructure provider for GCP], this is an example of GCP provider installation,
 follow the provider documentation if some options need to be customized:
 +
@@ -123,7 +123,7 @@ Docker RKE2/Kubeadm::
 vSphere RKE2/Kubeadm::
 +
 * Rancher Manager cluster with {product_name} installed 
-* Cluster API Providers: you can find a guide on how to install a provider using the `CAPIProvider` resource xref:../operator/capiprovider.adoc[here]
+* Cluster API Providers: you can find a guide on how to install a provider using the `CAPIProvider` resource xref:../reference/capiprovider.adoc[here]
 ** https://github.com/kubernetes-sigs/cluster-api-provider-aws/[Infrastructure provider for vSphere], this is an example of vSphere provider installation,
 follow the provider documentation if some options need to be customized:
 +

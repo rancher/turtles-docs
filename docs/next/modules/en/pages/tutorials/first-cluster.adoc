@@ -5,7 +5,7 @@ This section will guide you through creating your first cluster and importing it
 == Prerequisites
 
 * Rancher Manager cluster with {product_name} installed
-* Cluster API providers installed for your scenario - we'll be using the https://github.com/kubernetes-sigs/cluster-api/tree/main/test/infrastructure/docker[Docker infrastructure] and https://github.com/rancher/cluster-api-provider-rke2[RKE2 bootstrap/control plane] providers in these instructions - see xref:../operator/capiprovider.adoc[Initialization for common providers using Turtles' `CAPIProvider`]
+* Cluster API providers installed for your scenario - we'll be using the https://github.com/kubernetes-sigs/cluster-api/tree/main/test/infrastructure/docker[Docker infrastructure] and https://github.com/rancher/cluster-api-provider-rke2[RKE2 bootstrap/control plane] providers in these instructions - see xref:../reference/capiprovider.adoc[Initialization for common providers using Turtles' `CAPIProvider`]
 
 == Provision a CAPI Workload Cluster
 

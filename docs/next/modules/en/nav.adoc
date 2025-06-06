@@ -3,11 +3,14 @@
 ** xref:tutorials/quickstart.adoc[Quick Start]
 ** xref:tutorials/first-cluster.adoc[Your First Cluster]
 ** xref:tutorials/uninstall.adoc[Uninstall]
+* Overview
+** xref:overview/architecture.adoc[Architecture]
+** xref:overview/glossary.adoc[Glossary]
+** xref:overview/features.adoc[Features]
+** xref:overview/certified.adoc[Certified Providers]
 * Reference
-** xref:reference/architecture.adoc[Architecture]
-** xref:reference/glossary.adoc[Glossary]
-** xref:reference/features.adoc[Features]
-** xref:reference/certified.adoc[Certified Providers]
+** xref:reference/capiprovider.adoc[CAPIProvider]
+** xref:reference/clusterctlconfig.adoc[ClusterctlConfig]
 * User Guide
 ** xref:user/clusters.adoc[Provision a CAPI cluster]
 ** xref:user/clusterclass.adoc[Provision a CAPI cluster with ClusterClass]
@@ -17,7 +20,6 @@
 * Operator Guide
 ** xref:operator/chart.adoc[Chart Configuration]
 ** xref:operator/manual.adoc[Manual Installation]
-** xref:operator/capiprovider.adoc[Install CAPI Providers]
 ** xref:operator/clusterclass.adoc[Enabling ClusterClass]
 ** xref:operator/certification.adoc[Provider Certification]
 ** xref:operator/certificationsuite.adoc[Provider Test Suite]

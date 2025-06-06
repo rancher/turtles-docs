@@ -4,14 +4,14 @@ In this section we cover enabling the https://cluster-api.sigs.k8s.io/tasks/expe
 
 [TIP]
 ====
-Before using the ClusterClass feature, study the provider docs and confirm that the feature is supported. This documentation includes a matrix in the xref:../reference/certified.adoc[Certified providers] section with xref:../reference/certified.adoc#_clusterclass_support_for_certified_providers[cluster topology support status].
+Before using the ClusterClass feature, study the provider docs and confirm that the feature is supported. This documentation includes a matrix in the xref:../overview/certified.adoc[Certified providers] section with xref:../overview/certified.adoc#_clusterclass_support_for_certified_providers[cluster topology support status].
 ====
 
 == Enable ClusterClass
 
 In order to use the ClusterClass feature, it needs to be enabled for core Cluster API and any provider that supports it. This is done by setting the `CLUSTER_TOPOLOGY` variable to `true`.
 
-The {product_name} Helm chart will automatically enable the feature when installing CAPI. However, when enabling additional providers, ensure `CLUSTER_TOPOLOGY` is set in the provider configuration. Turtles' xref:../operator/capiprovider.adoc[CAPIProvider] resource supports passing installation parameters to the provider via `variables` as follows:
+The {product_name} Helm chart will automatically enable the feature when installing CAPI. However, when enabling additional providers, ensure `CLUSTER_TOPOLOGY` is set in the provider configuration. Turtles' xref:../reference/capiprovider.adoc[CAPIProvider] resource supports passing installation parameters to the provider via `variables` as follows:
 
 [source,yaml]
 ----

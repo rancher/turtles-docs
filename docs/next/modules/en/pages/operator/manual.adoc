@@ -22,7 +22,7 @@ The recommended way to disable this feature and the Rancher-specific webhooks, i
 ====
 
 
-If you would like to understand how {product_name} works and what the architecture looks like, you can refer to the xref:../reference/architecture.adoc[Architecture] section.
+If you would like to understand how {product_name} works and what the architecture looks like, you can refer to the xref:../overview/architecture.adoc[Architecture] section.
 
 [NOTE]
 ====

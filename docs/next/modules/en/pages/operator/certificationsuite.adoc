@@ -7,7 +7,7 @@ This section contains information on how you can leverage the existing E2E suite
 * Install Gitea.
 * Run the suite that will create a git repo, apply cluster template using Fleet and verify the cluster is created and successfully imported in Rancher.
 
-The test suite can be used for certification of providers not listed in the xref:../reference/certified.adoc[Certification table], as detailed in xref:../operator/certification.adoc[Provider Certification].
+The test suite can be used for certification of providers not listed in the xref:../overview/certified.adoc[Certification table], as detailed in xref:../operator/certification.adoc[Provider Certification].
 
 == How to Use It
 
