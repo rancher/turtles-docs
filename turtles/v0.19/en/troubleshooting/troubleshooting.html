@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Rancher Turtles Troubleshooting :: Rancher Turtles</title>
+    <link rel="prev" href="../developer/guidelines.html">
+    <link rel="next" href="../security/slsa.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../_/css/search.css">
+<link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../../../_/css/font-styles.css">
+<link rel="stylesheet" href="../../../../_/fonts/css/all.css">
+<link rel="stylesheet" href="../../../../_/css/site-extra.css">
+<link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+<link href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet"> -->
+<link rel="stylesheet" href="../../../../_/css/vendor/light.css">
+<script src="/docserv/res/lightheaded/analytics.js"
+        type="text/javascript"></script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a class=" navbar-logo" href="https://documentation.suse.com/"><img class="logo"
+            src="../../../../_/img/logo.svg" /></a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">
+            <img src="../../../../_/img/github_logo.svg" class="langIcon Resurces" alt="Resources" title="Resources">
+          </div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/rancher/turtles"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://github.com/rancher/turtles-docs"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles docs&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">More from SUSE</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://www.rancher.com" target="_blank"><img src="../../../../_/img/icon-rancher-mask.png" width="51" height="24" alt="Rancher by SUSE"
+              title="SUSE Rancher">&nbsp;Rancher&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://fleet.rancher.io" target="_blank"><img src="../../../../_/img/icon-fleet-mask.png" width="29" height="24" alt="Fleet"
+              title="Fleet">&nbsp;Fleet&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://www.kubewarden.io" target="_blank"><img src="../../../../_/img/icon-kubewarden-mask.png" width="29" height="24" alt="Kubewarden"
+              title="Kubewarden">&nbsp;Kubewarden&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://harvesterhci.io" target="_blank"><img src="../../../../_/img/icon-harvester-mask.png" width="29" height="24" alt="Harvester"
+              title="Harvester">&nbsp;Harvester&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://opensource.suse.com" target="_blank"><img src="../../../../_/img/icon-suse-mask.png" width="41" height="24" alt="OpenSource at SUSE"
+              title="OpenSource @ SUSE">&nbsp;More projects...&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs" >
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header><div class="body">
+<div class="nav-container" data-component="turtles" data-version="v0.19">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Rancher Turtles</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tutorials</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/quickstart.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/first-cluster.html">Your First Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/uninstall.html">Uninstall</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/features.html">Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/certified.html">Certified Providers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user/clusters.html">Provision a CAPI cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user/clusterclass.html">Provision a CAPI cluster with ClusterClass</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user/fleet.html">Create a cluster using Fleet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user/caapf.html">CAPI Addon Provider Fleet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../user/gitops.html">GitOps best practices for Turtles and CAPI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Operator Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/chart.html">Chart Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/manual.html">Manual Installation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/capiprovider.html">Install CAPI Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/clusterclass.html">Enabling ClusterClass</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/certification.html">Provider Certification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/certificationsuite.html">Provider Test Suite</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/airgapped.html">Air-Gapped Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developer Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developer/development.html">Development Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developer/guidelines.html">Development Guideline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Troubleshooting Guide</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="troubleshooting.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/slsa.html">SLSA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../changelogs/index.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Rancher Turtles</span>
+    <span class="version">v0.19</span>
+  </div>
+  <ul class="components">
+        <li class="component is-current">
+          <div class="title"><a href="../../../stable/en/index.html">Rancher Turtles</a></div>
+          <ul class="versions">
+            <li class="version">
+              <a href="../../../next/en/index.html">Next</a>
+            </li>
+            <li class="version is-latest">
+              <a href="../../../stable/en/index.html">v0.20</a>
+            </li>
+            <li class="version is-current">
+              <a href="../index.html">v0.19</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.18/en/index.html">v0.18</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.17/en/index.html">v0.17</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.16/en/index.html">v0.16</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.15/en/index.html">v0.15</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.14/en/index.html">v0.14</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.13/en/index.html">v0.13</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.12/en/index.html">v0.12</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.11/en/index.html">v0.11</a>
+            </li>
+          </ul>
+        </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../stable/en/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Rancher Turtles</a></li>
+    <li>Troubleshooting Guide</li>
+    <li><a href="troubleshooting.html">Troubleshooting</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">v0.19</button>
+  <div class="version-menu">
+    <a class="version" href="../../../next/en/troubleshooting/troubleshooting.html">Next</a>
+    <a class="version" href="../../../stable/en/troubleshooting/troubleshooting.html">v0.20</a>
+    <a class="version is-current" href="troubleshooting.html">v0.19</a>
+    <a class="version" href="../../../v0.18/en/troubleshooting/troubleshooting.html">v0.18</a>
+    <a class="version is-missing" href="../../../v0.17/en/index.html">v0.17</a>
+    <a class="version is-missing" href="../../../v0.16/en/index.html">v0.16</a>
+    <a class="version is-missing" href="../../../v0.15/en/index.html">v0.15</a>
+    <a class="version is-missing" href="../../../v0.14/en/index.html">v0.14</a>
+    <a class="version is-missing" href="../../../v0.13/en/index.html">v0.13</a>
+    <a class="version is-missing" href="../../../v0.12/en/index.html">v0.12</a>
+    <a class="version is-missing" href="../../../v0.11/en/index.html">v0.11</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/rancher/turtles-docs/edit/main/docs/v0.19/modules/en/pages/troubleshooting/troubleshooting.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="4">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Rancher Turtles Troubleshooting</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guide provides troubleshooting steps for Rancher Turtles and Cluster API (CAPI) clusters. It covers common issues and their resolutions to help you maintain a stable and functional environment.</p>
+</div>
+<div class="paragraph">
+<p>Before reading this guide, you can first look at the official <a href="https://cluster-api.sigs.k8s.io/user/troubleshooting"><code>troubleshooting</code></a> documentation for the CAPI project.</p>
+</div>
+<div class="paragraph">
+<p>Understanding the intricacies of both Rancher Turtles and CAPI is crucial for effective troubleshooting. This guide aims to equip you with the knowledge to diagnose and resolve basic problems in Rancher Turtles and CAPI.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To effectively troubleshoot Rancher Turtles and CAPI clusters, you need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Access to a terminal with kubectl configured to access Rancher management cluster</p>
+</li>
+<li>
+<p>Krew plugin manager for kubectl installed</p>
+</li>
+<li>
+<p>Helm CLI tool installed</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can install Krew by following the instructions at <a href="https://krew.sigs.k8s.io/docs/user-guide/setup/install/">Krew installation guide</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_check_the_logs"><a class="anchor" href="#_how_to_check_the_logs"></a>How to check the logs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can view the following pods and check their logs in namespaces:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Namespace</th>
+<th class="tableblock halign-left valign-top">Pod</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rancher-turtles-system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rancher-turtles-cluster-api-operator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manages the installation and lifecycle of Cluster API providers in the management cluster</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rancher-turtles-system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rancher-turtles-controller-manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Handles Rancher integration and manages the custom resources for Turtles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rancher-turtles-system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">caapf-controller-manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controls the Cluster API Provider Framework for custom infrastructure providers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">capi-system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">capi-controller-manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Core Cluster API controller that reconciles main cluster resources</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rke2-bootstrap-system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rke2-bootstrap-controller-manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manages the bootstrap configuration for RKE2 nodes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rke2-control-plane-system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rke2-control-plane-controller-manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Handles the initialization and management of RKE2 control plane components</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*-system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*-controller-manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Handles the initialization and management of Infrastructure provider components</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$-bootstrap-system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$-bootstrap-controller-manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manages the bootstrap configuration for custom providers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$-control-plane-system</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">$-control-plane-controller-manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Handles the initialization and management of custom providers control plane components</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>'*' - depending on the infrastructure provider in use
+'$' - depending on controlplane/bootstrap provider in use, e.g. kubeadm or rke2</p>
+</div>
+<div class="paragraph">
+<p>One way to monitor logs from Cluster API controll plane pods by usuing <code>kubectl logs</code> with label selector.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl logs -l control-plane=controller-manager -n rancher-turtles-system -f
+kubectl logs -l control-plane=controller-manager -n capi-system -f
+kubectl logs -l control-plane=controller-manager -n rke2-bootstrap-system -f
+kubectl logs -l control-plane=controller-manager -n rke2-control-plane-system -f</code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using kubectl krew to install the stern plugin involves third-party software which may pose security risks in production environments. While it&#8217;s a useful tool for log viewing, it should primarily be used in development or testing environments. Always review third-party plugins before installing them in sensitive or production clusters.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The best method to monitor logs from different pods is by using the following method.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl krew install stern</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then you can tail logs from all pods in real time.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl stern . -n rancher-turtles-system -n rke2-bootstrap-system -n rke2-control-plane-system -n capi-system</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl stern -A -l control-plane=controller-manager</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_manage_rancher_turtles_and_capi_resources"><a class="anchor" href="#_how_to_manage_rancher_turtles_and_capi_resources"></a>How to manage Rancher Turtles and CAPI resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>List Rancher and Cluster API resources</strong></p>
+</div>
+<div class="paragraph">
+<p>Often users are asking how to deal with long list of different CRDs created by CAPI and Rancher, here is some idea how you can deal with it.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>List all CAPI and Rancher related credentials</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl api-resources | grep 'cattle.io\|cluster.x-k8s.io'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>About the resource, you can get a full explanation of what it is doing or what the configuration options are</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl api-resources | grep clusterclass
+kubectl explain clusterclass.cluster.x-k8s.io</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then you get a description about each field and configuration section</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl explain clusterclass.spec
+kubectl explain clusterclass.spec.controlPlane
+kubectl explain clusterclasses.spec.controlPlane.machineInfrastructure</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>List existing Rancher and Cluster API objects resources</strong></p>
+</div>
+<div class="paragraph">
+<p>The most common mistake is to use the <code>default</code> namespace in Kubernetes for your work. This will make your configuration really messy and difficult to manage and troubleshoot. It is highly recommended to use separate namespaces for deploying and creating CAPI downstream clusters and avoid using kubernetes system namespaces, such as <code>default</code> and <code>kube-*</code>.</p>
+</div>
+<div class="paragraph">
+<p>When applying templates with <code>kubectl</code>, always specify <code>-n &lt;NAMESPACE&gt;</code> to provision resources in a known locaction. You can switch between namespaces in <strong>KUBECONFIG</strong> with command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl config view
+kubectl config set-context --current --namespace &lt;NAMESPACE&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With separate namespaces, you can easily manage resources by following this method.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using kubectl krew to install the lineage plugin involves third-party software which may pose security risks in production environments. While it&#8217;s a useful tool for log viewing, it should primarily be used in development or testing environments. Always review third-party plugins before installing them in sensitive or production clusters.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install <code>get-all</code> and <code>lineage</code> plugins using <code>krew</code> for <code>kubectl</code></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl krew install lineage
+kubectl krew install get-all</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then list all existing resources in for example <code>capi-clusters</code> namespace where your downstream cluster configuration was deployed.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl get-all -n capi-clusters</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Example output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">NAME                                                                                      NAMESPACE      AGE
+configmap/kube-root-ca.crt                                                                capi-clusters  23h
+secret/cluster1-shim                                                                     capi-clusters  32s
+serviceaccount/default                                                                    capi-clusters  23h
+rke2config.bootstrap.cluster.x-k8s.io/cluster1-mp-0-dm59p                                capi-clusters  32s
+rke2config.bootstrap.cluster.x-k8s.io/cluster1-mp-1-gv6kh                                capi-clusters  32s
+rke2configtemplate.bootstrap.cluster.x-k8s.io/cluster1-pool0                             capi-clusters  33s
+rke2configtemplate.bootstrap.cluster.x-k8s.io/cluster1-pool1                             capi-clusters  33s
+clusterclass.cluster.x-k8s.io/clusterclass1                                               capi-clusters  33s
+cluster.cluster.x-k8s.io/cluster1                                                        capi-clusters  32s
+machinepool.cluster.x-k8s.io/cluster1-mp-0-d4fdv                                         capi-clusters  32s
+machinepool.cluster.x-k8s.io/cluster1-mp-1-l86kv                                         capi-clusters  32s
+clustergroup.fleet.cattle.io/clusterclass1                                                capi-clusters  33s
+azureclusteridentity.infrastructure.cluster.x-k8s.io/cluster-identity                     capi-clusters  33s
+azuremanagedcluster.infrastructure.cluster.x-k8s.io/cluster1-l2cs6                       capi-clusters  32s
+azuremanagedclustertemplate.infrastructure.cluster.x-k8s.io/cluster                     capi-clusters  33s
+azuremanagedcontrolplane.infrastructure.cluster.x-k8s.io/cluster1-rv8v4                  capi-clusters  32s
+azuremanagedcontrolplanetemplate.infrastructure.cluster.x-k8s.io/cluster1-control-plane  capi-clusters  33s
+azuremanagedmachinepool.infrastructure.cluster.x-k8s.io/cluster1-mp-0-78tck              capi-clusters  32s
+azuremanagedmachinepool.infrastructure.cluster.x-k8s.io/cluster1-mp-1-zdscw              capi-clusters  32s
+azuremanagedmachinepooltemplate.infrastructure.cluster.x-k8s.io/cluster1-pool0           capi-clusters  33s
+azuremanagedmachinepooltemplate.infrastructure.cluster.x-k8s.io/cluster1-pool1           capi-clusters  33s</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then you can check what the relation is between all object resources</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl lineage -n capi-clusters cluster.cluster.x-k8s.io/cluster1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../_images/lineage-cluster-output.png" alt="Output">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_enable_debug_mode_for_rancher_turtles_and_capi_operators"><a class="anchor" href="#_how_to_enable_debug_mode_for_rancher_turtles_and_capi_operators"></a>How to enable debug mode for Rancher Turtles and CAPI operators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The helm chart exposes values for increasing the log level via the usual <code>values.yaml</code> configuration parameters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cluster API Operator - log level for CAPI operator can also be increased using helm chart, if installed with Rancher Turtles chart use:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">        --set cluster-api-operator.logLevel=5
+        --set rancherTurtles.managerArguments[0]="-v=5"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">helm upgrade rancher-turtles turtles/rancher-turtles \
+            -n rancher-turtles-system \
+            --reuse-values \
+            --set "rancherTurtles.managerArguments={--insecure-skip-verify,-v=5}" \
+            --set cluster-api-operator.logLevel=5</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cluster API Providers - edit CAPIProvider resources for providers where increasing log level is needed. Change to desidered level:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">CAPIProvider.Spec.Manager.Verbosity=5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(5 is equivalent to DEBUG)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_collect_information_from_rancher_turtles_and_capi"><a class="anchor" href="#_how_to_collect_information_from_rancher_turtles_and_capi"></a>How to collect information from Rancher Turtles and CAPI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/crust-gather/crust-gather">crust-gather</a> is a project created by Cluster API developers specifically designed for gathering logs and resource states from CAPI environments. It&#8217;s a safe and official tool that can be used in any type of environment (development, testing, or production) to collect comprehensive diagnostic information for troubleshooting.</p>
+</div>
+<div class="paragraph">
+<p>You can install it via following instructions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl krew install crust-gather
+
+kubectl crust-gather --help</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, it can be installed standalone via <strong>install.sh</strong> script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -sSfL https://github.com/crust-gather/crust-gather/raw/main/install.sh | sh
+
+crust-gather --help</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can specify a list of filters to collect data. By default it takes a full cluster snapshot. Data is stored in crust-gather dir by default.
+Crust gather accepts a pre-defined filter configs for Rancher or child cluster. Kubeconfig should point to the correct cluster.
+Usage with <a href="https://gist.github.com/Danil-Grigorev/0a1e629090772330bf817176ed99f324">config</a> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl crust-gather collect-from-config -c config.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Usage via regular flags:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl crust-gather collect --include-namespace rancher-turtles-system --include-namespace capi-* --include-namespace cattle* --include-namespace c-* --include-namespace=&lt;any-capi-cluster-namespace&gt; --kubeconfig=&lt;KUBECONFIG&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can specify a file with secrets or environment variables with secrets strings to exclude.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl crust-gather collect -s ENV_WITH_SECRET --secrets-file=secrets.txt</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or exclude all secret resources from collection:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl crust-gather collect --exclude-kind Secret</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_clean_up_rancher_turtles_and_capi_resources"><a class="anchor" href="#_how_to_clean_up_rancher_turtles_and_capi_resources"></a>How to clean up Rancher Turtles and CAPI resources</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sometimes cleanup of your infrastructure might fail and it might lead to pending resources. In this situation, we have to remove resources manually.</p>
+</div>
+<div class="paragraph">
+<p>Keep in mind, that removal of finalizers manually <strong>will</strong> require to perform manual cleanup of provisioned resources by the infrastructure provider.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">export NAMESPACE=capi-clusters
+
+for RESOURCE in `kubectl get-all -n $NAMESPACE -o name | grep 'cattle.io\|cluster.x-k8s.io'`;
+do
+        echo "Patching $RESOURCE in namespace $NAMESPACE";
+        kubectl patch $RESOURCE -n $NAMESPACE -p '{"metadata":{"finalizers":[]}}' --type=merge;
+        kubectl delete $RESOURCE -n $NAMESPACE;
+done</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_uninstall_rancher_turtles_and_capi_project"><a class="anchor" href="#_how_to_uninstall_rancher_turtles_and_capi_project"></a>How to uninstall Rancher Turtles and CAPI project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To uninstall Rancher Turtles and CAPI components from your management cluster, follow these steps in order:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>First, delete all downstream clusters created with CAPI. For each cluster:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl delete -n capi-clusters cluster.cluster.x-k8s.io cluster1</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Replace <code>capi-clusters</code> with the namespace where your clusters are deployed and <code>cluster1</code> with your cluster name. Wait for each cluster to be fully deleted before proceeding to the next step.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Uninstall the Rancher Turtles Helm chart:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">helm uninstall -n rancher-turtles-system rancher-turtles</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Remove any webhook configurations that might have been created by CAPI providers:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># List all webhook configurations
+kubectl get validatingwebhookconfigurations.admissionregistration.k8s.io
+
+# Delete provider-specific webhooks (examples)
+kubectl delete validatingwebhookconfigurations.admissionregistration.k8s.io azureserviceoperator-validating-webhook-configuration
+kubectl delete validatingwebhookconfigurations.admissionregistration.k8s.io capz-validating-webhook-configuration
+kubectl delete validatingwebhookconfigurations.admissionregistration.k8s.io capi-validating-webhook-configuration
+kubectl delete validatingwebhookconfigurations.admissionregistration.k8s.io rke2-webhook-configuration
+
+# Also check and delete mutating webhooks if present
+kubectl get mutatingwebhookconfigurations
+kubectl delete mutatingwebhookconfigurations [webhook-name]</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Clean up any leftover namespaces and resources. The following namespaces may remain after uninstallation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>rancher-turtles-system</p>
+</li>
+<li>
+<p>rke2-bootstrap-system</p>
+</li>
+<li>
+<p>rke2-control-plane-system</p>
+</li>
+<li>
+<p>capi-system</p>
+</li>
+<li>
+<p>capz-system (or other provider-specific namespaces like capv-system, capa-system, etc.)</p>
+</li>
+<li>
+<p>capi-clusters (or other namespaces where you deployed clusters)</p>
+<div class="paragraph">
+<p>To remove these namespaces:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># First remove any finalizers that might be blocking deletion
+for NS in rancher-turtles-system rke2-bootstrap-system rke2-control-plane-system capi-system capz-system capi-clusters; do
+  kubectl get namespace $NS -o json | jq '.spec.finalizers = []' | kubectl replace --raw "/api/v1/namespaces/$NS/finalize" -f -
+done
+
+# Then delete the namespaces
+kubectl delete namespace rancher-turtles-system rke2-bootstrap-system rke2-control-plane-system capi-system capz-system capi-clusters</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Finally, remove the CRDs related to Cluster API and Rancher Turtles:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># Delete all Cluster API and Rancher Turtles CRDs
+kubectl get crds | grep 'cluster.x-k8s.io\|turtles-capi.cattle.io' | awk '{print $1}' | xargs kubectl delete crd
+
+# Or manually delete them one by one
+kubectl delete crd clusters.cluster.x-k8s.io
+kubectl delete crd clusterclasses.cluster.x-k8s.io
+kubectl delete crd machines.cluster.x-k8s.io
+kubectl delete crd machinepools.cluster.x-k8s.io
+kubectl delete crd providers.turtles-capi.cattle.io
+kubectl delete crd clusterconfigs.turtles-capi.cattle.io
+# ... and other related CRDs</code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ensure all clusters are completely deleted before removing these CRDs, or you may leave orphaned cloud resources.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../developer/guidelines.html">Development Guideline</a></span>
+  <span class="next"><a href="../security/slsa.html">SLSA</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../../_/js/site.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/langSelection.js"></script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
+
+
+  </body>
+</html>
