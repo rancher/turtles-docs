@@ -249,7 +249,7 @@ export KUBERNETES_VERSION={kubernetes-version}
 +
 [source,bash]
 ----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/vsphere-rke2.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/legacy/vsphere-rke2.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
@@ -299,7 +299,7 @@ export KUBERNETES_VERSION={kubernetes-version}
 +
 [source,bash]
 ----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/vsphere-kubeadm.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/legacy/vsphere-kubeadm.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.

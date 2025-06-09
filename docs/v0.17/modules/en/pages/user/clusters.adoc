@@ -377,7 +377,7 @@ export WORKER_MACHINE_COUNT=1
 export RKE2_VERSION=v1.30.2+rke2r1
 export KUBERNETES_VERSION=v1.30.4 # needed for the CAPI Docker provider to use proper image
 
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/docker-rke2.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.17.0/test/e2e/data/cluster-templates/docker-rke2.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** to ensure there are no tokens. You can make any changes you want as well.
@@ -405,7 +405,7 @@ export CONTROL_PLANE_MACHINE_COUNT=1
 export WORKER_MACHINE_COUNT=1
 export KUBERNETES_VERSION=v1.30.4
 
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/docker-kubeadm.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.17.0/test/e2e/data/cluster-templates/docker-kubeadm.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** to ensure there are no tokens. You can make any changes you want as well.
@@ -456,7 +456,7 @@ export KUBERNETES_VERSION=v1.30.0
 +
 [source,bash]
 ----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/vsphere-rke2.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.17.0/test/e2e/data/cluster-templates/vsphere-rke2.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
@@ -505,7 +505,7 @@ export KUBERNETES_VERSION=v1.30.0
 +
 [source,bash]
 ----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/vsphere-kubeadm.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.17.0/test/e2e/data/cluster-templates/vsphere-kubeadm.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
@@ -540,7 +540,7 @@ export AZURE_TENANT_ID="xxx"
 +
 [source,bash]
 ----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/azure-aks-topology.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.17.0/test/e2e/data/cluster-templates/azure-aks-topology.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
@@ -570,7 +570,7 @@ export KUBERNETES_VERSION=v1.30.4
 +
 [source,bash]
 ----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/aws-eks-mmp.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.17.0/test/e2e/data/cluster-templates/aws-eks-mmp.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
@@ -602,7 +602,7 @@ export WORKER_MACHINE_COUNT=1
 +
 [source,bash]
 ----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/gcp-gke.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.17.0/test/e2e/data/cluster-templates/gcp-gke.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
