@@ -20,7 +20,7 @@ xref:./certification.adoc#_certify_provider_with_custom_integration_suite[Certif
 [discrete]
 ==== *Why would I want to validate my provider?*
 
-The number of CAPI providers keeps growing and the community is coming up with new projects for different infrastructure hosts. This openness helps enrich the CAPI ecosystem but makes it impossible to control and test all providers Turtles will work with across the whole CAPI project. Developers of Turtles will maintain a xref:../reference/certified.adoc[list of certified providers] that are actively tested and validated by CI mechanisms but this list will be limited to key and well-known providers. That is why we encourage users of providers not listed to reuse Turtles' test suite and validate the integration between the provider and Turtles.
+The number of CAPI providers keeps growing and the community is coming up with new projects for different infrastructure hosts. This openness helps enrich the CAPI ecosystem but makes it impossible to control and test all providers Turtles will work with across the whole CAPI project. Developers of Turtles will maintain a xref:../overview/certified.adoc[list of certified providers] that are actively tested and validated by CI mechanisms but this list will be limited to key and well-known providers. That is why we encourage users of providers not listed to reuse Turtles' test suite and validate the integration between the provider and Turtles.
 
 [discrete]
 ==== *Can I use Turtles with an uncertified provider?*
@@ -30,7 +30,7 @@ Turtles is a project that aims to be agnostic and integrate with the whole CAPI 
 [discrete]
 ==== *What is the difference between certified and supported?*
 
-As CAPI providers are projects maintained by the Kubernetes community, we cannot guarantee support for a given provider. This is why we opt for focusing on constant validation of xref:../reference/certified.adoc[Certified Providers] and offer users the possibility of integrating with the existing test suite to verify their providers of choice.
+As CAPI providers are projects maintained by the Kubernetes community, we cannot guarantee support for a given provider. This is why we opt for focusing on constant validation of xref:../overview/certified.adoc[Certified Providers] and offer users the possibility of integrating with the existing test suite to verify their providers of choice.
 
 == Provider Certification Using Turtles Test Suite
 
@@ -88,4 +88,4 @@ To certify your provider using a custom integration suite, ensure it meets the f
 
 Integrating with Turtles' test suite and running checks on your provider of interest is enough to validate that it is compatible with {product_name}. As it is not feasible for us to continuously test every CAPI provider, this certification workflow will allow you as a user to verify the expected functionality. However, as we are not actively testing newer iterations of the provider (with newer versions of Turtles), the support and guarantee for the given provider is limited, and you will be responsible for validating future releases.
 
-If, after successfully running checks on your provider, you would like to request that it be added to the list of xref:../reference/certified.adoc[Certified Providers] and included in the project's periodic E2E suite, you can request certification by submitting a GitHub issue using the https://github.com/rancher/turtles/issues/new?template=certification_request.yaml[Request for Certification template]. The community will review the proposal and determine the feasibility of adding the provider to the certification matrix.
+If, after successfully running checks on your provider, you would like to request that it be added to the list of xref:../overview/certified.adoc[Certified Providers] and included in the project's periodic E2E suite, you can request certification by submitting a GitHub issue using the https://github.com/rancher/turtles/issues/new?template=certification_request.yaml[Request for Certification template]. The community will review the proposal and determine the feasibility of adding the provider to the certification matrix.
