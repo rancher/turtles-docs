@@ -175,6 +175,15 @@ go run tools/setexampleversion/main.go -version=v0.21.0 \
   docs/v0.21/modules/en/pages/user/clusterclass.adoc
 ----
 
+[#component-version-updates]
+==== Component Version Updates
+
+For updating component versions (Rancher, Cluster API, etc.) in the prerequisites tables, the repository includes a reusable workflow at `.github/workflows/pre-release.yaml`. This workflow can be called from other workflows to selectively update component versions in the `docs/next/` directory:
+
+* **Selective Updates**: Only updates versions for components that are specified as inputs
+* **Automatic PR Creation**: Creates a pull request with the version changes
+* **Flexible Configuration**: Each component version can be updated independently
+
 [#manual-version-updates]
 === Manual Version Updates
 

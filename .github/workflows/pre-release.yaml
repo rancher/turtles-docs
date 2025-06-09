@@ -1,0 +1,199 @@
+name: Update Component Versions
+
+on:
+  workflow_dispatch:
+    inputs:
+      rancher_version:
+        description: 'Rancher version (e.g., v2.11.0)'
+        type: string
+      cluster_api_operator_version:
+        description: 'Cluster API Operator version (e.g., v0.18.1)'
+        type: string
+      cluster_api_version:
+        description: 'Cluster API version (e.g., v1.9.5)'
+        type: string
+      cluster_api_provider_rke2_version:
+        description: 'Cluster API Provider RKE2 version (e.g., v0.16.0)'
+        type: string
+      cert_manager_version:
+        description: 'Cert-manager version (e.g., v1.15.2)'
+        type: string
+      kubernetes_version:
+        description: 'Kubernetes cluster version (e.g., v1.30.0)'
+        type: string
+      helm_version:
+        description: 'Helm version (e.g., v3.17.1)'
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate dynamic config
+        run: |
+          cat > dynamic-config.json << 'EOF'
+          {
+            "rules": [
+          EOF
+          
+          first_rule=true
+          
+          if [[ -n "${{ inputs.rancher_version }}" ]]; then
+            if [[ "$first_rule" == "false" ]]; then echo "," >> dynamic-config.json; fi
+            cat >> dynamic-config.json << 'EOF'
+              {
+                "name": "Update Rancher version in prerequisites table",
+                "pattern": "\\| Rancher\\s*\\r?\\n\\| `v[0-9]+\\.[0-9]+\\.[0-9]+`",
+                "replacement": "| Rancher\n| `%s`",
+                "version": "${{ inputs.rancher_version }}"
+              },
+              {
+                "name": "Update RANCHER_VERSION environment variable",
+                "pattern": "RANCHER_VERSION: \"v[0-9]+\\.[0-9]+\\.[0-9]+\"",
+                "replacement": "RANCHER_VERSION: \"%s\"",
+                "version": "${{ inputs.rancher_version }}"
+              }
+          EOF
+            first_rule=false
+          fi
+          
+          if [[ -n "${{ inputs.cluster_api_operator_version }}" ]]; then
+            if [[ "$first_rule" == "false" ]]; then echo "," >> dynamic-config.json; fi
+            cat >> dynamic-config.json << 'EOF'
+              {
+                "name": "Update Cluster API Operator version in prerequisites table",
+                "pattern": "\\| Cluster API Operator\\s*\\r?\\n\\| `v[0-9]+\\.[0-9]+\\.[0-9]+`",
+                "replacement": "| Cluster API Operator\n| `%s`",
+                "version": "${{ inputs.cluster_api_operator_version }}"
+              }
+          EOF
+            first_rule=false
+          fi
+          
+          if [[ -n "${{ inputs.cluster_api_version }}" ]]; then
+            if [[ "$first_rule" == "false" ]]; then echo "," >> dynamic-config.json; fi
+            cat >> dynamic-config.json << 'EOF'
+              {
+                "name": "Update Cluster API version in prerequisites table",
+                "pattern": "\\| Cluster API\\s*\\r?\\n\\| `v[0-9]+\\.[0-9]+\\.[0-9]+`",
+                "replacement": "| Cluster API\n| `%s`",
+                "version": "${{ inputs.cluster_api_version }}"
+              }
+          EOF
+            first_rule=false
+          fi
+          
+          if [[ -n "${{ inputs.cluster_api_provider_rke2_version }}" ]]; then
+            if [[ "$first_rule" == "false" ]]; then echo "," >> dynamic-config.json; fi
+            cat >> dynamic-config.json << 'EOF'
+              {
+                "name": "Update Cluster API Provider RKE2 version in prerequisites table",
+                "pattern": "\\| Cluster API Provider RKE2\\s*\\r?\\n\\| `v[0-9]+\\.[0-9]+\\.[0-9]+`",
+                "replacement": "| Cluster API Provider RKE2\n| `%s`",
+                "version": "${{ inputs.cluster_api_provider_rke2_version }}"
+              }
+          EOF
+            first_rule=false
+          fi
+          
+          if [[ -n "${{ inputs.cert_manager_version }}" ]]; then
+            if [[ "$first_rule" == "false" ]]; then echo "," >> dynamic-config.json; fi
+            cat >> dynamic-config.json << 'EOF'
+              {
+                "name": "Update Cert-manager version in prerequisites table",
+                "pattern": "\\| Cert-manager\\s*\\r?\\n\\| `v[0-9]+\\.[0-9]+\\.[0-9]+`",
+                "replacement": "| Cert-manager\n| `%s`",
+                "version": "${{ inputs.cert_manager_version }}"
+              }
+          EOF
+            first_rule=false
+          fi
+          
+          if [[ -n "${{ inputs.kubernetes_version }}" ]]; then
+            if [[ "$first_rule" == "false" ]]; then echo "," >> dynamic-config.json; fi
+            cat >> dynamic-config.json << 'EOF'
+              {
+                "name": "Update Kubernetes cluster version in prerequisites table",
+                "pattern": "\\| Kubernetes cluster\\s*\\r?\\n\\| `v[0-9]+\\.[0-9]+\\.[0-9]+`",
+                "replacement": "| Kubernetes cluster\n| `%s`",
+                "version": "${{ inputs.kubernetes_version }}"
+              }
+          EOF
+            first_rule=false
+          fi
+          
+          if [[ -n "${{ inputs.helm_version }}" ]]; then
+            if [[ "$first_rule" == "false" ]]; then echo "," >> dynamic-config.json; fi
+            cat >> dynamic-config.json << 'EOF'
+              {
+                "name": "Update Helm version in prerequisites table",
+                "pattern": "\\| Helm\\s*\\r?\\n\\| `v[0-9]+\\.[0-9]+\\.[0-9]+`",
+                "replacement": "| Helm\n| `%s`",
+                "version": "${{ inputs.helm_version }}"
+              }
+          EOF
+            first_rule=false
+          fi
+          
+          cat >> dynamic-config.json << 'EOF'
+            ]
+          }
+          EOF
+
+      - name: Apply version updates
+        run: |
+          if [[ -s dynamic-config.json ]] && [[ $(jq '.rules | length' dynamic-config.json) -gt 0 ]]; then
+            go run tools/setexampleversion/main.go -config=dynamic-config.json \
+              docs/next/modules/en/pages/operator/certificationsuite.adoc \
+              docs/next/modules/en/pages/tutorials/quickstart.adoc
+          else
+            echo "No rules to apply - skipping updates"
+          fi
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet docs/next/; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit changes
+        if: steps.changes.outputs.has_changes == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          
+          # Create a descriptive commit message
+          commit_msg="Update component versions in docs/next"
+          if [[ -n "${{ inputs.rancher_version }}" ]]; then commit_msg+="\n- Rancher: ${{ inputs.rancher_version }}"; fi
+          if [[ -n "${{ inputs.cluster_api_operator_version }}" ]]; then commit_msg+="\n- Cluster API Operator: ${{ inputs.cluster_api_operator_version }}"; fi
+          if [[ -n "${{ inputs.cluster_api_version }}" ]]; then commit_msg+="\n- Cluster API: ${{ inputs.cluster_api_version }}"; fi
+          if [[ -n "${{ inputs.cluster_api_provider_rke2_version }}" ]]; then commit_msg+="\n- Cluster API Provider RKE2: ${{ inputs.cluster_api_provider_rke2_version }}"; fi
+          if [[ -n "${{ inputs.cert_manager_version }}" ]]; then commit_msg+="\n- Cert-manager: ${{ inputs.cert_manager_version }}"; fi
+          if [[ -n "${{ inputs.kubernetes_version }}" ]]; then commit_msg+="\n- Kubernetes: ${{ inputs.kubernetes_version }}"; fi
+          if [[ -n "${{ inputs.helm_version }}" ]]; then commit_msg+="\n- Helm: ${{ inputs.helm_version }}"; fi
+          
+          branch_name="update-component-versions-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b $branch_name
+          git add docs/next/
+          git commit -m "$commit_msg"
+          git push origin $branch_name
+          
+          echo -e "$commit_msg" > body
+          export body=$(cat body)
+          gh pr create --title 'Update component versions in documentation' --body "$body" --label "area/documentation"
+
+      - name: Cleanup
+        run: |
+          rm -f dynamic-config.json

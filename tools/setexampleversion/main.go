@@ -42,10 +42,6 @@ func main() {
 	if defaultVersion == "" && config.DefaultVersion != "" {
 		defaultVersion = config.DefaultVersion
 	}
-	if defaultVersion == "" {
-		fmt.Fprintf(os.Stderr, "Error: version must be provided via -version flag or default_version in config\n")
-		os.Exit(1)
-	}
 
 	files := flag.Args()
 	if len(files) == 0 {
@@ -59,9 +55,10 @@ func main() {
 		fileReplacements := 0
 
 		for _, rule := range config.Rules {
-			ruleVersion := defaultVersion
-			if rule.Version != "" {
-				ruleVersion = rule.Version
+			ruleVersion := getRuleVersion(rule, defaultVersion)
+			if ruleVersion == "" {
+				fmt.Fprintf(os.Stderr, "Warning: No version specified for rule '%s' and no default version available\n", rule.Name)
+				continue
 			}
 			replacements := updateFileWithRule(file, rule, ruleVersion)
 			fileReplacements += replacements
@@ -74,6 +71,13 @@ func main() {
 	}
 
 	fmt.Printf("Done. Total replacements: %d\n", totalReplacements)
+}
+
+func getRuleVersion(rule ReplacementRule, defaultVersion string) string {
+	if rule.Version != "" {
+		return rule.Version
+	}
+	return defaultVersion
 }
 
 func updateFileWithRule(filename string, rule ReplacementRule, version string) int {
