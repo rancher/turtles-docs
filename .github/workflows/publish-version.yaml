@@ -44,6 +44,9 @@ jobs:
       - name: Change display_version in antora.yml
         run: |
           sed -i "s/^display_version: .*/display_version: '$TAG'/"  docs/${TAG}/antora.yml
+      - name: Update example versions in documentation
+        run: |
+          go run tools/setexampleversion/main.go -version=v${{ env.TRIMMED_TAG }} docs/${{env.TAG}}/modules/en/pages/user/clusterclass.adoc
       - name: Commit changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
