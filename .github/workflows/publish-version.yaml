@@ -25,6 +25,14 @@ jobs:
           git fetch --tags
           echo "TRIMMED_TAG=${TAG#v}" >> $GITHUB_ENV
           echo "TAG=${TAG%.*}" >> $GITHUB_ENV
+      - name: Update example versions in documentation
+        run: |
+          go run tools/setexampleversion/main.go -version=v${{ env.TRIMMED_TAG }} \
+            docs/next/modules/en/pages/user/clusterclass.adoc \
+            docs/next/modules/en/pages/operator/certificationsuite.adoc \
+            docs/next/modules/en/pages/operator/manual.adoc \
+            docs/next/modules/en/pages/tutorials/quickstart.adoc
+            docs/next/modules/en/pages/user/clusters.adoc
       - name: Copy docs directory
         run: |
           mkdir -p docs/${TAG}
@@ -44,9 +52,6 @@ jobs:
       - name: Change display_version in antora.yml
         run: |
           sed -i "s/^display_version: .*/display_version: '$TAG'/"  docs/${TAG}/antora.yml
-      - name: Update example versions in documentation
-        run: |
-          go run tools/setexampleversion/main.go -version=v${{ env.TRIMMED_TAG }} docs/${{env.TAG}}/modules/en/pages/user/clusterclass.adoc
       - name: Commit changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

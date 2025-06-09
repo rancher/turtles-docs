@@ -1,0 +1,24 @@
+{
+    "rules": [
+      {
+        "name": "Update Turtles raw GitHub links",
+        "pattern": "https://raw\\.githubusercontent\\.com/rancher/turtles/refs/heads/main/",
+        "replacement": "https://raw.githubusercontent.com/rancher/turtles/refs/tags/%s/"
+      },
+      {
+        "name": "Update TURTLES_VERSION environment variable",
+        "pattern": "TURTLES_VERSION: \"v[0-9]+\\.[0-9]+\\.[0-9]+\"",
+        "replacement": "TURTLES_VERSION: \"%s\""
+      },
+      {
+        "name": "Update helm install version flag",
+        "pattern": "helm install rancher-turtles turtles/rancher-turtles --version v[0-9]+\\.[0-9]+\\.[0-9]+",
+        "replacement": "helm install rancher-turtles turtles/rancher-turtles --version %s"
+      },
+      {
+        "name": "Update version in component table description",
+        "pattern": "This table lists the version of the components installed with the latest version `v[0-9]+\\.[0-9]+\\.[0-9]+` of \\{product_name\\}:",
+        "replacement": "This table lists the version of the components installed with the latest version `%s` of {product_name}:"
+      }
+    ]
+  }
