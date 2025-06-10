@@ -347,7 +347,7 @@ export RKE2_VERSION={kubernetes-version}+rke2r1
 export RKE2_CNI=calico
 export KUBERNETES_VERSION={kubernetes-version} # needed for the CAPI Docker provider to use proper image
 
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/docker-rke2.yaml -o docker-rke2.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.18.0/test/e2e/data/cluster-templates/docker-rke2.yaml -o docker-rke2.yaml
 envsubst '${NAMESPACE} $\{CLUSTER_NAME} $\{WORKER_MACHINE_COUNT} $\{RKE2_VERSION} $\{RKE2_CNI} $\{CONTROL_PLANE_MACHINE_COUNT} $\{KUBERNETES_VERSION}' < template-docker-rke2.yaml > cluster1.yaml
 ----
 +
@@ -377,7 +377,7 @@ export CONTROL_PLANE_MACHINE_COUNT={control-plane-machine-count}
 export WORKER_MACHINE_COUNT={worker-machine-count}
 export KUBERNETES_VERSION={kubernetes-version}
 
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/docker-kubeadm.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.18.0/test/e2e/data/cluster-templates/docker-kubeadm.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** to ensure there are no tokens. You can make any changes you want as well.
@@ -429,7 +429,7 @@ export KUBERNETES_VERSION={kubernetes-version}
 +
 [source,bash]
 ----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/vsphere-rke2.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.18.0/test/e2e/data/cluster-templates/vsphere-rke2.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
@@ -479,7 +479,7 @@ export KUBERNETES_VERSION={kubernetes-version}
 +
 [source,bash]
 ----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/vsphere-kubeadm.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.18.0/test/e2e/data/cluster-templates/vsphere-kubeadm.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
@@ -510,7 +510,7 @@ export KUBERNETES_VERSION={kubernetes-version}
 +
 [source,bash]
 ----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/aws-eks-mmp.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.18.0/test/e2e/data/cluster-templates/aws-eks-mmp.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.
@@ -543,7 +543,7 @@ export WORKER_MACHINE_COUNT={worker-machine-count}
 +
 [source,bash]
 ----
-curl -s https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/test/e2e/data/cluster-templates/gcp-gke.yaml | envsubst > cluster1.yaml
+curl -s https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.18.0/test/e2e/data/cluster-templates/gcp-gke.yaml | envsubst > cluster1.yaml
 ----
 +
 . View **cluster1.yaml** and examine the resulting YAML file. You can make any changes you want as well.

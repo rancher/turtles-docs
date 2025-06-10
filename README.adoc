@@ -134,3 +134,82 @@ make ci
 ----
 
 This will run the build using the GitHub Pages playbook and the development playbook in sequence.
+
+[#turtles-version-updates-across-docs]
+== Turtles Version Updates Across Docs
+
+This section explains how Turtles documentation versions are managed and updated when new releases are published.
+
+[#automated-version-bumping]
+=== Automated Version Bumping
+
+The documentation repository automatically updates versions when a new Turtles release tag is pushed to the main repository. Here's how the process works:
+The version bump process is triggered automatically when:
+
+1. A new version tag (format: `v*`) is pushed to the rancher/turtles repository
+2. The GitHub workflow `.github/workflows/publish-version.yaml` detects the tag and starts the process
+
+[#what-gets-updated]
+==== What Gets Updated
+
+The automation updates several types of version references throughout the documentation:
+
+* **GitHub URLs**: Raw GitHub links are updated from `refs/heads/main` to `refs/tags/v{version}`
+* **Environment Variables**: `TURTLES_VERSION` values in code examples
+* **Helm Commands**: Version flags in `helm install` commands
+* **Component Tables**: Version references in component compatibility tables
+
+[#version-replacement-tool]
+==== Version Replacement Tool
+
+The repository includes a custom Go tool at `tools/setexampleversion/main.go` that handles version replacements:
+
+* **Configuration**: Uses `replace-rules.json` to define replacement patterns
+* **Flexible Rules**: Each rule specifies a regex pattern and replacement template
+
+Example usage:
+[,console]
+----
+go run tools/setexampleversion/main.go -version=v0.21.0 \
+  docs/v0.21/modules/en/pages/user/installation.adoc \
+  docs/v0.21/modules/en/pages/user/clusterclass.adoc
+----
+
+[#component-version-updates]
+==== Component Version Updates
+
+For updating component versions (Rancher, Cluster API, etc.) in the prerequisites tables, the repository includes a reusable workflow at `.github/workflows/pre-release.yaml`. This workflow can be called from other workflows to selectively update component versions in the `docs/next/` directory:
+
+* **Selective Updates**: Only updates versions for components that are specified as inputs
+* **Automatic PR Creation**: Creates a pull request with the version changes
+* **Flexible Configuration**: Each component version can be updated independently
+
+[#manual-version-updates]
+=== Manual Version Updates
+
+For manual version updates or testing:
+
+1. **Update the config**: Modify `replace-rules.json` if new replacement patterns are needed
+2. **Run the tool**: Execute the version replacement tool with the desired version
+3. **Review changes**: Check that all version references have been updated correctly
+4. **Test locally**: Build and preview the documentation to ensure everything works
+
+[#adding-new-version-patterns]
+=== Adding New Version Patterns
+
+When new version references are added to the documentation:
+
+1. **Identify the pattern**: Find the exact text pattern that needs version replacement
+2. **Add a rule**: Update `replace-rules.json` with a new replacement rule
+3. **Test the rule**: Run the tool to verify the pattern matches correctly
+4. **Document the change**: Update this README if the change affects the workflow
+
+Example rule structure:
+[,json]
+----
+{
+  "name": "Description of what this rule updates",
+  "pattern": "regex-pattern-to-match",
+  "replacement": "replacement-template-with-%s-placeholder"
+}
+----

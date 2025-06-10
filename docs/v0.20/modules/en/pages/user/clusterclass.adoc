@@ -320,7 +320,7 @@ Azure RKE2::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/rke2/clusterclass-rke2-example.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/azure/rke2/clusterclass-rke2-example.yaml
 ----
 +
 * Additionally, the https://capz.sigs.k8s.io/self-managed/cloud-provider-config[Azure Cloud Provider] will need to be installed on each downstream Cluster, for the nodes to be initialized correctly. +
@@ -332,8 +332,8 @@ Two `HelmApps` need to be created first, to be applied on the new Cluster via la
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/azure/helm-chart.yaml
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/ccm/azure/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/calico/helm-chart.yaml
 ----
 +
 * Create the Azure Cluster from the example ClusterClass +
@@ -387,7 +387,7 @@ Azure AKS::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/aks/clusterclass-aks-example.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/azure/aks/clusterclass-aks-example.yaml
 ----
 +
 * Create the Azure AKS Cluster from the example ClusterClass +
@@ -435,7 +435,7 @@ AWS Kubeadm::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/aws/kubeadm/clusterclass-kubeadm-example.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/aws/kubeadm/clusterclass-kubeadm-example.yaml
 ----
 +
 * For this example we are also going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
@@ -448,9 +448,9 @@ The `HelmApps` need to be created first, to be applied on the new Cluster via la
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/aws/helm-chart.yaml
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/aws/calico/helm-chart.yaml
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/aws/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/csi/aws/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/aws/calico/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/ccm/aws/helm-chart.yaml
 ----
 +
 * Create the AWS Cluster from the example ClusterClass +
@@ -506,7 +506,7 @@ You can follow the steps in the https://github.com/rancher/cluster-api-provider-
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/aws/rke2/clusterclass-ec2-rke2-example.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/aws/rke2/clusterclass-ec2-rke2-example.yaml
 ----
 +
 * The https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS] will need to be installed on each downstream Cluster for the nodes to be functional. +
@@ -519,8 +519,8 @@ The CNI selection can instead be configured using Cluster variables and it will 
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/aws/helm-chart.yaml
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/aws/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/csi/aws/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/ccm/aws/helm-chart.yaml
 ----
 +
 * Create the AWS Cluster from the example ClusterClass +
@@ -573,7 +573,7 @@ Docker Kubeadm::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/kubeadm/clusterclass-docker-kubeadm.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/docker/kubeadm/clusterclass-docker-kubeadm.yaml
 ----
 +
 * For this example we are also going to install Calico as the default CNI.
@@ -584,7 +584,7 @@ Two `HelmApps` need to be created first, to be applied on the new Cluster via la
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/calico/helm-chart.yaml
 ----
 +
 * Create the Docker Kubeadm Cluster from the example ClusterClass +
@@ -626,7 +626,7 @@ Docker RKE2::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/rke2/clusterclass-docker-rke2.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/docker/rke2/clusterclass-docker-rke2.yaml
 ----
 +
 * For this example we are also going to install Calico as the default CNI.
@@ -637,14 +637,14 @@ Two `HelmApps` need to be created first, to be applied on the new Cluster via la
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/calico/helm-chart.yaml
 ----
 +
 * Create the LoadBalancer ConfigMap for Docker RKEv2 Cluster +
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/lb/docker/configmap.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/lb/docker/configmap.yaml
 ----
 +
 * Create the Docker Kubeadm Cluster from the example ClusterClass +
@@ -691,7 +691,7 @@ vSphere Kubeadm::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/vsphere/kubeadm/clusterclass-kubeadm-example.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/vsphere/kubeadm/clusterclass-kubeadm-example.yaml
 ----
 +
 * Additionally, the https://github.com/kubernetes/cloud-provider-vsphere[vSphere Cloud Provider] will need to be installed on each downstream Cluster, for the nodes to be initialized correctly. +
@@ -704,15 +704,15 @@ Two `HelmApps` need to be created first, to be applied on the new Cluster via la
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/vsphere/helm-chart.yaml
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/ccm/vsphere/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/calico/helm-chart.yaml
 ----
 +
 Since the vSphere CSI driver is not packaged in Helm, we are going to include its entire manifest in a Fleet Bundle, that will be applied to the downstream Cluster.
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/vsphere/bundle.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/csi/vsphere/bundle.yaml
 ----
 +
 * Cluster configuration
@@ -850,7 +850,7 @@ vSphere RKE2::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/vsphere/rke2/clusterclass-rke2-example.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/vsphere/rke2/clusterclass-rke2-example.yaml
 ----
 +
 * Additionally, the https://github.com/kubernetes/cloud-provider-vsphere[vSphere Cloud Provider] will need to be installed on each downstream Cluster, for the nodes to be initialized correctly. +
@@ -863,15 +863,15 @@ Two `HelmApps` need to be created first, to be applied on the new Cluster via la
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/vsphere/helm-chart.yaml
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/ccm/vsphere/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/calico/helm-chart.yaml
 ----
 +
 Since the vSphere CSI driver is not packaged in Helm, we are going to include its entire manifest in a Fleet Bundle, that will be applied to the downstream Cluster.
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/vsphere/bundle.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/csi/vsphere/bundle.yaml
 ----
 +
 * Cluster configuration

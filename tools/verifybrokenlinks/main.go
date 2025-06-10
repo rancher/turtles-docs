@@ -83,7 +83,7 @@ func extractLinks(docsDir string) ([]URLOccurrence, []string) {
 	var occurrences []URLOccurrence
 	uniqueURLs := make(map[string]struct{})
 
-	githubLinkRegex := regexp.MustCompile(`https?://github\.com[-a-zA-Z0-9@:%._\+~#=/]*`)
+	githubLinkRegex := regexp.MustCompile(`https?://(?:[a-zA-Z0-9-]+\.)*github(?:usercontent)?\.com[-a-zA-Z0-9@:%._\+~#=/]*`)
 	issuesPRRegex := regexp.MustCompile(`/(?:issues|pull)/[0-9]+`)
 	componentsRegex := regexp.MustCompile(`/releases/(?:v|tag/v)?[0-9]+\.[0-9]+\.[0-9]+/.*-components\.ya?ml$`)
 

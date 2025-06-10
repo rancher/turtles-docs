@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
@@ -8,41 +9,78 @@ import (
 	"strings"
 )
 
+type ReplacementRule struct {
+	Name        string `json:"name"`
+	Pattern     string `json:"pattern"`
+	Replacement string `json:"replacement"`
+	Version     string `json:"version,omitempty"`
+}
+
+type Config struct {
+	DefaultVersion string            `json:"default_version,omitempty"`
+	Rules          []ReplacementRule `json:"rules"`
+}
+
 func main() {
-	version := flag.String("version", "", "version tag to replace with (e.g., v0.20.0)")
+	version := flag.String("version", "", "default version to replace with (e.g., v0.20.0)")
+	configFile := flag.String("config", "replace-rules.json", "JSON config file path")
 	flag.Parse()
 
-	if *version == "" {
-		fmt.Fprintf(os.Stderr, "Error: version flag is required\n")
-		fmt.Fprintf(os.Stderr, "Usage: %s -version=v0.20.0 file1.adoc file2.adoc\n", os.Args[0])
+	configData, err := os.ReadFile(*configFile)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error reading config file %s: %v\n", *configFile, err)
 		os.Exit(1)
+	}
+
+	var config Config
+	if err := json.Unmarshal(configData, &config); err != nil {
+		fmt.Fprintf(os.Stderr, "Error parsing config file: %v\n", err)
+		os.Exit(1)
+	}
+
+	defaultVersion := *version
+	if defaultVersion == "" && config.DefaultVersion != "" {
+		defaultVersion = config.DefaultVersion
 	}
 
 	files := flag.Args()
 	if len(files) == 0 {
 		fmt.Fprintf(os.Stderr, "Error: no files specified\n")
-		fmt.Fprintf(os.Stderr, "Usage: %s -version=v0.20.0 file1.adoc file2.adoc\n", os.Args[0])
-		os.Exit(1)
-	}
-
-	if !strings.HasPrefix(*version, "v") {
-		fmt.Fprintf(os.Stderr, "Error: version must start with 'v' (e.g., v0.20.0)\n")
+		fmt.Fprintf(os.Stderr, "Usage: %s -config=config.json -version=v0.20.0 file1.adoc file2.adoc\n", os.Args[0])
 		os.Exit(1)
 	}
 
 	totalReplacements := 0
 	for _, file := range files {
-		replacements := updateFile(file, *version)
-		if replacements > 0 {
-			fmt.Printf("Updated %d links in %s\n", replacements, file)
-			totalReplacements += replacements
+		fileReplacements := 0
+
+		for _, rule := range config.Rules {
+			ruleVersion := getRuleVersion(rule, defaultVersion)
+			if ruleVersion == "" {
+				fmt.Fprintf(os.Stderr, "Warning: No version specified for rule '%s' and no default version available\n", rule.Name)
+				continue
+			}
+			replacements := updateFileWithRule(file, rule, ruleVersion)
+			fileReplacements += replacements
+		}
+
+		if fileReplacements > 0 {
+			fmt.Printf("Updated %d links in %s\n", fileReplacements, file)
+			totalReplacements += fileReplacements
 		}
 	}
 
 	fmt.Printf("Done. Total replacements: %d\n", totalReplacements)
 }
 
-func updateFile(filename, version string) int {
+func getRuleVersion(rule ReplacementRule, defaultVersion string) string {
+	if rule.Version != "" {
+		return rule.Version
+	}
+	return defaultVersion
+}
+
+func updateFileWithRule(filename string, rule ReplacementRule, version string) int {
 	content, err := os.ReadFile(filename)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error reading file %s: %v\n", filename, err)
@@ -50,7 +88,7 @@ func updateFile(filename, version string) int {
 	}
 
 	originalContent := string(content)
-	updatedContent := updateRawGitHubLinks(originalContent, version)
+	updatedContent := applyRule(originalContent, rule, version)
 
 	if originalContent == updatedContent {
 		return 0
@@ -65,12 +103,15 @@ func updateFile(filename, version string) int {
 	return countReplacements(originalContent, updatedContent)
 }
 
-func updateRawGitHubLinks(content, version string) string {
-	rawGitHubRegex := regexp.MustCompile(`https://raw\.githubusercontent\.com/rancher/turtles/refs/heads/main/`)
+func applyRule(content string, rule ReplacementRule, version string) string {
+	regex, err := regexp.Compile(rule.Pattern)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error compiling regex for rule %s: %v\n", rule.Name, err)
+		return content
+	}
 
-	replacement := fmt.Sprintf("https://raw.githubusercontent.com/rancher/turtles/refs/tags/%s/", version)
-
-	return rawGitHubRegex.ReplaceAllString(content, replacement)
+	replacement := fmt.Sprintf(rule.Replacement, version)
+	return regex.ReplaceAllString(content, replacement)
 }
 
 func countReplacements(original, updated string) int {

@@ -95,7 +95,7 @@ Azure RKE2::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/rke2/clusterclass-rke2-example.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.18.0/examples/clusterclasses/azure/clusterclass-rke2-example.yaml
 ----
 +
 * Additionally, the https://capz.sigs.k8s.io/self-managed/cloud-provider-config[Azure Cloud Provider] will need to be installed on each downstream Cluster, for the nodes to be initialized correctly. +
@@ -107,8 +107,8 @@ Two `HelmApps` need to be created first, to be applied on the new Cluster via la
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/azure/helm-chart.yaml
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.18.0/examples/applications/ccm/azure/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.18.0/examples/applications/cni/calico/helm-chart.yaml
 ----
 +
 * Create the Azure Cluster from the example ClusterClass +
@@ -162,7 +162,7 @@ Azure AKS::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/aks/clusterclass-aks-example.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.18.0/examples/clusterclasses/azure/clusterclass-aks-example.yaml
 ----
 +
 * Create the Azure AKS Cluster from the example ClusterClass +
