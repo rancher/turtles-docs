@@ -374,7 +374,7 @@ spec:
       value: cluster-identity
     - name: registrationMethod
       value: internal-first
-    version: v1.31.1+rke2r1
+    version: v1.31.7+rke2r1
     workers:
       machineDeployments:
       - class: rke2-default-worker
@@ -419,7 +419,7 @@ spec:
       value: <AZURE_RESOURCE_GROUP>
     - name: azureClusterIdentityName
       value: cluster-identity
-    version: v1.31.1
+    version: v1.31.4
     workers:
       machinePools:
       - class: default-system
@@ -612,16 +612,16 @@ spec:
     - name: cni
       value: calico
     - name: region
-      value: ${AWS_REGION}
+      value: <AWS_REGION>
     - name: sshKeyName
-      value: ${AWS_SSH_KEY_NAME}
+      value: <AWS_SSH_KEY_NAME>
     - name: controlPlaneMachineType
-      value: ${AWS_RKE2_CONTROL_PLANE_MACHINE_TYPE}
+      value: <AWS_RKE2_CONTROL_PLANE_MACHINE_TYPE>
     - name: workerMachineType
-      value: ${AWS_RKE2_NODE_MACHINE_TYPE}
+      value: <AWS_RKE2_NODE_MACHINE_TYPE>
     - name: amiID
-      value: ${AWS_AMI_ID}
-    version: ${RKE2_VERSION}
+      value: <AWS_AMI_ID>
+    version: v1.31.7+rke2r1
     workers:
       machineDeployments:
       - class: default-worker
@@ -674,7 +674,7 @@ spec:
     class: docker-kubeadm-example
     controlPlane:
       replicas: 3
-    version: v1.31.6
+    version: v1.31.4
     workers:
       machineDeployments:
         - class: default-worker
@@ -739,7 +739,7 @@ spec:
       value: none
     - name: dockerImage
       value: kindest/node:v1.31.6
-    version: v1.31.6+rke2r1
+    version: v1.31.7+rke2r1
     workers:
       machineDeployments:
       - class: default-worker
@@ -1029,7 +1029,7 @@ spec:
       - 192.168.0.0/16
   topology:
     class: vsphere-rke2-example
-    version: v1.31.4+rke2r1
+    version: v1.31.7+rke2r1
     controlPlane:
       replicas: 1
     workers:
