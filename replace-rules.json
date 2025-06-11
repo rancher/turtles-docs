@@ -19,6 +19,11 @@
         "name": "Update version in component table description",
         "pattern": "This table lists the version of the components installed with the latest version `v[0-9]+\\.[0-9]+\\.[0-9]+` of \\{product_name\\}:",
         "replacement": "This table lists the version of the components installed with the latest version `%s` of {product_name}:"
+      },
+      {
+        "name": "Update examples tool tag",
+        "pattern": "go run github\\.com/rancher/turtles/examples@latest",
+        "replacement": "go run github.com/rancher/turtles/examples@%s"
       }
     ]
   }
