@@ -353,6 +353,8 @@ Azure RKE2::
 +
 * An Azure ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like the Azure Cloud Provider and Calico CNI will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cloud-provider: azure` and `cni: calico`.
+
 [source,bash]
 ----
 go run github.com/rancher/turtles/examples@latest -r azure-rke2 | kubectl apply -f -
@@ -454,6 +456,8 @@ Azure Kubeadm::
 +
 * An Azure ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like the Azure Cloud Provider and Calico CNI will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cloud-provider: azure` and `cni: calico`.
+
 [source,bash]
 ----
 go run github.com/rancher/turtles/examples@latest -r azure-kubeadm | kubectl apply -f -
@@ -503,6 +507,8 @@ AWS Kubeadm::
 +
 * An AWS Kubeadm ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI], https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS], and the https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico`, `cloud-provider: aws`, and `csi: aws-ebs-csi-driver`.
+
 [source,bash]
 ----
 go run github.com/rancher/turtles/examples@latest -r aws-kubeadm | kubectl apply -f -
@@ -561,6 +567,8 @@ You can follow the steps in the https://github.com/rancher/cluster-api-provider-
 +
 * An AWS RKE2 ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like the https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS] and the https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cloud-provider: aws` and `csi: aws-ebs-csi-driver`. The CNI is configured using Cluster variables.
+
 [source,bash]
 ----
 go run github.com/rancher/turtles/examples@latest -r aws-rke2 | kubectl apply -f -
@@ -616,6 +624,8 @@ Docker Kubeadm::
 +
 * A Docker Kubeadm ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico`.
+
 [source,bash]
 ----
 go run github.com/rancher/turtles/examples@latest -r docker-kubeadm | kubectl apply -f -
@@ -658,6 +668,8 @@ Docker RKE2::
 +
 * A Docker RKE2 ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico`.
+
 [source,bash]
 ----
 go run github.com/rancher/turtles/examples@latest -r docker-rke2 | kubectl apply -f -
@@ -703,6 +715,8 @@ spec:
 
 vSphere Kubeadm::
 +
+Applications like the vSphere Cloud Provider, vSphere CSI driver, and Calico CNI will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cloud-provider: vsphere`, `csi: vsphere`, and `cni: calico`.
+
 * A vSphere Kubeadm ClusterClass and associated applications can be applied using the examples tool:
 +
 [source,bash]
@@ -841,6 +855,8 @@ spec:
 
 vSphere RKE2::
 +
+Applications like the vSphere Cloud Provider, vSphere CSI driver, and Calico CNI will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cloud-provider: vsphere`, `csi: vsphere`, and `cni: calico`.
+
 * A vSphere RKE2 ClusterClass and associated applications can be applied using the examples tool:
 +
 [source,bash]
