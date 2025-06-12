@@ -36,30 +36,59 @@ spec:
   name: azure
 ----
 +
-* Identity setup
+* https://github.com/rancher/cluster-api-provider-rke2[Bootstrap/Control Plane provider for RKE2](installed by default) or https://github.com/kubernetes-sigs/cluster-api[Bootstrap/Control Plane provider for Kubeadm], example of Kubeadm installation:
 +
-A Secret containing the ADD Service Principal password need to be created first.  
-+
-[source,bash]
+[source,yaml]
 ----
-# Settings needed for AzureClusterIdentity used by the AzureCluster
-export AZURE_CLUSTER_IDENTITY_SECRET_NAME="cluster-identity-secret"
-export AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE="default"
-export AZURE_CLIENT_SECRET="<Password>"
-
-# Create a secret to include the password of the Service Principal identity created in Azure
-# This secret will be referenced by the AzureClusterIdentity used by the AzureCluster
-kubectl create secret generic "${AZURE_CLUSTER_IDENTITY_SECRET_NAME}" --from-literal=clientSecret="${AZURE_CLIENT_SECRET}" --namespace "${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}"
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-bootstrap-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-bootstrap
+  namespace: capi-kubeadm-bootstrap-system
+spec:
+  name: kubeadm
+  type: bootstrap
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-control-plane-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-control-plane
+  namespace: capi-kubeadm-control-plane-system
+spec:
+  name: kubeadm
+  type: controlPlane
 ----
 +
-The AzureClusterIdentity can now be created to use the Service Principal identity. +
-Note that the AzureClusterIdentity is a namespaced resource and it needs to be created in the same namespace as the Cluster. +
+* Identity Setup
++
+In this example we are going to use an `AzureClusterIdentity` to provision Azure Clusters. +
+A Secret containing the Service Principal credentials needs to be created first, to be referenced by the `AzureClusterIdentity` resource. +
+Note that the `AzureClusterIdentity` is a namespaced resource and it needs to be created in the same namespace as the Cluster. +
 For more information on best practices when using Azure identities, please refer to the official https://capz.sigs.k8s.io/topics/identities-use-cases[documentation]. +
 +
 Note that some variables are left to the user to substitute. +
 +
 [source,yaml]
 ----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <AZURE_CLUSTER_IDENTITY_SECRET_NAME>
+  namespace: <AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE>
+type: Opaque
+stringData:
+  clientSecret: <AZURE_CLIENT_SECRET>
+---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: AzureClusterIdentity
 metadata:
@@ -78,36 +107,8 @@ spec:
 
 AWS::
 +
-To prepare the management Cluster, we are going to install the https://cluster-api-aws.sigs.k8s.io/[Cluster API Provider AWS], and create a secret with the required credentials to provision a new Cluster on AWS.
-+
-* Credentials setup
-+
-[source,yaml]
-----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: capa-system
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: aws
-  namespace: capa-system
-type: Opaque
-stringData:
-  AWS_B64ENCODED_CREDENTIALS: xxx
-----
-+
-The content of the string, `AWS_B64ENCODED_CREDENTIALS`, is a base64-encoded string containing the AWS credentials. You will need to use an AWS IAM user with administrative permissions so you can create the cloud resources to host the cluster.
-We recommend you use `clusterawsadm` to encode credentials to use with Cluster API Provider AWS. You can refer to the https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_credentials.html?highlight=bootstrap%20credentials#clusterawsadm-bootstrap-credentials[CAPA book] for more information.
-+
-These are the variables you will need to export to authenticate with AWS and use `clusterawsadm` to generate the encoded string, which are linked to your IAM user:
-+
-[source,bash]
-AWS_REGION
-AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY
+To prepare the management Cluster, we are going to install the https://cluster-api-aws.sigs.k8s.io/[Cluster API Provider AWS], and create a secret with the required credentials to provision a new Cluster on AWS. +
+The global credentials are set to blanks, as we are going to use `AWSClusterStaticIdentity` instead. 
 +
 * Provider installation
 +
@@ -120,8 +121,8 @@ metadata:
   namespace: capa-system
 spec:
   type: infrastructure
-  configSecret:
-    name: aws
+  variables:
+    AWS_B64ENCODED_CREDENTIALS: ""
 ----
 +
 * https://github.com/rancher/cluster-api-provider-rke2[Bootstrap/Control Plane provider for RKE2](installed by default) or https://github.com/kubernetes-sigs/cluster-api[Bootstrap/Control Plane provider for Kubeadm], example of Kubeadm installation:
@@ -155,6 +156,39 @@ metadata:
 spec:
   name: kubeadm
   type: controlPlane
+----
++
+* Identity Setup
++
+In this example we are going to use a `AWSClusterStaticIdentity` to provision AWS Clusters. +
+A Secret containing the credentials needs to be created in the namespace where the AWS provider is installed. +
+For more information on how to setup the credentials, refer to the link:https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm[clusterawsadm documentation]. +
+The `AWSClusterStaticIdentity` can reference this Secret to allow Cluster provisioning. For this example we are allowing usage of the identity across all namespaces, so that it can be easily reused. +
+You can refer to the link:https://cluster-api-aws.sigs.k8s.io/topics/multitenancy[official documentation] to learn more about identity management.
++
+Note that some variables are left to the user to substitute. +
++
+[source,yaml]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  name: <AWS_IDENTITY_SECRET_NAME>
+  namespace: capa-system
+type: Opaque
+stringData:
+  AccessKeyID: <AWS_ACCESS_KEY_ID>
+  SecretAccessKey: <AWS_SECRET_ACCESS_KEY>
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
+kind: AWSClusterStaticIdentity
+metadata:
+  name: cluster-identity
+spec:
+  secretRef: <AWS_IDENTITY_SECRET_NAME>
+  allowedNamespaces:
+    selector:
+      matchLabels: {}
 ----
 
 Docker::
@@ -548,6 +582,8 @@ spec:
       value: <AWS_CONTROL_PLANE_MACHINE_TYPE>
     - name: workerMachineType
       value: <AWS_NODE_MACHINE_TYPE>
+    - name: awsClusterIdentityName
+      value: cluster-identity
     version: v1.31.0
     workers:
       machineDeployments:
@@ -621,6 +657,8 @@ spec:
       value: <AWS_RKE2_NODE_MACHINE_TYPE>
     - name: amiID
       value: <AWS_AMI_ID>
+    - name: awsClusterIdentityName
+      value: cluster-identity
     version: v1.31.7+rke2r1
     workers:
       machineDeployments:
