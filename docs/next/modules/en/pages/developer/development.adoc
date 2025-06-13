@@ -20,7 +20,7 @@
     "debug": {
         "turtles": {
             "continue": true,
-            "port": 40000
+            "port": 40000,
             "insecure_skip_verify": "true"
         }
     }
