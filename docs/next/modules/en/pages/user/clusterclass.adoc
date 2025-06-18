@@ -353,6 +353,24 @@ Azure RKE2::
 +
 * An Azure ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like the Azure Cloud Provider and Calico CNI will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cloud-provider: azure` and `cni: calico`. +
++
+[tabs]
+=======
+
+CLI::
++
+An Azure RKE2 ClusterClass and associated applications can be applied using the examples tool:
++
+[source,bash]
+----
+go run github.com/rancher/turtles/examples@latest -r azure-rke2 | kubectl apply -f -
+----
+
+kubectl::
++
+* Alternatively, you can apply the Azure RKE2 ClusterClass directly using kubectl:
++
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/rke2/clusterclass-rke2-example.yaml
@@ -370,6 +388,8 @@ Two `HelmApps` need to be created first, to be applied on the new Cluster via la
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/azure/helm-chart.yaml
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
 ----
+=======
+
 +
 * Create the Azure Cluster from the example ClusterClass +
 + 
@@ -420,10 +440,28 @@ Azure AKS::
 +
 * An Azure AKS ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+[tabs]
+=======
+
+CLI::
++
+An Azure AKS ClusterClass and associated applications can be applied using the examples tool:
++
+[source,bash]
+----
+go run github.com/rancher/turtles/examples@latest -r azure-aks | kubectl apply -f -
+----
+
+kubectl::
++
+* Alternatively, you can apply the Azure AKS ClusterClass directly using kubectl:
++
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/aks/clusterclass-aks-example.yaml
 ----
+=======
+
 +
 * Create the Azure AKS Cluster from the example ClusterClass +
 + 
@@ -467,6 +505,24 @@ Azure Kubeadm::
 +
 * An Azure ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like the Azure Cloud Provider and Calico CNI will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cloud-provider: azure` and `cni: calico`. +
++
+[tabs]
+=======
+
+CLI::
++
+An Azure ClusterClass and associated applications can be applied using the examples tool:
++
+[source,bash]
+----
+go run github.com/rancher/turtles/examples@latest -r azure-kubeadm | kubectl apply -f -
+----
+
+kubectl::
++
+* Alternatively, you can apply the Azure Kubeadm ClusterClass directly using kubectl:
++
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/azure/kubeadm/clusterclass-kubeadm-example.yaml
@@ -484,6 +540,7 @@ Two `HelmApps` need to be created first, to be applied on the new Cluster via la
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/azure/helm-chart.yaml
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
 ----
+=======
 +
 * Create the Azure Cluster from the example ClusterClass +
 +
@@ -529,6 +586,24 @@ AWS Kubeadm::
 +
 * An AWS Kubeadm ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI], https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS], and the https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico`, `cloud-provider: aws`, and `csi: aws-ebs-csi-driver`.
++
+[tabs]
+=======
+
+CLI::
++
+An AWS Kubeadm ClusterClass and associated applications can be applied using the examples tool:
++
+[source,bash]
+----
+go run github.com/rancher/turtles/examples@latest -r aws-kubeadm | kubectl apply -f -
+----
+
+kubectl::
++
+* Alternatively, you can apply the AWS Kubeadm ClusterClass directly using kubectl:
++
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/aws/kubeadm/clusterclass-kubeadm-example.yaml
@@ -548,6 +623,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/aws/calico/helm-chart.yaml
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/aws/helm-chart.yaml
 ----
+=======
 +
 * Create the AWS Cluster from the example ClusterClass +
 + 
@@ -602,6 +678,23 @@ You can follow the steps in the https://github.com/rancher/cluster-api-provider-
 +
 * An AWS RKE2 ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like the https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS] and the https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cloud-provider: aws` and `csi: aws-ebs-csi-driver`. The CNI is conf +igured using Cluster variables. +
++
+[tabs]
+=======
+CLI::
++
+An AWS RKE2 ClusterClass and associated applications can be applied using the examples tool:
++
+[source,bash]
+----
+go run github.com/rancher/turtles/examples@latest -r aws-rke2 | kubectl apply -f -
+----
+
+kubectl::
++
+* Alternatively, you can apply the AWS RKE2 ClusterClass directly using kubectl:
++
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/aws/rke2/clusterclass-ec2-rke2-example.yaml
@@ -620,6 +713,7 @@ The CNI selection can instead be configured using Cluster variables and it will 
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/aws/helm-chart.yaml
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/aws/helm-chart.yaml
 ----
+=======
 +
 * Create the AWS Cluster from the example ClusterClass +
 + 
@@ -671,6 +765,23 @@ Docker Kubeadm::
 +
 * A Docker Kubeadm ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico`.
++
+[tabs]
+=======
+CLI::
++
+A Docker Kubeadm ClusterClass and associated applications can be applied using the examples tool:
++
+[source,bash]
+----
+go run github.com/rancher/turtles/examples@latest -r docker-kubeadm | kubectl apply -f -
+----
+
+kubectl::
++
+* Alternatively, you can apply the Docker Kubeadm ClusterClass directly using kubectl:
++
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/kubeadm/clusterclass-docker-kubeadm.yaml
@@ -686,9 +797,10 @@ Two `HelmApps` need to be created first, to be applied on the new Cluster via la
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
 ----
+=======
 +
 * Create the Docker Kubeadm Cluster from the example ClusterClass +
-+ 
++
 Note that some variables are left to the user to substitute. +
 +
 [source,yaml]
@@ -724,6 +836,23 @@ Docker RKE2::
 +
 * A Docker RKE2 ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico`.
++
+[tabs]
+=======
+CLI::
++
+A Docker RKE2 ClusterClass and associated applications can be applied using the examples tool:
++
+[source,bash]
+----
+go run github.com/rancher/turtles/examples@latest -r docker-rke2 | kubectl apply -f -
+----
+
+kubectl::
++
+* Alternatively, you can apply the Docker RKE2 ClusterClass directly using kubectl:
++
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/rke2/clusterclass-docker-rke2.yaml
@@ -746,6 +875,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/lb/docker/configmap.yaml
 ----
+=======
 +
 * Create the Docker Kubeadm Cluster from the example ClusterClass +
 +
@@ -789,6 +919,23 @@ vSphere Kubeadm::
 +
 * A vSphere ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like the vSphere Cloud Provider, vSphere CSI driver, and Calico CNI will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cloud-provider: vsphere`, `csi: vsphere`, and `cni: calico`. +
++
+[tabs]
+=======
+CLI::
++
+A vSphere Kubeadm ClusterClass and associated applications can be applied using the examples tool:
++
+[source,bash]
+----
+go run github.com/rancher/turtles/examples@latest -r vsphere-kubeadm | kubectl apply -f -
+----
+
+kubectl::
++
+* Alternatively, you can apply the vSphere Kubeadm ClusterClass directly using kubectl:
++
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/vsphere/kubeadm/clusterclass-kubeadm-example.yaml
@@ -814,6 +961,7 @@ Since the vSphere CSI driver is not packaged in Helm, we are going to include it
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/vsphere/bundle.yaml
 ----
+=======
 +
 * Cluster configuration
 +
@@ -948,6 +1096,24 @@ vSphere RKE2::
 +
 * A vSphere ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
+Applications like the vSphere Cloud Provider, vSphere CSI driver, and Calico CNI will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cloud-provider: vsphere`, `csi: vsphere`, and `cni: calico`. +
++
+[tabs]
+=======
+
+CLI::
++
+A vSphere RKE2 ClusterClass and associated applications can be applied using the examples tool:
++
+[source,bash]
+----
+go run github.com/rancher/turtles/examples@latest -r vsphere-rke2 | kubectl apply -f -
+----
+
+kubectl::
++
+* Alternatively, you can apply the vSphere RKE2 ClusterClass directly using kubectl:
++
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/vsphere/rke2/clusterclass-rke2-example.yaml
@@ -973,6 +1139,9 @@ Since the vSphere CSI driver is not packaged in Helm, we are going to include it
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/vsphere/bundle.yaml
 ----
+
+=======
+
 +
 * Cluster configuration
 +
