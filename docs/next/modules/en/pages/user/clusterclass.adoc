@@ -678,7 +678,7 @@ You can follow the steps in the https://github.com/rancher/cluster-api-provider-
 +
 * An AWS RKE2 ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
-Applications like the https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS] and the https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cloud-provider: aws` and `csi: aws-ebs-csi-driver`. The CNI is conf +igured using Cluster variables. +
+Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI], https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS], and the https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico`, `cloud-provider: aws`, and `csi: aws-ebs-csi-driver`.
 +
 [tabs]
 =======
@@ -700,17 +700,18 @@ kubectl::
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/aws/rke2/clusterclass-ec2-rke2-example.yaml
 ----
 +
+* For this example we are also going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
 * The https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS] will need to be installed on each downstream Cluster for the nodes to be functional. +
 * Additionally, we will also enable https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver]. +
 +
 We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
-Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying the AWS Cloud Controller Manager and the EBS CSI Driver in the workload cluster. +
-The CNI selection can instead be configured using Cluster variables and it will be provided by RKE2. +
+The `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico, the EBS CSI Driver, and the AWS Cloud Controller Manager in the workload cluster. +
 +
 [source,bash]
 ----
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/csi/aws/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/aws/calico/helm-chart.yaml
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/aws/helm-chart.yaml
 ----
 =======
@@ -726,6 +727,7 @@ kind: Cluster
 metadata:
   labels:
     cloud-provider: aws
+    cni: calico
     csi: aws-ebs-csi-driver
     cluster-api.cattle.io/rancher-auto-import: "true"
   name: aws-quickstart
@@ -740,7 +742,7 @@ spec:
       replicas: 1
     variables:
     - name: cni
-      value: calico
+      value: none
     - name: region
       value: <AWS_REGION>
     - name: sshKeyName
