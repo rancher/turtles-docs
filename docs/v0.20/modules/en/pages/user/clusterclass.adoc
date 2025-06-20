@@ -15,7 +15,7 @@ Azure::
 +
 To prepare the management Cluster, we are going to install the https://capz.sigs.k8s.io/[Cluster API Provider Azure], and create a https://capz.sigs.k8s.io/topics/identities#service-principal[ServicePrincipal] identity to provision a new Cluster on Azure. +
 Before we start, a ServicePrincipal needs to be created, with at least Contributor access to an Azure subscription. +
-Refer to the https://capz.sigs.k8s.io/getting-started#setting-up-your-azure-environment[CAPZ documentation] for more details. +
+Refer to the https://capz.sigs.k8s.io/topics/identities[CAPZ documentation] for more details. +
 +
 * Provider installation
 +
