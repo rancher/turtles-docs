@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ClusterClass :: Rancher Turtles</title>
+    <link rel="prev" href="clusters.html">
+    <link rel="next" href="fleet.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../_/css/search.css">
+<link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../../../_/css/font-styles.css">
+<link rel="stylesheet" href="../../../../_/fonts/css/all.css">
+<link rel="stylesheet" href="../../../../_/css/site-extra.css">
+<link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+<link href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet"> -->
+<link rel="stylesheet" href="../../../../_/css/vendor/light.css">
+<script src="/docserv/res/lightheaded/analytics.js"
+        type="text/javascript"></script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a class=" navbar-logo" href="https://documentation.suse.com/"><img class="logo"
+            src="../../../../_/img/logo.svg" /></a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">
+            <img src="../../../../_/img/github_logo.svg" class="langIcon Resurces" alt="Resources" title="Resources">
+          </div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/rancher/turtles"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://github.com/rancher/turtles-docs"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles docs&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">More from SUSE</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://www.rancher.com" target="_blank"><img src="../../../../_/img/icon-rancher-mask.png" width="51" height="24" alt="Rancher by SUSE"
+              title="SUSE Rancher">&nbsp;Rancher&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://fleet.rancher.io" target="_blank"><img src="../../../../_/img/icon-fleet-mask.png" width="29" height="24" alt="Fleet"
+              title="Fleet">&nbsp;Fleet&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://www.kubewarden.io" target="_blank"><img src="../../../../_/img/icon-kubewarden-mask.png" width="29" height="24" alt="Kubewarden"
+              title="Kubewarden">&nbsp;Kubewarden&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://harvesterhci.io" target="_blank"><img src="../../../../_/img/icon-harvester-mask.png" width="29" height="24" alt="Harvester"
+              title="Harvester">&nbsp;Harvester&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://opensource.suse.com" target="_blank"><img src="../../../../_/img/icon-suse-mask.png" width="41" height="24" alt="OpenSource at SUSE"
+              title="OpenSource @ SUSE">&nbsp;More projects...&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs" >
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header><div class="body">
+<div class="nav-container" data-component="turtles" data-version="v0.20">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Rancher Turtles</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tutorials</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/quickstart.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/first-cluster.html">Your First Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/uninstall.html">Uninstall</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/features.html">Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/certified.html">Certified Providers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusters.html">Provision a CAPI cluster</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="clusterclass.html">Provision a CAPI cluster with ClusterClass</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="fleet.html">Create a cluster using Fleet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="caapf.html">CAPI Addon Provider Fleet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gitops.html">GitOps best practices for Turtles and CAPI</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Operator Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/chart.html">Chart Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/manual.html">Manual Installation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/capiprovider.html">Install CAPI Providers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/clusterclass.html">Enabling ClusterClass</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/certification.html">Provider Certification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/certificationsuite.html">Provider Test Suite</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/airgapped.html">Air-Gapped Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developer Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developer/development.html">Development Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developer/guidelines.html">Development Guideline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Troubleshooting Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../troubleshooting/troubleshooting.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/slsa.html">SLSA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../changelogs/index.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Rancher Turtles</span>
+    <span class="version">v0.20</span>
+  </div>
+  <ul class="components">
+        <li class="component is-current">
+          <div class="title"><a href="../index.html">Rancher Turtles</a></div>
+          <ul class="versions">
+            <li class="version">
+              <a href="../../../next/en/index.html">Next</a>
+            </li>
+            <li class="version is-current is-latest">
+              <a href="../index.html">v0.20</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.19/en/index.html">v0.19</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.18/en/index.html">v0.18</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.17/en/index.html">v0.17</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.16/en/index.html">v0.16</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.15/en/index.html">v0.15</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.14/en/index.html">v0.14</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.13/en/index.html">v0.13</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.12/en/index.html">v0.12</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.11/en/index.html">v0.11</a>
+            </li>
+          </ul>
+        </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Rancher Turtles</a></li>
+    <li>User Guide</li>
+    <li><a href="clusterclass.html">Provision a CAPI cluster with ClusterClass</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">v0.20</button>
+  <div class="version-menu">
+    <a class="version" href="../../../next/en/user/clusterclass.html">Next</a>
+    <a class="version is-current" href="clusterclass.html">v0.20</a>
+    <a class="version" href="../../../v0.19/en/user/clusterclass.html">v0.19</a>
+    <a class="version" href="../../../v0.18/en/user/clusterclass.html">v0.18</a>
+    <a class="version" href="../../../v0.17/en/user/clusterclass.html">v0.17</a>
+    <a class="version is-missing" href="../../../v0.16/en/index.html">v0.16</a>
+    <a class="version is-missing" href="../../../v0.15/en/index.html">v0.15</a>
+    <a class="version is-missing" href="../../../v0.14/en/index.html">v0.14</a>
+    <a class="version is-missing" href="../../../v0.13/en/index.html">v0.13</a>
+    <a class="version is-missing" href="../../../v0.12/en/index.html">v0.12</a>
+    <a class="version is-missing" href="../../../v0.11/en/index.html">v0.11</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/rancher/turtles-docs/edit/main/docs/v0.20/modules/en/pages/user/clusterclass.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="4">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">ClusterClass</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section we cover using <a href="https://cluster-api.sigs.k8s.io/tasks/experimental-features/cluster-class/">ClusterClass</a> with Rancher Turtles.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Rancher Manager cluster with Rancher Turtles installed</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setup"><a class="anchor" href="#_setup"></a>Setup</h2>
+<div class="sectionbody">
+<div id="_tabs_1" class="openblock tabs is-sync is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_1_azure" class="tab">
+<p>Azure</p>
+</li>
+<li id="_tabs_1_aws" class="tab">
+<p>AWS</p>
+</li>
+<li id="_tabs_1_docker" class="tab">
+<p>Docker</p>
+</li>
+<li id="_tabs_1_vsphere" class="tab">
+<p>vSphere</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_1_azure--panel" class="tabpanel" aria-labelledby="_tabs_1_azure">
+<div class="paragraph">
+<p>To prepare the management Cluster, we are going to install the <a href="https://capz.sigs.k8s.io/">Cluster API Provider Azure</a>, and create a <a href="https://capz.sigs.k8s.io/topics/identities#service-principal">ServicePrincipal</a> identity to provision a new Cluster on Azure.<br>
+Before we start, a ServicePrincipal needs to be created, with at least Contributor access to an Azure subscription.<br>
+Refer to the <a href="https://capz.sigs.k8s.io/getting-started#setting-up-your-azure-environment">CAPZ documentation</a> for more details.<br></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Provider installation</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: capz-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: azure
+  namespace: capz-system
+spec:
+  type: infrastructure
+  name: azure</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Identity setup</p>
+<div class="paragraph">
+<p>A Secret containing the ADD Service Principal password need to be created first.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># Settings needed for AzureClusterIdentity used by the AzureCluster
+export AZURE_CLUSTER_IDENTITY_SECRET_NAME="cluster-identity-secret"
+export AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE="default"
+export AZURE_CLIENT_SECRET="&lt;Password&gt;"
+
+# Create a secret to include the password of the Service Principal identity created in Azure
+# This secret will be referenced by the AzureClusterIdentity used by the AzureCluster
+kubectl create secret generic "${AZURE_CLUSTER_IDENTITY_SECRET_NAME}" --from-literal=clientSecret="${AZURE_CLIENT_SECRET}" --namespace "${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The AzureClusterIdentity can now be created to use the Service Principal identity.<br>
+Note that the AzureClusterIdentity is a namespaced resource and it needs to be created in the same namespace as the Cluster.<br>
+For more information on best practices when using Azure identities, please refer to the official <a href="https://capz.sigs.k8s.io/topics/identities-use-cases">documentation</a>.<br></p>
+</div>
+<div class="paragraph">
+<p>Note that some variables are left to the user to substitute.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: AzureClusterIdentity
+metadata:
+  labels:
+    clusterctl.cluster.x-k8s.io/move-hierarchy: "true"
+  name: cluster-identity
+spec:
+  allowedNamespaces: {}
+  clientID: &lt;AZURE_APP_ID&gt;
+  clientSecret:
+    name: &lt;AZURE_CLUSTER_IDENTITY_SECRET_NAME&gt;
+    namespace: &lt;AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE&gt;
+  tenantID: &lt;AZURE_TENANT_ID&gt;
+  type: ServicePrincipal</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="_tabs_1_aws--panel" class="tabpanel" aria-labelledby="_tabs_1_aws">
+<div class="paragraph">
+<p>To prepare the management Cluster, we are going to install the <a href="https://cluster-api-aws.sigs.k8s.io/">Cluster API Provider AWS</a>, and create a secret with the required credentials to provision a new Cluster on AWS.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Credentials setup</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: capa-system
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: aws
+  namespace: capa-system
+type: Opaque
+stringData:
+  AWS_B64ENCODED_CREDENTIALS: xxx</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The content of the string, <code>AWS_B64ENCODED_CREDENTIALS</code>, is a base64-encoded string containing the AWS credentials. You will need to use an AWS IAM user with administrative permissions so you can create the cloud resources to host the cluster.
+We recommend you use <code>clusterawsadm</code> to encode credentials to use with Cluster API Provider AWS. You can refer to the <a href="https://cluster-api-aws.sigs.k8s.io/clusterawsadm/clusterawsadm_bootstrap_credentials.html?highlight=bootstrap%20credentials#clusterawsadm-bootstrap-credentials">CAPA book</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>These are the variables you will need to export to authenticate with AWS and use <code>clusterawsadm</code> to generate the encoded string, which are linked to your IAM user:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">AWS_REGION
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Provider installation</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: aws
+  namespace: capa-system
+spec:
+  type: infrastructure
+  configSecret:
+    name: aws</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><a href="https://github.com/rancher/cluster-api-provider-rke2">Bootstrap/Control Plane provider for RKE2</a>(installed by default) or <a href="https://github.com/kubernetes-sigs/cluster-api">Bootstrap/Control Plane provider for Kubeadm</a>, example of Kubeadm installation:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-bootstrap-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-bootstrap
+  namespace: capi-kubeadm-bootstrap-system
+spec:
+  name: kubeadm
+  type: bootstrap
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-control-plane-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-control-plane
+  namespace: capi-kubeadm-control-plane-system
+spec:
+  name: kubeadm
+  type: controlPlane</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="_tabs_1_docker--panel" class="tabpanel" aria-labelledby="_tabs_1_docker">
+<div class="paragraph">
+<p>To prepare the management Cluster, we are going to install the Docker Cluster API Provider.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Infrastructure Docker provider installation</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: capd-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: docker
+  namespace: capd-system
+spec:
+  type: infrastructure</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><a href="https://github.com/rancher/cluster-api-provider-rke2">Bootstrap/Control Plane provider for RKE2</a>(installed by default) or <a href="https://github.com/kubernetes-sigs/cluster-api">Bootstrap/Control Plane provider for Kubeadm</a>, example of Kubeadm installation:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-bootstrap-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-bootstrap
+  namespace: capi-kubeadm-bootstrap-system
+spec:
+  name: kubeadm
+  type: bootstrap
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-control-plane-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-control-plane
+  namespace: capi-kubeadm-control-plane-system
+spec:
+  name: kubeadm
+  type: controlPlane</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="_tabs_1_vsphere--panel" class="tabpanel" aria-labelledby="_tabs_1_vsphere">
+<div class="paragraph">
+<p>To prepare the management Cluster, we are going to install the <a href="https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/blob/main/docs/getting_started.md">Cluster API Provider vSphere</a>.<br>
+The global credentials are set to blanks, as we are going to use <code>VSphereClusterIdentity</code> instead.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Provider installation</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: capv-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: vsphere
+  namespace: capv-system
+spec:
+  type: infrastructure
+  variables:
+    VSPHERE_USERNAME: ""
+    VSPHERE_PASSWORD: ""</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><a href="https://github.com/rancher/cluster-api-provider-rke2">Bootstrap/Control Plane provider for RKE2</a>(installed by default) or <a href="https://github.com/kubernetes-sigs/cluster-api">Bootstrap/Control Plane provider for Kubeadm</a>, example of Kubeadm installation:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-bootstrap-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-bootstrap
+  namespace: capi-kubeadm-bootstrap-system
+spec:
+  name: kubeadm
+  type: bootstrap
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-control-plane-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-control-plane
+  namespace: capi-kubeadm-control-plane-system
+spec:
+  name: kubeadm
+  type: controlPlane</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Identity Setup</p>
+<div class="paragraph">
+<p>In this example we are going to use a <code>VSphereClusterIdentity</code> to provision vSphere Clusters.<br>
+A Secret containing the credentials needs to be created in the namespace where the vSphere provider is installed.<br>
+The <code>VSphereClusterIdentity</code> can reference this Secret to allow Cluster provisioning. For this example we are allowing usage of the identity across all namespaces, so that it can be easily reused.<br>
+You can refer to the <a href="https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/blob/main/docs/identity_management.md">official documentation</a> to learn more about identity management.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: Secret
+metadata:
+  name: cluster-identity
+  namespace: capv-system
+type: Opaque
+stringData:
+  username: xxx
+  password: xxx
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: VSphereClusterIdentity
+metadata:
+  name: cluster-identity
+spec:
+  secretName: cluster-identity
+  allowedNamespaces:
+    selector:
+      matchLabels: {}</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_a_cluster_from_a_clusterclass"><a class="anchor" href="#_create_a_cluster_from_a_clusterclass"></a>Create a Cluster from a ClusterClass</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Examples using <code>HelmApps</code> need at least Rancher <code>v2.11</code>, or otherwise Fleet <code>v0.12</code> or higher.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="_tabs_2" class="openblock tabs is-sync is-loading">
+<div class="content">
+<div class="ulist tablist">
+<ul>
+<li id="_tabs_2_azure_rke2" class="tab">
+<p>Azure RKE2</p>
+</li>
+<li id="_tabs_2_azure_aks" class="tab">
+<p>Azure AKS</p>
+</li>
+<li id="_tabs_2_aws_kubeadm" class="tab">
+<p>AWS Kubeadm</p>
+</li>
+<li id="_tabs_2_aws_rke2" class="tab">
+<p>AWS RKE2</p>
+</li>
+<li id="_tabs_2_docker_kubeadm" class="tab">
+<p>Docker Kubeadm</p>
+</li>
+<li id="_tabs_2_docker_rke2" class="tab">
+<p>Docker RKE2</p>
+</li>
+<li id="_tabs_2_vsphere_kubeadm" class="tab">
+<p>vSphere Kubeadm</p>
+</li>
+<li id="_tabs_2_vsphere_rke2" class="tab">
+<p>vSphere RKE2</p>
+</li>
+</ul>
+</div>
+<div id="_tabs_2_azure_rke2--panel" class="tabpanel" aria-labelledby="_tabs_2_azure_rke2">
+<div class="ulist">
+<ul>
+<li>
+<p>An Azure ClusterClass can be found among the <a href="https://github.com/rancher/turtles/tree/main/examples/clusterclasses">Turtles examples</a>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/azure/rke2/clusterclass-rke2-example.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Additionally, the <a href="https://capz.sigs.k8s.io/self-managed/cloud-provider-config">Azure Cloud Provider</a> will need to be installed on each downstream Cluster, for the nodes to be initialized correctly.<br>
+For this example we are also going to install <a href="https://docs.tigera.io/calico/latest/about/">Calico</a> as the default CNI.<br></p>
+<div class="paragraph">
+<p>We can do this automatically at Cluster creation using the <a href="https://rancher.github.io/cluster-api-addon-provider-fleet/">Cluster API Add-on Provider Fleet</a>.<br>
+This Add-on provider is installed by default with Rancher Turtles.<br>
+Two <code>HelmApps</code> need to be created first, to be applied on the new Cluster via label selectors.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/ccm/azure/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/calico/helm-chart.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the Azure Cluster from the example ClusterClass<br></p>
+<div class="paragraph">
+<p>Note that some variables are left to the user to substitute.<br>
+Also beware that the <code>internal-first</code> <code>registrationMethod</code> variable is used as a workaround for correct provisioning.<br>
+This immutable variable however will lead to issues when scaling or rolling out control plane nodes.<br>
+A <a href="https://github.com/kubernetes-sigs/cluster-api-provider-azure/pull/5525">patch</a> will support this case in a future release of CAPZ, but the Cluster will need to be reprovisioned to change the <code>registrationMethod</code><br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cluster-api.cattle.io/rancher-auto-import: "true"
+    cloud-provider: azure
+    cni: calico
+  name: azure-quickstart
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: azure-rke2-example
+    controlPlane:
+      replicas: 3
+    variables:
+    - name: subscriptionID
+      value: &lt;AZURE_SUBSCRIPTION_ID&gt;
+    - name: location
+      value: &lt;AZURE_LOCATION&gt;
+    - name: resourceGroup
+      value: &lt;AZURE_RESOURCE_GROUP&gt;
+    - name: azureClusterIdentityName
+      value: cluster-identity
+    - name: registrationMethod
+      value: internal-first
+    version: v1.31.1+rke2r1
+    workers:
+      machineDeployments:
+      - class: rke2-default-worker
+        name: md-0
+        replicas: 3</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="_tabs_2_azure_aks--panel" class="tabpanel" aria-labelledby="_tabs_2_azure_aks">
+<div class="ulist">
+<ul>
+<li>
+<p>An Azure AKS ClusterClass can be found among the <a href="https://github.com/rancher/turtles/tree/main/examples/clusterclasses">Turtles examples</a>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/azure/aks/clusterclass-aks-example.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the Azure AKS Cluster from the example ClusterClass<br></p>
+<div class="paragraph">
+<p>Note that some variables are left to the user to substitute.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cluster-api.cattle.io/rancher-auto-import: "true"
+  name: azure-aks-quickstart
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: azure-aks-example
+    variables:
+    - name: subscriptionID
+      value: &lt;AZURE_SUBSCRIPTION_ID&gt;
+    - name: location
+      value: &lt;AZURE_LOCATION&gt;
+    - name: resourceGroup
+      value: &lt;AZURE_RESOURCE_GROUP&gt;
+    - name: azureClusterIdentityName
+      value: cluster-identity
+    version: v1.31.1
+    workers:
+      machinePools:
+      - class: default-system
+        name: system-1
+        replicas: 1
+      - class: default-worker
+        name: worker-1
+        replicas: 1</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="_tabs_2_aws_kubeadm--panel" class="tabpanel" aria-labelledby="_tabs_2_aws_kubeadm">
+<div class="ulist">
+<ul>
+<li>
+<p>An AWS Kubeadm ClusterClass can be found among the <a href="https://github.com/rancher/turtles/tree/main/examples/clusterclasses">Turtles examples</a>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/aws/kubeadm/clusterclass-kubeadm-example.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>For this example we are also going to install <a href="https://docs.tigera.io/calico/latest/about/">Calico</a> as the default CNI.<br></p>
+</li>
+<li>
+<p>The <a href="https://github.com/kubernetes/cloud-provider-aws">Cloud Controller Manager AWS</a> will need to be installed on each downstream Cluster for the nodes to be functional.<br></p>
+</li>
+<li>
+<p>Additionally, we will also enable <a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver">AWS EBS CSI Driver</a>.<br></p>
+<div class="paragraph">
+<p>We can do this automatically at Cluster creation using the <a href="https://rancher.github.io/cluster-api-addon-provider-fleet/">Cluster API Add-on Provider Fleet</a>.<br>
+This Add-on provider is installed by default with Rancher Turtles.<br>
+The <code>HelmApps</code> need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico, the EBS CSI Driver, and the AWS Cloud Controller Manager in the workload cluster.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/csi/aws/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/aws/calico/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/ccm/aws/helm-chart.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the AWS Cluster from the example ClusterClass<br></p>
+<div class="paragraph">
+<p>Note that some variables are left to the user to substitute.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cluster-api.cattle.io/rancher-auto-import: "true"
+    cni: calico
+    cloud-provider: aws
+    csi: aws-ebs-csi-driver
+  name: aws-quickstart
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: aws-kubeadm-example
+    controlPlane:
+      replicas: 1
+    variables:
+    - name: region
+      value: eu-west-2
+    - name: sshKeyName
+      value: &lt;AWS_SSH_KEY_NAME&gt;
+    - name: controlPlaneMachineType
+      value: &lt;AWS_CONTROL_PLANE_MACHINE_TYPE&gt;
+    - name: workerMachineType
+      value: &lt;AWS_NODE_MACHINE_TYPE&gt;
+    version: v1.31.0
+    workers:
+      machineDeployments:
+      - class: default-worker
+        name: md-0
+        replicas: 1</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="_tabs_2_aws_rke2--panel" class="tabpanel" aria-labelledby="_tabs_2_aws_rke2">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Before creating an AWS+RKE2 workload cluster, it is required to either build an AMI for the RKE2 version that is going to be installed on the cluster or find one that will work for non-airgapped installations.
+You can follow the steps in the <a href="https://github.com/rancher/cluster-api-provider-rke2/tree/main/image-builder#aws">RKE2 image-builder README</a> to build the AMI.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An AWS RKE2 ClusterClass can be found among the <a href="https://github.com/rancher/turtles/tree/main/examples/clusterclasses">Turtles examples</a>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/aws/rke2/clusterclass-ec2-rke2-example.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The <a href="https://github.com/kubernetes/cloud-provider-aws">Cloud Controller Manager AWS</a> will need to be installed on each downstream Cluster for the nodes to be functional.<br></p>
+</li>
+<li>
+<p>Additionally, we will also enable <a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver">AWS EBS CSI Driver</a>.<br></p>
+<div class="paragraph">
+<p>We can do this automatically at Cluster creation using the <a href="https://rancher.github.io/cluster-api-addon-provider-fleet/">Cluster API Add-on Provider Fleet</a>.<br>
+This Add-on provider is installed by default with Rancher Turtles.<br>
+Two <code>HelmApps</code> need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying the AWS Cloud Controller Manager and the EBS CSI Driver in the workload cluster.<br>
+The CNI selection can instead be configured using Cluster variables and it will be provided by RKE2.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/csi/aws/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/ccm/aws/helm-chart.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the AWS Cluster from the example ClusterClass<br></p>
+<div class="paragraph">
+<p>Note that some variables are left to the user to substitute.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cloud-provider: aws
+    csi: aws-ebs-csi-driver
+    cluster-api.cattle.io/rancher-auto-import: "true"
+  name: aws-quickstart
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: aws-rke2-example
+    controlPlane:
+      replicas: 1
+    variables:
+    - name: cni
+      value: calico
+    - name: region
+      value: ${AWS_REGION}
+    - name: sshKeyName
+      value: ${AWS_SSH_KEY_NAME}
+    - name: controlPlaneMachineType
+      value: ${AWS_RKE2_CONTROL_PLANE_MACHINE_TYPE}
+    - name: workerMachineType
+      value: ${AWS_RKE2_NODE_MACHINE_TYPE}
+    - name: amiID
+      value: ${AWS_AMI_ID}
+    version: ${RKE2_VERSION}
+    workers:
+      machineDeployments:
+      - class: default-worker
+        name: md-0
+        replicas: 1</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="_tabs_2_docker_kubeadm--panel" class="tabpanel" aria-labelledby="_tabs_2_docker_kubeadm">
+<div class="ulist">
+<ul>
+<li>
+<p>A Docker Kubeadm ClusterClass can be found among the <a href="https://github.com/rancher/turtles/tree/main/examples/clusterclasses">Turtles examples</a>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/docker/kubeadm/clusterclass-docker-kubeadm.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>For this example we are also going to install Calico as the default CNI.</p>
+<div class="paragraph">
+<p>We can do this automatically at Cluster creation using the <a href="https://rancher.github.io/cluster-api-addon-provider-fleet/">Cluster API Add-on Provider Fleet</a>.<br>
+This Add-on provider is installed by default with Rancher Turtles.<br>
+Two <code>HelmApps</code> need to be created first, to be applied on the new Cluster via label selectors.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/calico/helm-chart.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the Docker Kubeadm Cluster from the example ClusterClass<br></p>
+<div class="paragraph">
+<p>Note that some variables are left to the user to substitute.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: docker-kubeadm-quickstart
+  labels:
+    cni: calico
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+        - 192.168.0.0/16
+    serviceDomain: cluster.local
+    services:
+      cidrBlocks:
+        - 10.96.0.0/24
+  topology:
+    class: docker-kubeadm-example
+    controlPlane:
+      replicas: 3
+    version: v1.31.6
+    workers:
+      machineDeployments:
+        - class: default-worker
+          name: md-0
+          replicas: 3</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="_tabs_2_docker_rke2--panel" class="tabpanel" aria-labelledby="_tabs_2_docker_rke2">
+<div class="ulist">
+<ul>
+<li>
+<p>A Docker RKE2 ClusterClass can be found among the <a href="https://github.com/rancher/turtles/tree/main/examples/clusterclasses">Turtles examples</a>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/docker/rke2/clusterclass-docker-rke2.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>For this example we are also going to install Calico as the default CNI.</p>
+<div class="paragraph">
+<p>We can do this automatically at Cluster creation using the <a href="https://rancher.github.io/cluster-api-addon-provider-fleet/">Cluster API Add-on Provider Fleet</a>.<br>
+This Add-on provider is installed by default with Rancher Turtles.<br>
+Two <code>HelmApps</code> need to be created first, to be applied on the new Cluster via label selectors.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/calico/helm-chart.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the LoadBalancer ConfigMap for Docker RKEv2 Cluster<br></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/lb/docker/configmap.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the Docker Kubeadm Cluster from the example ClusterClass<br></p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: docker-rke2-example
+  labels:
+    cni: calico
+  annotations:
+    cluster-api.cattle.io/upstream-system-agent: "true"
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+    services:
+      cidrBlocks:
+      - 10.96.0.0/24
+    serviceDomain: cluster.local
+  topology:
+    class: docker-rke2-example
+    controlPlane:
+      replicas: 3
+    variables:
+    - name: rke2CNI
+      value: none
+    - name: dockerImage
+      value: kindest/node:v1.31.6
+    version: v1.31.6+rke2r1
+    workers:
+      machineDeployments:
+      - class: default-worker
+        name: md-0
+        replicas: 3</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="_tabs_2_vsphere_kubeadm--panel" class="tabpanel" aria-labelledby="_tabs_2_vsphere_kubeadm">
+<div class="ulist">
+<ul>
+<li>
+<p>A vSphere ClusterClass can be found among the <a href="https://github.com/rancher/turtles/tree/main/examples/clusterclasses">Turtles examples</a>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/vsphere/kubeadm/clusterclass-kubeadm-example.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Additionally, the <a href="https://github.com/kubernetes/cloud-provider-vsphere">vSphere Cloud Provider</a> will need to be installed on each downstream Cluster, for the nodes to be initialized correctly.<br>
+The <a href="https://github.com/kubernetes-sigs/vsphere-csi-driver">Container Storage Interface (CSI) driver for vSphere</a> will be used as storage solution.<br>
+Finally, for this example we are going to install <a href="https://docs.tigera.io/calico/latest/about/">Calico</a> as the default CNI.<br></p>
+<div class="paragraph">
+<p>We can install all applications automatically at Cluster creation using the <a href="https://rancher.github.io/cluster-api-addon-provider-fleet/">Cluster API Add-on Provider Fleet</a>.<br>
+This Add-on provider is installed by default with Rancher Turtles.<br>
+Two <code>HelmApps</code> need to be created first, to be applied on the new Cluster via label selectors.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/ccm/vsphere/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/calico/helm-chart.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since the vSphere CSI driver is not packaged in Helm, we are going to include its entire manifest in a Fleet Bundle, that will be applied to the downstream Cluster.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/csi/vsphere/bundle.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Cluster configuration</p>
+<div class="paragraph">
+<p>The vSphere Cloud Provider and the vSphere CSI controller need additional configuration to be applied on the downstream Cluster.<br>
+Similarly to the steps above, we can create two additional Fleet Bundles, that will be applied to the downstream Cluster.<br>
+Please beware that these Bundles are configured to target the downstream Cluster by name: <code>vsphere-kubeadm-quickstart</code>.<br>
+If you use a different name for your Cluster, change the Bundle targets accordingly.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">kind: Bundle
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: vsphere-csi-config
+spec:
+  resources:
+  - content: |-
+      apiVersion: v1
+      kind: Secret
+      type: Opaque
+      metadata:
+        name: vsphere-config-secret
+        namespace: vmware-system-csi
+      stringData:
+        csi-vsphere.conf: |+
+          [Global]
+          thumbprint = "&lt;VSPHERE_THUMBPRINT&gt;"
+
+          [VirtualCenter "&lt;VSPHERE_SERVER&gt;"]
+          user = "&lt;VSPHERE_USER&gt;"
+          password = "&lt;VSPHERE_PASSWORD&gt;"
+          datacenters = "&lt;VSPHERE_DATACENTED&gt;"
+
+          [Network]
+          public-network = "&lt;VSPHERE_NETWORK&gt;"
+
+          [Labels]
+          zone = ""
+          region = ""
+  targets:
+  - clusterSelector:
+      matchLabels:
+        csi: vsphere
+        cluster.x-k8s.io/cluster-name: 'vsphere-kubeadm-quickstart'
+---
+kind: Bundle
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: vsphere-cloud-credentials
+spec:
+  resources:
+  - content: |-
+      apiVersion: v1
+      kind: Secret
+      type: Opaque
+      metadata:
+        name: vsphere-cloud-secret
+        namespace: kube-system
+      stringData:
+        &lt;VSPHERE_SERVER&gt;.password: "&lt;VSPHERE_PASSWORD&gt;"
+        &lt;VSPHERE_SERVER&gt;.username: "&lt;VSPHERE_USER&gt;"
+  targets:
+  - clusterSelector:
+      matchLabels:
+        cloud-provider: vsphere
+        cluster.x-k8s.io/cluster-name: 'vsphere-kubeadm-quickstart'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the vSphere Cluster from the example ClusterClass<br></p>
+<div class="paragraph">
+<p>Note that for this example we are using <a href="https://kube-vip.io/">kube-vip</a> as a Control Plane load balancer.<br>
+The <code>KUBE_VIP_INTERFACE</code> will be used to bind the <code>CONTROL_PLANE_IP</code> in ARP mode. Depending on your operating system and network device configuration, you need to configure this value accordingly - for example, to <code>eth0</code>.<br>
+The <code>kube-vip</code> static manifest is embedded in the ClusterClass definition. For more information on how to generate a static kube-vip manifest for your own ClusterClasses, please consult the official <a href="https://kube-vip.io/docs/installation/static/">documentation</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cni: calico
+    cloud-provider: vsphere
+    csi: vsphere
+    cluster-api.cattle.io/rancher-auto-import: "true"
+  name: 'vsphere-kubeadm-quickstart'
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: vsphere-kubeadm-example
+    version: v1.31.4
+    controlPlane:
+      replicas: 1
+    workers:
+      machineDeployments:
+      - class: vsphere-kubeadm-example-worker
+        name: md-0
+        replicas: 1
+    variables:
+    - name: vSphereClusterIdentityName
+      value: cluster-identity
+    - name: vSphereTLSThumbprint
+      value: &lt;VSPHERE_THUMBPRINT&gt;
+    - name: vSphereDataCenter
+      value: &lt;VSPHERE_DATACENTER&gt;
+    - name: vSphereDataStore
+      value: &lt;VSPHERE_DATASTORE&gt;
+    - name: vSphereFolder
+      value: &lt;VSPHERE_FOLDER&gt;
+    - name: vSphereNetwork
+      value: &lt;VSPHERE_NETWORK&gt;
+    - name: vSphereResourcePool
+      value: &lt;VSPHERE_RESOURCE_POOL&gt;
+    - name: vSphereServer
+      value: &lt;VSPHERE_SERVER&gt;
+    - name: vSphereTemplate
+      value: &lt;VSPHERE_TEMPLATE&gt;
+    - name: controlPlaneIpAddr
+      value: &lt;CONTROL_PLANE_IP&gt;
+    - name: controlPlanePort
+      value: 6443
+    - name: sshKey
+      value: &lt;SSH_KEY&gt;
+    - name: kubeVIPInterface
+      value: &lt;KUBE_VIP_INTERFACE&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="_tabs_2_vsphere_rke2--panel" class="tabpanel" aria-labelledby="_tabs_2_vsphere_rke2">
+<div class="ulist">
+<ul>
+<li>
+<p>A vSphere ClusterClass can be found among the <a href="https://github.com/rancher/turtles/tree/main/examples/clusterclasses">Turtles examples</a>.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/clusterclasses/vsphere/rke2/clusterclass-rke2-example.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Additionally, the <a href="https://github.com/kubernetes/cloud-provider-vsphere">vSphere Cloud Provider</a> will need to be installed on each downstream Cluster, for the nodes to be initialized correctly.<br>
+The <a href="https://github.com/kubernetes-sigs/vsphere-csi-driver">Container Storage Interface (CSI) driver for vSphere</a> will be used as storage solution.<br>
+Finally, for this example we are going to install <a href="https://docs.tigera.io/calico/latest/about/">Calico</a> as the default CNI.<br></p>
+<div class="paragraph">
+<p>We can install all applications automatically at Cluster creation using the <a href="https://rancher.github.io/cluster-api-addon-provider-fleet/">Cluster API Add-on Provider Fleet</a>.<br>
+This Add-on provider is installed by default with Rancher Turtles.<br>
+Two <code>HelmApps</code> need to be created first, to be applied on the new Cluster via label selectors.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/ccm/vsphere/helm-chart.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/cni/calico/helm-chart.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since the vSphere CSI driver is not packaged in Helm, we are going to include its entire manifest in a Fleet Bundle, that will be applied to the downstream Cluster.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.20.0/examples/applications/csi/vsphere/bundle.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Cluster configuration</p>
+<div class="paragraph">
+<p>The vSphere Cloud Provider and the vSphere CSI controller need additional configuration to be applied on the downstream Cluster.<br>
+Similarly to the steps above, we can create two additional Fleet Bundles, that will be applied to the downstream Cluster.<br>
+Please beware that these Bundles are configured to target the downstream Cluster by name: <code>vsphere-rke2-quickstart</code>.<br>
+If you use a different name for your Cluster, change the Bundle targets accordingly.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">kind: Bundle
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: vsphere-csi-config
+spec:
+  resources:
+  - content: |-
+      apiVersion: v1
+      kind: Secret
+      type: Opaque
+      metadata:
+        name: vsphere-config-secret
+        namespace: vmware-system-csi
+      stringData:
+        csi-vsphere.conf: |+
+          [Global]
+          thumbprint = "&lt;VSPHERE_THUMBPRINT&gt;"
+
+          [VirtualCenter "&lt;VSPHERE_SERVER&gt;"]
+          user = "&lt;VSPHERE_USER&gt;"
+          password = "&lt;VSPHERE_PASSWORD&gt;"
+          datacenters = "&lt;VSPHERE_DATACENTED&gt;"
+
+          [Network]
+          public-network = "&lt;VSPHERE_NETWORK&gt;"
+
+          [Labels]
+          zone = ""
+          region = ""
+  targets:
+  - clusterSelector:
+      matchLabels:
+        csi: vsphere
+        cluster.x-k8s.io/cluster-name: 'vsphere-rke2-quickstart'
+---
+kind: Bundle
+apiVersion: fleet.cattle.io/v1alpha1
+metadata:
+  name: vsphere-cloud-credentials
+spec:
+  resources:
+  - content: |-
+      apiVersion: v1
+      kind: Secret
+      type: Opaque
+      metadata:
+        name: vsphere-cloud-secret
+        namespace: kube-system
+      stringData:
+        &lt;VSPHERE_SERVER&gt;.password: "&lt;VSPHERE_PASSWORD&gt;"
+        &lt;VSPHERE_SERVER&gt;.username: "&lt;VSPHERE_USER&gt;"
+  targets:
+  - clusterSelector:
+      matchLabels:
+        cloud-provider: vsphere
+        cluster.x-k8s.io/cluster-name: 'vsphere-rke2-quickstart'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the vSphere Cluster from the example ClusterClass<br></p>
+<div class="paragraph">
+<p>Note that for this example we are using <a href="https://kube-vip.io/">kube-vip</a> as a Control Plane load balancer.<br>
+The <code>KUBE_VIP_INTERFACE</code> will be used to bind the <code>CONTROL_PLANE_IP</code> in ARP mode. Depending on your operating system and network device configuration, you need to configure this value accordingly - for example, to <code>eth0</code>.<br>
+The <code>kube-vip</code> static manifest is embedded in the ClusterClass definition. For more information on how to generate a static kube-vip manifest for your own ClusterClasses, please consult the official <a href="https://kube-vip.io/docs/installation/static/">documentation</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cni: calico
+    cloud-provider: vsphere
+    csi: vsphere
+    cluster-api.cattle.io/rancher-auto-import: "true"
+  name: 'vsphere-rke2-quickstart'
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+  topology:
+    class: vsphere-rke2-example
+    version: v1.31.4+rke2r1
+    controlPlane:
+      replicas: 1
+    workers:
+      machineDeployments:
+      - class: vsphere-rke2-example-worker
+        name: md-0
+        replicas: 1
+    variables:
+    - name: vSphereClusterIdentityName
+      value: cluster-identity
+    - name: vSphereTLSThumbprint
+      value: &lt;VSPHERE_THUMBPRINT&gt;
+    - name: vSphereDataCenter
+      value: &lt;VSPHERE_DATACENTER&gt;
+    - name: vSphereDataStore
+      value: &lt;VSPHERE_DATASTORE&gt;
+    - name: vSphereFolder
+      value: &lt;VSPHERE_FOLDER&gt;
+    - name: vSphereNetwork
+      value: &lt;VSPHERE_NETWORK&gt;
+    - name: vSphereResourcePool
+      value: &lt;VSPHERE_RESOURCE_POOL&gt;
+    - name: vSphereServer
+      value: &lt;VSPHERE_SERVER&gt;
+    - name: vSphereTemplate
+      value: &lt;VSPHERE_TEMPLATE&gt;
+    - name: controlPlaneIpAddr
+      value: &lt;CONTROL_PLANE_IP&gt;
+    - name: controlPlanePort
+      value: 6443
+    - name: sshKey
+      value: &lt;SSH_KEY&gt;
+    - name: kubeVIPInterface
+      value: &lt;KUBE_VIP_INTERFACE&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optionally_mark_namespace_for_auto_import"><a class="anchor" href="#_optionally_mark_namespace_for_auto_import"></a>Optionally Mark Namespace for Auto-Import</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To automatically import a CAPI cluster into Rancher Manager, you can label a namespace so all clusters contained in it are imported.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">export NAMESPACE=default
+kubectl label namespace $NAMESPACE cluster-api.cattle.io/rancher-auto-import=true</code></pre>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="clusters.html">Provision a CAPI cluster</a></span>
+  <span class="next"><a href="fleet.html">Create a cluster using Fleet</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<script src="../../../../_/js/site.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/langSelection.js"></script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
+
+
+  </body>
+</html>
