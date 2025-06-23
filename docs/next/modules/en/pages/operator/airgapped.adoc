@@ -18,7 +18,252 @@ To install Cluster API providers in an air-gapped environment the following will
  ** Provide fetch configuration and image values for `core` and `caprke2` providers in xref:../operator/chart.adoc#_cluster_api_operator_values[values.yaml].
  ** Provider image value for the Cluster API Operator Helm chart dependency in https://github.com/kubernetes-sigs/cluster-api-operator/blob/main/hack/charts/cluster-api-operator/values.yaml#L26[values.yaml]. Image values specified with the cluster-api-operator key will be passed along to the Cluster API Operator.
 
-== Example Usage
+== CAPI Provider installation with OCI artifact
+
+As an administrator working in an air-gapped environment, you need to fetch the Azure Cluster API Provider (CAPZ) components from within your cluster since external internet access is restricted. This section demonstrates how to deploy CAPZ using OCI artifacts stored in your private registry.
+
+Set your private registry URL and replace with your actual registry:
+
+[source,bash]
+----
+export REGISTRY=<YOUR_PRIVATE_REGISTRY>
+export RELEASE_TAG=<CAPI_PROVIDER_VERSION>
+----
+
+Create and apply Azure CAPIProvider resource that instructs Rancher Turtles to fetch the Azure provider from your private OCI registry:
+
+.capz-provider-oci.yaml
+[source,yaml]
+----
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: azure
+  namespace: capz-system
+spec:
+  type: infrastructure
+  name: azure
+  version: ${RELEASE_TAG}
+  fetchConfig:
+    oci: ${REGISTRY}:${RELEASE_TAG}
+----
+
+== How to mirror CAPI Provider OCI artifact
+
+You mirror OCI artifacts for any CAPI Provider listed in the Rancher Turtles configuration: https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config.yaml
+
+Install the ORAS (OCI Registry As Storage) CLI tool to manage OCI artifacts. Follow the installation instructions at: https://oras.land/docs/installation
+
+Set your private registry URL and replace with your actual registry:
+
+[source,bash]
+----
+export REGISTRY=<YOUR_PRIVATE_REGISTRY>
+export RELEASE_TAG=<CAPI_PROVIDER_VERSION>
+----
+
+Create working directory
+
+[source,bash]
+----
+mkdir capi-oci-artifacts
+cd capi-oci-artifacts
+----
+
+Pull OCI artifacts for CAPI Provider which you want to use for example Azure Provider OCI artifact in version 1.19.4:
+
+[source,bash]
+----
+oras pull registry.rancher.com/rancher/cluster-api-azure-controller-components:v1.19.4
+----
+
+Publish an OCI artifact containing the Azure CAPI Provider manifests to your private registry:
+
+[source,bash]
+----
+oras push ${REGISTRY}:${RELEASE_TAG} infrastructure-components.yaml:application/vnd.test.file metadata.yaml:application/vnd.test.file
+----
+
+Create and apply Azure CAPIProvider resource that instructs Rancher Turtles to fetch the Azure provider from your private OCI registry:
+
+.capz-provider-oci.yaml
+[source,yaml]
+----
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: azure
+  namespace: capz-system
+spec:
+  type: infrastructure
+  name: azure
+  version: ${RELEASE_TAG}
+  fetchConfig:
+    oci: ${REGISTRY}:${RELEASE_TAG}
+----
+
+Use `kubectl` to create namespace `capz-system` and apply the `capz-provider-oci.yaml` file to the cluster:
+
+[source,bash]
+----
+kubectl apply -f capz-provider-oci.yaml
+----
+
+== CAPI Provider fetch and push OCI artifact
+
+[tabs]
+======
+Using kubectl operator::
++
+====
+You can build OCI artifacts for any CAPI Provider listed in the Rancher Turtles configuration: https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config.yaml
+
+Install https://cluster-api-operator.sigs.k8s.io/03_topics/03_plugin/01_installation[cluster-api-operator] plugin for `kubectl`
+
+Clone the official https://github.com/kubernetes-sigs/cluster-api-provider-azure/[Azure CAPI Provider repository] and navigate to the project directory
+
+[source,bash]
+----
+git clone https://github.com/kubernetes-sigs/cluster-api-provider-azure/
+cd cluster-api-provider-azure
+----
+
+Choose the specific version you want to deploy. You can either list all available tags 
+
+[CAUTION]
+There is no `latest` version in OCI scenario, so version needs to be set at all times.
+
+[source,bash]
+----
+git tag
+----
+
+or automatically select the latest release:
+
+[source,bash]
+----
+export RELEASE_TAG=`git describe --abbrev=0`
+----
+
+Set your private registry URL and replace with your actual registry:
+
+[source,bash]
+----
+export PROD_REGISTRY=<YOUR_PRIVATE_REGISTRY>
+----
+
+Build the release artifacts infrastructure-components.yaml and metadata.yaml:
+
+[source,bash]
+----
+make release
+----
+
+Go to the output directory containing the artifacts:
+
+[source,bash]
+----
+cd out
+----
+
+Create and publish an OCI artifact containing the Azure CAPI Provider manifests to your private registry:
+
+[source,bash]
+----
+kubectl operator publish -u ${PROD_REGISTRY}:${RELEASE_TAG} infrastructure-components.yaml metadata.yaml
+----
+====
+
+Using Oras::
++
+====
+You can build OCI artifacts for any CAPI Provider listed in the Rancher Turtles configuration: https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config.yaml
+
+Clone the official https://github.com/kubernetes-sigs/cluster-api-provider-azure/[Azure CAPI Provider repository] and navigate to the project directory
+
+[source,bash]
+----
+git clone https://github.com/kubernetes-sigs/cluster-api-provider-azure/
+cd cluster-api-provider-azure
+----
+
+Choose the specific version you want to deploy. You can either list all available tags 
+
+[CAUTION]
+There is no `latest` version in OCI scenario, so version needs to be set at all times.
+
+[source,bash]
+----
+git tag
+----
+
+or automatically select the latest release:
+
+[source,bash]
+----
+export RELEASE_TAG=`git describe --abbrev=0`
+----
+
+Set your private registry URL and replace with your actual registry:
+
+[source,bash]
+----
+export PROD_REGISTRY=<YOUR_PRIVATE_REGISTRY>
+----
+
+Build the release artifacts infrastructure-components.yaml and metadata.yaml:
+
+[source,bash]
+----
+make release
+----
+
+Go to the output directory containing the artifacts:
+
+[source,bash]
+----
+cd out
+----
+
+Install the ORAS (OCI Registry As Storage) CLI tool to manage OCI artifacts. Follow the installation instructions at: https://oras.land/docs/installation
+
+Create and publish an OCI artifact containing the Azure CAPI Provider manifests to your private registry:
+
+[source,bash]
+----
+oras push ${PROD_REGISTRY}:${RELEASE_TAG} infrastructure-components.yaml:application/vnd.test.file metadata.yaml:application/vnd.test.file
+----
+====
+
+======
+
+
+Create and apply Azure CAPIProvider resource that instructs Rancher Turtles to fetch the Azure provider from your private OCI registry:
+
+.capz-provider-oci.yaml
+[source,yaml]
+----
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: azure
+  namespace: capz-system
+spec:
+  type: infrastructure
+  name: azure
+  version: ${RELEASE_TAG}
+  fetchConfig:
+    oci: ${PROD_REGISTRY}:${RELEASE_TAG}
+----
+
+Use `kubectl` to create namespace `capz-system` and apply the `capz-provider-oci.yaml` file to the cluster:
+
+[source,bash]
+----
+kubectl apply -f capz-provider-oci.yaml
+----
+
+== CAPI Provider installation with fetched manifest
 
 As an admin, I need to fetch the vSphere provider (CAPV) components from within the cluster because I am working in an air-gapped environment.
 
