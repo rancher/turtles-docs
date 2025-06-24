@@ -114,5 +114,11 @@ A namespace (or cluster) can be marked for auto-import at any time: before or af
 
 [CAUTION]
 ====
+Marking a cluster for auto-import triggers automatic registration by the Turtles controller, manual execution of
+registration commands is not required.
+====
+
+[CAUTION]
+====
 To prevent a cluster from getting stuck in deletion when Fleet is removed, keep auto-import enabled in the UI or avoid manually removing labels in the cluster's namespace, as Turtles will no longer handle the 'import' functionality from that point onward.
 ====
