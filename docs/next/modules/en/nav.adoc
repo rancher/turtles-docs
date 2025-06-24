@@ -15,6 +15,7 @@
 ** xref:user/clusters.adoc[Provision a CAPI cluster]
 ** xref:user/clusterclass.adoc[Provision a CAPI cluster with ClusterClass]
 ** xref:user/fleet.adoc[Create a cluster using Fleet]
+** xref:user/delete-cluster.adoc[Delete an imported cluster]
 ** xref:user/caapf.adoc[CAPI Addon Provider Fleet]
 ** xref:user/gitops.adoc[GitOps best practices for Turtles and CAPI]
 * Operator Guide
