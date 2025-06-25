@@ -191,6 +191,74 @@ spec:
       matchLabels: {}
 ----
 
+GCP::
++
+To prepare the management Cluster, we are going to install the https://cluster-api-gcp.sigs.k8s.io/[Cluster API Provider GCP], and create a secret with the credentials required to provision a new Cluster on GCP. +
+A Service Account is required to create and manage clusters in GCP and this will require `Editor` permissions. You can follow the offical guide from the https://cluster-api-gcp.sigs.k8s.io/quick-start#create-a-service-account[CAPG Book]. +
+The base64-encoded Service Account key needs to be set in the `GCP_B64ENCODED_CREDENTIALS` variable of the provider. +
++
+* Provider installation
++
+[source,yaml]
+----
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: gcp
+  namespace: capg-system
+spec:
+  type: infrastructure
+  variables:
+    GCP_B64ENCODED_CREDENTIALS: xxx
+----
++
+* https://github.com/kubernetes-sigs/cluster-api[Bootstrap/Control Plane provider for Kubeadm], example of Kubeadm installation:
++
+[source,yaml]
+----
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-bootstrap-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-bootstrap
+  namespace: capi-kubeadm-bootstrap-system
+spec:
+  name: kubeadm
+  type: bootstrap
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: capi-kubeadm-control-plane-system
+---
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: kubeadm-control-plane
+  namespace: capi-kubeadm-control-plane-system
+spec:
+  name: kubeadm
+  type: controlPlane
+----
++
+* Network Setup
++
+Provisioning a self-managed GCP cluster requires that a GCP network is configured to allow Kubernetes nodes to communicate with the control plane and pull images from the container registry for which machines need to have NAT access or a public IP. +
+The default provider behavior is to create virtual machines with no public IP attached, so a https://cloud.google.com/nat/docs/overview[Cloud NAT] is required to allow the nodes to establish a connection with the load balancer and the outside world. +
+Please, refer to the official https://cluster-api-gcp.sigs.k8s.io/prerequisites#configure-network-and-cloud-nat[CAPG Book] guide on how to prepare your GCP network to provision a self-managed GCP cluster. +
++
+[NOTE]
+====
+The following steps are required to prepare the GCP network for Cluster provisioning:
+
+- Create a router.
+- Create a NAT associated with the router.
+====
+
 Docker::
 +
 To prepare the management Cluster, we are going to install the Docker Cluster API Provider.
@@ -761,6 +829,105 @@ spec:
       - class: default-worker
         name: md-0
         replicas: 1
+----
+
+GCP Kubeadm::
++
+[WARNING]
+====
+Before creating a GCP+Kubeadm workload cluster, it is required to either build an Image for the Kubernetes version that is going to be installed on the cluster or find one that will work for your use case. 
+You can follow the steps in the https://image-builder.sigs.k8s.io/capi/providers/gcp[Kubernetes GCP Image Builder book]. 
+====
++
+* A GCP Kubeadm ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
++
+Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI] and https://github.com/kubernetes/cloud-provider-gcp[Cloud Controller Manager GCP] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico` and `cloud-provider: gcp`.
++
+[tabs]
+=======
+CLI::
++
+A GCP Kubeadm ClusterClass and associated applications can be applied using the examples tool:
++
+[source,bash]
+----
+go run github.com/rancher/turtles/examples@latest -r gcp-kubeadm | kubectl apply -f -
+----
+
+kubectl::
++
+* Alternatively, you can apply the GCP Kubeadm ClusterClass directly using kubectl:
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/gcp/kubeadm/clusterclass-kubeadm-example.yaml
+----
++
+* For this example we are also going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
+* The https://github.com/kubernetes/cloud-provider-gcp[Cloud Controller Manager GCP] will need to be installed on each downstream Cluster for the nodes to be functional. +
++
+We can do this automatically at Cluster creation using a combination of https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet] and https://fleet.rancher.io/bundle-add[Fleet Bundle]. +
+The Add-on provider is installed by default with {product_name}. +
+The `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico. +
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+----
++
+A `Bundle` will take care of deploying Cloud Controller Manager GCP. The reason for not using Add-on Provider Fleet is that https://github.com/kubernetes/cloud-provider-gcp[Cloud Controller Manager GCP] does not provide a Helm chart, so we opt for creating the Fleet `Bundle` resource directly. +
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/ccm/gcp/bundle.yaml
+----
+=======
++
+* Create the GCP Cluster from the example ClusterClass +
++ 
+Note that some variables are left to the user to substitute. +
+The default configuration of Cloud Controller Manager GCP is configured to use a single zone cluster, so the `clusterFailureDomains` variable is set to a single zone. If you need to provision a multi-zone cluster, we recommend you inspect the parameters provided by https://github.com/kubernetes/cloud-provider-gcp/blob/master/providers/gce/gce.go#L120[Cloud Controller Manager GCP] and how https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/main/test/e2e/data/infrastructure-gcp/cluster-template-ci.yaml#L59[CAPG leverages these variables] to create cluster-specific configurations. +
++
+[source,yaml]
+----
+
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    cluster-api.cattle.io/rancher-auto-import: "true"
+    cni: calico
+    cloud-provider: gcp
+  name: gcp-quickstart
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks: 
+      - 192.168.0.0/16
+  topology:
+    class: gcp-kubeadm-example
+    controlPlane:
+      replicas: 1
+    workers:
+      machineDeployments:
+        - class: "default-worker"
+          name: "md-0"
+          replicas: 1
+    variables:
+      - name: gcpProject
+        value: <GCP_PROJECT>
+      - name: region
+        value: <GCP_REGION>
+      - name: gcpNetworkName
+        value: <GCP_NETWORK_NAME>
+      - name: clusterFailureDomains
+        value:
+          - "<GCP_REGION>-a"
+      - name: imageId
+        value: <GCP_IMAGE_ID>
+      - name: machineType
+        value: <GCP_MACHINE_TYPE>
+    version: v1.31.4
 ----
 
 Docker Kubeadm::
