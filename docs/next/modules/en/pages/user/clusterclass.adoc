@@ -654,7 +654,7 @@ AWS Kubeadm::
 +
 * An AWS Kubeadm ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
-Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI], https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS], and the https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico`, `cloud-provider: aws`, and `csi: aws-ebs-csi-driver`.
+Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI], https://github.com/kubernetes/cloud-provider-aws[AWS Cloud Controller Manager], and the https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico`, `cloud-provider: aws`, and `csi: aws-ebs-csi-driver`.
 +
 [tabs]
 =======
@@ -678,7 +678,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 ----
 +
 * For this example we are also going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
-* The https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS] will need to be installed on each downstream Cluster for the nodes to be functional. +
+* The https://github.com/kubernetes/cloud-provider-aws[AWS Cloud Controller Manager] will need to be installed on each downstream Cluster for the nodes to be functional. +
 * Additionally, we will also enable https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver]. +
 +
 We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
@@ -746,7 +746,7 @@ You can follow the steps in the https://github.com/rancher/cluster-api-provider-
 +
 * An AWS RKE2 ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
-Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI], https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS], and the https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico`, `cloud-provider: aws`, and `csi: aws-ebs-csi-driver`.
+Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI], https://github.com/kubernetes/cloud-provider-aws[AWS Cloud Controller Manager], and the https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico`, `cloud-provider: aws`, and `csi: aws-ebs-csi-driver`.
 +
 [tabs]
 =======
@@ -769,7 +769,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 ----
 +
 * For this example we are also going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
-* The https://github.com/kubernetes/cloud-provider-aws[Cloud Controller Manager AWS] will need to be installed on each downstream Cluster for the nodes to be functional. +
+* The https://github.com/kubernetes/cloud-provider-aws[AWS Cloud Controller Manager] will need to be installed on each downstream Cluster for the nodes to be functional. +
 * Additionally, we will also enable https://github.com/kubernetes-sigs/aws-ebs-csi-driver[AWS EBS CSI Driver]. +
 +
 We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
@@ -841,7 +841,7 @@ You can follow the steps in the https://image-builder.sigs.k8s.io/capi/providers
 +
 * A GCP Kubeadm ClusterClass can be found among the https://github.com/rancher/turtles/tree/main/examples/clusterclasses[Turtles examples].
 +
-Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI] and https://github.com/kubernetes/cloud-provider-gcp[Cloud Controller Manager GCP] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico` and `cloud-provider: gcp`.
+Applications like https://docs.tigera.io/calico/latest/about/[Calico CNI] and https://github.com/kubernetes/cloud-provider-gcp[GCP Cloud Controller Manager] will be installed on downstream Clusters. This is done automatically at Cluster creation by targeted Clusters with specific labels, such as `cni: calico` and `cloud-provider: gcp`.
 +
 [tabs]
 =======
@@ -864,7 +864,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 ----
 +
 * For this example we are also going to install https://docs.tigera.io/calico/latest/about/[Calico] as the default CNI. +
-* The https://github.com/kubernetes/cloud-provider-gcp[Cloud Controller Manager GCP] will need to be installed on each downstream Cluster for the nodes to be functional. +
+* The https://github.com/kubernetes/cloud-provider-gcp[GCP Cloud Controller Manager] will need to be installed on each downstream Cluster for the nodes to be functional. +
 +
 We can do this automatically at Cluster creation using a combination of https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet] and https://fleet.rancher.io/bundle-add[Fleet Bundle]. +
 The Add-on provider is installed by default with {product_name}. +
@@ -875,7 +875,7 @@ The `HelmApps` need to be created first, to be applied on the new Cluster via la
 kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
 ----
 +
-A `Bundle` will take care of deploying Cloud Controller Manager GCP. The reason for not using Add-on Provider Fleet is that https://github.com/kubernetes/cloud-provider-gcp[Cloud Controller Manager GCP] does not provide a Helm chart, so we opt for creating the Fleet `Bundle` resource directly. +
+A `Bundle` will take care of deploying GCP Cloud Controller Manager. The reason for not using Add-on Provider Fleet is that https://github.com/kubernetes/cloud-provider-gcp[GCP Cloud Controller Manager] does not provide a Helm chart, so we opt for creating the Fleet `Bundle` resource directly. +
 +
 [source,bash]
 ----
@@ -886,7 +886,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/ma
 * Create the GCP Cluster from the example ClusterClass +
 + 
 Note that some variables are left to the user to substitute. +
-The default configuration of Cloud Controller Manager GCP is configured to use a single zone cluster, so the `clusterFailureDomains` variable is set to a single zone. If you need to provision a multi-zone cluster, we recommend you inspect the parameters provided by https://github.com/kubernetes/cloud-provider-gcp/blob/master/providers/gce/gce.go#L120[Cloud Controller Manager GCP] and how https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/main/test/e2e/data/infrastructure-gcp/cluster-template-ci.yaml#L59[CAPG leverages these variables] to create cluster-specific configurations. +
+The default configuration of GCP Cloud Controller Manager is configured to use a single zone cluster, so the `clusterFailureDomains` variable is set to a single zone. If you need to provision a multi-zone cluster, we recommend you inspect the parameters provided by https://github.com/kubernetes/cloud-provider-gcp/blob/master/providers/gce/gce.go#L120[GCP Cloud Controller Manager] and how https://github.com/kubernetes-sigs/cluster-api-provider-gcp/blob/main/test/e2e/data/infrastructure-gcp/cluster-template-ci.yaml#L59[CAPG leverages these variables] to create cluster-specific configurations. +
 +
 [source,yaml]
 ----
