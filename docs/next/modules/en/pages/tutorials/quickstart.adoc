@@ -50,7 +50,7 @@ If you're customizing the installation parameters, please make sure that you are
 | `v1.9.5`
 
 | Cluster API Provider RKE2
-| `v0.16.0`
+| `v0.17.1`
 |===
 
 == Install {product_name} using Rancher Dashboard
