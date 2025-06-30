@@ -31,7 +31,7 @@ jobs:
             docs/next/modules/en/pages/user/clusterclass.adoc \
             docs/next/modules/en/pages/operator/certificationsuite.adoc \
             docs/next/modules/en/pages/operator/manual.adoc \
-            docs/next/modules/en/pages/tutorials/quickstart.adoc
+            docs/next/modules/en/pages/tutorials/quickstart.adoc \
             docs/next/modules/en/pages/user/clusters.adoc
       - name: Copy docs directory
         run: |
