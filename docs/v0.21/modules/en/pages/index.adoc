@@ -1,0 +1,64 @@
+= Overview
+:page_project_origin: /intro.md
+:page_project_slug: /
+
+== What is Rancher Turtles?
+
+The Cluster API Extension for Rancher, also known as {product_name}, is a Kubernetes Operator that provides **integration between Rancher Manager and Cluster API (CAPI)** with the aim of bringing full CAPI support to Rancher.
+
+With {product_name}, you can:
+
+* **Automatically import CAPI clusters into Rancher**, by installing the Rancher Cluster Agent in CAPI provisioned clusters.
+* Implement a **GitOps-native** workflow to managing Kubernetes clusters in Rancher.
+* **Simplified management of CAPI Providers** using the CAPI Operator.
+
+image::intro.png[intro,640,480]
+
+The following video shows you how to get started with {product_name} in just 3 minutes. You will learn how to:
+
+- Use Rancher Dashboard to install Turtles.
+- Deploy the CAPI Infrastructure Provider for Docker.
+- Provision a workload cluster via Fleet: you can inspect source files in https://github.com/rancher/turtles/tree/main/examples[Turtles repository].
+- Import the workload cluster into Rancher.
+
++++<iframe width="560" height="315" src="https://www.youtube.com/embed/cel1yV94h5o?si=qfPrZhBGDvvIdhMn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>+++
+
+== Navigate the Documentation
+
+To make it easier to get started with {product_name}, we have structured the documentation to guide you naturally from basic concepts to advanced features. We recommend following along step by step, but if you are already familiar with certain topics, feel free to skip ahead to the relevant sections.
+
+=== Tutorials
+
+If this is your first time using {product_name} and you want to get started quickly, we recommend you start xref:./tutorials/quickstart.adoc[here]. This will guide you through the process of getting your environment ready for installing {product_name}, using CAPI to provision a new workload cluster and importing it into Rancher.
+
+=== Overview
+
+Understand the xref:./overview/architecture.adoc[architecture] of {product_name}, the xref:./overview/features.adoc[features], the concept of xref:./overview/certified.adoc[`Certified Providers`] and the xref:./overview/glossary.adoc[core concepts] of the operator's features.
+
+=== Reference
+
+Contains the reference documentation for all {product_name} custom resources.
+
+=== User Guide
+
+Learn how to use {product_name} to xref:./user/clusters.adoc[manage your CAPI clusters with Rancher], and use more advanced features like xref:./user/clusterclass.adoc[`ClusterClass`].
+
+=== Operator Guide
+
+You may want to dive into more advanced maintenance tasks, like xref:./operator/manual.adoc[customizing your {product_name} installation], e.g. configuring {product_name} for more advanced scenarios like xref:./operator/airgapped.adoc[air-gapped environments], or xref:./operator/certification.adoc[certifying the provider of your choice].
+
+=== Developer Guide
+
+If you are interested in contributing to {product_name}, this section will guide you through the process of setting up your xref:./developer/development.adoc[development environment] and understanding the xref:./developer/guidelines.adoc[guidelines] for contributing.
+
+=== Troubleshooting
+
+This section covers basic xref:./troubleshooting/troubleshooting.adoc[troubleshooting approaches] for issues related to Rancher Turtles, Cluster API (CAPI), and CAPI providers.
+
+=== Security
+
+{product_name} meets https://slsa.dev/spec/v1.0/levels#build-l3[SLSA Level 3] requirements by running builds on a hardened platform with consistent build processes and provenance distribution. xref:./security/slsa.adoc[This section] contains more details on security-related topics.
+
+=== Release Notes
+
+Stay up to date with the latest changes, bug fixes and new features in {product_name} xref:./changelogs/index.adoc[here].

@@ -1,0 +1,36 @@
+= Rancher Cluster Deletion
+
+== Prerequisites
+
+* A CAPI Cluster has been created and imported in Rancher as described in xref:tutorials/first-cluster.adoc#_provision_a_capi_workload_cluster[Provision a CAPI Workload Cluster].
+
+== Delete the imported cluster from Rancher
+
+1. From your browser, access Rancher Manager -> Cluster Management.
+2. Locate the cluster to be deleted, click the three-dot menu (⋮) next to it, and select Delete.
+3. Once the imported cluster is marked for deletion:
+    * Turtles controller will annotate the CAPI cluster with `imported: true`.
+    * This annotation prevents the cluster from being re-imported automatically by Rancher.
+    * Verify the annotation using the following command:
++
+[source,bash]
+----
+kubectl -n capi-clusters get clusters.cluster.x-k8s.io cluster1 -o json | jq .metadata.annotations
+{
+"imported": "true"
+...
+}
+----
+
+[NOTE]
+Deleting the Rancher cluster only removes the `clusters.management.cattle.io` resource and disables auto-import for the associated CAPI cluster. The underlying CAPI cluster iteself remains intact.
+
+== Re-import cluster
+
+If you need to re-import the same CAPI cluster into Rancher:
+
+Remove the `imported: true` annotation:
+[source, bash]
+----
+kubectl -n capi-clusters patch clusters.cluster.x-k8s.io <cluster-name> --type='json' -p='[{"op": "remove", "path": "/metadata/annotations/imported"}]'
+----
