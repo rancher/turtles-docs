@@ -22,7 +22,7 @@ __ (github-actions[bot]) released this 2025-06-30 13:10:47 +0000 UTC - v0.21.0__
 <li>Ability to run examples CLI with <code>go run</code> from tag</li>
 <li>Ships:
 <ul>
-<li>Cluster API Provider Add-on Provider Fleet v0.10.1</li>
+<li>Cluster API Provider Add-on Provider Fleet v0.11.0</li>
 <li>Cluster API Provider RKE2 v0.17.1</li>
 </ul>
 </li>
