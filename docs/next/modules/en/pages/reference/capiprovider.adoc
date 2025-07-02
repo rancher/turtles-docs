@@ -4,7 +4,7 @@ The `CAPIProvider` resource allows managing Cluster API Operator manifests in a 
 
 `CAPIProvider` follows a GitOps model - the spec fields are declarative user inputs. The controller only updates status.
 
-Every field provided by the upstream CAPI Operator `CAPIProviderSpec` resource is also available in the spec of the `CAPIProvider` resource. Feel free to refer to upstream configuration link:https:/cluster-api-operator.sigs.k8s.io/03_topics/02_configuration/05_provider-spec-configuration[guides] for advanced scenarios.
+Every field provided by the upstream CAPI Operator `CAPIProviderSpec` resource is also available in the spec of the `CAPIProvider` resource. Feel free to refer to upstream configuration link:https://cluster-api-operator.sigs.k8s.io/03_topics/02_configuration/05_provider-spec-configuration[guides] for advanced scenarios.
 
 All the xref:../overview/certified.adoc[certified] CAPI Providers are configured using an embedded configuration. In order to override it, a custom xref:./clusterctlconfig.adoc#_override_a_certified_provider_version[ClusterctlConfig] needs to be created.
 
