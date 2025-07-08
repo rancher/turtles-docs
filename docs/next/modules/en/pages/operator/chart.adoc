@@ -18,9 +18,7 @@ rancherTurtles:
     addon-provider-fleet:
       enabled: true # indicates whether the fleet addon provider is installed (default: true).
     agent-tls-mode:
-      enabled: false # use CA certs stored in Rancher when importing CAPI clusters.
-    clusterclass-operations: 
-      enabled: false # indicates whether ClusterClass operations functionality is enabled (default: false).
+      enabled: true # use CA certs stored in Rancher when importing CAPI clusters.
 ----
 
 The list has been truncated to show only the configurable feature flags. Other fields with the `rancherTurtles` key are automatically set when a chart is released. 
