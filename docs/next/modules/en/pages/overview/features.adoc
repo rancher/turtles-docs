@@ -8,23 +8,17 @@ This section describes features and feature stages in {product_name}.
 |===
 | Feature | Helm Feature Name | Sub-Feature | Default | Stage 
 
-1.1+| *Day 2 Operations*
-1.1+| `day2operations`
-| `etcdBackupRestore`
-| disabled
-| alpha
-
-| *Add-on Provider for Fleet*
-| _None_
+| *Add-on Provider Fleet*
+| `addon-provider-fleet`
 | _None_
 | enabled
-| GA
+| beta
 
 | *Agent TLS Mode*
 | `agent-tls-mode`
 | _None_
-| enabled
-| beta
+| disabled
+| alpha
 
 | *Cluster Class Operations*
 | `clusterclass-operations`
@@ -32,9 +26,6 @@ This section describes features and feature stages in {product_name}.
 | disabled
 | alpha
 |===
-
-=== Day 2 Operations
-This feature gate is used to enable or disable all subfeatures that are typically used for the ongoing management and maintenance of your Kubernetes clusters, after they have been provisioned. Currently, there is a single subfeature available for RKE2 clusters that allows for etcd snapshots to be created and restored in downstream clusters, from the management cluster. In order to enable this subfeature, you need to enable both the `day2operations` and the `etcdBackupRestore` feature gates by setting the relevant values of the Turtles Helm chart. Note that this feature is currently in alpha stage with no long-term support.
 
 === Add-on Provider for Fleet
 This feature installs Cluster API Add-on Provider for Fleet (CAAPF) to provide integration with link:https://github.com/rancher/fleet[Fleet] and enable the easy deployment of applications to CAPI provisioned clusters. CAAPF automatically installs Fleet in the management cluster and registers newly provisioned CAPI clusters with Fleet, so that applications can be deployed to these clusters via GitOps, `Bundle` or `HelmApp` resources. CAAPF also includes support for grouping CAPI clusters that reference the same ClusterClass through Fleet's ClusterGroup, essentially simplifying application deployments to large groups of clusters. This feature is in GA stage and enabled by default.
