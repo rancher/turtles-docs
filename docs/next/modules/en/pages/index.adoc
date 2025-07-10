@@ -41,7 +41,7 @@ Contains the reference documentation for all {product_name} custom resources.
 
 === User Guide
 
-Learn how to use {product_name} to xref:./user/clusters.adoc[manage your CAPI clusters with Rancher], and use more advanced features like xref:./user/clusterclass.adoc[`ClusterClass`].
+Learn how to use {product_name} to xref:./user/clusterclass.adoc[manage your CAPI clusters with Rancher, using ClusterClass].
 
 === Operator Guide
 
