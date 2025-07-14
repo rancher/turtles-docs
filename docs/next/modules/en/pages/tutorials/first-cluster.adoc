@@ -16,12 +16,12 @@ GitOps using Fleet::
 ====
 *Configure your Fleet repository*
 
-To simplify the process of cluster provisioning, we will be using a series of pre-configured examples that you can find in the repository https://github.com/rancher-sandbox/rancher-turtles-fleet-example.
+To simplify the process of cluster provisioning, we will be using a series of pre-configured examples that you can find in the repository https://github.com/rancher/turtles/tree/main/examples.
 By inspecting the contents of this repository, you will find:
 
-. A *clusters* folder, which is where the manifests are stored.
-. *cluster1.yaml* is the CAPI workload cluster definition.
-. *fleet.yaml* is used to specify the configuration options for Fleet. In this case it's declaring that the cluster definition should be added to the `capi-clusters` namespace.
+. An *applications* folder for additional apps that can be deployed using Fleet (CNI, CSI, CPI).
+. A *clusterclasses* folder with a bunch of ClusterClass examples.
+. A *clusters/docker/rke2* folder with an example of Docker cluster definition.
 
 [NOTE]
 If you prefer, you can create your own Fleet repository using the same base structure.
@@ -42,6 +42,16 @@ image:ns.png[namespace]
 image:gh_clone.png[git clone url]
 . Add the URL into the *Repository URL* field
 . Change the branch name to *main*
+. Add the following paths to specify which directories to deploy:
++
+image:paths.png[Fleet paths configuration]
++
+----
+examples/clusterclasses/docker/rke2
+examples/applications/cni/calico
+examples/applications/lb/docker
+examples/clusters/docker/rke2
+----
 . Click *Next*
 . Click *Create*
 . Click on the *clusters* name
@@ -53,35 +63,45 @@ image:gh_clone.png[git clone url]
 Manually using kubectl::
 +
 ====
-*Create your cluster definition*
+*Apply the cluster resources*
 
-To generate the YAML for the cluster, do the following:
+To create the cluster using kubectl, run the following commands:
 
-. Open a terminal and run the following:
+. Open a terminal and apply the ClusterClass and related templates:
 +
 [source,bash]
 ----
-export CLUSTER_NAME=cluster1
-export CONTROL_PLANE_MACHINE_COUNT=1
-export WORKER_MACHINE_COUNT=1
-export KUBERNETES_VERSION=v1.31.4
-export NAMESPACE=capi-clusters
-
-# use the SHELL-FORMAT in envsubst to ensure we replace only the
-# environment variables we exported above
-curl -s https://raw.githubusercontent.com/rancher-sandbox/rancher-turtles-fleet-example/templates/docker-rke2.yaml | envsubst '$CLUSTER_NAME,$CONTROL_PLANE_MACHINE_COUNT,$WORKER_MACHINE_COUNT,$KUBERNETES_VERSION,$NAMESPACE' > cluster1.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusterclasses/docker/rke2/clusterclass-docker-rke2.yaml
 ----
-+
-. View *cluster1.yaml* to ensure there are no tokens. You can make any changes you want as well.
-+
-. Create the cluster using kubectl
+
+. Apply the load balancer configuration:
 +
 [source,bash]
 ----
-kubectl create namespace capi-clusters
-kubectl apply -f cluster1.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/lb/docker/configmap.yaml
 ----
-. Watch the resources become ready
+
+. Apply the CNI (Calico) configuration:
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/applications/cni/calico/helm-chart.yaml
+----
+
+. Create the cluster:
++
+[source,bash]
+----
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/examples/clusters/docker/rke2/cluster.yaml
+----
+
+. Watch the resources become ready:
++
+[source,bash]
+----
+kubectl get clusters -w
+----
+
 . Select *Cluster Management* from the menu
 . Check your cluster has been imported
 ====
@@ -96,6 +116,11 @@ To automatically import a CAPI cluster into Rancher Manager there are 2 options:
 . Label an individual cluster definition so that it's imported.
 
 In both cases the label is `cluster-api.cattle.io/rancher-auto-import`.
+
+[NOTE]
+====
+The example cluster we just created is already configured for auto-import, but this section shows you how to configure it manually for your own clusters.
+====
 
 This walkthrough will use the first option of importing all clusters in a namespace.
 
