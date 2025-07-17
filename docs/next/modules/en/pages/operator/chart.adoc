@@ -26,23 +26,14 @@ The list has been truncated to show only the configurable feature flags. Other f
 
 == Cluster API Operator values
 
-{product_name} uses the `Cluster API Operator` Helm chart to install this dependency, and any values passed to Helm with the `cluster-api-operator` key are passed along to the `Cluster API Operator` chart in order to customize its installation.
-
-[TIP]
-====
-A full set of available values for the `Cluster API Operator` can be found in the operator https://github.com/kubernetes-sigs/cluster-api-operator/blob/main/hack/charts/cluster-api-operator/values.yaml[values.yaml].
-====
-
+{product_name} uses the embedded `Cluster API Operator` controller, and any values passed to Helm with the `cluster-api-operator` key are used to configure the embedded `Cluster API Operator` installation and default providers.
 
 Currently the available set of values for the `cluster-api-operator` setup in the `rancher-turtles`:
 
 [source,yaml]
 ----
 cluster-api-operator:
-  enabled: true # indicates whether CAPI operator is installed (default: true).
   cleanup: true # indicates whether CAPI operator resources are cleaned up on uninstall (default: true).
-  cert-manager:
-    enabled: false # indicates whether cert-manager is installed (default: false).
   cluster-api:
     enabled: true # indicates whether core CAPI controllers are installed (default: true).
     configSecret:
