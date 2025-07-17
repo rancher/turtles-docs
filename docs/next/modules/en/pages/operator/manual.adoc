@@ -9,7 +9,7 @@ In case you need to review the list of prerequisites (including `cert-manager`),
 
 {product_name} uses the https://github.com/kubernetes-sigs/cluster-api-operator[Cluster API Operator] to provide a declarative way of installing Cluster API Providers and managing their lifecycle. If you want to learn more about it, you can refer to the https://cluster-api-operator.sigs.k8s.io[Cluster API Operator book].
 
-Since {product_name} depends on the Cluster API Operator functionality, it is installed as a dependency of the {product_name} Helm chart.
+Since {product_name} depends on the Cluster API Operator functionality, it is installed as an embedded controller in {product_name} pod.
 
 [CAUTION]
 ====
@@ -52,9 +52,8 @@ helm install rancher-turtles turtles/rancher-turtles --version v0.21.0 \
 
 The installation process may take a few minutes. Once complete, you can take some time to review the installed controllers:
 
-* `rancher-turtles` controller.
+* `rancher-turtles` with embedded `cluster-api-operator` controller.
 * `cluster-api` controller.
-* `cluster-api-operator` controller.
 * `cluster-api-addon-provider-fleet` controller.
 * `rke2-bootstrap` controller.
 * `rke2-control-plane` controller.
