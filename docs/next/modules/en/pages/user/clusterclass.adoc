@@ -410,8 +410,7 @@ spec:
 
 [WARNING]
 ====
-- Examples using `HelmApps` need at least Rancher `v2.11`, or otherwise Fleet `v0.12` or higher.
-- Currently, we only support initial provisioning with 1 control plane replica for Kubeadm providers; this can be later scaled up, https://github.com/rancher/turtles/issues/1402[refer]. +
+Examples using `HelmApps` need at least Rancher `v2.11`, or otherwise Fleet `v0.12` or higher.
 ====
 
 [tabs]
