@@ -29,6 +29,7 @@ metadata:
 spec:
   name: aws
   type: infrastructure
+  enableAutomaticUpdate: true
   credentials:
     rancherCloudCredential: aws-creds # Rancher credentials secret for AWS
   configSecret:
@@ -52,10 +53,16 @@ The key fields in the `CAPIProvider` spec are:
 * `features` - Enabled provider features.
 * `variables` - Variables is a map of environment variables to add to the content of the `configSecret`.
 * `version` - Version indicates the provider version.
+* `enableAutomaticUpdate` - Allow the provider to update automatically. Only enabled by default on Turtles chart installed providers.
 * `fetchConfig` - FetchConfig determines how the operator will fetch the components and metadata for the provider.
 ** `oci` - OCI to be used for fetching the provider’s components and metadata from an OCI artifact. You must set `providerSpec.Version` field for operator to pick up desired version of the release from GitHub. If the providerSpec.Version is missing, latest provider version from clusterctl defaults is used.
 ** `selector` - Selector to be used for fetching provider’s components and metadata from ConfigMaps stored inside the cluster. Each ConfigMap is expected to contain components and metadata for a specific version only.
 ** `url` - URL to be used for fetching the provider’s components and metadata from a remote Github repository.
+
+== Version pinning and automatic updates
+
+The `CAPIProvider` `version` can be set at any time to pin the provider to a specific version.  +
+Additionally, `automaticUpdates` can be toggled to allow automatic updates to the latest version available. The latest version available is determined by the embedded clusterctl configuration for xref:../overview/certified.adoc[certified] providers, and it can be overridden or configured for custom providers using xref:../reference/clusterctlconfig.adoc[ClusterctlConfig].
 
 == Deletion
 
