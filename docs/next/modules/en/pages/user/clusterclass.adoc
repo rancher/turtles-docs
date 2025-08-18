@@ -410,7 +410,7 @@ spec:
 
 [WARNING]
 ====
-The experimental `HelmApp` CRD introduced in Rancher `v2.11` has been renamed to `HelmOp` in Rancher `v2.12`.
+Examples using `HelmApps` need at least Rancher `v2.11`, or otherwise Fleet `v0.12` or higher.
 ====
 
 [tabs]
@@ -448,7 +448,7 @@ For this example we are also going to install https://docs.tigera.io/calico/late
 +
 We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
-Two `HelmOps` need to be created first, to be applied on the new Cluster via label selectors. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +
 [source,bash]
 ----
@@ -595,7 +595,7 @@ For this example we are also going to install https://docs.tigera.io/calico/late
 +
 We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
-Two `HelmOps` need to be created first, to be applied on the new Cluster via label selectors. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +
 [source,bash]
 ----
@@ -677,7 +677,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.
 +
 We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
-The `HelmOps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico, the EBS CSI Driver, and the AWS Cloud Controller Manager in the workload cluster. +
+The `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico, the EBS CSI Driver, and the AWS Cloud Controller Manager in the workload cluster. +
 +
 [source,bash]
 ----
@@ -768,7 +768,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.
 +
 We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
-The `HelmOps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico, the EBS CSI Driver, and the AWS Cloud Controller Manager in the workload cluster. +
+The `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico, the EBS CSI Driver, and the AWS Cloud Controller Manager in the workload cluster. +
 +
 [source,bash]
 ----
@@ -862,7 +862,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.
 +
 We can do this automatically at Cluster creation using a combination of https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet] and https://fleet.rancher.io/bundle-add[Fleet Bundle]. +
 The Add-on provider is installed by default with {product_name}. +
-The `HelmOps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico. +
+The `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. This will take care of deploying Calico. +
 +
 [source,bash]
 ----
@@ -954,7 +954,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.
 +
 We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
-Two `HelmOps` need to be created first, to be applied on the new Cluster via label selectors. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +
 [source,bash]
 ----
@@ -1025,7 +1025,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.
 +
 We can do this automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
-Two `HelmOps` need to be created first, to be applied on the new Cluster via label selectors. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +
 [source,bash]
 ----
@@ -1110,7 +1110,7 @@ Finally, for this example we are going to install https://docs.tigera.io/calico/
 +
 We can install all applications automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
-Two `HelmOps` need to be created first, to be applied on the new Cluster via label selectors. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +
 [source,bash]
 ----
@@ -1288,7 +1288,7 @@ Finally, for this example we are going to install https://docs.tigera.io/calico/
 +
 We can install all applications automatically at Cluster creation using the https://rancher.github.io/cluster-api-addon-provider-fleet/[Cluster API Add-on Provider Fleet]. +
 This Add-on provider is installed by default with {product_name}. +
-Two `HelmOps` need to be created first, to be applied on the new Cluster via label selectors. +
+Two `HelmApps` need to be created first, to be applied on the new Cluster via label selectors. +
 +
 [source,bash]
 ----
