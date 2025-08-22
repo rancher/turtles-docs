@@ -34,7 +34,7 @@ jobs:
     - name: Generate Site
       run: make gh-pages
     - name: Upload Artifacts
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v4
       with:
         path: build/site
     - name: Push the static site content to gh-pages branch
