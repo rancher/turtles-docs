@@ -43,9 +43,6 @@ If you're customizing the installation parameters, please make sure that you are
 |===
 | Name | Version 
 
-| Cluster API Operator
-| `v0.22.0`
-
 | Cluster API
 | `v1.9.5`
 
@@ -100,7 +97,6 @@ The installation may take a few minutes and, when it finishes, you will be able 
 
 * `capi-system/capi-controller-manager`
 * `rancher-turtles-system/caapf-controller-manager`
-* `rancher-turtles-system/rancher-turtles-cluster-api-operator`
 * `rancher-turtles-system/rancher-turtles-controller-manager`
 * `rke2-bootstrap-system/rke2-bootstrap-controller-manager`
 * `rke2-control-plane-system/rke2-control-plane-controller-manager`
