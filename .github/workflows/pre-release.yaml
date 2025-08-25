@@ -6,9 +6,6 @@ on:
       rancher_version:
         description: 'Rancher version (e.g., v2.11.0)'
         type: string
-      cluster_api_operator_version:
-        description: 'Cluster API Operator version (e.g., v0.18.1)'
-        type: string
       cluster_api_version:
         description: 'Cluster API version (e.g., v1.9.5)'
         type: string
@@ -59,19 +56,6 @@ jobs:
                 "pattern": "RANCHER_VERSION: \"v[0-9]+\\.[0-9]+\\.[0-9]+\"",
                 "replacement": "RANCHER_VERSION: \"%s\"",
                 "version": "${{ inputs.rancher_version }}"
-              }
-          EOF
-            first_rule=false
-          fi
-          
-          if [[ -n "${{ inputs.cluster_api_operator_version }}" ]]; then
-            if [[ "$first_rule" == "false" ]]; then echo "," >> dynamic-config.json; fi
-            cat >> dynamic-config.json << 'EOF'
-              {
-                "name": "Update Cluster API Operator version in prerequisites table",
-                "pattern": "\\| Cluster API Operator\\s*\\r?\\n\\| `v[0-9]+\\.[0-9]+\\.[0-9]+`",
-                "replacement": "| Cluster API Operator\n| `%s`",
-                "version": "${{ inputs.cluster_api_operator_version }}"
               }
           EOF
             first_rule=false
@@ -177,7 +161,6 @@ jobs:
           # Create a descriptive commit message
           commit_msg="Update component versions in docs/next"
           if [[ -n "${{ inputs.rancher_version }}" ]]; then commit_msg+="\n- Rancher: ${{ inputs.rancher_version }}"; fi
-          if [[ -n "${{ inputs.cluster_api_operator_version }}" ]]; then commit_msg+="\n- Cluster API Operator: ${{ inputs.cluster_api_operator_version }}"; fi
           if [[ -n "${{ inputs.cluster_api_version }}" ]]; then commit_msg+="\n- Cluster API: ${{ inputs.cluster_api_version }}"; fi
           if [[ -n "${{ inputs.cluster_api_provider_rke2_version }}" ]]; then commit_msg+="\n- Cluster API Provider RKE2: ${{ inputs.cluster_api_provider_rke2_version }}"; fi
           if [[ -n "${{ inputs.cert_manager_version }}" ]]; then commit_msg+="\n- Cert-manager: ${{ inputs.cert_manager_version }}"; fi
