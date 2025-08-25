@@ -1,0 +1,45 @@
+== "v0.4.1"
+=== "2024-01-17 17:18:48 +0000 UTC"
+
+// Disclaimer: this file is generated, do not edit it manually.
+
+
+__ (github-actions[bot]) released this 2024-01-17 17:18:48 +0000 UTC - v0.4.1__
+
+
+=== Description
+
+---
+
+++++
+
+<p>Rancher Turtles is a extension to Rancher that brings full Cluster API integration to Rancher.</p>
+
+<h2>What's Changed</h2>
+<h3>🐛 Bugs</h3>
+<ul>
+<li>fix: installation on eks by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/richardcase/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/richardcase">@richardcase</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="2086391252" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/350" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/350/hovercard" href="https://github.com/rancher/turtles/pull/350">#350</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/rancher/turtles/compare/v0.4.0...v0.4.1"><tt>v0.4.0...v0.4.1</tt></a></p>
+
+++++
+
+---
+
+
+
+=== Download
+
+[cols="3,1,1" options="header" frame="all" grid="rows"]
+|===
+| Name | Created At | Updated At
+
+| link:https://github.com/rancher/turtles/releases/download/v0.4.1/rancher-turtles-0.4.1.tgz[rancher-turtles-0.4.1.tgz] | 2024-01-17 17:18:49 +0000 UTC | 2024-01-17T17:18:49Z
+
+|===
+
+
+---
+
+__Information retrieved from link:https://github.com/rancher/turtles/releases/tag/v0.4.1[here]__
+
