@@ -23,7 +23,7 @@ Before you can install {product_name}, you need to have the following components
 | Follow the official https://helm.sh/docs/intro/install[installation docs]
 
 | Rancher
-| `v2.12.0`
+| `v2.12.1`
 | Install using https://ranchermanager.docs.rancher.com/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster#install-the-rancher-helm-chart[Helm] on any Kubernetes cluster, whether self-hosted or on a managed service from https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks[Amazon], https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks[Azure], or https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke[Google].
 
 | Cert-manager
