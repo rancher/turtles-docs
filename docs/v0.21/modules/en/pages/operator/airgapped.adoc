@@ -50,7 +50,7 @@ spec:
 
 == How to mirror CAPI Provider OCI artifact
 
-You mirror OCI artifacts for any CAPI Provider listed in the Rancher Turtles configuration: https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config.yaml
+You mirror OCI artifacts for any CAPI Provider listed in the Rancher Turtles configuration: https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config-default.yaml
 
 Install the ORAS (OCI Registry As Storage) CLI tool to manage OCI artifacts. Follow the installation instructions at: https://oras.land/docs/installation
 
@@ -116,7 +116,7 @@ kubectl apply -f capz-provider-oci.yaml
 Using kubectl operator::
 +
 ====
-You can build OCI artifacts for any CAPI Provider listed in the Rancher Turtles configuration: https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config.yaml
+You can build OCI artifacts for any CAPI Provider listed in the Rancher Turtles configuration: https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config-default.yaml
 
 Install https://cluster-api-operator.sigs.k8s.io/03_topics/03_plugin/01_installation[cluster-api-operator] plugin for `kubectl`
 
@@ -177,7 +177,7 @@ kubectl operator publish -u ${PROD_REGISTRY}:${RELEASE_TAG} infrastructure-compo
 Using Oras::
 +
 ====
-You can build OCI artifacts for any CAPI Provider listed in the Rancher Turtles configuration: https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config.yaml
+You can build OCI artifacts for any CAPI Provider listed in the Rancher Turtles configuration: https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config-default.yaml
 
 Clone the official https://github.com/kubernetes-sigs/cluster-api-provider-azure/[Azure CAPI Provider repository] and navigate to the project directory
 
