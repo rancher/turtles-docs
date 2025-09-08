@@ -186,9 +186,7 @@ metadata:
   name: cluster-identity
 spec:
   secretRef: <AWS_IDENTITY_SECRET_NAME>
-  allowedNamespaces:
-    selector:
-      matchLabels: {}
+  allowedNamespaces: {}
 ----
 
 GCP::
