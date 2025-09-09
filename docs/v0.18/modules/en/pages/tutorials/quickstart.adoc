@@ -47,7 +47,7 @@ If you're customizing the installation parameters, please make sure that you are
 | `v0.17.1`
 
 | Cluster API
-| `v1.9.6`
+| `v1.9.5`
 
 | Cluster API Provider RKE2
 | `v0.13.0`
