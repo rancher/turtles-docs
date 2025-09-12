@@ -406,9 +406,19 @@ spec:
 
 == Create a Cluster from a ClusterClass
 
-[WARNING]
+[IMPORTANT]
 ====
-The experimental `HelmApp` CRD introduced in Rancher `v2.11` has been renamed to `HelmOp` in Rancher `v2.12`.
+The experimental `HelmApp` CRD introduced in Rancher `v2.11` has been renamed to `HelmOp` in Rancher `v2.12`.  
+Upgrading to Rancher `v2.12` or higher will lead to the removal of `HelmApps`, potentially breaking the provisioned Clusters.  
+
+In order to migrate to Rancher `v2.12` and `HelmOps`, you need to take the following steps:
+
+1. **Before** upgrading Rancher, update all the `HelmApps` with `HelmApp.spec.keepResources: true`. This will prevent the deployed Helm chart to be uninstalled downstream once the `HelmApp` resource is deleted.  
+2. Upgrade Rancher to `v2.12` or higher. Wait until the `HelmApp` CRD has been removed, and the new `HelmOp` has been installed by the Fleet `v0.13` version update.  
+3. Upgrade Rancher Turtles to `v0.24` or higher.  
+4. Deploy the converted `HelmOps` ensuring `HelmOp.spec.helm.takeOwnership: true`.  
+
+Following these steps is necessary to guarantee the downstream Clusters will not be affected during the `HelmApp` conversion.  
 ====
 
 [tabs]
