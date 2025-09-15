@@ -1,0 +1,117 @@
+= Cluster Resource Relationships in Turtles
+
+== Overview
+
+Rancher integrates several components that define their own `Cluster` custom resources. 
+Rancher Turtles builds on this foundation using Cluster API and Fleet, which can lead to confusion around how these `Cluster` resources interact and what users should edit.
+
+This document explains the purpose, behavior, and relationships between the following cluster resources:
+
+* `clusters.cluster.x-k8s.io` (CAPI Cluster)
+* `clusters.fleet.cattle.io` (Fleet Cluster)
+* `clusters.provisioning.cattle.io` (Provisioning Cluster)
+* `clusters.management.cattle.io` (Management Cluster)
+
+== Resource Summary
+
+|===
+| API Group | Cluster Resource | Role
+
+| `cluster.x-k8s.io`
+| CAPI Cluster
+| Defines the cluster lifecycle and topology. Acts as the source of truth in Turtles.
+
+| `fleet.cattle.io`
+| Fleet Cluster
+| Used for GitOps bundle targeting and application synchronization via Fleet.
+
+| `provisioning.cattle.io`
+| Provisioning Cluster
+| Rancher’s earlier general-purpose cluster abstraction. Encapsulates both infrastructure-agnostic and provider-specific configuration, and is required for generating cluster registration tokens and manifests. In Rancher Turtles, this resource has been used to wrap imported CAPI clusters, but it is being phased out.
+
+| `management.cattle.io`
+| Management Cluster
+| Rancher’s current cluster representation. `management.cattle.io/v3` clusters are now the default resource created and managed by Turtles. This should not be confused with CAPI-managed clusters, where “managed” refers to Cluster API lifecycle management, not Rancher’s `management.cattle.io` API group.
+|===
+
+== Relationships
+
+=== CAPI Cluster → Fleet Cluster
+
+When the Cluster API Add-on Provider for Fleet (CAAPF) is enabled, it propagates labels and annotations from the CAPI `Cluster` to the corresponding Fleet `Cluster`. This enables targeting GitOps bundles via label selectors. CAAPF creates the corresponding Fleet `Cluster` resource after the CAPI `Cluster` reaches the `ControlPlaneInitialized` condition.
+
+=== CAPI Cluster → Provisioning Cluster (Legacy)
+
+A `provisioning.cattle.io.Cluster` may be created to wrap the CAPI Cluster and expose Rancher-specific fields (e.g., display name, RKE config). However, in most Rancher Turtles workflows it is being phased out and the user is not required to interact with this resource.
+
+=== Management Cluster → Provisioning Cluster
+
+For legacy clusters, a `provisioning.cattle.io/v1.Cluster` may be generated from a `management.cattle.io/v3.Cluster`. This object is used by Rancher’s UI and APIs and is not intended for direct modification by users.
+New clusters managed solely via Turtles do not automatically create a `provisioning.cattle.io` cluster.
+
+== Propagation Behavior
+
+|===
+| From → To | Propagation | Notes
+
+| CAPI → Fleet
+| Yes
+| Propagated by CAAPF
+
+| CAPI → Provisioning
+| No
+| Not automatically created; only generated via Turtles for legacy clusters
+
+| CAPI → Management
+| No
+| Only via Provisioning Cluster for legacy clusters
+
+| Provisioning → Fleet
+| No
+| Not supported
+
+| Fleet → CAPI
+| No
+| Not supported
+
+| Management → Provisioning
+| Conditional
+| Only for legacy clusters; new Turtles-managed clusters do not generate provisioning clusters
+|===
+
+== What Should User Edit?
+
+=== Recommended: `cluster.x-k8s.io.Cluster`
+
+The CAPI Cluster is the authoritative resource for cluster definition in Rancher Turtles.
+Labels must be placed on the CAPI Cluster object. They will automatically propagate to the Fleet Cluster, enabling label-based bundle selectors to work as expected.
+
+=== Conditional: `provisioning.cattle.io.Cluster`
+
+Only required when using Rancher-native provisioning features (e.g., `spec.rkeConfig`, UI-driven flows). Avoid editing unless explicitly required.
+
+=== Avoid: `fleet.cattle.io.Cluster`
+
+Fleet Clusters are managed automatically. Edits are discouraged unless working on Fleet internals.
+
+=== Avoid: `management.cattle.io.Cluster`
+
+These resources are internal and fully managed by Rancher. Do not modify them.
+
+[NOTE]
+====
+* The **CAPI Cluster** is the source of truth.
+* **Fleet Clusters** are generated automatically from CAPI Clusters via CAAPF.
+* **Provisioning** and **Management Clusters** are *not required* unless Rancher provisioning is involved.
+====
+
+[TIP]
+====
+Use the CAPI Cluster’s labels to drive Fleet bundle deployment. The CAAPF controller ensures those labels are synced to the Fleet Cluster object.
+====
+
+== References
+
+* https://github.com/rancher/cluster-api-addon-provider-fleet[Cluster API Add-on Provider for Fleet (CAAPF)]
+* https://fleet.rancher.io[Fleet documentation]
+* https://extensions.rancher.io/internal/code-base-works/cluster-management-resources#cluster-resources[Rancher Cluster Internals]
