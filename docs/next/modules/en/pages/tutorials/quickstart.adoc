@@ -44,10 +44,10 @@ If you're customizing the installation parameters, please make sure that you are
 | Name | Version 
 
 | Cluster API
-| `v1.9.5`
+| `v1.10.5`
 
 | Cluster API Provider RKE2
-| `v0.19.0`
+| `v0.20.1`
 |===
 
 == Install {product_name} using Rancher Dashboard
