@@ -19,7 +19,7 @@ __ (github-actions[bot]) released this 2025-09-15 10:40:28 +0000 UTC - v0.24.0__
 <h2>What's Changed</h2>
 <h3><g-emoji class="g-emoji" alias="warning">⚠️</g-emoji> Breaking Changes</h3>
 <ul>
-<li>The Rancher Fleet <code>HelmApp</code> CRD used by the Turtles ClusterClass examples, has been renamed to <code>HelmOp</code> in Rancher 2.12. Please follow the <a href="https://turtles.docs.rancher.com/turtles/next/en/user/clusterclass.html#_create_a_cluster_from_a_clusterclass" rel="nofollow">documentation</a> for migration instructions.</li>
+<li>The Rancher Fleet <code>HelmApp</code> CRD used by the Turtles ClusterClass examples, has been renamed to <code>HelmOp</code> in Rancher 2.12. Please follow the <a href="https://turtles.docs.rancher.com/turtles/stable/en/user/clusterclass.html#_create_a_cluster_from_a_clusterclass" rel="nofollow">documentation</a> for migration instructions.</li>
 </ul>
 <h3>🐛 Bugs</h3>
 <ul>
