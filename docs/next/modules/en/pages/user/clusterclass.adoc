@@ -664,7 +664,7 @@ An AWS EKS ClusterClass and associated applications can be applied using the exa
 +
 [source,bash]
 ----
-go run github.com/rancher/turtles/examples@v0.23.0 -r aws-eks | kubectl apply -f -
+go run github.com/rancher/turtles/examples@main -r aws-eks | kubectl apply -f -
 ----
 
 kubectl::
@@ -673,7 +673,7 @@ kubectl::
 +
 [source,bash]
 ----
-kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/refs/tags/v0.23.0/examples/clusterclasses/aws/eks/clusterclass-eks-example.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/turtles/main/examples/clusterclasses/aws/eks/clusterclass-eks-example.yaml
 ----
 =======
 +
