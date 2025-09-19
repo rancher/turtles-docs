@@ -1,0 +1,45 @@
+== "v0.24.1"
+=== "2025-09-19 09:56:53 +0000 UTC"
+
+// Disclaimer: this file is generated, do not edit it manually.
+
+
+__ (github-actions[bot]) released this 2025-09-19 09:56:53 +0000 UTC - v0.24.1__
+
+
+=== Description
+
+---
+
+++++
+
+<p>Rancher Turtles is an extension to Rancher that brings full Cluster API integration to Rancher.</p>
+
+<h2>What's Changed</h2>
+<h3>Other Changes</h3>
+<ul>
+<li>Set kube-version to actual version in Chart.yaml by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/furkatgofurov7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/furkatgofurov7">@furkatgofurov7</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3425235237" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/1726" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/1726/hovercard" href="https://github.com/rancher/turtles/pull/1726">#1726</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/rancher/turtles/compare/v0.24.0...v0.24.1"><tt>v0.24.0...v0.24.1</tt></a></p>
+
+++++
+
+---
+
+
+
+=== Download
+
+[cols="3,1,1" options="header" frame="all" grid="rows"]
+|===
+| Name | Created At | Updated At
+
+| link:https://github.com/rancher/turtles/releases/download/v0.24.1/rancher-turtles-0.24.1.tgz[rancher-turtles-0.24.1.tgz] | 2025-09-19 09:56:55 +0000 UTC | 2025-09-19T09:56:55Z
+
+|===
+
+
+---
+
+__Information retrieved from link:https://github.com/rancher/turtles/releases/tag/v0.24.1[here]__
+
