@@ -74,13 +74,7 @@ watch: environment ## Watch for changes, rebuild, and preview with hot reload.
 		"nodemon --watch content --watch docs --ext adoc,yml --exec 'make dev'" \
 		"make preview"
 
-##@ Verification
-
-.PHONY: verify-broken-links
-verify-broken-links: ## Verify broken GitHub links in .adoc files.
-	go run tools/verifybrokenlinks/main.go -docs-dir=docs -max-parallel=10
-
 ##@ CI
 
 .PHONY: ci
-ci: environment gh-pages dev verify-broken-links ## Run the build and verification for continuous integration.
+ci: environment gh-pages dev ## Run the build for continuous integration.

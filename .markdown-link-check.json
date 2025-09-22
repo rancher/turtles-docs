@@ -1,0 +1,11 @@
+{
+  "timeout": "20s",
+  "retryOn429": true,
+  "retryCount": 10,
+  "fallbackRetryDelay": "10s",
+  "ignorePatterns": [
+    {
+      "pattern": "^https://localhost:10000/$"
+    }
+  ]
+}

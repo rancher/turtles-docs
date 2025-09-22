@@ -1,0 +1,17 @@
+name: PR check Markdown links
+
+on: [pull_request, workflow_dispatch]
+  
+# Remove all permissions from GITHUB_TOKEN except metadata.
+permissions: {}
+
+jobs:
+  markdown-link-check:
+    name: Broken Links
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - run: |
+        npm install -g markdown-link-check@3.13.7
+        find . -name \*.md -print0 | xargs -0 -n1 -P1 markdown-link-check --quiet --config .markdown-link-check.json
+        find . -name \*.adoc -print0 | xargs -0 -n1 -P1 markdown-link-check --quiet --config .markdown-link-check.json
