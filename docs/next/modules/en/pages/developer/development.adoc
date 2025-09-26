@@ -59,7 +59,4 @@ ngrok http https://localhost:10000
  ** Docker Infrastructure Provider controller.
  ** CAPI Add-on Provider for Fleet controller.
  ** Rancher Turtles controller.
- ** Rancher Turtles Cluster API Operator controller.
- ** Rancher Turtles ClusterClass controller.
- ** Rancher Turtles Day 2 operations controller.
 . The development environment will be started using `tilt up`.
