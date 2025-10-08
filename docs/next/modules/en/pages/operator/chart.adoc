@@ -45,19 +45,4 @@ cluster-api-operator:
       fetchConfig: # (only required for airgapped environments).
         url: ""  # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
         selector: ""  # selector to use for fetching config, used by the CAPI operator.
-    rke2:
-      enabled: true # indicates whether RKE2 provider for Cluster API is installed (default: true).
-      version: "" # version of Cluster API Provider RKE2 (CAPRKE2) to install.
-      bootstrap: # CAPRKE2 Bootstrap Provider.
-        namespace: rke2-bootstrap-system
-        imageUrl: "" # image URL to override the image for a provider.
-        fetchConfig: # (only required for airgapped environments)
-          url: ""  # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
-          selector: ""  # selector to use for fetching config, used by the CAPI operator.
-      controlPlane: # CAPRKE2 Control Plane Provider.
-        namespace: rke2-control-plane-system
-        imageUrl: "" # image URL to override the image for a provider.
-        fetchConfig:  # (only required for airgapped environments)
-          url: "" # url to fetch config from, used by the CAPI operator. See https://github.com/kubernetes-sigs/cluster-api-operator/tree/main/docs#provider-spec docs for more details.
-          selector: ""  # selector to use for fetching config, used by the CAPI operator.
 ----
