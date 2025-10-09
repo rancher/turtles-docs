@@ -80,8 +80,7 @@ CAPZ::
 
 CAPA::
 +
-- **Supports** `ClusterClass` when provisioning unmanaged (EC2-based) clusters.
-- **Does not support** `ClusterClass` when provisioning managed (EKS) clusters: this is a work-in-progress.
+- **Full support** of `ClusterClass`: both managed (EKS) and unmanaged (EC2-based) clusters can be provisioned via topology.
 
 CAPG::
 +
