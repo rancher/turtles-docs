@@ -1,0 +1,42 @@
+= Migration guide
+
+[CAUTION]
+====
+If you are upgrading from a previous version of {product_name} to v0.25.0 or later, it is important to follow the steps in this guide in order to keep the CAPRKE2 and CAAPF providers running. Upgrading to v0.25.0 or later without performing any migration will result in the removal of the CAPRKE2 and CAAPF providers.
+====
+
+== Context
+Starting with v0.25.0, {product_name} no longer installs the CAPRKE2 and CAAPF providers. Going forward these providers are installed separately from the {product_name} chart via a new providers Helm chart that is available to Rancher Prime users. Note that the core CAPI provider continues to be available with the {product_name} chart and is installed by default as in earlier versions.
+
+== Migration
+
+Follow the steps below in order to migrate to v0.25.0:
+
+. Ensure that you upgrade {product_name} to v0.24.2. This step is important because this version adds `helm.sh/resource-policy: keep` annotations for the CAPI providers that are deprecated in v0.25.0. Adding these annotations means that these providers will not be deleted upon an upgrade to v0.25.0. At this point, the CAPRKE2 and CAAPF providers and their respective namespaces are no longer owned by (or are part of) a Helm release, however this will be addressed in a subsequent step.
+. Upgrade to v0.25.0. Since Rancher v2.13.0, {product_name} comes bundled with it so upgrading to Rancher v2.13.0 will also upgrade {product_name} to v0.25.0. After the upgrade you should have all previously installed CAPI providers still running on your management cluster.
+. Download and run the https://raw.githubusercontent.com/rancher/turtles/refs/heads/main/scripts/migrate-providers-ownership.sh[migration script] against your management cluster. By default, the script will update the namespaces and `CAPIProvider` resources for CAPRKE2 and CAAPF so that they are adopted by (or become part of) the new providers Helm chart, when this is installed. The script will also delete the legacy CAAPF provider, if running on the `rancher-turtles-system` namespace.
++
+[source,bash]
+----
+./migrate-providers-ownership.sh
+Adopting existing turtles resources into Helm ownership
+Release: rancher-turtles-providers Namespace: rancher-turtles-system
+Found legacy Fleet CAPIProvider in rancher-turtles-system, deleting before providers install
+capiprovider.turtles-capi.cattle.io "fleet" deleted from rancher-turtles-system namespace
+configmap "fleet-addon-config" deleted from rancher-turtles-system namespace
+Adopting namespace rancher-turtles-system
+namespace/rancher-turtles-system patched
+CAPIProvider fleet in rancher-turtles-system not found, skipping
+Adopting namespace rke2-bootstrap-system
+namespace/rke2-bootstrap-system patched
+Adopting CAPIProvider rke2-bootstrap in rke2-bootstrap-system
+capiprovider.turtles-capi.cattle.io/rke2-bootstrap patched
+Adopting namespace rke2-control-plane-system
+namespace/rke2-control-plane-system patched
+Adopting CAPIProvider rke2-control-plane in rke2-control-plane-system
+capiprovider.turtles-capi.cattle.io/rke2-control-plane patched
+Migration completed
+----
+. Finally, install the new providers Helm chart in the `rancher-turtles-system` namespace. Once installed, the CAPRKE2 provider will be running on the `rke2-bootstrap-system` and `rke2-control-plane-system` namespaces as before and the CAAPF provider will be running on the `fleet-addon-system` namespace.
+
+Note, that the migration described above is necessary for users running {product_name} versions &le; v0.24.2. New users that are installing Rancher v2.13.0 do not need to perform any migration.
