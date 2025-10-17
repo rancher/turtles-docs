@@ -5,18 +5,14 @@
 
 To provision and configure Cluster API providers, Turtles uses the *CAPIProvider* resource to allow managing Cluster API Operator manifests in a declarative way. Every field provided by the upstream CAPI Operator resource for the desired `spec.type` is also available in the `spec` of the *CAPIProvider* resouce.
 
-To install Cluster API providers in an air-gapped environment the following will need to be done:
+A new installation of Turtles only includes the core CAPI provider and its CRDs. The default installation mechanism for this provider does not require fetching the manifest from a remote source, so it is fully functional in an air-gapped environment as it retrieves the yaml definition from a local `ConfigMap`, embedded in the application chart.
 
-. Configure the Cluster API Operator for an air-gapped environment:
- ** The operator chart will be fetched and stored as a part of the Turtles chart.
- ** Provide image overrides for the operator from an accessible image repository.
-. Configure Cluster API providers for an air-gapped environment:
- ** Provide fetch configuration for each provider from an accessible location (e.g., an internal github/gitlab server) or from pre-created ConfigMaps within the cluster.
- ** Provide image overrides for each provider to pull images from an accessible image repository.
-. Configure {product_name} for an air-gapped environment:
- ** Collect and publish {product_name} images and publish to the private registry. https://ranchermanager.docs.rancher.com/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images#2-collect-the-cert-manager-image[Example of cert-manager installation for the reference].
- ** Provide fetch configuration and image values for `core` and `caprke2` providers in xref:../operator/chart.adoc#_cluster_api_operator_values[values.yaml].
- ** Provider image value for the Cluster API Operator Helm chart dependency in https://github.com/kubernetes-sigs/cluster-api-operator/blob/main/hack/charts/cluster-api-operator/values.yaml#L26[values.yaml]. Image values specified with the cluster-api-operator key will be passed along to the Cluster API Operator.
+[TIP]
+====
+The version of core CAPI shipped with Turtles is actively tested and validated, and the chart is pre-configured to select this version by default using CAPI Operator. However, if you have specific requirements about versioning or what repository to use, you can still customize the behavior of CAPI Operator with your own https://github.com/rancher/turtles/blob/5b6b33d894edf265e5d2b09d2718538892e83cd0/charts/rancher-turtles/values.yaml#L80[fetchConfig].
+====
+
+This section provides guidance on how to use `CAPIProvider` and the CAPI Operator functionality in different air-gapped scenarios.
 
 == CAPI Provider installation with OCI artifact
 
