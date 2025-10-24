@@ -44,7 +44,7 @@ Once the Helm repository has been added and updated locally, you can proceed to 
 [source,bash]
 ----
 helm install rancher-turtles turtles/rancher-turtles --version v0.24.0 \
-    -n rancher-turtles-system \
+    -n cattle-turtles-system \
     --dependency-update \
     --create-namespace --wait \
     --timeout 180s
@@ -78,7 +78,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: variables
-  namespace: rancher-turtles-system
+  namespace: cattle-turtles-system
 type: Opaque
 stringData:
   CLUSTER_TOPOLOGY: "true"

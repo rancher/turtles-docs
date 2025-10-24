@@ -96,8 +96,8 @@ This will use the default values for the Helm chart, which are good for most ins
 The installation may take a few minutes and, when it finishes, you will be able to see the following new deployments in the cluster:
 
 * `capi-system/capi-controller-manager`
-* `rancher-turtles-system/caapf-controller-manager`
-* `rancher-turtles-system/rancher-turtles-controller-manager`
+* `cattle-turtles-system/caapf-controller-manager`
+* `cattle-turtles-system/rancher-turtles-controller-manager`
 * `rke2-bootstrap-system/rke2-bootstrap-controller-manager`
 * `rke2-control-plane-system/rke2-control-plane-controller-manager`
 
