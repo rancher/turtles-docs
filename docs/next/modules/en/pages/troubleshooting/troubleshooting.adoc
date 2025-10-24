@@ -26,15 +26,15 @@ You can view the following pods and check their logs in namespaces:
 |===
 | Namespace | Pod | Description
 
-| rancher-turtles-system
+| cattle-turtles-system
 | rancher-turtles-cluster-api-operator
 | Manages the installation and lifecycle of Cluster API providers in the management cluster
 
-| rancher-turtles-system
+| cattle-turtles-system
 | rancher-turtles-controller-manager
 | Handles Rancher integration and manages the custom resources for Turtles
 
-| rancher-turtles-system
+| cattle-turtles-system
 | caapf-controller-manager
 | Controls the Cluster API Provider Framework for custom infrastructure providers
 
@@ -70,7 +70,7 @@ One way to monitor logs from Cluster API controll plane pods by usuing `kubectl 
 
 [source,bash]
 ----
-kubectl logs -l control-plane=controller-manager -n rancher-turtles-system -f
+kubectl logs -l control-plane=controller-manager -n cattle-turtles-system -f
 kubectl logs -l control-plane=controller-manager -n capi-system -f
 kubectl logs -l control-plane=controller-manager -n rke2-bootstrap-system -f
 kubectl logs -l control-plane=controller-manager -n rke2-control-plane-system -f
@@ -92,7 +92,7 @@ Then you can tail logs from all pods in real time.
 
 [source,bash]
 ----
-kubectl stern . -n rancher-turtles-system -n rke2-bootstrap-system -n rke2-control-plane-system -n capi-system
+kubectl stern . -n cattle-turtles-system -n rke2-bootstrap-system -n rke2-control-plane-system -n capi-system
 ----
 
 or
@@ -222,7 +222,7 @@ For example:
 [source,bash]
 ----
 helm upgrade rancher-turtles turtles/rancher-turtles \
-            -n rancher-turtles-system \
+            -n cattle-turtles-system \
             --reuse-values \
             --set "rancherTurtles.managerArguments={--insecure-skip-verify,-v=5}" \
             --set cluster-api-operator.logLevel=5
@@ -272,7 +272,7 @@ Usage via regular flags:
 
 [source,bash]
 ----
-kubectl crust-gather collect --include-namespace rancher-turtles-system --include-namespace capi-* --include-namespace cattle* --include-namespace c-* --include-namespace=<any-capi-cluster-namespace> --kubeconfig=<KUBECONFIG>
+kubectl crust-gather collect --include-namespace cattle-turtles-system --include-namespace capi-* --include-namespace cattle* --include-namespace c-* --include-namespace=<any-capi-cluster-namespace> --kubeconfig=<KUBECONFIG>
 ----
 
 You can specify a file with secrets or environment variables with secrets strings to exclude. 
@@ -329,7 +329,7 @@ Replace `capi-clusters` with the namespace where your clusters are deployed and 
 +
 [source,bash]
 ----
-helm uninstall -n rancher-turtles-system rancher-turtles
+helm uninstall -n cattle-turtles-system rancher-turtles
 ----
 +
 . Remove any webhook configurations that might have been created by CAPI providers:
@@ -351,7 +351,7 @@ kubectl delete mutatingwebhookconfigurations [webhook-name]
 ----
 +
 . Clean up any leftover namespaces and resources. The following namespaces may remain after uninstallation:
-   * rancher-turtles-system
+   * cattle-turtles-system
    * rke2-bootstrap-system
    * rke2-control-plane-system
    * capi-system
@@ -363,12 +363,12 @@ To remove these namespaces:
 [source,bash]
 ----
 # First remove any finalizers that might be blocking deletion
-for NS in rancher-turtles-system rke2-bootstrap-system rke2-control-plane-system capi-system capz-system capi-clusters; do
+for NS in cattle-turtles-system rke2-bootstrap-system rke2-control-plane-system capi-system capz-system capi-clusters; do
   kubectl get namespace $NS -o json | jq '.spec.finalizers = []' | kubectl replace --raw "/api/v1/namespaces/$NS/finalize" -f -
 done
 
 # Then delete the namespaces
-kubectl delete namespace rancher-turtles-system rke2-bootstrap-system rke2-control-plane-system capi-system capz-system capi-clusters
+kubectl delete namespace cattle-turtles-system rke2-bootstrap-system rke2-control-plane-system capi-system capz-system capi-clusters
 ----
 +
 . Finally, remove the CRDs related to Cluster API and Rancher Turtles:
