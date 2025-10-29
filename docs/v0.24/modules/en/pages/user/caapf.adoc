@@ -9,6 +9,11 @@ Cluster API Add-on Provider for `Fleet` (CAAPF) is a Cluster API (CAPI) provider
 For more information about the provider, please refer to https://rancher.github.io/cluster-api-addon-provider-fleet/[CAAPF book].
 ====
 
+[WARNING]
+====
+CAAPF depends on the `WatchList` Kubernetes feature gate. This feature needs to be explicitly enabled on Kubernetes `1.33` versions. See link:https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/[docs].
+====
+
 == Functionality
 
 * The provider will register a newly provisioned CAPI cluster with `Fleet` by creating a `Fleet` `Cluster` instance with the same `name` and `namespace`. Applications can be automatically deployed to the created cluster using `GitOps`.
