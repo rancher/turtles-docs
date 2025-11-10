@@ -1,7 +1,9 @@
 = Release Notes
 
 
-* link:changelogs/v0.24.2.html[v0.24.2 (latest)]
+* link:changelogs/v0.24.3.html[v0.24.3 (latest)]
+
+* link:changelogs/v0.24.2.html[v0.24.2 ]
 
 * link:changelogs/v0.24.1.html[v0.24.1 ]
 

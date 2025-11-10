@@ -1,0 +1,45 @@
+== "v0.24.3"
+=== "2025-11-10 07:50:13 +0000 UTC"
+
+// Disclaimer: this file is generated, do not edit it manually.
+
+
+__ (github-actions[bot]) released this 2025-11-10 07:50:13 +0000 UTC - v0.24.3__
+
+
+=== Description
+
+---
+
+++++
+
+<p>Rancher Turtles - Cluster API integration in Rancher.</p>
+<h2>What's Changed</h2>
+<h3>Other Changes</h3>
+<ul>
+<li>Bump Rancher to latest v2.12.3 patch version by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/furkatgofurov7/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/furkatgofurov7">@furkatgofurov7</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3586103741" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/1867" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/1867/hovercard" href="https://github.com/rancher/turtles/pull/1867">#1867</a></li>
+<li>Bump kubernetes to v1.33 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/anmazzotti/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/anmazzotti">@anmazzotti</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3556635113" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/1844" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/1844/hovercard" href="https://github.com/rancher/turtles/pull/1844">#1844</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/rancher/turtles/compare/v0.24.2...v0.24.3"><tt>v0.24.2...v0.24.3</tt></a></p>
+
+++++
+
+---
+
+
+
+=== Download
+
+[cols="3,1,1" options="header" frame="all" grid="rows"]
+|===
+| Name | Created At | Updated At
+
+| link:https://github.com/rancher/turtles/releases/download/v0.24.3/rancher-turtles-0.24.3.tgz[rancher-turtles-0.24.3.tgz] | 2025-11-10 07:50:15 +0000 UTC | 2025-11-10T07:50:15Z
+
+|===
+
+
+---
+
+__Information retrieved from link:https://github.com/rancher/turtles/releases/tag/v0.24.3[here]__
+
