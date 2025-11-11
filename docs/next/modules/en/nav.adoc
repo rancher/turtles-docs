@@ -2,6 +2,7 @@
 * Tutorials
 ** xref:tutorials/quickstart.adoc[Quick Start]
 ** xref:tutorials/first-cluster.adoc[Your First Cluster]
+** xref:tutorials/migration.adoc[Migration]
 ** xref:tutorials/uninstall.adoc[Uninstall]
 * Overview
 ** xref:overview/architecture.adoc[Architecture]
