@@ -8,7 +8,7 @@ Starting with Rancher v2.13, {product_name} gets installed as part of Rancher, e
 Follow the steps below in order, _before_ upgrading to Rancher v2.13:
 
 . Ensure that you upgrade {product_name} to v0.24.3. This step is important because all patch releases for v0.24 prepare the cluster for the upgrade to Rancher v2.13.
-. Uninstall {product_name}. This is necessary because from Rancher v2.13 onwards, {product_name} is no longer an opt-in addon but a Rancher system component. As such, Rancher installs it in a different namespace than before and therefore the previously installed version needs to be manually uninstalled. Uninstalling v0.24.3 of {product_name} removes the core CAPI provider itself but keeps the core CAPI CRDs. At this point, the core CAPI controller should not be running on the cluster but any downstream CAPI clusters should continue to run as usual.
+. Uninstall {product_name}. This is necessary because from Rancher v2.13 onwards, {product_name} is no longer an opt-in addon but a Rancher system component. As such, Rancher installs it in a different namespace than before and therefore the previously installed version needs to be manually uninstalled first. Uninstalling v0.24.3 of {product_name} removes the core CAPI provider itself but keeps the core CAPI CRDs. During migration, the core CAPI controller will not be running on the management cluster, but any downstream CAPI clusters should continue to run as usual and not be affected.
 . Run the following kubectl commands:
 +
 [source,bash]
