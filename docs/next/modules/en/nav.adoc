@@ -1,6 +1,5 @@
 * xref:index.adoc[Overview]
 * Tutorials
-** xref:tutorials/quickstart.adoc[Quick Start]
 ** xref:tutorials/first-cluster.adoc[Your First Cluster]
 ** xref:tutorials/migration.adoc[Migration]
 ** xref:tutorials/uninstall.adoc[Uninstall]
@@ -21,7 +20,6 @@
 ** xref:user/cluster-resource-mapping.adoc[Cluster Resource Relationships in Turtles]
 * Operator Guide
 ** xref:operator/chart.adoc[Chart Configuration]
-** xref:operator/manual.adoc[Manual Installation]
 ** xref:operator/clusterclass.adoc[Enabling ClusterClass]
 ** xref:operator/certification.adoc[Provider Certification]
 ** xref:operator/certificationsuite.adoc[Provider Test Suite]
