@@ -1,0 +1,33 @@
+* xref:index.adoc[Overview]
+* Tutorials
+** xref:tutorials/first-cluster.adoc[Your First Cluster]
+** xref:tutorials/migration.adoc[Migration]
+** xref:tutorials/uninstall.adoc[Uninstall]
+* Overview
+** xref:overview/architecture.adoc[Architecture]
+** xref:overview/glossary.adoc[Glossary]
+** xref:overview/features.adoc[Features]
+** xref:overview/certified.adoc[Certified Providers]
+* Reference
+** xref:reference/capiprovider.adoc[CAPIProvider]
+** xref:reference/clusterctlconfig.adoc[ClusterctlConfig]
+* User Guide
+** xref:user/clusterclass.adoc[Provision a CAPI cluster with ClusterClass]
+** xref:user/fleet.adoc[Create a cluster using Fleet]
+** xref:user/delete-cluster.adoc[Delete an imported cluster]
+** xref:user/caapf.adoc[CAPI Addon Provider Fleet]
+** xref:user/gitops.adoc[GitOps best practices for Turtles and CAPI]
+** xref:user/cluster-resource-mapping.adoc[Cluster Resource Relationships in Turtles]
+* Operator Guide
+** xref:operator/clusterclass.adoc[Enabling ClusterClass]
+** xref:operator/certification.adoc[Provider Certification]
+** xref:operator/certificationsuite.adoc[Provider Test Suite]
+** xref:operator/airgapped.adoc[Air-Gapped Environment]
+* Developer Guide
+** xref:developer/development.adoc[Development Environment]
+** xref:developer/guidelines.adoc[Development Guideline]
+* Troubleshooting Guide
+** xref:troubleshooting/troubleshooting.adoc[Troubleshooting]
+* Security
+** xref:security/slsa.adoc[SLSA]
+* xref:changelogs/index.adoc[Release Notes]
