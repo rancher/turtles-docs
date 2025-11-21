@@ -201,10 +201,22 @@ Output:
 +
 image::lineage-cluster-output.png[Output]
 
-== How to enable debug mode
+== How to enable debug mode for Rancher Turtles and CAPI providers
+
+* Rancher Turtles
++
+To enable debug mode for Rancher Turtles, you need to patch `cattle-system/rancher-config` configmap as follows:
++
+[source,bash]
+----
+kubectl patch configmap -n cattle-system rancher-config --type merge --patch '{"data":{"rancher-turtles": "managerArguments:\n  - --v=5\n"}}'
+----
+(5 is equivalent to DEBUG)
++
+This results in the Turtles pod being restarted, in order to use the new configuration.
 
 * Cluster API Providers - edit CAPIProvider resources for providers where increasing log level is needed. Change to desidered level:
-
++
 [source,bash]
 ----
 CAPIProvider.Spec.Manager.Verbosity=5
@@ -328,7 +340,7 @@ kubectl delete mutatingwebhookconfigurations [webhook-name]
    * cattle-turtles-system
    * rke2-bootstrap-system
    * rke2-control-plane-system
-   * capi-system
+   * cattle-capi-system
    * capz-system (or other provider-specific namespaces like capv-system, capa-system, etc.)
    * capi-clusters (or other namespaces where you deployed clusters)
 +
@@ -337,12 +349,12 @@ To remove these namespaces:
 [source,bash]
 ----
 # First remove any finalizers that might be blocking deletion
-for NS in cattle-turtles-system rke2-bootstrap-system rke2-control-plane-system capi-system capz-system capi-clusters; do
+for NS in cattle-turtles-system rke2-bootstrap-system rke2-control-plane-system cattle-capi-system capz-system capi-clusters; do
   kubectl get namespace $NS -o json | jq '.spec.finalizers = []' | kubectl replace --raw "/api/v1/namespaces/$NS/finalize" -f -
 done
 
 # Then delete the namespaces
-kubectl delete namespace cattle-turtles-system rke2-bootstrap-system rke2-control-plane-system capi-system capz-system capi-clusters
+kubectl delete namespace cattle-turtles-system rke2-bootstrap-system rke2-control-plane-system cattle-capi-system capz-system capi-clusters
 ----
 +
 . Finally, remove the CRDs related to Cluster API and Rancher Turtles:
