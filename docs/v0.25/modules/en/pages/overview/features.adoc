@@ -23,8 +23,8 @@ This section describes features and feature stages in {product_name}.
 | *No Cert Manager*
 | `no-cert-manager`
 | _None_
-| disabled
-| alpha
+| enabled
+| beta
 |===
 
 === Add-on Provider for Fleet
