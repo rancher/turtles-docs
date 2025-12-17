@@ -1,0 +1,51 @@
+== "v0.25.1"
+=== "2025-12-16 10:13:46 +0000 UTC"
+
+// Disclaimer: this file is generated, do not edit it manually.
+
+
+__ (github-actions[bot]) released this 2025-12-16 10:13:46 +0000 UTC - v0.25.1__
+
+
+=== Description
+
+---
+
+++++
+
+<p>Rancher Turtles - Cluster API integration in Rancher.</p>
+<p>This release of Rancher Turtles fixes an issue with fetching CAPI images in air-gapped environments. The new logic will use the Rancher setting <code>system-default-registry</code> to override the registry from where CAPI provider images are pulled.</p>
+<ul>
+<li>Rancher community: core CAPI is fetched from Docker Hub.</li>
+<li>Rancher Prime: CAPI providers are fetched from Prime registry.</li>
+</ul>
+<h2>What's Changed</h2>
+<h3>Other Changes</h3>
+<ul>
+<li>[release/v0.25] Backport multiple commits to prepare for 2.13.1 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/yiannistri/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/yiannistri">@yiannistri</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3715179317" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/1929" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/1929/hovercard" href="https://github.com/rancher/turtles/pull/1929">#1929</a></li>
+<li>[release/v0.25] bump slsactl to v0.1.11 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3719362558" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/1934" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/1934/hovercard" href="https://github.com/rancher/turtles/pull/1934">#1934</a></li>
+<li>[release/v0.25] fix: permissions to create release from workflow by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/salasberryfin/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/salasberryfin">@salasberryfin</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3719831861" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/1935" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/1935/hovercard" href="https://github.com/rancher/turtles/pull/1935">#1935</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/rancher/turtles/compare/v0.25.0...v0.25.1"><tt>v0.25.0...v0.25.1</tt></a></p>
+
+++++
+
+---
+
+
+
+=== Download
+
+[cols="3,1,1" options="header" frame="all" grid="rows"]
+|===
+| Name | Created At | Updated At
+
+| link:https://github.com/rancher/turtles/releases/download/v0.25.1/rancher-turtles-0.25.1.tgz[rancher-turtles-0.25.1.tgz] | 2025-12-16 10:13:48 +0000 UTC | 2025-12-16T10:13:48Z
+
+|===
+
+
+---
+
+__Information retrieved from link:https://github.com/rancher/turtles/releases/tag/v0.25.1[here]__
+

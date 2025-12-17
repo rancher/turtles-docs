@@ -85,7 +85,7 @@ variables:
   TURTLES_PATH: "turtles/rancher-turtles"
   TURTLES_REPO_NAME: "turtles"
   TURTLES_URL: https://rancher.github.io/turtles
-  TURTLES_VERSION: "v0.25.0"
+  TURTLES_VERSION: "v0.25.1"
   RANCHER_HOSTNAME: "localhost"
   RANCHER_FEATURES: ""
   RANCHER_PATH: "rancher-latest/rancher"

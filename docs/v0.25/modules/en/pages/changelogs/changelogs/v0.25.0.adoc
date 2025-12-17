@@ -14,7 +14,8 @@ __ (github-actions[bot]) released this 2025-11-19 11:45:45 +0000 UTC - v0.25.0__
 ++++
 
 
-<p>This version of Rancher Turtles is installed by default as part of Rancher 2.13 and does not require a separate installation. If you are upgrading from earlier versions of Rancher Turtles please refer to the <a href="https://turtles.docs.rancher.com/turtles/next/en/tutorials/migration.htmll" rel="nofollow">migration guide</a>.</p>
+<p>This version of Rancher Turtles is installed by default as part of Rancher 2.13 and does not require a separate installation. If you are upgrading from earlier versions of Rancher Turtles please refer to the <a href="https://turtles.docs.rancher.com/turtles/stable/en/tutorials/migration.html" rel="nofollow">migration guide</a>. <strong>Users must ensure they upgrade to Turtles 0.24.3 before upgrading to Rancher 2.13.</strong></p>
+<p>With this release of Turtles, the CAPRKE2 and CAAPF providers are no longer installed and managed by the Turtles chart. However, these <code>CAPIProviders</code> will not be uninstalled and will continue to run post-migration.</p>
 <h2>What's Changed</h2>
 <h3>🐛 Bugs</h3>
 <ul>
