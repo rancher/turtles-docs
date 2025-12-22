@@ -1,0 +1,26 @@
+= Install certified providers
+
+This section describes how to install the Turtles Providers chart, which installs the xref:overview/certified.adoc[certified providers].
+
+== Prerequisites
+
+* Ensure {product_name} has been installed.
+
+== Install the Rancher Turtles Providers chart
+. Install all certified providers.
++
+[source,shell]
+----
+helm install rancher-turtles-providers oci://<prime-registry-url>/rancher/charts/rancher-turtles-providers \
+    --version <version> \
+    --namespace cattle-turtles-system \
+    --set providers.bootstrapKubeadm.enabled=true \
+    --set providers.controlplaneKubeadm.enabled=true \
+    --set providers.infrastructureDocker.enabled=true \
+    --set providers.infrastructureAWS.enabled=true \
+    --set providers.infrastructureAzure.enabled=true \
+    --set providers.infrastructureGCP.enabled=true \
+    --set providers.infrastructureGCP.variables.GCP_B64ENCODED_CREDENTIALS="" \
+    --set providers.infrastructureVSphere.enabled=true \
+    --wait
+----
