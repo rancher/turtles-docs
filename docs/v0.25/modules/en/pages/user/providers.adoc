@@ -1,0 +1,32 @@
+= Install certified providers
+
+This section describes how to install the Turtles Providers chart, which installs the xref:overview/certified.adoc[certified providers].
+
+== Prerequisites
+
+* Ensure you have added the Prime Helm chart repository.
+
+== Install the Rancher Turtles Providers chart
+In the steps below, the Prime Helm chart repository is named `prime`.
+
+. Update your Helm repositories.
++
+[source,shell]
+----
+helm repo update
+----
+. Install all certified providers.
++
+[source,shell]
+----
+helm install prime/rancher-turtles-providers -n cattle-turtles-system \
+    --set providers.bootstrapKubeadm.enabled=true \
+    --set providers.controlplaneKubeadm.enabled=true \
+    --set providers.infrastructureDocker.enabled=true \
+    --set providers.infrastructureAWS.enabled=true \
+    --set providers.infrastructureAzure.enabled=true \
+    --set providers.infrastructureGCP.enabled=true \
+    --set providers.infrastructureGCP.variables.GCP_B64ENCODED_CREDENTIALS="" \
+    --set providers.infrastructureVSphere.enabled=true \
+    --wait
+----
