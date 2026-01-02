@@ -12,13 +12,75 @@ A new installation of Turtles only includes the core CAPI provider and its CRDs.
 The version of core CAPI shipped with Turtles is actively tested and validated, and the chart is pre-configured to select this version by default using CAPI Operator. However, if you have specific requirements about versioning or what repository to use, you can still customize the behavior of CAPI Operator with your own https://github.com/rancher/turtles/blob/5b6b33d894edf265e5d2b09d2718538892e83cd0/charts/rancher-turtles/values.yaml#L80[fetchConfig].
 ====
 
+== Community vs Prime Users
+
+{product_name} supports two types of air-gapped configurations depending on your deployment:
+
+*Prime Users*: Rancher Prime users benefit from pre-mirrored CAPI provider OCI artifacts available in the Rancher Prime Registry (`registry.rancher.com`). These providers are automatically validated, tested, and maintained for your Turtles release. To see which providers and versions are available for your Turtles version, refer to the https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config-prime.yaml[config-prime.yaml] configuration file.
+
+*Community Users*: Community users have access to the core CAPI provider but do not have pre-mirrored provider OCI artifacts. They are free to manually mirror any CAPI provider or use fetched manifests according to their requirements. The https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config-community.yaml[config-community.yaml] configuration shows the minimal community setup without provider version pinning.
+
 This section provides guidance on how to use `CAPIProvider` and the CAPI Operator functionality in different air-gapped scenarios.
 
 == CAPI Provider installation with OCI artifact
 
-As an administrator working in an air-gapped environment, you need to fetch the Azure Cluster API Provider (CAPZ) components from within your cluster since external internet access is restricted. This section demonstrates how to deploy CAPZ using OCI artifacts stored in your private registry.
+As an administrator working in an air-gapped environment, you need to fetch CAPI Provider components from within your cluster since external internet access is restricted. This section demonstrates how to deploy CAPI providers using OCI artifacts.
 
-Set your private registry URL and replace with your actual registry:
+[tabs]
+======
+Prime Users::
++
+====
+As a Rancher Prime user, you can directly mirror pre-validated provider OCI artifacts from the Rancher Prime Registry to your private registry.
+
+Set your private registry URL:
+
+[source,bash]
+----
+export REGISTRY=<YOUR_PRIVATE_REGISTRY>
+----
+
+Mirror the provider from Rancher Prime Registry to your private registry. Refer to https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config-prime.yaml[config-prime.yaml] for the exact provider versions available for your Turtles release.
+
+For example, to use Azure provider:
+
+[source,bash]
+----
+# Set the version from config-prime.yaml
+export PROVIDER_VERSION=<VERSION_FROM_CONFIG_PRIME>
+
+# Pull from Rancher Prime Registry
+oras pull registry.rancher.com/rancher/cluster-api-azure-controller-components:${PROVIDER_VERSION}
+
+# Push to your private registry
+oras push ${REGISTRY}/cluster-api-azure-controller-components:${PROVIDER_VERSION} infrastructure-components.yaml:application/vnd.test.file metadata.yaml:application/vnd.test.file
+----
+
+Create and apply the CAPIProvider resource pointing to your private registry:
+
+.capz-provider-oci.yaml
+[source,yaml]
+----
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: azure
+  namespace: capz-system
+spec:
+  type: infrastructure
+  name: azure
+  version: ${PROVIDER_VERSION}
+  fetchConfig:
+    oci: ${REGISTRY}/cluster-api-azure-controller-components:${PROVIDER_VERSION}
+----
+====
+
+Community Users::
++
+====
+As a community user, you need to manually build and package provider OCI artifacts to your private registry. Community users do not have access to pre-mirrored artifacts from registry.rancher.com.
+
+Set your private registry URL and provider version:
 
 [source,bash]
 ----
@@ -26,7 +88,9 @@ export REGISTRY=<YOUR_PRIVATE_REGISTRY>
 export RELEASE_TAG=<CAPI_PROVIDER_VERSION>
 ----
 
-Create and apply Azure CAPIProvider resource that instructs Rancher Turtles to fetch the Azure provider from your private OCI registry:
+You'll need to build the provider manifests from source by following the upstream provider's documentation. See the "CAPI Provider fetch and push OCI artifact" section below for detailed instructions on building from source and packaging as OCI artifacts.
+
+Once you have built and pushed the OCI artifact to your private registry, create and apply the CAPIProvider resource pointing to your private registry:
 
 .capz-provider-oci.yaml
 [source,yaml]
@@ -43,22 +107,31 @@ spec:
   fetchConfig:
     oci: ${REGISTRY}:${RELEASE_TAG}
 ----
+====
+======
 
 == How to mirror CAPI Provider OCI artifact
 
-You mirror OCI artifacts for any CAPI Provider listed in the Rancher Turtles configuration: https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config-community.yaml
+This section shows how to mirror CAPI Provider OCI artifacts to your private registry for use in an air-gapped environment.
+
+[tabs]
+======
+Prime Users::
++
+====
+As a Rancher Prime user, you can mirror pre-validated provider OCI artifacts from the Rancher Prime Registry. Check https://github.com/rancher/turtles/blob/main/internal/controllers/clusterctl/config-prime.yaml[config-prime.yaml] for available providers and their versions for your Turtles release.
 
 Install the ORAS (OCI Registry As Storage) CLI tool to manage OCI artifacts. Follow the installation instructions at: https://oras.land/docs/installation
 
-Set your private registry URL and replace with your actual registry:
+Set your private registry URL and provider version:
 
 [source,bash]
 ----
 export REGISTRY=<YOUR_PRIVATE_REGISTRY>
-export RELEASE_TAG=<CAPI_PROVIDER_VERSION>
+export PROVIDER_VERSION=<VERSION_FROM_CONFIG_PRIME>
 ----
 
-Create working directory
+Create working directory:
 
 [source,bash]
 ----
@@ -66,21 +139,74 @@ mkdir capi-oci-artifacts
 cd capi-oci-artifacts
 ----
 
-Pull OCI artifacts for CAPI Provider which you want to use for example Azure Provider OCI artifact in version 1.19.4:
+Pull the OCI artifact from Rancher Prime Registry. For example, for Azure provider:
 
 [source,bash]
 ----
-oras pull registry.rancher.com/rancher/cluster-api-azure-controller-components:v1.19.4
+oras pull registry.rancher.com/rancher/cluster-api-azure-controller-components:${PROVIDER_VERSION}
 ----
 
-Publish an OCI artifact containing the Azure CAPI Provider manifests to your private registry:
+Publish the OCI artifact to your private registry:
+
+[source,bash]
+----
+oras push ${REGISTRY}/cluster-api-azure-controller-components:${PROVIDER_VERSION} infrastructure-components.yaml:application/vnd.test.file metadata.yaml:application/vnd.test.file
+----
+
+Create and apply the CAPIProvider resource:
+
+.capz-provider-oci.yaml
+[source,yaml]
+----
+apiVersion: turtles-capi.cattle.io/v1alpha1
+kind: CAPIProvider
+metadata:
+  name: azure
+  namespace: capz-system
+spec:
+  type: infrastructure
+  name: azure
+  version: ${PROVIDER_VERSION}
+  fetchConfig:
+    oci: ${REGISTRY}/cluster-api-azure-controller-components:${PROVIDER_VERSION}
+----
+
+Use `kubectl` to create namespace and apply the configuration:
+
+[source,bash]
+----
+kubectl create namespace capz-system
+kubectl apply -f capz-provider-oci.yaml
+----
+====
+
+Community Users::
++
+====
+As a community user, you need to build CAPI Provider OCI artifacts from source and must follow the upstream provider documentation to build release manifests.
+
+To build and package provider manifests:
+
+1. Follow the upstream provider's documentation to clone the repository and build release artifacts (infrastructure-components.yaml and metadata.yaml). For example, for the Azure provider, refer to the https://github.com/kubernetes-sigs/cluster-api-provider-azure[Azure CAPI Provider repository].
+
+2. Install the ORAS (OCI Registry As Storage) CLI tool to manage OCI artifacts. Follow the installation instructions at: https://oras.land/docs/installation
+
+3. Set your private registry URL and provider version:
++
+[source,bash]
+----
+export REGISTRY=<YOUR_PRIVATE_REGISTRY>
+export RELEASE_TAG=<CAPI_PROVIDER_VERSION>
+----
+
+4. Once you have built the infrastructure-components.yaml and metadata.yaml files, publish the OCI artifact to your private registry:
 
 [source,bash]
 ----
 oras push ${REGISTRY}:${RELEASE_TAG} infrastructure-components.yaml:application/vnd.test.file metadata.yaml:application/vnd.test.file
 ----
 
-Create and apply Azure CAPIProvider resource that instructs Rancher Turtles to fetch the Azure provider from your private OCI registry:
+Create and apply the CAPIProvider resource:
 
 .capz-provider-oci.yaml
 [source,yaml]
@@ -98,14 +224,19 @@ spec:
     oci: ${REGISTRY}:${RELEASE_TAG}
 ----
 
-Use `kubectl` to create namespace `capz-system` and apply the `capz-provider-oci.yaml` file to the cluster:
+Use `kubectl` to create namespace and apply the configuration:
 
 [source,bash]
 ----
+kubectl create namespace capz-system
 kubectl apply -f capz-provider-oci.yaml
 ----
+====
+======
 
 == CAPI Provider fetch and push OCI artifact
+
+This section demonstrates how to build and publish OCI artifacts from source. This is primarily useful for Community users who want to build providers themselves or customize provider versions. Prime users typically don't need this workflow as they can use pre-mirrored artifacts from the Rancher Prime Registry.
 
 [tabs]
 ======
@@ -261,7 +392,9 @@ kubectl apply -f capz-provider-oci.yaml
 
 == CAPI Provider installation with fetched manifest
 
-As an admin, I need to fetch the vSphere provider (CAPV) components from within the cluster because I am working in an air-gapped environment.
+This section demonstrates an alternative approach for air-gapped installations using ConfigMaps instead of OCI artifacts. This method works for both Community and Prime users and can be useful when OCI registry access is limited or when you prefer to manage provider manifests directly.
+
+As an admin, you need to fetch the vSphere provider (CAPV) components from within the cluster because you are working in an air-gapped environment.
 
 In this example, there is a ConfigMap in the `capv-system` namespace that defines the components and metadata of the provider. It can be created manually or by running the following commands:
 
