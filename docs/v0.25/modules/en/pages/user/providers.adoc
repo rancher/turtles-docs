@@ -1,0 +1,53 @@
+= Install certified providers
+
+This section describes how to install the Turtles Providers chart, which installs the xref:overview/certified.adoc[certified providers].
+
+== Prerequisites
+
+* Ensure {product_name} has been installed.
+
+== Install the Rancher Turtles Providers chart
+
+To install all certified providers, run the following command:
+
+[source,shell]
+----
+helm install rancher-turtles-providers oci://<prime-registry-url>/rancher/charts/rancher-turtles-providers \
+    --version <version> \
+    --namespace cattle-turtles-system \
+    --set providers.bootstrapKubeadm.enabled=true \
+    --set providers.controlplaneKubeadm.enabled=true \
+    --set providers.infrastructureDocker.enabled=true \
+    --set providers.infrastructureAWS.enabled=true \
+    --set providers.infrastructureAzure.enabled=true \
+    --set providers.infrastructureGCP.enabled=true \
+    --set providers.infrastructureGCP.variables.GCP_B64ENCODED_CREDENTIALS="" \
+    --set providers.infrastructureVSphere.enabled=true \
+    --wait
+----
+
+The command above is used to install all certified providers. You may customize which providers are installed by setting the relevant flags to true. Note that the CAPRKE2 and Fleet Addon providers are enabled by default and will be installed unless explicitly disabled.
+
+For example, to be able to provision RKE2 clusters on AWS you just need to install the AWS provider as following:
+
+[source,shell]
+----
+helm install rancher-turtles-providers oci://<prime-registry-url>/rancher/charts/rancher-turtles-providers \
+    --version <version> \
+    --namespace cattle-turtles-system \
+    --set providers.infrastructureAWS.enabled=true \
+    --set providers.infrastructureAWS.variables.AWS_B64ENCODED_CREDENTIALS=${AWS_B64ENCODED_CREDENTIALS} \
+    --wait
+----
+
+To be able to provision RKE2 clusters on GCP, just install the GCP provider as following:
+
+[source,shell]
+----
+helm install rancher-turtles-providers oci://<prime-registry-url>/rancher/charts/rancher-turtles-providers \
+    --version <version> \
+    --namespace cattle-turtles-system \
+    --set providers.infrastructureGCP.enabled=true \
+    --set providers.infrastructureGCP.variables.GCP_B64ENCODED_CREDENTIALS=${GCP_B64ENCODED_CREDENTIALS} \
+    --wait
+----
