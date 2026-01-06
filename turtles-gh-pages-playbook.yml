@@ -1,6 +1,6 @@
 site:
   title: Rancher Turtles
-  url: /
+  url: https://turtles.docs.rancher.com
   start_page: v0.25@turtles:en:index.adoc
 
 urls:
