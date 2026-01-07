@@ -1523,3 +1523,26 @@ To automatically import a CAPI cluster into Rancher Manager, you can label a nam
 export NAMESPACE=default
 kubectl label namespace $NAMESPACE cluster-api.cattle.io/rancher-auto-import=true
 ----
+
+== Add a custom description to Rancher Cluster
+
+The default description assigned to an imported Rancher is "CAPI cluster imported to Rancher".
+image:imported-cluster-default-description.png[Imported Rancher Cluster with default description]
+
+To add a custom description to the imported Rancher cluster, you may add `cluster-api.cattle.io/cluster-description` annotation to your CAPI cluster.
+
+[source,yaml]
+----
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: docker-kubeadm-quickstart
+  labels:
+    cni: calico
+  annotation:
+    cluster-api.cattle.io/cluster-description: "This is a custom description of Rancher Cluster"
+----
+
+image:imported-cluster-custom-description.png[Imported Rancher Cluster with custom description]
+
+If a CAPI cluster is already imported, adding the annotation will do nothing. You may have to delete your imported Rancher cluster and re-import it, or simply add the description manually to its spec.
