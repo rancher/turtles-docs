@@ -40,14 +40,13 @@ helm install rancher-turtles-providers oci://<prime-registry-url>/rancher/charts
     --wait
 ----
 
-To be able to provision RKE2 clusters on GCP, just install the GCP provider as following:
+To be able to provision RKE2 clusters on Azure, just install the Azure provider as following:
 
 [source,shell]
 ----
 helm install rancher-turtles-providers oci://<prime-registry-url>/rancher/charts/rancher-turtles-providers \
     --version <version> \
     --namespace cattle-turtles-system \
-    --set providers.infrastructureGCP.enabled=true \
-    --set providers.infrastructureGCP.variables.GCP_B64ENCODED_CREDENTIALS=${GCP_B64ENCODED_CREDENTIALS} \
+    --set providers.infrastructureAzure.enabled=true \
     --wait
 ----
