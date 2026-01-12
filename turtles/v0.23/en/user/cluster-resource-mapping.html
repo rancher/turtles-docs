@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cluster Resource Relationships in Turtles :: Rancher Turtles</title>
+    <link rel="canonical" href="https://turtles.docs.rancher.com/turtles/stable/en/user/cluster-resource-mapping.html">
+    <link rel="prev" href="gitops.html">
+    <link rel="next" href="../operator/chart.html">
+    <meta name="generator" content="Antora 3.1.9">
+    <link rel="stylesheet" href="../../../../_/css/site.css">
+<link rel="stylesheet" href="../../../../_/css/search.css">
+<link rel="icon" href="../../../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../../../_/css/font-styles.css">
+<link rel="stylesheet" href="../../../../_/fonts/css/all.css">
+<link rel="stylesheet" href="../../../../_/css/site-extra.css">
+<link rel="stylesheet" href="../../../../_/css/vendor/tabs.css">
+<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+<link href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet"> -->
+<link rel="stylesheet" href="../../../../_/css/vendor/light.css">
+<script src="/docserv/res/lightheaded/analytics.js"
+        type="text/javascript"></script>
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"  type="text/javascript" charset="UTF-8" data-domain-script="0f98beb0-fc4c-417d-a42e-564e2cae42d2" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-57KS2MW');</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a class=" navbar-logo" href="https://documentation.suse.com/"><img class="logo"
+            src="../../../../_/img/logo.svg" /></a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">
+            <img src="../../../../_/img/github_logo.svg" class="langIcon Resurces" alt="Resources" title="Resources">
+          </div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/rancher/turtles"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://github.com/rancher/turtles-docs"><i
+                class="fab fa-github"></i>&nbsp;Rancher Turtles docs&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">More from SUSE</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://www.rancher.com" target="_blank"><img src="../../../../_/img/icon-rancher-mask.png" width="51" height="24" alt="Rancher by SUSE"
+              title="SUSE Rancher">&nbsp;Rancher&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://fleet.rancher.io" target="_blank"><img src="../../../../_/img/icon-fleet-mask.png" width="29" height="24" alt="Fleet"
+              title="Fleet">&nbsp;Fleet&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://www.kubewarden.io" target="_blank"><img src="../../../../_/img/icon-kubewarden-mask.png" width="29" height="24" alt="Kubewarden"
+              title="Kubewarden">&nbsp;Kubewarden&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <a class="navbar-item" href="https://harvesterhci.io" target="_blank"><img src="../../../../_/img/icon-harvester-mask.png" width="29" height="24" alt="Harvester"
+              title="Harvester">&nbsp;Harvester&nbsp;<i class="fas fa-external-link-alt"></i></a>
+            <hr />
+            <a class="navbar-item" href="https://opensource.suse.com" target="_blank"><img src="../../../../_/img/icon-suse-mask.png" width="41" height="24" alt="OpenSource at SUSE"
+              title="OpenSource @ SUSE">&nbsp;More projects...&nbsp;<i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="navbar-item search hide-for-print">
+          <div id="search-field" class="field">
+            <input id="search-input" type="text" placeholder="Search the docs" >
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header><div class="body">
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57KS2MW"height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<div class="nav-container" data-component="turtles" data-version="v0.23">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="../index.html">Rancher Turtles</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Tutorials</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/quickstart.html">Quick Start</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/first-cluster.html">Your First Cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../tutorials/uninstall.html">Uninstall</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Overview</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/architecture.html">Architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/glossary.html">Glossary</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/features.html">Features</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../overview/certified.html">Certified Providers</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Reference</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/capiprovider.html">CAPIProvider</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../reference/clusterctlconfig.html">ClusterctlConfig</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">User Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="clusterclass.html">Provision a CAPI cluster with ClusterClass</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="fleet.html">Create a cluster using Fleet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="delete-cluster.html">Delete an imported cluster</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="caapf.html">CAPI Addon Provider Fleet</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="gitops.html">GitOps best practices for Turtles and CAPI</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="cluster-resource-mapping.html">Cluster Resource Relationships in Turtles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Operator Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/chart.html">Chart Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/manual.html">Manual Installation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/clusterclass.html">Enabling ClusterClass</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/certification.html">Provider Certification</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/certificationsuite.html">Provider Test Suite</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../operator/airgapped.html">Air-Gapped Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Developer Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developer/development.html">Development Environment</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../developer/guidelines.html">Development Guideline</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Troubleshooting Guide</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../troubleshooting/troubleshooting.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Security</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../security/slsa.html">SLSA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../changelogs/index.html">Release Notes</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Rancher Turtles</span>
+    <span class="version">v0.23</span>
+  </div>
+  <ul class="components">
+        <li class="component is-current">
+          <div class="title"><a href="../../../stable/en/index.html">Rancher Turtles</a></div>
+          <ul class="versions">
+            <li class="version">
+              <a href="../../../next/en/index.html">Next</a>
+            </li>
+            <li class="version is-latest">
+              <a href="../../../stable/en/index.html">v0.25</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.24/en/index.html">v0.24</a>
+            </li>
+            <li class="version is-current">
+              <a href="../index.html">v0.23</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.22/en/index.html">v0.22</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.21/en/index.html">v0.21</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.20/en/index.html">v0.20</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.19/en/index.html">v0.19</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.18/en/index.html">v0.18</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.17/en/index.html">v0.17</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.16/en/index.html">v0.16</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.15/en/index.html">v0.15</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.14/en/index.html">v0.14</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.13/en/index.html">v0.13</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.12/en/index.html">v0.12</a>
+            </li>
+            <li class="version">
+              <a href="../../../v0.11/en/index.html">v0.11</a>
+            </li>
+          </ul>
+        </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../../stable/en/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Rancher Turtles</a></li>
+    <li>User Guide</li>
+    <li><a href="cluster-resource-mapping.html">Cluster Resource Relationships in Turtles</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">v0.23</button>
+  <div class="version-menu">
+    <a class="version" href="../../../next/en/user/cluster-resource-mapping.html">Next</a>
+    <a class="version" href="../../../stable/en/user/cluster-resource-mapping.html">v0.25</a>
+    <a class="version" href="../../../v0.24/en/user/cluster-resource-mapping.html">v0.24</a>
+    <a class="version is-current" href="cluster-resource-mapping.html">v0.23</a>
+    <a class="version is-missing" href="../../../v0.22/en/index.html">v0.22</a>
+    <a class="version is-missing" href="../../../v0.21/en/index.html">v0.21</a>
+    <a class="version is-missing" href="../../../v0.20/en/index.html">v0.20</a>
+    <a class="version is-missing" href="../../../v0.19/en/index.html">v0.19</a>
+    <a class="version is-missing" href="../../../v0.18/en/index.html">v0.18</a>
+    <a class="version is-missing" href="../../../v0.17/en/index.html">v0.17</a>
+    <a class="version is-missing" href="../../../v0.16/en/index.html">v0.16</a>
+    <a class="version is-missing" href="../../../v0.15/en/index.html">v0.15</a>
+    <a class="version is-missing" href="../../../v0.14/en/index.html">v0.14</a>
+    <a class="version is-missing" href="../../../v0.13/en/index.html">v0.13</a>
+    <a class="version is-missing" href="../../../v0.12/en/index.html">v0.12</a>
+    <a class="version is-missing" href="../../../v0.11/en/index.html">v0.11</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/rancher/turtles-docs/edit/main/docs/v0.23/modules/en/pages/user/cluster-resource-mapping.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="4">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Cluster Resource Relationships in Turtles</h1>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rancher integrates several components that define their own <code>Cluster</code> custom resources.
+Rancher Turtles builds on this foundation using Cluster API and Fleet, which can lead to confusion around how these <code>Cluster</code> resources interact and what users should edit.</p>
+</div>
+<div class="paragraph">
+<p>This document explains the purpose, behavior, and relationships between the following cluster resources:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>clusters.cluster.x-k8s.io</code> (CAPI Cluster)</p>
+</li>
+<li>
+<p><code>clusters.fleet.cattle.io</code> (Fleet Cluster)</p>
+</li>
+<li>
+<p><code>clusters.provisioning.cattle.io</code> (Provisioning Cluster)</p>
+</li>
+<li>
+<p><code>clusters.management.cattle.io</code> (Management Cluster)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_resource_summary"><a class="anchor" href="#_resource_summary"></a>Resource Summary</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">API Group</th>
+<th class="tableblock halign-left valign-top">Cluster Resource</th>
+<th class="tableblock halign-left valign-top">Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cluster.x-k8s.io</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CAPI Cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defines the cluster lifecycle and topology. Acts as the source of truth in Turtles.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fleet.cattle.io</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fleet Cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used for GitOps bundle targeting and application synchronization via Fleet.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>provisioning.cattle.io</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provisioning Cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rancher’s earlier general-purpose cluster abstraction. Encapsulates both infrastructure-agnostic and provider-specific configuration, and is required for generating cluster registration tokens and manifests. In Rancher Turtles, this resource has been used to wrap imported CAPI clusters, but it is being phased out.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>management.cattle.io</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Management Cluster</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rancher’s current cluster representation. <code>management.cattle.io/v3</code> clusters are now the default resource created and managed by Turtles. This should not be confused with CAPI-managed clusters, where “managed” refers to Cluster API lifecycle management, not Rancher’s <code>management.cattle.io</code> API group.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_relationships"><a class="anchor" href="#_relationships"></a>Relationships</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_capi_cluster_fleet_cluster"><a class="anchor" href="#_capi_cluster_fleet_cluster"></a>CAPI Cluster → Fleet Cluster</h3>
+<div class="paragraph">
+<p>When the Cluster API Add-on Provider for Fleet (CAAPF) is enabled, it propagates labels and annotations from the CAPI <code>Cluster</code> to the corresponding Fleet <code>Cluster</code>. This enables targeting GitOps bundles via label selectors. CAAPF creates the corresponding Fleet <code>Cluster</code> resource after the CAPI <code>Cluster</code> reaches the <code>ControlPlaneInitialized</code> condition.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_capi_cluster_provisioning_cluster_legacy"><a class="anchor" href="#_capi_cluster_provisioning_cluster_legacy"></a>CAPI Cluster → Provisioning Cluster (Legacy)</h3>
+<div class="paragraph">
+<p>A <code>provisioning.cattle.io.Cluster</code> may be created to wrap the CAPI Cluster and expose Rancher-specific fields (e.g., display name, RKE config). However, in most Rancher Turtles workflows it is being phased out and the user is not required to interact with this resource.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_management_cluster_provisioning_cluster"><a class="anchor" href="#_management_cluster_provisioning_cluster"></a>Management Cluster → Provisioning Cluster</h3>
+<div class="paragraph">
+<p>For legacy clusters, a <code>provisioning.cattle.io/v1.Cluster</code> may be generated from a <code>management.cattle.io/v3.Cluster</code>. This object is used by Rancher’s UI and APIs and is not intended for direct modification by users.
+New clusters managed solely via Turtles do not automatically create a <code>provisioning.cattle.io</code> cluster.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_propagation_behavior"><a class="anchor" href="#_propagation_behavior"></a>Propagation Behavior</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">From → To</th>
+<th class="tableblock halign-left valign-top">Propagation</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CAPI → Fleet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Propagated by CAAPF</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CAPI → Provisioning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not automatically created; only generated via Turtles for legacy clusters</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CAPI → Management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Only via Provisioning Cluster for legacy clusters</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provisioning → Fleet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not supported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fleet → CAPI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Not supported</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Management → Provisioning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Conditional</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Only for legacy clusters; new Turtles-managed clusters do not generate provisioning clusters</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_should_user_edit"><a class="anchor" href="#_what_should_user_edit"></a>What Should User Edit?</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_recommended_cluster_x_k8s_io_cluster"><a class="anchor" href="#_recommended_cluster_x_k8s_io_cluster"></a>Recommended: <code>cluster.x-k8s.io.Cluster</code></h3>
+<div class="paragraph">
+<p>The CAPI Cluster is the authoritative resource for cluster definition in Rancher Turtles.
+Labels must be placed on the CAPI Cluster object. They will automatically propagate to the Fleet Cluster, enabling label-based bundle selectors to work as expected.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conditional_provisioning_cattle_io_cluster"><a class="anchor" href="#_conditional_provisioning_cattle_io_cluster"></a>Conditional: <code>provisioning.cattle.io.Cluster</code></h3>
+<div class="paragraph">
+<p>Only required when using Rancher-native provisioning features (e.g., <code>spec.rkeConfig</code>, UI-driven flows). Avoid editing unless explicitly required.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_avoid_fleet_cattle_io_cluster"><a class="anchor" href="#_avoid_fleet_cattle_io_cluster"></a>Avoid: <code>fleet.cattle.io.Cluster</code></h3>
+<div class="paragraph">
+<p>Fleet Clusters are managed automatically. Edits are discouraged unless working on Fleet internals.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_avoid_management_cattle_io_cluster"><a class="anchor" href="#_avoid_management_cattle_io_cluster"></a>Avoid: <code>management.cattle.io.Cluster</code></h3>
+<div class="paragraph">
+<p>These resources are internal and fully managed by Rancher. Do not modify them.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The <strong>CAPI Cluster</strong> is the source of truth.</p>
+</li>
+<li>
+<p><strong>Fleet Clusters</strong> are generated automatically from CAPI Clusters via CAAPF.</p>
+</li>
+<li>
+<p><strong>Provisioning</strong> and <strong>Management Clusters</strong> are <strong>not required</strong> unless Rancher provisioning is involved.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Use the CAPI Cluster’s labels to drive Fleet bundle deployment. The CAAPF controller ensures those labels are synced to the Fleet Cluster object.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/rancher/cluster-api-addon-provider-fleet">Cluster API Add-on Provider for Fleet (CAAPF)</a></p>
+</li>
+<li>
+<p><a href="https://fleet.rancher.io">Fleet documentation</a></p>
+</li>
+<li>
+<p><a href="https://extensions.rancher.io/internal/code-base-works/cluster-management-resources#cluster-resources">Rancher Cluster Internals</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="gitops.html">GitOps best practices for Turtles and CAPI</a></span>
+  <span class="next"><a href="../operator/chart.html">Chart Configuration</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div><script src="../../../../_/js/site.js"></script>
+<script async src="../../../../_/js/vendor/highlight.js"></script>
+<script src="../../../../_/js/vendor/lunr.js"></script>
+<script src="../../../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../../../.." data-snippet-length="100" data-stylesheet="../../../../_/css/search.css"></script>
+<script async src="../../../../search-index.js"></script>
+<script src="../../../../_/js/vendor/langSelection.js"></script>
+<script async src="../../../../_/js/vendor/tabs.js"></script>
+
+
+  </body>
+</html>
