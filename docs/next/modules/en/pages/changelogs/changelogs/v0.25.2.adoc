@@ -1,0 +1,49 @@
+== "v0.25.2"
+=== "2026-01-26 09:00:30 +0000 UTC"
+
+// Disclaimer: this file is generated, do not edit it manually.
+
+
+__ (github-actions[bot]) released this 2026-01-26 09:00:30 +0000 UTC - v0.25.2__
+
+
+=== Description
+
+---
+
+++++
+
+
+<p>Rancher Turtles - Cluster API integration in Rancher.</p>
+<p>This release brings a number of bug fixes, dependency bumps and a new feature:</p>
+<ul>
+<li>Users can now add an annotation cluster-api.cattle.io/cluster-description to a CAPI cluster. Once imported, the annotation value will be shown in the Rancher UI as the description for that cluster.</li>
+</ul>
+<h2>What's Changed</h2>
+<h3>🚀  Enhancements and other changes</h3>
+<ul>
+<li>[release/v0.25] Backport multiple commits to prepare for 2.13.2 by <a class="user-mention notranslate" data-hovercard-type="user" data-hovercard-url="/users/yiannistri/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="https://github.com/yiannistri">@yiannistri</a> in <a class="issue-link js-issue-link" data-error-text="Failed to load title" data-id="3793366104" data-permission-text="Title is private" data-url="https://github.com/rancher/turtles/issues/1992" data-hovercard-type="pull_request" data-hovercard-url="/rancher/turtles/pull/1992/hovercard" href="https://github.com/rancher/turtles/pull/1992">#1992</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/rancher/turtles/compare/v0.25.1...v0.25.2"><tt>v0.25.1...v0.25.2</tt></a></p>
+
+++++
+
+---
+
+
+
+=== Download
+
+[cols="3,1,1" options="header" frame="all" grid="rows"]
+|===
+| Name | Created At | Updated At
+
+| link:https://github.com/rancher/turtles/releases/download/v0.25.2/rancher-turtles-0.25.2.tgz[rancher-turtles-0.25.2.tgz] | 2026-01-26 09:00:32 +0000 UTC | 2026-01-26T09:00:33Z
+
+|===
+
+
+---
+
+__Information retrieved from link:https://github.com/rancher/turtles/releases/tag/v0.25.2[here]__
+
