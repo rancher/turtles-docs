@@ -1,3 +1,5 @@
+Note: This repository is archived in favor of https://github.com/rancher/turtles-product-docs/
+
 [#turtles-product-documentation]
 = Turtles Product Documentation
 
